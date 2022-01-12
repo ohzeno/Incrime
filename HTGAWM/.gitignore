@@ -35,6 +35,9 @@ out/
 **/nbdist/
 **/.nb-gradle/
 
+### Visual Studio ###
+.vsconfig
+
 ### VS Code ###
 .vscode/
 
