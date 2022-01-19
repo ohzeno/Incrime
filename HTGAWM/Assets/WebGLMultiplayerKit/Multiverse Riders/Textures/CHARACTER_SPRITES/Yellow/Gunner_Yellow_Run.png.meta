@@ -1,0 +1,376 @@
+fileFormatVersion: 2
+guid: 9db0aa4f7f8cd5949b664b326ed26a7c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Gunner_Yellow_Run_0
+  - first:
+      213: 21300002
+    second: Gunner_Yellow_Run_1
+  - first:
+      213: 21300004
+    second: Gunner_Yellow_Run_3
+  - first:
+      213: 21300006
+    second: Gunner_Yellow_Run_4
+  - first:
+      213: 21300008
+    second: Gunner_Yellow_Run_5
+  - first:
+      213: 21300010
+    second: Gunner_Yellow_Run_7
+  - first:
+      213: 4617906202613604132
+    second: Gunner_Yellow_Run_0
+  - first:
+      213: 7000476383339004161
+    second: Gunner_Yellow_Run_1
+  - first:
+      213: -2087307176675262741
+    second: Gunner_Yellow_Run_2
+  - first:
+      213: 1519758033024241067
+    second: Gunner_Yellow_Run_3
+  - first:
+      213: -8579238507181321936
+    second: Gunner_Yellow_Run_4
+  - first:
+      213: 8641770624402646750
+    second: Gunner_Yellow_Run_5
+  - first:
+      213: 1094173033407659661
+    second: Gunner_Yellow_Run_6
+  - first:
+      213: -2663277946967686776
+    second: Gunner_Yellow_Run_7
+  - first:
+      213: 383461945692648938
+    second: Gunner_Yellow_Run_8
+  - first:
+      213: 479599878982178054
+    second: Gunner_Yellow_Run_9
+  - first:
+      213: -618717540122290490
+    second: Gunner_Yellow_Run_10
+  - first:
+      213: -7315676747684999046
+    second: Gunner_Yellow_Run_11
+  - first:
+      213: 3171482123985041218
+    second: Gunner_Yellow_Run_12
+  - first:
+      213: -7811897100356943649
+    second: Gunner_Yellow_Run_13
+  - first:
+      213: -7089145678910684358
+    second: Gunner_Yellow_Run_14
+  - first:
+      213: 2011359884219998043
+    second: Gunner_Yellow_Run_15
+  - first:
+      213: 4826863503305509720
+    second: Gunner_Yellow_Run_16
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 19
+        width: 81
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 101ce673e20b62160800000000000000
+      internalID: 7000476383339004161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 13
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: badc4f601e3471510800000000000000
+      internalID: 1519758033024241067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 19
+        width: 82
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 031da10580c60f880800000000000000
+      internalID: -8579238507181321936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_6
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 21
+        width: 87
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e3313a3984f2f00800000000000000
+      internalID: 1094173033407659661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_8
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 17
+        width: 79
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae5f3e1ab94525500800000000000000
+      internalID: 383461945692648938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_9
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 18
+        width: 82
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6059d058c81e7a600800000000000000
+      internalID: 479599878982178054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_10
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 22
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c615b4ecafd967f0800000000000000
+      internalID: -618717540122290490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gunner_Yellow_Run_14
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 22
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33888f909b4e9d90800000000000000
+      internalID: -7089145678910684358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 6e6cfb155f8324046afe6972a280486f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
