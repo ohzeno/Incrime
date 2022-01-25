@@ -4,5 +4,35 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/BreakRoom.unity
+    guid: 94a1067cc0a432f43b23bc2af01acc1c
+  - enabled: 1
+    path: Assets/Scenes/DirectorMaOffice.unity
+    guid: 416f3e5cc162dc34fab7f936c2e0e426
+  - enabled: 1
+    path: Assets/Scenes/Hallway.unity
+    guid: d987ec475c1e3514f88356f6e6b4c7a6
+  - enabled: 1
+    path: Assets/Scenes/MeetingRoom.unity
+    guid: cbe45f0ea0f07e84fb97922add181a9b
+  - enabled: 1
+    path: Assets/Scenes/OfficeCubicles.unity
+    guid: d78d71b0b8bb78d43ad56568b3889079
+  - enabled: 1
+    path: Assets/Scenes/ReceptionDesk.unity
+    guid: 3c22f5b27bd828c42951b89325dbf10b
+  - enabled: 1
+    path: Assets/Scenes/RestRoom.unity
+    guid: d6c348ce18183ca4783a66913c9b828b
+  - enabled: 1
+    path: Assets/Scenes/SecurityRoom.unity
+    guid: 63a4ccbd84677fa4bae5bfa728302bbd
+  - enabled: 1
+    path: Assets/Scenes/TeamLeaderLeeOffice.unity
+    guid: 4143035b1f4052546adb60f8aba0036a
+  - enabled: 1
+    path: Assets/Scenes/Simple Character Test.unity
+    guid: f087fc47bfeaa0547809c1505c87d8bb
   m_configObjects: {}
