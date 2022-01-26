@@ -95,6 +95,9 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+# Unity3D probuilder setting files
+/ProjectSettings/Packages/com.unity.probuilder*
+
 # Unity3D generated file on crash reports
 sysinfo.txt
 
