@@ -57,4 +57,9 @@ public class MoveTo : MonoBehaviour
     {
         SceneManager.LoadScene("Hallway");
     }
+
+    public void ToMap()
+    {
+        SceneManager.LoadScene("Map");
+    }
 }
