@@ -74,6 +74,7 @@ public class ProofController : MonoBehaviour
             if(oldHitInfo.transform != null && oldHitInfo.transform != hitInfo.transform)
             {
                 oldHitInfo.transform.GetComponent<Outline>().enabled = false;
+                oldHitInfo.transform.gameObject.layer = 7;
             }
             if (hitInfo.transform.tag == "Proof")
             {
