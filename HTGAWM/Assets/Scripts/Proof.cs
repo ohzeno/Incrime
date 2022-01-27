@@ -11,6 +11,7 @@ public class Proof : MonoBehaviour
 
     public string proofName;
 
+    [TextArea]
     public string proofDescription;
 
     public Sprite proofImage;

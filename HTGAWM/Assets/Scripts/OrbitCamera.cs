@@ -6,7 +6,7 @@ using UnityEngine;
 public class OrbitCamera : MonoBehaviour
 {
     public Transform m_Target;
-    public float m_Distance = 5.0f;
+    public float m_Distance = 1.0f;
     public float m_XSpeed = 120.0f;
     public float m_YSpeed = 120.0f;
 
@@ -49,6 +49,11 @@ public class OrbitCamera : MonoBehaviour
             transform.rotation = rotation;
             transform.position = position;
         }
+    }
+
+    public void ChangePosition(Vector3 position)
+    {
+        transform.position = position;
     }
 
     public float ClampAngle(float angle, float min, float max)

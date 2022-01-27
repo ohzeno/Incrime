@@ -26,8 +26,6 @@ public class ProofController : MonoBehaviour
     private Canvas proofUI;
 
     [SerializeField]
-    private Camera proofCamera;
-    [SerializeField]
     private OrbitCamera orbitCamera;
 
     [SerializeField]
@@ -35,6 +33,7 @@ public class ProofController : MonoBehaviour
 
     private bool pickupActivated = false;
 
+    private RaycastHit oldHitInfo;
     private RaycastHit hitInfo;
     private GameObject proofObject;
     private Outline outline;
@@ -72,8 +71,13 @@ public class ProofController : MonoBehaviour
         Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.TransformDirection(range * Vector3.forward), Color.red);
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out hitInfo, range, layerMask))
         {
+            if(oldHitInfo.transform != null && oldHitInfo.transform != hitInfo.transform)
+            {
+                oldHitInfo.transform.GetComponent<Outline>().enabled = false;
+            }
             if (hitInfo.transform.tag == "Proof")
             {
+                oldHitInfo = hitInfo;
                 ProofInfoAppear();
             }
         }
