@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     // 스피드 조정 변수
     [SerializeField]
-    private float walkSpeed;
+    private float walkSpeed = 3;
     [SerializeField]
-    private float runSpeed;
+    private float runSpeed = 5;
     [SerializeField]
     private float crouchSpeed;
 
@@ -23,10 +23,14 @@ public class PlayerController : MonoBehaviour
     private bool isRun = false;
     private bool isCrouch = false;
     private bool isGround = true;
+    private bool isFixCamera = false;
 
     // 움직임 체크 변수
     private Vector3 lastPos;
 
+
+    [SerializeField]
+    private GameObject ProofUI;
 
     // 앉았을 때 얼마나 앉을지 결정하는 변수.
     [SerializeField]
@@ -90,12 +94,11 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-
     // Update is called once per frame
     void Update()
     {
         IsGround();
+        TryFix();
         TryJump();
         TryCrouch();
         TryRun();
@@ -104,12 +107,33 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-     
-        Move();
-        CameraRotation();
-        CharacterRotation();
+        if (!isFixCamera) { 
+            Move();
+            CameraRotation();
+            CharacterRotation();
+        }
 
     }
+
+    public void FixPlayer()
+    {
+        isFixCamera = true;
+        Debug.Log("카메라 고정"+isFixCamera);
+    }
+
+    public void UnfixPlayer()
+    {
+        isFixCamera = false;
+    }
+
+    private void TryFix()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            isFixCamera = !isFixCamera;
+        }
+    }
+
 
     // 앉기 시도
     private void TryCrouch()
