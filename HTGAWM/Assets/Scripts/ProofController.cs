@@ -87,6 +87,7 @@ public class ProofController : MonoBehaviour
     {
         if(hitInfo.transform != null)
         {
+            proofDescription.text = hitInfo.transform.GetComponent<Proof>().proofDescription;
             proofObject = hitInfo.transform.gameObject;
             Debug.Log(proofName + " º¸±â");
             proofObject.layer = 8;
@@ -104,6 +105,7 @@ public class ProofController : MonoBehaviour
         }
         playerController.UnfixPlayer();
         proofUI.gameObject.SetActive(false);
+        
     }
 
     private void ProofInfoAppear()
