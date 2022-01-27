@@ -52,7 +52,7 @@ public class ProofController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         CheckProof();
         TryAction();
