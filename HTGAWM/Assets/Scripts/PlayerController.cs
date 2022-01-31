@@ -103,16 +103,20 @@ public class PlayerController : MonoBehaviour
         TryCrouch();
         TryRun();
         MoveCheck();
+
+        if (!isFixCamera)
+        {
+            CameraRotation();
+            CharacterRotation();
+        }
     }
 
     void FixedUpdate()
     {
-        if (!isFixCamera) { 
+        if (!isFixCamera)
+        {
             Move();
-            CameraRotation();
-            CharacterRotation();
         }
-
     }
 
     public void FixPlayer()

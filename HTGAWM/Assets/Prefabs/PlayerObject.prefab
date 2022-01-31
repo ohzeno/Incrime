@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955902fcbd4ddd045bc8f4cf6e706999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveButton: {fileID: 0}
+  MoveButton: {fileID: 6556832026969305232}
 --- !u!1 &3595651866797520892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1206,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 450}
+  m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6556832026990912709
 CanvasRenderer:
@@ -2266,15 +2266,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3406079666193834968, guid: 600d96f382c8bb340a7dc94a689b43a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.54
+      value: 4.23
       objectReference: {fileID: 0}
     - target: {fileID: 3406079666193834968, guid: 600d96f382c8bb340a7dc94a689b43a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 3406079666193834968, guid: 600d96f382c8bb340a7dc94a689b43a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.87
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 3406079666193834968, guid: 600d96f382c8bb340a7dc94a689b43a2, type: 3}
       propertyPath: m_LocalRotation.w

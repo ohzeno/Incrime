@@ -33,9 +33,9 @@ public class ProofController : MonoBehaviour
 
     private bool pickupActivated = false;
 
+    private bool isFirstHit = true;
     private RaycastHit oldHitInfo;
     private RaycastHit hitInfo;
-    private GameObject proofObject;
     private Outline outline;
 
 
@@ -68,13 +68,15 @@ public class ProofController : MonoBehaviour
 
     private void CheckProof()
     {
+
         Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.TransformDirection(range * Vector3.forward), Color.red);
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out hitInfo, range, layerMask))
         {
             if(oldHitInfo.transform != null && oldHitInfo.transform != hitInfo.transform)
             {
                 oldHitInfo.transform.GetComponent<Outline>().enabled = false;
-                oldHitInfo.transform.gameObject.layer = 7;
+                SetLayersRecursively(oldHitInfo.transform, 7);
+
             }
             if (hitInfo.transform.tag == "Proof")
             {
@@ -92,10 +94,9 @@ public class ProofController : MonoBehaviour
     {
         if(hitInfo.transform != null)
         {
-            proofDescription.text = hitInfo.transform.GetComponent<Proof>().proofDescription;
-            proofObject = hitInfo.transform.gameObject;
+            proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             Debug.Log(proofName + " º¸±â");
-            proofObject.layer = 8;
+            SetLayersRecursively(oldHitInfo.transform, 8);
             playerController.FixPlayer();
             proofUI.gameObject.SetActive(true);
         }
@@ -103,9 +104,9 @@ public class ProofController : MonoBehaviour
 
     public void CloseProofUI()
     {
-        if (proofObject != null)
+        if (oldHitInfo.transform != null)
         {
-            proofObject.layer = 7;
+            SetLayersRecursively(oldHitInfo.transform, 7);
             Debug.Log(proofName + " ´Ý±â");
         }
         playerController.UnfixPlayer();
@@ -127,5 +128,14 @@ public class ProofController : MonoBehaviour
         if (outline != null)
             outline.enabled = false;
         actionText.gameObject.SetActive(false);
+    }
+
+    public void SetLayersRecursively(Transform trans, int layer)
+    {
+        trans.gameObject.layer = layer;
+        foreach (Transform child in trans)
+        {
+            SetLayersRecursively(child, layer);
+        }
     }
 }
