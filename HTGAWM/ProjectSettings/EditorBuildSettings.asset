@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/BreakRoom.unity
     guid: 94a1067cc0a432f43b23bc2af01acc1c
   - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 50fafae9bb4fbd44881d22d9a3b15c27
+  - enabled: 1
+    path: Assets/Scenes/WaitScene.unity
+    guid: c75cce1dc6a3cf448a3f5ef57d94a153
+  - enabled: 1
+    path: Assets/Scenes/RoleScene.unity
+    guid: 7ca76fbcf3ea96b4ebb0fc8c3b073a06
+  - enabled: 1
+    path: Assets/AgoraEngine/Demo/SceneHelloVideo.unity
+    guid: 5a4d72265ca2c1b4393e31ef58d0988d
+  - enabled: 1
     path: Assets/Scenes/DirectorMaOffice.unity
     guid: 416f3e5cc162dc34fab7f936c2e0e426
   - enabled: 0

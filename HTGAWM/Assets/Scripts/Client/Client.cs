@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Project
+{
+public static class Client
+{
+  // 유저 별로 저장
+  public static string id;
+  public static string name;
+  public static string role;
+  
+  // 스토리 저장
+  public static string storyname;
+  public static string storydesc;
+
+  // 시간
+  public static string minute;
+  public static string second;
+
+  // 메모
+  public static string memo = "";
+  
+  
+  
+  
+  public static bool isLocalPlayer;
+
+}
+}

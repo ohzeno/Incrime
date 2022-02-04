@@ -9,6 +9,9 @@ using System.Collections;
 /// <summary>
 ///    TestHome serves a game controller object for this application.
 /// </summary>
+
+
+
 public class TestHome : MonoBehaviour
 {
 
@@ -25,7 +28,7 @@ public class TestHome : MonoBehaviour
     // PLEASE KEEP THIS App ID IN SAFE PLACE
     // Get your own App ID at https://dashboard.agora.io/
     [SerializeField]
-    private string AppID = "your_appid";
+    private string AppID = "15cb9ae9658f4a39811de57a2250db4fd";
 
     void Awake()
     {
@@ -102,6 +105,8 @@ public class TestHome : MonoBehaviour
         app.join(field.text, true);
         SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
         SceneManager.LoadScene(PlaySceneName, LoadSceneMode.Single);
+
+        //LoadSceneMode.single -> 현재 씬의 오브젝트를 날리고 감.
     }
     
     public void onJoinButtonClicked2()

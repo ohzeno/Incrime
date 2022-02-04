@@ -95,12 +95,15 @@ var LibraryAgoraWebGLSDK = {
   createRemoteTexture: function (userId) {
     var ch_userId = Pointer_stringify(userId);
 
-    if (remoteUsers[ch_userId] != undefined) {
-      video = document.getElementById(
-        "video_" + remoteUsers[ch_userId].videoTrack._ID
-      );
-      remoteVideoInstances[ch_userId] = video;
-    }
+    // approximate 1~2 frames time delay to avoid race condition
+    setTimeout(function(){ 
+        if (remoteUsers[ch_userId] != undefined) {
+          video = document.getElementById(
+            "video_" + remoteUsers[ch_userId].videoTrack._ID
+          );
+          remoteVideoInstances[ch_userId] = video;
+        }
+    }, 200);
     return 1;
   }, 
 
@@ -1327,6 +1330,15 @@ var LibraryAgoraWebGLSDK = {
   enableDualStreamMode: function (enabled) {
     enableDualStream_WGL(enabled);
   },
+  enableLogUpload: function () {
+    enableLogUpload();
+    return 1;
+  },
+  disableLogUpload: function () {
+    disableLogUpload();
+    return 1;
+  },
+
   getAudioPlaybackDeviceVolume: function () {
     return wrapper.savedSettings.playbackVolume;
   },

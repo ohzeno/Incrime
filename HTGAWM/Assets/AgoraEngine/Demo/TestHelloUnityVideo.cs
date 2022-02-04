@@ -10,18 +10,22 @@ using agora_utilities;
 // How to enable video
 // How to join/leave channel
 // 
+
+
+
+
 public class TestHelloUnityVideo
 {
 
     // instance of agora engine
-    private IRtcEngine mRtcEngine;
+    public static IRtcEngine mRtcEngine;
     private Text MessageText;
 
     // load agora engine
     public void loadEngine(string appId)
     {
         // start sdk
-        Debug.Log("initializeEngine");
+        Debug.Log("해당 앱 키로 아고라 로드 합니다.");
 
         if (mRtcEngine != null)
         {
@@ -31,6 +35,10 @@ public class TestHelloUnityVideo
 
         // init engine
         mRtcEngine = IRtcEngine.GetEngine(appId);
+        
+        // // 류기탁추가 
+        // mRtcEngine.EnableVideo();
+        // mRtcEngine.EnableVideoObserver();
 
         // enable log
         mRtcEngine.SetLogFilter(LOG_FILTER.DEBUG | LOG_FILTER.INFO | LOG_FILTER.WARNING | LOG_FILTER.ERROR | LOG_FILTER.CRITICAL);
@@ -55,13 +63,18 @@ public class TestHelloUnityVideo
         mRtcEngine.OnError = HandleError;
 
         // enable video
-        if (enableVideoOrNot)
-        {
-            mRtcEngine.EnableVideo();
-            // allow camera output callback
-            mRtcEngine.EnableVideoObserver();
-        }
-        // mRtcEngine.EnableAudio();
+        // if (enableVideoOrNot)
+        // {
+        //     mRtcEngine.EnableVideo();
+        //     // allow camera output callback
+        //     mRtcEngine.EnableVideoObserver();
+        // }
+        mRtcEngine.EnableAudio();
+
+        Debug.Log("여기 이거 실행 하나?");
+        Debug.Log(mRtcEngine.EnableVideo()); // 0 이 나온것으로 봐선 도긴 되는데 내 화면에 안나옴.
+        mRtcEngine.EnableVideo();
+        mRtcEngine.EnableVideoObserver();
 
         // join channel
         mRtcEngine.JoinChannel(channel, null, 0);
@@ -106,8 +119,10 @@ public class TestHelloUnityVideo
 
     public void EnableVideo(bool pauseVideo)
     {
+        Debug.Log("EnableVideo");
         if (mRtcEngine != null)
         {
+            Debug.Log(mRtcEngine);
             if (!pauseVideo)
             {
                 mRtcEngine.EnableVideo();
@@ -176,14 +191,14 @@ public class TestHelloUnityVideo
         }
 
         // create a GameObject and assign to this new user
-        VideoSurface videoSurface = makeImageSurface(uid.ToString());
-        if (!ReferenceEquals(videoSurface, null))
-        {
-            // configure videoSurface
-            videoSurface.SetForUser(uid);
-            videoSurface.SetEnable(true);
-            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
-        }
+        // VideoSurface videoSurface = makeImageSurface(uid.ToString());
+        // if (!ReferenceEquals(videoSurface, null))
+        // {
+        //     // configure videoSurface
+        //     videoSurface.SetForUser(uid);
+        //     videoSurface.SetEnable(true);
+        //     videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
+        // }
     }
 
     public VideoSurface makePlaneSurface(string goName)
@@ -208,6 +223,8 @@ public class TestHelloUnityVideo
     }
 
     private const float Offset = 100;
+    //
+    static int temp = 1;
     public VideoSurface makeImageSurface(string goName)
     {
         GameObject go = new GameObject();
@@ -229,12 +246,19 @@ public class TestHelloUnityVideo
         {
             go.transform.parent = canvas.transform;
         }
-        // set up transform
+         // set up transform
         go.transform.Rotate(0f, 0.0f, 180.0f);
-        float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
-        float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
-        go.transform.localPosition = new Vector3(xPos, yPos, 0f);
-        go.transform.localScale = new Vector3(3*1.6666f, 3f, 1f);
+        // 이부분 수정하기
+        // float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
+        // float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
+        float xPos = -875;
+        float yPos = 220;
+        go.transform.localPosition = new Vector3(xPos + ( temp * 290 ), yPos, 0f);
+        temp += 1;
+        Debug.Log("지금 연결된 수 : " + temp);
+        // 화면 사이즈 조절
+        go.transform.localScale = new Vector3(  (2*1.6666f) * (float) 0.8 ,  (2f) * (float) 0.8 , 1f);
+        // go.transform.localScale = new Vector3(  (1*1.6666f)  ,  (1f)  , 1f);
 
         // configure videoSurface
         VideoSurface videoSurface = go.AddComponent<VideoSurface>();

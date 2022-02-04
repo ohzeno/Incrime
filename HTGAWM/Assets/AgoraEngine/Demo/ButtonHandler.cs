@@ -22,6 +22,7 @@ public class ButtonHandler : MonoBehaviour
             }
             if (button.name == "JoinButton")
             {
+                Debug.Log("이게 되는가??????");
                 gameController.onJoinButtonClicked();
             }
             else if (button.name == "JoinButton2")
