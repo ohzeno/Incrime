@@ -20,6 +20,8 @@ public class TestHelloUnityVideo
     // instance of agora engine
     public static IRtcEngine mRtcEngine;
     private Text MessageText;
+    // 
+    public CamObject camObject;
 
     // load agora engine
     public void loadEngine(string appId)
@@ -35,10 +37,6 @@ public class TestHelloUnityVideo
 
         // init engine
         mRtcEngine = IRtcEngine.GetEngine(appId);
-        
-        // // 류기탁추가 
-        // mRtcEngine.EnableVideo();
-        // mRtcEngine.EnableVideoObserver();
 
         // enable log
         mRtcEngine.SetLogFilter(LOG_FILTER.DEBUG | LOG_FILTER.INFO | LOG_FILTER.WARNING | LOG_FILTER.ERROR | LOG_FILTER.CRITICAL);
@@ -63,18 +61,20 @@ public class TestHelloUnityVideo
         mRtcEngine.OnError = HandleError;
 
         // enable video
-        // if (enableVideoOrNot)
-        // {
-        //     mRtcEngine.EnableVideo();
-        //     // allow camera output callback
-        //     mRtcEngine.EnableVideoObserver();
-        // }
-        mRtcEngine.EnableAudio();
 
-        Debug.Log("여기 이거 실행 하나?");
-        Debug.Log(mRtcEngine.EnableVideo()); // 0 이 나온것으로 봐선 도긴 되는데 내 화면에 안나옴.
-        mRtcEngine.EnableVideo();
-        mRtcEngine.EnableVideoObserver();
+        if (enableVideoOrNot)
+        {
+            mRtcEngine.EnableVideo();
+            // allow camera output callback
+            mRtcEngine.EnableVideoObserver();
+        }
+
+        // mRtcEngine.EnableAudio();
+
+        // Debug.Log("여기 이거 실행 하나?");
+        // Debug.Log(mRtcEngine.EnableVideo()); // 0 이 나온것으로 봐선 도긴 되는데 내 화면에 안나옴.
+        // mRtcEngine.EnableVideo();
+        // mRtcEngine.EnableVideoObserver();
 
         // join channel
         mRtcEngine.JoinChannel(channel, null, 0);
@@ -192,13 +192,15 @@ public class TestHelloUnityVideo
 
         // create a GameObject and assign to this new user
         // VideoSurface videoSurface = makeImageSurface(uid.ToString());
-        // if (!ReferenceEquals(videoSurface, null))
-        // {
-        //     // configure videoSurface
-        //     videoSurface.SetForUser(uid);
-        //     videoSurface.SetEnable(true);
-        //     videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
-        // }
+        if (!ReferenceEquals(camObject, null))
+        {
+            camObject.AddOtherUser(uid);
+
+            // configure videoSurface
+            // videoSurface.SetForUser(uid);
+            // videoSurface.SetEnable(true);
+            // videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
+        }
     }
 
     public VideoSurface makePlaneSurface(string goName)
