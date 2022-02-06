@@ -25,6 +25,13 @@ var gamephase = 0;
 // gamephase == 3 : 회의실
 // gamephase == 4 : 탐색
 
+// 시간관련 변수
+var time;
+var minute;
+var second;
+// 타임 업데이트 함수
+let timerId
+
 // 나가기 사람
 var exitMeeting_people = 0;
 // 회의 가고싶어하는 사람
@@ -114,13 +121,13 @@ io.on('connection', function(socket){
 		});//end_forEach
 	});
 
+	// 역할 배정
 	socket.on('setrole', function ()
 	{
 		console.log("[system] 역할 배정 합니다.");
 		if (clients.length == 6 ){
 			// phase : 역할 배정 
 			gamephase = 2;
-			conference = false;
 			console.log("[system] 플레이어가 모두 모였습니다. 역할을 배정합니다. ");	
 			var role = [ 0, 0, 0, 0, 0, 0 ];
 			for (let index = 1; index <= 6; index++) {
@@ -164,42 +171,26 @@ io.on('connection', function(socket){
 				
 			});//end_forEach
 
-			// 
-			setTimeout(function () {
-				clearInterval(timerId);
+			// 시간 초과 시 // 10분
+			setTimeout(function() {
 				if ( gamephase == 2 ) {
+					clearInterval(timerId);
 					console.log("[system] 역할 확인 시간이 끝났습니다. 회의실로 갑니다. ");
 					// 이동시키기
-					conference = true;
 					gamephase = 3;
 					clients.forEach( function(i) {
-						io.to(i.id).emit('go_firstconference');
+						clearInterval(timerId);
+						Timeset(10,gamephase);
+						io.to(i.id).emit('GO_MEETING');
 					}); //end_forEach
 				}
 			}, 600000 ); 
 			// 10 분 : 600000
+			// 시간 보내주기 
+			Timeset(10,gamephase);
 
-			var time = 0;
-			var minute = 9;
-			var second = 58;
-
-			let timerId = setInterval(function () {
-				if ( gamephase == 2  ) {
-					second--;
-					io.emit('SET_ROLE_TIMER', time, minute, second);
-					if ( second == 0 ){
-						minute -= 1;
-						second = 60;
-					}
-				} else {
-					clearInterval(timerId);
-				}
-			}, 1000);
-			// 역할 배치 완료.
-
-			
 		} else {
-			console.log("We can't play crime scene")
+			console.log("[system] We can't play crime scene")
 		}
 
 		
@@ -219,45 +210,27 @@ io.on('connection', function(socket){
 			conference = true;
 			// 회의 실로 보내버리기
 			clients.forEach( function(i) {
-				io.to(i.id).emit('go_firstconference');
+				io.to(i.id).emit('GO_MEETING');
 			});//end_forEach
 
 			// 시간 제한 - 시간이 지나면 게임 화면으로 바꾸기
+			// 600000 - 10분
 			setTimeout(function () {
-				clearInterval(timerId);
 				if ( gamephase == 3 ) {
+					clearInterval(timerId);
 					console.log("[system] 미팅 시간이 끝났습니다. ");
 					// 이동시키기
 					gamephase = 4;
 					clients.forEach( function(i) {
-						// 각자 게임 화면으로 보내버리기.
-						io.to(i.id).emit('go_gamescene');
+						// 각자 게임 화면으로 보내버리면서 시간 처리
+						clearInterval(timerId);
+						Timeset(10,gamephase);
+						io.to(i.id).emit('GO_MAP');
 					}); //end_forEach
 				}
-			}, 600000); 
-			// 10 분
-
-			var time = 0;
-			var minute = 9;
-			var second = 58;
-
-			let timerId = setInterval(function () {
-				if ( gamephase == 3 ) {
-					// console.log(minute + " " +second + " ");
-					second--;
-					io.emit('SET_MEETING_TIMER', time, minute, second);
-					if ( second == 0 ){
-						minute -= 1;
-						second = 60;
-					}
-				} else {
-					clearInterval(timerId);
-				}
-			}, 1000);
-			// 역할 배치 완료.
-
-
-
+			}, 60000); 
+			// 시간 보내주기 
+			Timeset(10,gamephase);
 
 		} else {
 			console.log("[system] 현재 준비 인원 : " + conference_number );	
@@ -282,6 +255,26 @@ io.on('connection', function(socket){
 			});//end_forEach
 
 
+			// 시간 제한 - 시간이 지나면 게임 화면으로 바꾸기
+			// 탐색 시간 : 10분 = 600000
+			setTimeout(function () {
+				clearInterval(timerId);
+				console.log("[system] 탐색시간이 끝났습니다. ");
+				// 
+				gamephase = 5;
+				clients.forEach( function(i) {
+					// 탐색시간이 종료되면 미팅으로 보내야한다.
+					// 같은 회의실 방을 사용하므로 뒤에 함수를 줘서 바꾸던가해야할듯
+					clearInterval(timerId);
+					// Timeset(10,gamephase);
+					// io.to(i.id).emit('GO_MEETING');
+				}); //end_forEach
+				
+			}, 600000); 
+			// 시간 보내주기 
+			Timeset(10,gamephase);
+
+
 
 		} else {
 			console.log("[system] 회의 나가기 대기 인원 : " + exitMeeting_people );	
@@ -300,6 +293,40 @@ http.listen(process.env.PORT ||3000, function(){
 console.log("------- server is running -------");
 
 
-function Timeset (num1, num2){
-	return num1+num2;
-}
+// 시간 세팅 함수
+function Timeset(minutes, phase){
+
+	clearInterval(timerId);
+	// 분단위로 받는다.
+	// var settime = minutes * 60 * 1000;
+
+	time = 0;
+	minute = minutes - 1;
+	second = 59;
+	
+	// 시간 보내주는 함수
+	timerId = setInterval( function () {
+		second--;
+		console.log(phase + " --> " + minute + ":" + second );
+		if ( phase == 2  ) {
+			// 2 : 역할 시간 업데이트
+			io.emit('SET_ROLE_TIMER', time, minute, second);
+		} else if ( phase == 3 ) {
+			// 3. 미팅 시간 업데이트
+			io.emit('SET_MEETING_TIMER', time, minute, second);
+		} else if ( phase == 4 ) {
+			// 4. 게임 시간 업데이트
+			io.emit('SET_GAME_TIMER', time, minute, second);
+		} else {
+			clearInterval(timerId);
+		}
+		
+		if ( second == 0 ){
+			minute -= 1;
+			second = 60;
+		}
+	}, 1000);
+
+
+	// 역할 배치 완료.
+};
