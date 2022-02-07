@@ -1,190 +1,542 @@
 fileFormatVersion: 2
 guid: 318840a7e38980943bb4c508fa842265
-timeCreated: 1576108540
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Ankle_L
-    100002: Ankle_R
-    100004: Ball_L
-    100006: Ball_R
-    100008: //RootNode
-    100010: Clavicle_L
-    100012: Clavicle_R
-    100014: Elbow_L
-    100016: Elbow_R
-    100018: Eyebrows
-    100020: Eyes
-    100022: Finger_01
-    100024: Finger_01 1
-    100026: Finger_02
-    100028: Finger_02 1
-    100030: Finger_03
-    100032: Finger_03 1
-    100034: Finger_04
-    100036: Finger_04 1
-    100038: Hand_L
-    100040: Hand_R
-    100042: Head
-    100044: Hips
-    100046: IndexFinger_01
-    100048: IndexFinger_01 1
-    100050: IndexFinger_02
-    100052: IndexFinger_02 1
-    100054: IndexFinger_03
-    100056: IndexFinger_03 1
-    100058: IndexFinger_04
-    100060: IndexFinger_04 1
-    100062: Jaw
-    100064: LowerLeg_L
-    100066: LowerLeg_R
-    100068: Neck
-    100070: Root
-    100072: Shoulder_L
-    100074: Shoulder_R
-    100076: SM_Chr_Boss_Female_01
-    100078: SM_Chr_Boss_Male_01
-    100080: SM_Chr_Business_Female_01
-    100082: SM_Chr_Business_Female_02
-    100084: SM_Chr_Business_Female_03
-    100086: SM_Chr_Business_Female_04
-    100088: SM_Chr_Business_Male_01
-    100090: SM_Chr_Business_Male_02
-    100092: SM_Chr_Business_Male_03
-    100094: SM_Chr_Business_Male_04
-    100096: SM_Chr_Cleaner_Female_01
-    100098: SM_Chr_Cleaner_Male_01
-    100100: SM_Chr_Developer_Female_01
-    100102: SM_Chr_Developer_Female_02
-    100104: SM_Chr_Developer_Male_01
-    100106: SM_Chr_Developer_Male_02
-    100108: SM_Chr_Security_Female_01
-    100110: SM_Chr_Security_Male_01
-    100112: Spine_01
-    100114: Spine_02
-    100116: Spine_03
-    100118: Thumb_01
-    100120: Thumb_01 1
-    100122: Thumb_02
-    100124: Thumb_02 1
-    100126: Thumb_03
-    100128: Thumb_03 1
-    100130: Toes_L
-    100132: Toes_R
-    100134: UpperLeg_L
-    100136: UpperLeg_R
-    400000: Ankle_L
-    400002: Ankle_R
-    400004: Ball_L
-    400006: Ball_R
-    400008: //RootNode
-    400010: Clavicle_L
-    400012: Clavicle_R
-    400014: Elbow_L
-    400016: Elbow_R
-    400018: Eyebrows
-    400020: Eyes
-    400022: Finger_01
-    400024: Finger_01 1
-    400026: Finger_02
-    400028: Finger_02 1
-    400030: Finger_03
-    400032: Finger_03 1
-    400034: Finger_04
-    400036: Finger_04 1
-    400038: Hand_L
-    400040: Hand_R
-    400042: Head
-    400044: Hips
-    400046: IndexFinger_01
-    400048: IndexFinger_01 1
-    400050: IndexFinger_02
-    400052: IndexFinger_02 1
-    400054: IndexFinger_03
-    400056: IndexFinger_03 1
-    400058: IndexFinger_04
-    400060: IndexFinger_04 1
-    400062: Jaw
-    400064: LowerLeg_L
-    400066: LowerLeg_R
-    400068: Neck
-    400070: Root
-    400072: Shoulder_L
-    400074: Shoulder_R
-    400076: SM_Chr_Boss_Female_01
-    400078: SM_Chr_Boss_Male_01
-    400080: SM_Chr_Business_Female_01
-    400082: SM_Chr_Business_Female_02
-    400084: SM_Chr_Business_Female_03
-    400086: SM_Chr_Business_Female_04
-    400088: SM_Chr_Business_Male_01
-    400090: SM_Chr_Business_Male_02
-    400092: SM_Chr_Business_Male_03
-    400094: SM_Chr_Business_Male_04
-    400096: SM_Chr_Cleaner_Female_01
-    400098: SM_Chr_Cleaner_Male_01
-    400100: SM_Chr_Developer_Female_01
-    400102: SM_Chr_Developer_Female_02
-    400104: SM_Chr_Developer_Male_01
-    400106: SM_Chr_Developer_Male_02
-    400108: SM_Chr_Security_Female_01
-    400110: SM_Chr_Security_Male_01
-    400112: Spine_01
-    400114: Spine_02
-    400116: Spine_03
-    400118: Thumb_01
-    400120: Thumb_01 1
-    400122: Thumb_02
-    400124: Thumb_02 1
-    400126: Thumb_03
-    400128: Thumb_03 1
-    400130: Toes_L
-    400132: Toes_R
-    400134: UpperLeg_L
-    400136: UpperLeg_R
-    4300000: SM_Chr_Security_Female_01
-    4300002: SM_Chr_Developer_Female_02
-    4300004: SM_Chr_Developer_Female_01
-    4300006: SM_Chr_Cleaner_Female_01
-    4300008: SM_Chr_Business_Female_04
-    4300010: SM_Chr_Business_Female_03
-    4300012: SM_Chr_Business_Female_02
-    4300014: SM_Chr_Business_Female_01
-    4300016: SM_Chr_Boss_Female_01
-    4300018: SM_Chr_Security_Male_01
-    4300020: SM_Chr_Developer_Male_02
-    4300022: SM_Chr_Developer_Male_01
-    4300024: SM_Chr_Cleaner_Male_01
-    4300026: SM_Chr_Business_Male_04
-    4300028: SM_Chr_Business_Male_03
-    4300030: SM_Chr_Business_Male_02
-    4300032: SM_Chr_Business_Male_01
-    4300034: SM_Chr_Boss_Male_01
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: SM_Chr_Boss_Female_01
-    13700002: SM_Chr_Boss_Male_01
-    13700004: SM_Chr_Business_Female_01
-    13700006: SM_Chr_Business_Female_02
-    13700008: SM_Chr_Business_Female_03
-    13700010: SM_Chr_Business_Female_04
-    13700012: SM_Chr_Business_Male_01
-    13700014: SM_Chr_Business_Male_02
-    13700016: SM_Chr_Business_Male_03
-    13700018: SM_Chr_Business_Male_04
-    13700020: SM_Chr_Cleaner_Female_01
-    13700022: SM_Chr_Cleaner_Male_01
-    13700024: SM_Chr_Developer_Female_01
-    13700026: SM_Chr_Developer_Female_02
-    13700028: SM_Chr_Developer_Male_01
-    13700030: SM_Chr_Developer_Male_02
-    13700032: SM_Chr_Security_Female_01
-    13700034: SM_Chr_Security_Male_01
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Ankle_L
+  - first:
+      1: 100002
+    second: Ankle_R
+  - first:
+      1: 100004
+    second: Ball_L
+  - first:
+      1: 100006
+    second: Ball_R
+  - first:
+      1: 100008
+    second: //RootNode
+  - first:
+      1: 100010
+    second: Clavicle_L
+  - first:
+      1: 100012
+    second: Clavicle_R
+  - first:
+      1: 100014
+    second: Elbow_L
+  - first:
+      1: 100016
+    second: Elbow_R
+  - first:
+      1: 100018
+    second: Eyebrows
+  - first:
+      1: 100020
+    second: Eyes
+  - first:
+      1: 100022
+    second: Finger_01
+  - first:
+      1: 100024
+    second: Finger_01 1
+  - first:
+      1: 100026
+    second: Finger_02
+  - first:
+      1: 100028
+    second: Finger_02 1
+  - first:
+      1: 100030
+    second: Finger_03
+  - first:
+      1: 100032
+    second: Finger_03 1
+  - first:
+      1: 100034
+    second: Finger_04
+  - first:
+      1: 100036
+    second: Finger_04 1
+  - first:
+      1: 100038
+    second: Hand_L
+  - first:
+      1: 100040
+    second: Hand_R
+  - first:
+      1: 100042
+    second: Head
+  - first:
+      1: 100044
+    second: Hips
+  - first:
+      1: 100046
+    second: IndexFinger_01
+  - first:
+      1: 100048
+    second: IndexFinger_01 1
+  - first:
+      1: 100050
+    second: IndexFinger_02
+  - first:
+      1: 100052
+    second: IndexFinger_02 1
+  - first:
+      1: 100054
+    second: IndexFinger_03
+  - first:
+      1: 100056
+    second: IndexFinger_03 1
+  - first:
+      1: 100058
+    second: IndexFinger_04
+  - first:
+      1: 100060
+    second: IndexFinger_04 1
+  - first:
+      1: 100062
+    second: Jaw
+  - first:
+      1: 100064
+    second: LowerLeg_L
+  - first:
+      1: 100066
+    second: LowerLeg_R
+  - first:
+      1: 100068
+    second: Neck
+  - first:
+      1: 100070
+    second: Root
+  - first:
+      1: 100072
+    second: Shoulder_L
+  - first:
+      1: 100074
+    second: Shoulder_R
+  - first:
+      1: 100076
+    second: SM_Chr_Boss_Female_01
+  - first:
+      1: 100078
+    second: SM_Chr_Boss_Male_01
+  - first:
+      1: 100080
+    second: SM_Chr_Business_Female_01
+  - first:
+      1: 100082
+    second: SM_Chr_Business_Female_02
+  - first:
+      1: 100084
+    second: SM_Chr_Business_Female_03
+  - first:
+      1: 100086
+    second: SM_Chr_Business_Female_04
+  - first:
+      1: 100088
+    second: SM_Chr_Business_Male_01
+  - first:
+      1: 100090
+    second: SM_Chr_Business_Male_02
+  - first:
+      1: 100092
+    second: SM_Chr_Business_Male_03
+  - first:
+      1: 100094
+    second: SM_Chr_Business_Male_04
+  - first:
+      1: 100096
+    second: SM_Chr_Cleaner_Female_01
+  - first:
+      1: 100098
+    second: SM_Chr_Cleaner_Male_01
+  - first:
+      1: 100100
+    second: SM_Chr_Developer_Female_01
+  - first:
+      1: 100102
+    second: SM_Chr_Developer_Female_02
+  - first:
+      1: 100104
+    second: SM_Chr_Developer_Male_01
+  - first:
+      1: 100106
+    second: SM_Chr_Developer_Male_02
+  - first:
+      1: 100108
+    second: SM_Chr_Security_Female_01
+  - first:
+      1: 100110
+    second: SM_Chr_Security_Male_01
+  - first:
+      1: 100112
+    second: Spine_01
+  - first:
+      1: 100114
+    second: Spine_02
+  - first:
+      1: 100116
+    second: Spine_03
+  - first:
+      1: 100118
+    second: Thumb_01
+  - first:
+      1: 100120
+    second: Thumb_01 1
+  - first:
+      1: 100122
+    second: Thumb_02
+  - first:
+      1: 100124
+    second: Thumb_02 1
+  - first:
+      1: 100126
+    second: Thumb_03
+  - first:
+      1: 100128
+    second: Thumb_03 1
+  - first:
+      1: 100130
+    second: Toes_L
+  - first:
+      1: 100132
+    second: Toes_R
+  - first:
+      1: 100134
+    second: UpperLeg_L
+  - first:
+      1: 100136
+    second: UpperLeg_R
+  - first:
+      4: 400000
+    second: Ankle_L
+  - first:
+      4: 400002
+    second: Ankle_R
+  - first:
+      4: 400004
+    second: Ball_L
+  - first:
+      4: 400006
+    second: Ball_R
+  - first:
+      4: 400008
+    second: //RootNode
+  - first:
+      4: 400010
+    second: Clavicle_L
+  - first:
+      4: 400012
+    second: Clavicle_R
+  - first:
+      4: 400014
+    second: Elbow_L
+  - first:
+      4: 400016
+    second: Elbow_R
+  - first:
+      4: 400018
+    second: Eyebrows
+  - first:
+      4: 400020
+    second: Eyes
+  - first:
+      4: 400022
+    second: Finger_01
+  - first:
+      4: 400024
+    second: Finger_01 1
+  - first:
+      4: 400026
+    second: Finger_02
+  - first:
+      4: 400028
+    second: Finger_02 1
+  - first:
+      4: 400030
+    second: Finger_03
+  - first:
+      4: 400032
+    second: Finger_03 1
+  - first:
+      4: 400034
+    second: Finger_04
+  - first:
+      4: 400036
+    second: Finger_04 1
+  - first:
+      4: 400038
+    second: Hand_L
+  - first:
+      4: 400040
+    second: Hand_R
+  - first:
+      4: 400042
+    second: Head
+  - first:
+      4: 400044
+    second: Hips
+  - first:
+      4: 400046
+    second: IndexFinger_01
+  - first:
+      4: 400048
+    second: IndexFinger_01 1
+  - first:
+      4: 400050
+    second: IndexFinger_02
+  - first:
+      4: 400052
+    second: IndexFinger_02 1
+  - first:
+      4: 400054
+    second: IndexFinger_03
+  - first:
+      4: 400056
+    second: IndexFinger_03 1
+  - first:
+      4: 400058
+    second: IndexFinger_04
+  - first:
+      4: 400060
+    second: IndexFinger_04 1
+  - first:
+      4: 400062
+    second: Jaw
+  - first:
+      4: 400064
+    second: LowerLeg_L
+  - first:
+      4: 400066
+    second: LowerLeg_R
+  - first:
+      4: 400068
+    second: Neck
+  - first:
+      4: 400070
+    second: Root
+  - first:
+      4: 400072
+    second: Shoulder_L
+  - first:
+      4: 400074
+    second: Shoulder_R
+  - first:
+      4: 400076
+    second: SM_Chr_Boss_Female_01
+  - first:
+      4: 400078
+    second: SM_Chr_Boss_Male_01
+  - first:
+      4: 400080
+    second: SM_Chr_Business_Female_01
+  - first:
+      4: 400082
+    second: SM_Chr_Business_Female_02
+  - first:
+      4: 400084
+    second: SM_Chr_Business_Female_03
+  - first:
+      4: 400086
+    second: SM_Chr_Business_Female_04
+  - first:
+      4: 400088
+    second: SM_Chr_Business_Male_01
+  - first:
+      4: 400090
+    second: SM_Chr_Business_Male_02
+  - first:
+      4: 400092
+    second: SM_Chr_Business_Male_03
+  - first:
+      4: 400094
+    second: SM_Chr_Business_Male_04
+  - first:
+      4: 400096
+    second: SM_Chr_Cleaner_Female_01
+  - first:
+      4: 400098
+    second: SM_Chr_Cleaner_Male_01
+  - first:
+      4: 400100
+    second: SM_Chr_Developer_Female_01
+  - first:
+      4: 400102
+    second: SM_Chr_Developer_Female_02
+  - first:
+      4: 400104
+    second: SM_Chr_Developer_Male_01
+  - first:
+      4: 400106
+    second: SM_Chr_Developer_Male_02
+  - first:
+      4: 400108
+    second: SM_Chr_Security_Female_01
+  - first:
+      4: 400110
+    second: SM_Chr_Security_Male_01
+  - first:
+      4: 400112
+    second: Spine_01
+  - first:
+      4: 400114
+    second: Spine_02
+  - first:
+      4: 400116
+    second: Spine_03
+  - first:
+      4: 400118
+    second: Thumb_01
+  - first:
+      4: 400120
+    second: Thumb_01 1
+  - first:
+      4: 400122
+    second: Thumb_02
+  - first:
+      4: 400124
+    second: Thumb_02 1
+  - first:
+      4: 400126
+    second: Thumb_03
+  - first:
+      4: 400128
+    second: Thumb_03 1
+  - first:
+      4: 400130
+    second: Toes_L
+  - first:
+      4: 400132
+    second: Toes_R
+  - first:
+      4: 400134
+    second: UpperLeg_L
+  - first:
+      4: 400136
+    second: UpperLeg_R
+  - first:
+      43: 4300000
+    second: SM_Chr_Security_Female_01
+  - first:
+      43: 4300002
+    second: SM_Chr_Developer_Female_02
+  - first:
+      43: 4300004
+    second: SM_Chr_Developer_Female_01
+  - first:
+      43: 4300006
+    second: SM_Chr_Cleaner_Female_01
+  - first:
+      43: 4300008
+    second: SM_Chr_Business_Female_04
+  - first:
+      43: 4300010
+    second: SM_Chr_Business_Female_03
+  - first:
+      43: 4300012
+    second: SM_Chr_Business_Female_02
+  - first:
+      43: 4300014
+    second: SM_Chr_Business_Female_01
+  - first:
+      43: 4300016
+    second: SM_Chr_Boss_Female_01
+  - first:
+      43: 4300018
+    second: SM_Chr_Security_Male_01
+  - first:
+      43: 4300020
+    second: SM_Chr_Developer_Male_02
+  - first:
+      43: 4300022
+    second: SM_Chr_Developer_Male_01
+  - first:
+      43: 4300024
+    second: SM_Chr_Cleaner_Male_01
+  - first:
+      43: 4300026
+    second: SM_Chr_Business_Male_04
+  - first:
+      43: 4300028
+    second: SM_Chr_Business_Male_03
+  - first:
+      43: 4300030
+    second: SM_Chr_Business_Male_02
+  - first:
+      43: 4300032
+    second: SM_Chr_Business_Male_01
+  - first:
+      43: 4300034
+    second: SM_Chr_Boss_Male_01
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: SM_Chr_Boss_Female_01
+  - first:
+      137: 13700002
+    second: SM_Chr_Boss_Male_01
+  - first:
+      137: 13700004
+    second: SM_Chr_Business_Female_01
+  - first:
+      137: 13700006
+    second: SM_Chr_Business_Female_02
+  - first:
+      137: 13700008
+    second: SM_Chr_Business_Female_03
+  - first:
+      137: 13700010
+    second: SM_Chr_Business_Female_04
+  - first:
+      137: 13700012
+    second: SM_Chr_Business_Male_01
+  - first:
+      137: 13700014
+    second: SM_Chr_Business_Male_02
+  - first:
+      137: 13700016
+    second: SM_Chr_Business_Male_03
+  - first:
+      137: 13700018
+    second: SM_Chr_Business_Male_04
+  - first:
+      137: 13700020
+    second: SM_Chr_Cleaner_Female_01
+  - first:
+      137: 13700022
+    second: SM_Chr_Cleaner_Male_01
+  - first:
+      137: 13700024
+    second: SM_Chr_Developer_Female_01
+  - first:
+      137: 13700026
+    second: SM_Chr_Developer_Female_02
+  - first:
+      137: 13700028
+    second: SM_Chr_Developer_Male_01
+  - first:
+      137: 13700030
+    second: SM_Chr_Developer_Male_02
+  - first:
+      137: 13700032
+    second: SM_Chr_Security_Female_01
+  - first:
+      137: 13700034
+    second: SM_Chr_Security_Male_01
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -197,6 +549,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -205,25 +559,37 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 0
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -231,10 +597,13 @@ ModelImporter:
     normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Hips
       humanName: Hips
@@ -909,14 +1278,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

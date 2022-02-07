@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 42a901b8279725540b90694a29c88d0a
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -471,11 +471,13 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -485,6 +487,9 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -1124,38 +1129,32 @@ ModelImporter:
     - name: Lbrow
       parentName: NeckHead
       position: {x: -0.083116755, y: 0.10492084, z: 0.03556564}
-      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713,
-        w: 1}
+      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: Leyelid
       parentName: NeckHead
       position: {x: -0.067535706, y: 0.09069843, z: 0.03439289}
-      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713,
-        w: 1}
+      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: Lmouth
       parentName: NeckHead
       position: {x: 0.019930724, y: 0.1049209, z: 0.02992176}
-      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713,
-        w: 1}
+      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: Rbrow
       parentName: NeckHead
       position: {x: -0.083116606, y: 0.10492088, z: -0.03556572}
-      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713,
-        w: 1}
+      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: Reyelid
       parentName: NeckHead
       position: {x: -0.067535706, y: 0.090698354, z: -0.034392968}
-      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713,
-        w: 1}
+      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: Rmouth
       parentName: NeckHead
       position: {x: 0.019930877, y: 0.10492088, z: -0.029921798}
-      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713,
-        w: 1}
+      rotation: {x: -0.00000028684732, y: 0.00000002980232, z: -0.0000000074505713, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: RArmCollarbone
       parentName: Spine3
@@ -1284,6 +1283,7 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

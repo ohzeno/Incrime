@@ -1,145 +1,419 @@
 fileFormatVersion: 2
 guid: a040db3665c9ebf43b91a8bfa200c056
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: LArmCollarbone
-    100002: LArmForearm1
-    100004: LArmForearm2
-    100006: LArmHand
-    100008: LArmIndex1
-    100010: LArmIndex2
-    100012: LArmIndex3
-    100014: LArmMid1
-    100016: LArmMid2
-    100018: LArmMid3
-    100020: LArmPinky1
-    100022: LArmPinky2
-    100024: LArmPinky3
-    100026: LArmRing1
-    100028: LArmRing2
-    100030: LArmRing3
-    100032: LArmThumb1
-    100034: LArmThumb2
-    100036: LArmThumb3
-    100038: LArmUpper1
-    100040: LArmUpper2
-    100042: Lbrow
-    100044: Leyelid
-    100046: LLegAnkle
-    100048: LLegCalf
-    100050: LLegToe1
-    100052: LLegUpper
-    100054: Lmouth
-    100056: M4MB
-    100058: Neck1
-    100060: NeckHead
-    100062: Pelvis
-    100064: RArmCollarbone
-    100066: RArmForearm1
-    100068: RArmForearm2
-    100070: RArmHand
-    100072: RArmIndex1
-    100074: RArmIndex2
-    100076: RArmIndex3
-    100078: RArmMid1
-    100080: RArmMid2
-    100082: RArmMid3
-    100084: RArmPinky1
-    100086: RArmPinky2
-    100088: RArmPinky3
-    100090: RArmRing1
-    100092: RArmRing2
-    100094: RArmRing3
-    100096: RArmThumb1
-    100098: RArmThumb2
-    100100: RArmThumb3
-    100102: RArmUpper1
-    100104: RArmUpper2
-    100106: Rbrow
-    100108: Reyelid
-    100110: RLegAnkle
-    100112: RLegCalf
-    100114: RLegToe1
-    100116: RLegUpper
-    100118: Rmouth
-    100120: //RootNode
-    100122: Soldier
-    100124: Spine1
-    100126: Spine2
-    100128: Spine3
-    400000: LArmCollarbone
-    400002: LArmForearm1
-    400004: LArmForearm2
-    400006: LArmHand
-    400008: LArmIndex1
-    400010: LArmIndex2
-    400012: LArmIndex3
-    400014: LArmMid1
-    400016: LArmMid2
-    400018: LArmMid3
-    400020: LArmPinky1
-    400022: LArmPinky2
-    400024: LArmPinky3
-    400026: LArmRing1
-    400028: LArmRing2
-    400030: LArmRing3
-    400032: LArmThumb1
-    400034: LArmThumb2
-    400036: LArmThumb3
-    400038: LArmUpper1
-    400040: LArmUpper2
-    400042: Lbrow
-    400044: Leyelid
-    400046: LLegAnkle
-    400048: LLegCalf
-    400050: LLegToe1
-    400052: LLegUpper
-    400054: Lmouth
-    400056: M4MB
-    400058: Neck1
-    400060: NeckHead
-    400062: Pelvis
-    400064: RArmCollarbone
-    400066: RArmForearm1
-    400068: RArmForearm2
-    400070: RArmHand
-    400072: RArmIndex1
-    400074: RArmIndex2
-    400076: RArmIndex3
-    400078: RArmMid1
-    400080: RArmMid2
-    400082: RArmMid3
-    400084: RArmPinky1
-    400086: RArmPinky2
-    400088: RArmPinky3
-    400090: RArmRing1
-    400092: RArmRing2
-    400094: RArmRing3
-    400096: RArmThumb1
-    400098: RArmThumb2
-    400100: RArmThumb3
-    400102: RArmUpper1
-    400104: RArmUpper2
-    400106: Rbrow
-    400108: Reyelid
-    400110: RLegAnkle
-    400112: RLegCalf
-    400114: RLegToe1
-    400116: RLegUpper
-    400118: Rmouth
-    400120: Soldier
-    400122: //RootNode
-    400124: Spine1
-    400126: Spine2
-    400128: Spine3
-    2300000: M4MB
-    3300000: M4MB
-    4300000: M4MB
-    4300002: Soldier
-    9500000: //RootNode
-    13700000: Soldier
-    2186277476908879412: ImportLogs
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: LArmCollarbone
+  - first:
+      1: 100002
+    second: LArmForearm1
+  - first:
+      1: 100004
+    second: LArmForearm2
+  - first:
+      1: 100006
+    second: LArmHand
+  - first:
+      1: 100008
+    second: LArmIndex1
+  - first:
+      1: 100010
+    second: LArmIndex2
+  - first:
+      1: 100012
+    second: LArmIndex3
+  - first:
+      1: 100014
+    second: LArmMid1
+  - first:
+      1: 100016
+    second: LArmMid2
+  - first:
+      1: 100018
+    second: LArmMid3
+  - first:
+      1: 100020
+    second: LArmPinky1
+  - first:
+      1: 100022
+    second: LArmPinky2
+  - first:
+      1: 100024
+    second: LArmPinky3
+  - first:
+      1: 100026
+    second: LArmRing1
+  - first:
+      1: 100028
+    second: LArmRing2
+  - first:
+      1: 100030
+    second: LArmRing3
+  - first:
+      1: 100032
+    second: LArmThumb1
+  - first:
+      1: 100034
+    second: LArmThumb2
+  - first:
+      1: 100036
+    second: LArmThumb3
+  - first:
+      1: 100038
+    second: LArmUpper1
+  - first:
+      1: 100040
+    second: LArmUpper2
+  - first:
+      1: 100042
+    second: Lbrow
+  - first:
+      1: 100044
+    second: Leyelid
+  - first:
+      1: 100046
+    second: LLegAnkle
+  - first:
+      1: 100048
+    second: LLegCalf
+  - first:
+      1: 100050
+    second: LLegToe1
+  - first:
+      1: 100052
+    second: LLegUpper
+  - first:
+      1: 100054
+    second: Lmouth
+  - first:
+      1: 100056
+    second: M4MB
+  - first:
+      1: 100058
+    second: Neck1
+  - first:
+      1: 100060
+    second: NeckHead
+  - first:
+      1: 100062
+    second: Pelvis
+  - first:
+      1: 100064
+    second: RArmCollarbone
+  - first:
+      1: 100066
+    second: RArmForearm1
+  - first:
+      1: 100068
+    second: RArmForearm2
+  - first:
+      1: 100070
+    second: RArmHand
+  - first:
+      1: 100072
+    second: RArmIndex1
+  - first:
+      1: 100074
+    second: RArmIndex2
+  - first:
+      1: 100076
+    second: RArmIndex3
+  - first:
+      1: 100078
+    second: RArmMid1
+  - first:
+      1: 100080
+    second: RArmMid2
+  - first:
+      1: 100082
+    second: RArmMid3
+  - first:
+      1: 100084
+    second: RArmPinky1
+  - first:
+      1: 100086
+    second: RArmPinky2
+  - first:
+      1: 100088
+    second: RArmPinky3
+  - first:
+      1: 100090
+    second: RArmRing1
+  - first:
+      1: 100092
+    second: RArmRing2
+  - first:
+      1: 100094
+    second: RArmRing3
+  - first:
+      1: 100096
+    second: RArmThumb1
+  - first:
+      1: 100098
+    second: RArmThumb2
+  - first:
+      1: 100100
+    second: RArmThumb3
+  - first:
+      1: 100102
+    second: RArmUpper1
+  - first:
+      1: 100104
+    second: RArmUpper2
+  - first:
+      1: 100106
+    second: Rbrow
+  - first:
+      1: 100108
+    second: Reyelid
+  - first:
+      1: 100110
+    second: RLegAnkle
+  - first:
+      1: 100112
+    second: RLegCalf
+  - first:
+      1: 100114
+    second: RLegToe1
+  - first:
+      1: 100116
+    second: RLegUpper
+  - first:
+      1: 100118
+    second: Rmouth
+  - first:
+      1: 100120
+    second: //RootNode
+  - first:
+      1: 100122
+    second: Soldier
+  - first:
+      1: 100124
+    second: Spine1
+  - first:
+      1: 100126
+    second: Spine2
+  - first:
+      1: 100128
+    second: Spine3
+  - first:
+      4: 400000
+    second: LArmCollarbone
+  - first:
+      4: 400002
+    second: LArmForearm1
+  - first:
+      4: 400004
+    second: LArmForearm2
+  - first:
+      4: 400006
+    second: LArmHand
+  - first:
+      4: 400008
+    second: LArmIndex1
+  - first:
+      4: 400010
+    second: LArmIndex2
+  - first:
+      4: 400012
+    second: LArmIndex3
+  - first:
+      4: 400014
+    second: LArmMid1
+  - first:
+      4: 400016
+    second: LArmMid2
+  - first:
+      4: 400018
+    second: LArmMid3
+  - first:
+      4: 400020
+    second: LArmPinky1
+  - first:
+      4: 400022
+    second: LArmPinky2
+  - first:
+      4: 400024
+    second: LArmPinky3
+  - first:
+      4: 400026
+    second: LArmRing1
+  - first:
+      4: 400028
+    second: LArmRing2
+  - first:
+      4: 400030
+    second: LArmRing3
+  - first:
+      4: 400032
+    second: LArmThumb1
+  - first:
+      4: 400034
+    second: LArmThumb2
+  - first:
+      4: 400036
+    second: LArmThumb3
+  - first:
+      4: 400038
+    second: LArmUpper1
+  - first:
+      4: 400040
+    second: LArmUpper2
+  - first:
+      4: 400042
+    second: Lbrow
+  - first:
+      4: 400044
+    second: Leyelid
+  - first:
+      4: 400046
+    second: LLegAnkle
+  - first:
+      4: 400048
+    second: LLegCalf
+  - first:
+      4: 400050
+    second: LLegToe1
+  - first:
+      4: 400052
+    second: LLegUpper
+  - first:
+      4: 400054
+    second: Lmouth
+  - first:
+      4: 400056
+    second: M4MB
+  - first:
+      4: 400058
+    second: Neck1
+  - first:
+      4: 400060
+    second: NeckHead
+  - first:
+      4: 400062
+    second: Pelvis
+  - first:
+      4: 400064
+    second: RArmCollarbone
+  - first:
+      4: 400066
+    second: RArmForearm1
+  - first:
+      4: 400068
+    second: RArmForearm2
+  - first:
+      4: 400070
+    second: RArmHand
+  - first:
+      4: 400072
+    second: RArmIndex1
+  - first:
+      4: 400074
+    second: RArmIndex2
+  - first:
+      4: 400076
+    second: RArmIndex3
+  - first:
+      4: 400078
+    second: RArmMid1
+  - first:
+      4: 400080
+    second: RArmMid2
+  - first:
+      4: 400082
+    second: RArmMid3
+  - first:
+      4: 400084
+    second: RArmPinky1
+  - first:
+      4: 400086
+    second: RArmPinky2
+  - first:
+      4: 400088
+    second: RArmPinky3
+  - first:
+      4: 400090
+    second: RArmRing1
+  - first:
+      4: 400092
+    second: RArmRing2
+  - first:
+      4: 400094
+    second: RArmRing3
+  - first:
+      4: 400096
+    second: RArmThumb1
+  - first:
+      4: 400098
+    second: RArmThumb2
+  - first:
+      4: 400100
+    second: RArmThumb3
+  - first:
+      4: 400102
+    second: RArmUpper1
+  - first:
+      4: 400104
+    second: RArmUpper2
+  - first:
+      4: 400106
+    second: Rbrow
+  - first:
+      4: 400108
+    second: Reyelid
+  - first:
+      4: 400110
+    second: RLegAnkle
+  - first:
+      4: 400112
+    second: RLegCalf
+  - first:
+      4: 400114
+    second: RLegToe1
+  - first:
+      4: 400116
+    second: RLegUpper
+  - first:
+      4: 400118
+    second: Rmouth
+  - first:
+      4: 400120
+    second: Soldier
+  - first:
+      4: 400122
+    second: //RootNode
+  - first:
+      4: 400124
+    second: Spine1
+  - first:
+      4: 400126
+    second: Spine2
+  - first:
+      4: 400128
+    second: Spine3
+  - first:
+      23: 2300000
+    second: M4MB
+  - first:
+      33: 3300000
+    second: M4MB
+  - first:
+      43: 4300000
+    second: M4MB
+  - first:
+      43: 4300002
+    second: Soldier
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Soldier
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -157,7 +431,7 @@ ModelImporter:
       name: polySurface1SG1
     second: {fileID: 2100000, guid: c66165eb732a9fa4a83022ac89ebeba6, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -194,25 +468,32 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -221,10 +502,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Pelvis
       humanName: Hips
@@ -710,38 +991,32 @@ ModelImporter:
     - name: Lmouth
       parentName: NeckHead
       position: {x: 0.019930724, y: 0.104920805, z: 0.029921787}
-      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000004, y: 1, z: 1.0000002}
     - name: Rmouth
       parentName: NeckHead
       position: {x: 0.019930724, y: 0.104920834, z: -0.029921765}
-      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000004, y: 1, z: 1.0000002}
     - name: Leyelid
       parentName: NeckHead
       position: {x: -0.067535855, y: 0.09069843, z: 0.034393035}
-      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000004, y: 1, z: 1.0000002}
     - name: Lbrow
       parentName: NeckHead
       position: {x: -0.083116755, y: 0.10492083, z: 0.035565708}
-      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000004, y: 1, z: 1.0000002}
     - name: Rbrow
       parentName: NeckHead
       position: {x: -0.083116755, y: 0.10492085, z: -0.03556568}
-      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000004, y: 1, z: 1.0000002}
     - name: Reyelid
       parentName: NeckHead
       position: {x: -0.067535855, y: 0.09069846, z: -0.034393024}
-      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: 0.000000029802322, y: 0.000000029802322, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000004, y: 1, z: 1.0000002}
     - name: LArmCollarbone
       parentName: Spine3
@@ -1005,13 +1280,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

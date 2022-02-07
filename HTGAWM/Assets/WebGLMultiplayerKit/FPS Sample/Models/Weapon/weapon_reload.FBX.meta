@@ -1,105 +1,293 @@
 fileFormatVersion: 2
 guid: bf713fd14d356ad4e8c92c445f5995cf
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: 1
-    100002: Bone06
-    100004: Bone07
-    100006: Bone08
-    100008: Bone10
-    100010: Bone11
-    100012: Bone12
-    100014: Bone14
-    100016: Bone15
-    100018: Bone16
-    100020: Bone18
-    100022: Bone19
-    100024: Bone20
-    100026: Bone22
-    100028: Bone23
-    100030: Bone24
-    100032: Dummy01
-    100034: Dummy02
-    100036: frame bolt
-    100038: frame chain
-    100040: frame clip
-    100042: frame gun
-    100044: frame trigger
-    100046: Left1
-    100048: Left10
-    100050: Left11
-    100052: Left12
-    100054: Left13
-    100056: Left14
-    100058: Left15
-    100060: Left2
-    100062: Left3
-    100064: Left4
-    100066: Left5
-    100068: Left6
-    100070: Left7
-    100072: Left8
-    100074: Left9
-    100076: Left_Hand
-    100078: Left_L_Arm
-    100080: Left_U_Arm
-    100082: //RootNode
-    100084: Right_Hand
-    100086: Right_L_Arm
-    100088: Right_U_Arm
-    400000: 1
-    400002: Bone06
-    400004: Bone07
-    400006: Bone08
-    400008: Bone10
-    400010: Bone11
-    400012: Bone12
-    400014: Bone14
-    400016: Bone15
-    400018: Bone16
-    400020: Bone18
-    400022: Bone19
-    400024: Bone20
-    400026: Bone22
-    400028: Bone23
-    400030: Bone24
-    400032: Dummy01
-    400034: Dummy02
-    400036: frame bolt
-    400038: frame chain
-    400040: frame clip
-    400042: frame gun
-    400044: frame trigger
-    400046: Left1
-    400048: Left10
-    400050: Left11
-    400052: Left12
-    400054: Left13
-    400056: Left14
-    400058: Left15
-    400060: Left2
-    400062: Left3
-    400064: Left4
-    400066: Left5
-    400068: Left6
-    400070: Left7
-    400072: Left8
-    400074: Left9
-    400076: Left_Hand
-    400078: Left_L_Arm
-    400080: Left_U_Arm
-    400082: //RootNode
-    400084: Right_Hand
-    400086: Right_L_Arm
-    400088: Right_U_Arm
-    7400000: Take 001
-    9500000: //RootNode
-    11100000: //RootNode
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: 1
+  - first:
+      1: 100002
+    second: Bone06
+  - first:
+      1: 100004
+    second: Bone07
+  - first:
+      1: 100006
+    second: Bone08
+  - first:
+      1: 100008
+    second: Bone10
+  - first:
+      1: 100010
+    second: Bone11
+  - first:
+      1: 100012
+    second: Bone12
+  - first:
+      1: 100014
+    second: Bone14
+  - first:
+      1: 100016
+    second: Bone15
+  - first:
+      1: 100018
+    second: Bone16
+  - first:
+      1: 100020
+    second: Bone18
+  - first:
+      1: 100022
+    second: Bone19
+  - first:
+      1: 100024
+    second: Bone20
+  - first:
+      1: 100026
+    second: Bone22
+  - first:
+      1: 100028
+    second: Bone23
+  - first:
+      1: 100030
+    second: Bone24
+  - first:
+      1: 100032
+    second: Dummy01
+  - first:
+      1: 100034
+    second: Dummy02
+  - first:
+      1: 100036
+    second: frame bolt
+  - first:
+      1: 100038
+    second: frame chain
+  - first:
+      1: 100040
+    second: frame clip
+  - first:
+      1: 100042
+    second: frame gun
+  - first:
+      1: 100044
+    second: frame trigger
+  - first:
+      1: 100046
+    second: Left1
+  - first:
+      1: 100048
+    second: Left10
+  - first:
+      1: 100050
+    second: Left11
+  - first:
+      1: 100052
+    second: Left12
+  - first:
+      1: 100054
+    second: Left13
+  - first:
+      1: 100056
+    second: Left14
+  - first:
+      1: 100058
+    second: Left15
+  - first:
+      1: 100060
+    second: Left2
+  - first:
+      1: 100062
+    second: Left3
+  - first:
+      1: 100064
+    second: Left4
+  - first:
+      1: 100066
+    second: Left5
+  - first:
+      1: 100068
+    second: Left6
+  - first:
+      1: 100070
+    second: Left7
+  - first:
+      1: 100072
+    second: Left8
+  - first:
+      1: 100074
+    second: Left9
+  - first:
+      1: 100076
+    second: Left_Hand
+  - first:
+      1: 100078
+    second: Left_L_Arm
+  - first:
+      1: 100080
+    second: Left_U_Arm
+  - first:
+      1: 100082
+    second: //RootNode
+  - first:
+      1: 100084
+    second: Right_Hand
+  - first:
+      1: 100086
+    second: Right_L_Arm
+  - first:
+      1: 100088
+    second: Right_U_Arm
+  - first:
+      4: 400000
+    second: 1
+  - first:
+      4: 400002
+    second: Bone06
+  - first:
+      4: 400004
+    second: Bone07
+  - first:
+      4: 400006
+    second: Bone08
+  - first:
+      4: 400008
+    second: Bone10
+  - first:
+      4: 400010
+    second: Bone11
+  - first:
+      4: 400012
+    second: Bone12
+  - first:
+      4: 400014
+    second: Bone14
+  - first:
+      4: 400016
+    second: Bone15
+  - first:
+      4: 400018
+    second: Bone16
+  - first:
+      4: 400020
+    second: Bone18
+  - first:
+      4: 400022
+    second: Bone19
+  - first:
+      4: 400024
+    second: Bone20
+  - first:
+      4: 400026
+    second: Bone22
+  - first:
+      4: 400028
+    second: Bone23
+  - first:
+      4: 400030
+    second: Bone24
+  - first:
+      4: 400032
+    second: Dummy01
+  - first:
+      4: 400034
+    second: Dummy02
+  - first:
+      4: 400036
+    second: frame bolt
+  - first:
+      4: 400038
+    second: frame chain
+  - first:
+      4: 400040
+    second: frame clip
+  - first:
+      4: 400042
+    second: frame gun
+  - first:
+      4: 400044
+    second: frame trigger
+  - first:
+      4: 400046
+    second: Left1
+  - first:
+      4: 400048
+    second: Left10
+  - first:
+      4: 400050
+    second: Left11
+  - first:
+      4: 400052
+    second: Left12
+  - first:
+      4: 400054
+    second: Left13
+  - first:
+      4: 400056
+    second: Left14
+  - first:
+      4: 400058
+    second: Left15
+  - first:
+      4: 400060
+    second: Left2
+  - first:
+      4: 400062
+    second: Left3
+  - first:
+      4: 400064
+    second: Left4
+  - first:
+      4: 400066
+    second: Left5
+  - first:
+      4: 400068
+    second: Left6
+  - first:
+      4: 400070
+    second: Left7
+  - first:
+      4: 400072
+    second: Left8
+  - first:
+      4: 400074
+    second: Left9
+  - first:
+      4: 400076
+    second: Left_Hand
+  - first:
+      4: 400078
+    second: Left_L_Arm
+  - first:
+      4: 400080
+    second: Left_U_Arm
+  - first:
+      4: 400082
+    second: //RootNode
+  - first:
+      4: 400084
+    second: Right_Hand
+  - first:
+      4: 400086
+    second: Right_L_Arm
+  - first:
+      4: 400088
+    second: Right_U_Arm
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -112,6 +300,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -126,19 +316,31 @@ ModelImporter:
     globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
   tangentSpace:
@@ -146,10 +348,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 4
     normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -159,14 +364,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 1
   userData: 
   assetBundleName: 

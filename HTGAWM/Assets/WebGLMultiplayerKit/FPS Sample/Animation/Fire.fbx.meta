@@ -276,7 +276,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -831,8 +831,7 @@ ModelImporter:
     - name: Reyelid
       parentName: NeckHead
       position: {x: -0.067535706, y: 0.090698466, z: -0.03439302}
-      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178,
-        w: 1}
+      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Reyelid_end
       parentName: Reyelid
@@ -842,8 +841,7 @@ ModelImporter:
     - name: Leyelid
       parentName: NeckHead
       position: {x: -0.06753569, y: 0.09069844, z: 0.03439304}
-      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178,
-        w: 1}
+      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Leyelid_end
       parentName: Leyelid
@@ -853,8 +851,7 @@ ModelImporter:
     - name: Rbrow
       parentName: NeckHead
       position: {x: -0.083116606, y: 0.104920864, z: -0.035565678}
-      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178,
-        w: 1}
+      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Rbrow_end
       parentName: Rbrow
@@ -864,8 +861,7 @@ ModelImporter:
     - name: Lbrow
       parentName: NeckHead
       position: {x: -0.08311658, y: 0.10492084, z: 0.03556571}
-      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178,
-        w: 1}
+      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Lbrow_end
       parentName: Lbrow
@@ -875,8 +871,7 @@ ModelImporter:
     - name: Rmouth
       parentName: NeckHead
       position: {x: 0.01993088, y: 0.10492085, z: -0.029921766}
-      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178,
-        w: 1}
+      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Rmouth_end
       parentName: Rmouth
@@ -886,8 +881,7 @@ ModelImporter:
     - name: Lmouth
       parentName: NeckHead
       position: {x: 0.019930894, y: 0.10492081, z: 0.029921787}
-      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178,
-        w: 1}
+      rotation: {x: 0.000000111758695, y: 0.000000087438366, z: -0.000000001315178, w: 1}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: Lmouth_end
       parentName: Lmouth
