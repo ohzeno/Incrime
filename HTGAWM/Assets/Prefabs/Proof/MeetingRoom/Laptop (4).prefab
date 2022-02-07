@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1776605243872454
+--- !u!1 &8460061767115993963
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4485671263612088}
-  - component: {fileID: 33967411703912946}
-  - component: {fileID: 23132469120163514}
-  - component: {fileID: 64688478111418216}
-  - component: {fileID: 64750462845103428}
-  - component: {fileID: 64786218774577538}
-  - component: {fileID: 64410749273251794}
-  - component: {fileID: 142063664}
-  m_Layer: 0
-  m_Name: SM_Prop_Chair_04
-  m_TagString: Untagged
+  - component: {fileID: 8458516332191151411}
+  - component: {fileID: 8436796243752998443}
+  - component: {fileID: 8448297388947518423}
+  - component: {fileID: 8470900226030251463}
+  - component: {fileID: 8469484240650804667}
+  - component: {fileID: 440741992743980204}
+  - component: {fileID: 8110507597398994260}
+  m_Layer: 7
+  m_Name: Laptop (4)
+  m_TagString: Proof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4485671263612088
+--- !u!4 &8458516332191151411
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_GameObject: {fileID: 8460061767115993963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.927028, y: 0.77300006, z: 4.0060015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33967411703912946
+--- !u!33 &8436796243752998443
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
-  m_Mesh: {fileID: 4300000, guid: 2e56e885139419b4589dd50ef41b489b, type: 3}
---- !u!23 &23132469120163514
+  m_GameObject: {fileID: 8460061767115993963}
+  m_Mesh: {fileID: 4300000, guid: 0c07cb0f611478c41af80174550aa643, type: 3}
+--- !u!23 &8448297388947518423
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
+  m_GameObject: {fileID: 8460061767115993963}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,6 +64,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2f834016e53f12c42a12baecd4450e34, type: 2}
+  - {fileID: 2100000, guid: b2fc9034565b6084bb8519fb97146c01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,75 +86,66 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64688478111418216
+--- !u!64 &8470900226030251463
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
+  m_GameObject: {fileID: 8460061767115993963}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 43301235428500186, guid: b342591ae6908dd41b10366518de5230, type: 2}
---- !u!64 &64750462845103428
+  m_Mesh: {fileID: 43577852449589704, guid: 3cac44e88e04df541a44161c77d946ea, type: 2}
+--- !u!64 &8469484240650804667
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
+  m_GameObject: {fileID: 8460061767115993963}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 43759669385443212, guid: b342591ae6908dd41b10366518de5230, type: 2}
---- !u!64 &64786218774577538
-MeshCollider:
+  m_Mesh: {fileID: 43917287034992398, guid: 3cac44e88e04df541a44161c77d946ea, type: 2}
+--- !u!114 &440741992743980204
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 8460061767115993963}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &8110507597398994260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460061767115993963}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43017679696946040, guid: b342591ae6908dd41b10366518de5230, type: 2}
---- !u!64 &64410749273251794
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43872311151259172, guid: b342591ae6908dd41b10366518de5230, type: 2}
---- !u!54 &142063664
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776605243872454}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  no: 5
+  proofName: "\uB178\uD2B8\uBD81"
+  proofDescription: "\uD68C\uC758 \uB54C \uC0AC\uC6A9 \uC911\uC774\uB358 \uC5EC\uB7EC
+    \uB178\uD2B8\uBD81\uB4E4\uC774 \uC788\uB2E4."
+  proofTexture: {fileID: 0}

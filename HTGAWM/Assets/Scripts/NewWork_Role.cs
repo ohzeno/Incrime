@@ -101,7 +101,7 @@ public class NewWork_Role : MonoBehaviour
         // // join channel and jump to next scene
         app.join("TEST", true);
         // SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
-        SceneManager.LoadScene("SceneHelloVideo", LoadSceneMode.Single);
+        SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
 
 
         // SceneManager.LoadScene("RTCScene");
