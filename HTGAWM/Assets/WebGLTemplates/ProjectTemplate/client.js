@@ -62,8 +62,8 @@ window.addEventListener('load', function() {
 		}
 	});//END_SOCKET.ON
 
-	// 첫 회의 하기
-	socket.on('go_firstconference', function() {
+	// 자기소개 시간
+	socket.on('GO_MEETING', function() {
 		if(window.unityInstance!=null)
 		{
 			window.unityInstance.SendMessage ('NetWork_Role', 'onConference');
@@ -86,6 +86,30 @@ window.addEventListener('load', function() {
 			window.unityInstance.SendMessage('NetWork_Meeting', 'MeetingTimer', timer);
 		}
 	});
+
+	// 게임 내 타이머
+	socket.on('SET_GAME_TIMER', function (time, minute, second) {
+		var timer = time + ':' + minute + ':' + second;
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('PlayerObject', 'InGameTimer', timer);
+		}
+	});
+
+	// 맵으로 이동
+	socket.on('GO_MAP', function() {
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Meeting', 'onExitMeeting');
+		}
+	});//END_SOCKET.ON
+
+	// 탐색 후 1차 회의 시간
+	socket.on('GO_MEETING2', function() {
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('PlayerObject', 'onMeeting');
+		}
+	});//END_SOCKET.ON
 
 });//END_window_addEventListener
 

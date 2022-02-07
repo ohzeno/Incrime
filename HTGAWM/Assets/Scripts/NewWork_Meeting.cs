@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using agora_gaming_rtc;
 
-
 namespace Project
 {
 public class NewWork_Meeting : MonoBehaviour
@@ -24,14 +23,6 @@ public class NewWork_Meeting : MonoBehaviour
     Text StoryName;
     Text StoryDesc;
 
-    Text minute;
-    Text second;
-
-    bool memo_view;
-    // public GameObject memo;
-    public InputField memoinput;
-    Text memotext;
-
 
     [Header("오브젝트 :")]
     public GameObject btn_exitMeeting;
@@ -42,8 +33,6 @@ public class NewWork_Meeting : MonoBehaviour
         // 싱글 톤 코드
         if (instance == null) {
 		    // 
-            memo_view = false;
-            memoinput.gameObject.SetActive(false);
             
 		} else {
 			//it destroys the class if already other class exists
@@ -60,54 +49,6 @@ public class NewWork_Meeting : MonoBehaviour
         
     }
 
-    // 역할 설정 시간 
-    public void MeetingTimer(string data){
-        /*
-         * data.pack[0] = time
-         * data.pack[1]=  minute
-         * data.pack[2] = second
-        */
-        var pack = data.Split (Delimiter);
-
-        // Debug.Log(pack);
-        
-        Client.minute = pack[1]; //set client name
-        Client.second = pack[2];  //set client role
-
-        // 
-        minute = GameObject.Find("txt_min").GetComponent<Text>();
-        minute.text = Client.minute;
-        // 
-        second = GameObject.Find("txt_second").GetComponent<Text>();
-        second.text = Client.second;
-
-    }
-
-    public void View_Memo(){
-        if ( memo_view == false ){
-            // 메모 키기
-            memo_view = true;
-            memoinput.gameObject.SetActive(true);
-            memoinput.text = Client.memo;
-
-            // inputField = GetComponent<InputField>();
-            // inputField.text = "Default Value";
-
-            // memotext = GameObject.Find("object_Memo").GetComponent<Text>();
-            // memoinput.text = Client.memo;
-            // 메모 불러오기
-            // memo.text = Client.memo;
-
-        } else {
-            // 메모 끄기
-            memo_view = false;
-            memoinput.gameObject.SetActive(false);
-            
-            Client.memo =  memoinput.text;
-            // 저장
-            // Client.memo = memo.text;
-        }
-    }
 
     public void emitExitMeeting(){
         Debug.Log("[system] 미팅에서 나갑니다. ");
