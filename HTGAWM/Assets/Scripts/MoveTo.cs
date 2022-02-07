@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class MoveTo : MonoBehaviour
 {
-    public Button MoveButton;
-
     void Start()
     {
-        MoveButton.GetComponent<Image>().alphaHitTestMinimumThreshold = 1f;
     }
 
     public void ToTeamLeaderLeeOffice()
@@ -56,10 +53,5 @@ public class MoveTo : MonoBehaviour
     public void ToHallway()
     {
         SceneManager.LoadScene("Hallway");
-    }
-
-    public void ToMap()
-    {
-        SceneManager.LoadScene("Map");
     }
 }
