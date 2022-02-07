@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody myRigid;
 
+    private Vector3 defaultPosAndAngle = new Vector3(0f, 0f, 0f);
+
     //void Update()
     //{
     //    var horizontalRotation = Input.GetAxis("Horizontal") * angularVelocity * Time.deltaTime;
@@ -91,6 +94,15 @@ public class PlayerController : MonoBehaviour
         
         originScaleY = theCamera.transform.localScale.y;
         applyCrouchScaleY = originScaleY;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = defaultPosAndAngle;
+        currentCameraRotationX = 0;
+        myRigid.MoveRotation(Quaternion.Euler(0, 0, 0));
     }
 
 

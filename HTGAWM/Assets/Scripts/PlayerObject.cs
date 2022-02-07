@@ -6,7 +6,13 @@ public class PlayerObject : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        var obj = FindObjectsOfType<PlayerObject>(); 
+        if (obj.Length == 1) { 
+            DontDestroyOnLoad(gameObject); 
+        } 
+        else { 
+            Destroy(gameObject); 
+        }
     }
     // Start is called before the first frame update
     void Start()
