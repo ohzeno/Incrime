@@ -142,7 +142,7 @@ public class NewWork_Role : MonoBehaviour
         // // join channel and jump to next scene
         app.join("TEST", true);
         // SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
-        SceneManager.LoadScene("SceneHelloVideo", LoadSceneMode.Single);
+        SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
 
         // //LoadSceneMode.single -> 현재 씬의 오브젝트를 날리고 감.
     }
@@ -161,7 +161,7 @@ public class NewWork_Role : MonoBehaviour
         // // join channel and jump to next scene
         app.join("TEST", true);
         // SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
-        SceneManager.LoadScene("SceneHelloVideo", LoadSceneMode.Single);
+        SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
 
         // //LoadSceneMode.single -> 현재 씬의 오브젝트를 날리고 감.
     }
