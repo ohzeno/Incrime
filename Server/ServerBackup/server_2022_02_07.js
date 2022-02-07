@@ -25,8 +25,6 @@ var gamephase = 0;
 // gamephase == 3 : 자기소개시간
 // gamephase == 4 : 탐색
 // gamephase == 5 : 1차 회의
-// gamephase == 6 : 투표시간
-// gamephase == 7 : 게임 종료
 
 // 시간관련 변수
 var time;
@@ -34,10 +32,13 @@ var minute;
 var second;
 // 타임 업데이트 함수
 let timerId
-// 미팅을 나가고 싶어하는 사람
+
+// 나가기 사람
 var exitMeeting_people = 0;
 // 회의 가고싶어하는 사람
 var conference_number = 0;
+var conference = new Boolean(false);
+
 
 
 // mySQL 연결 잘됨
@@ -171,7 +172,6 @@ io.on('connection', function(socket){
 				
 			});//end_forEach
 
-			// 10 분 : 600000
 			// 시간 초과 시 // 10분
 			setTimeout(function() {
 				if ( gamephase == 2 ) {
@@ -181,13 +181,12 @@ io.on('connection', function(socket){
 					gamephase = 3;
 					clients.forEach( function(i) {
 						clearInterval(timerId);
-						// 자기소개시간 : 10분
 						Timeset(10,gamephase);
 						io.to(i.id).emit('GO_MEETING');
 					}); //end_forEach
 				}
 			}, 600000 ); 
-
+			// 10 분 : 600000
 			// 시간 보내주기 
 			Timeset(10,gamephase);
 
@@ -201,13 +200,20 @@ io.on('connection', function(socket){
 	// 화상회의 씬
 	socket.on('go_firstconference', function ()
 	{
+		 
+		if ( gamephase == 2 ){
+			// 2 : 역할 대기 화면 --> 3 : 자기 소개
+
+		} else if ( gamephase == 4 ){
+			// 4 : 탐색 화면 --> 5 : 1차 회의
+
+		}
 		console.log("[system] 미팅실로 이동합니다.");
 		conference_number += 1;
 		// 모든 플레이어가 준비 됐을 때.
 		if ( conference_number == clients.length ){
 			conference_number = 0;
-
-			
+			// phase : 회의실
 			gamephase = 3;
 			console.log("[system] 모든 플레이어가 준비 상태 입니다. ");	
 			
@@ -217,7 +223,7 @@ io.on('connection', function(socket){
 				io.to(i.id).emit('GO_MEETING');
 			});//end_forEach
 
-			// 시간 제한 - 시간이 지나면 맵 화면으로 바꾸기
+			// 시간 제한 - 시간이 지나면 게임 화면으로 바꾸기
 			// 600000 - 10분
 			setTimeout(function () {
 				if ( gamephase == 3 ) {
@@ -228,7 +234,6 @@ io.on('connection', function(socket){
 					clients.forEach( function(i) {
 						// 각자 게임 화면으로 보내버리면서 시간 처리
 						clearInterval(timerId);
-						// 탐색시간 10분
 						Timeset(10,gamephase);
 						io.to(i.id).emit('GO_MAP');
 					}); //end_forEach
@@ -240,7 +245,6 @@ io.on('connection', function(socket){
 		} else {
 			console.log("[system] 현재 준비 인원 : " + conference_number );	
 		}
-
 	});
 
 	socket.on('exit_meeting', function (_data)
@@ -248,74 +252,40 @@ io.on('connection', function(socket){
 		var data = JSON.parse(_data);
 		console.log('[system] 플레이어 ' + data.name + ' 이 미팅을 나가려고 합니다. ');
 		exitMeeting_people += 1;
-		// 모든 플레이어가 나가고 싶어할 때.
+		// 모든 플레이어가 준비 됐을 때.
 		if ( exitMeeting_people == clients.length ){
 			exitMeeting_people = 0;
+			// phase : 탐색 4
+			gamephase = 4;
+			console.log("[system] 모든 플레이어가 나가고 싶어합니다. ");	
 
-			if ( gamephase == 3 ){
-				// 자기소개 가 끝난 경우
-				// phase : 탐색 4
-				gamephase = 4;
-				console.log("[system] 모든 플레이어가 나가고 싶어합니다. ");	
+			// 탐색화면으로 보내버리기
+			clients.forEach( function(i) {
+				io.to(i.id).emit('GO_MAP');
+			});//end_forEach
 
-				// 탐색화면으로 보내버리기
+
+			// 시간 제한 - 시간이 지나면 게임 화면으로 바꾸기
+			// 탐색 시간 : 10분 = 600000
+			setTimeout(function () {
+				clearInterval(timerId);
+				console.log("[system] 탐색시간이 끝났습니다. ");
+				// 
+				gamephase = 5;
 				clients.forEach( function(i) {
-					io.to(i.id).emit('GO_MAP');
-				});//end_forEach
-
-				// 탐색 시간 : 10분 = 600000
-				setTimeout(function () {
+					// 탐색시간이 종료되면 미팅으로 보내야한다.
+					// 같은 회의실 방을 사용하므로 뒤에 함수를 줘서 바꾸던가해야할듯
 					clearInterval(timerId);
-					console.log("[system] 탐색시간이 끝났습니다. 1차회의로 갑니다. ");
-					// 
-					gamephase = 5;
-					clients.forEach( function(i) {
-						// 탐색시간이 종료되면 미팅으로 보내야한다.
-						// 같은 회의실 방을 사용하므로 뒤에 함수를 줘서 바꾸던가해야할듯
-						clearInterval(timerId);
-						// 탐색 후 회의 시간
-						Timeset(10,gamephase);
-						io.to(i.id).emit('GO_MEETING2');
-					}); //end_forEach
-					
-				}, 600000); 
-
-				// 시간 보내주기 
-				Timeset(10,gamephase);
+					// Timeset(10,gamephase);
+					// io.to(i.id).emit('GO_MEETING');
+				}); //end_forEach
+				
+			}, 600000); 
 
 
-			} else if ( gamephase == 5 ){
-				// 1차회의가 끝난 경우
-				// phase 6 : 투표 씬 
-				gamephase = 6;
-				console.log("[system] 모든 플레이어가 나가고 싶어합니다. ");	
 
-				// 투표로 보내버리기
-				clients.forEach( function(i) {
-					// 여기다가 투표로 가는 메소드 주기
-					// io.to(i.id).emit('GO_MAP');
-				});//end_forEach
-
-				// 탐색 시간 : 10분 = 600000
-				setTimeout(function () {
-					clearInterval(timerId);
-					console.log("[system] 투표 시간이 끝났습니다. ");
-					// 
-					gamephase = 7;
-					clients.forEach( function(i) {
-						// 투표가 끝난 경우
-						clearInterval(timerId);
-						// 결과 창으로 이동
-
-						// io.to(i.id).emit('GO_MEETING');
-					}); //end_forEach
-					
-				}, 600000); 
-
-				// 시간 보내주기 
-				Timeset(10,gamephase);
-
-			}
+			// 시간 보내주기 
+			Timeset(10,gamephase);
 
 		} else {
 			console.log("[system] 회의 나가기 대기 인원 : " + exitMeeting_people );	
@@ -357,9 +327,6 @@ function Timeset(minutes, phase){
 		} else if ( phase == 4 ) {
 			// 4. 게임 시간 업데이트
 			io.emit('SET_GAME_TIMER', time, minute, second);
-		} else if ( phase == 5 ) {
-			// 5. 1차 회의 시간 업데이트
-			io.emit('SET_MEETING_TIMER', time, minute, second);
 		} else {
 			clearInterval(timerId);
 		}
