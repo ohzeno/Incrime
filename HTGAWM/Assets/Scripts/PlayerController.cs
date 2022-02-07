@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -67,6 +68,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 defaultPosAndAngle = new Vector3(0f, 0f, 0f);
 
+
+    HashSet<string> movingScene = new HashSet<string>();
+  
+
     //void Update()
     //{
     //    var horizontalRotation = Input.GetAxis("Horizontal") * angularVelocity * Time.deltaTime;
@@ -82,6 +87,15 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        movingScene.Add("BreakRoom");
+        movingScene.Add("DirectorMaOffice");
+        movingScene.Add("Hallway");
+        movingScene.Add("MeetingRoom");
+        movingScene.Add("OfficeCubicles");
+        movingScene.Add("ReceptionDesk");
+        movingScene.Add("RestRoom");
+        movingScene.Add("SecurityRoom");
+        movingScene.Add("TeamLeaderLeeOffice");
         boxCollider = GetComponent<BoxCollider>();
         myRigid = GetComponent<Rigidbody>();
         /*crossHair = FindObjectOfType<CrossHair>();*/
@@ -94,15 +108,25 @@ public class PlayerController : MonoBehaviour
         
         originScaleY = theCamera.transform.localScale.y;
         applyCrouchScaleY = originScaleY;
-
+        myRigid.useGravity = false;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log(scene.name+"씬이름");
+        if (movingScene.Contains(scene.name))
+        {
+            myRigid.useGravity = true;
+        }
+        else
+        {
+            myRigid.useGravity = false;
+        }
         transform.position = defaultPosAndAngle;
         currentCameraRotationX = 0;
         myRigid.MoveRotation(Quaternion.Euler(0, 0, 0));
+        
     }
 
 
