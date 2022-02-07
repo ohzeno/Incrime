@@ -7,15 +7,15 @@ public class Slot : MonoBehaviour
 {
     public Proof proof;   // 획득한 증거
 
-    public Image proofImage; // 증거의 이미지
+    public RawImage proofRawImage; // 증거의 이미지
 
 
 
     private void SetColor(float _alpha)
     {
-        Color color = proofImage.color;
+        Color color = proofRawImage.color;
         color.a = _alpha;
-        proofImage.color = color;
+        proofRawImage.color = color;
     }
 
 
@@ -23,7 +23,7 @@ public class Slot : MonoBehaviour
     public void AddProof(Proof _proof)
     {
         proof = _proof;
-        proofImage.sprite = _proof.proofImage;
+        proofRawImage.texture = _proof.proofTexture;
 
         SetColor(1);
 
@@ -33,7 +33,7 @@ public class Slot : MonoBehaviour
     private void RemoveProof()
     {
         proof = null;
-        proofImage.sprite = null;
+        proofRawImage.texture = null;
         SetColor(0);
     }
 
