@@ -90,7 +90,13 @@ public class PlayerObject : MonoBehaviour
         SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
     }
 
+    // 투표씬으로 가기
+    public void onVote()
+    {
+        Debug.Log("[System] Client : 첫 투표 하러 갑니다 ");
+        SceneManager.LoadScene("VoteScene");
+    }
 
 
-}
+    }
 }

@@ -16,8 +16,7 @@ namespace Project
         // 들어오는 데이터를 : 구문으로 자르는 역할
         // minute : second
 
-        Text minute;
-        Text second;
+        public Text timer;
         // Start is called before the first frame update
         void Start()
         {
@@ -60,11 +59,9 @@ namespace Project
             Client.minute = pack[1]; 
             Client.second = pack[2];
 
-            minute = GameObject.Find("Vote_minute").GetComponent<Text>();
-            minute.text = Client.minute;
-
-            second = GameObject.Find("Vote_second").GetComponent<Text>();
-            second.text = Client.second;
+            var timetxt = "";
+            timetxt = pack[1] + ":" + pack[2];
+            timer.text = timetxt;
         }
     }
 
