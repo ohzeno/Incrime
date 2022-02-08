@@ -87,7 +87,7 @@ public class PlayerObject : MonoBehaviour
     // 탐색 종료 미팅씬으로 돌아가기
     public void onMeeting(){
         Debug.Log("[System] Client : 탐색이 끝났습니다. 회의실로 갑니다. ");
-        SceneManager.LoadScene("SceneHelloVideo", LoadSceneMode.Single);
+        SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
     }
 
 
