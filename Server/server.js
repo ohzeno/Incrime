@@ -39,16 +39,21 @@ var exitMeeting_people = 0;
 // 회의 가고싶어하는 사람
 var conference_number = 0;
 
+// 처음 투표 변수
+var first_vote_number = 0; // 인원 체크
+var votes = [0,0,0,0,0,0]; // 투표 결과
+
+
 
 // mySQL 연결 잘됨
 var mysql      = require('mysql');
 const { clearInterval } = require('timers');
 // 
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '2413',
-  database : 'project_db'
+	host     : 'exbodcemtop76rnz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+	user     : 'kw60r04ib61nxpzk',
+	password : 'req2v8wchyhantdn',
+	database : 'nlgr288toijev7z6'
 });
 connection.connect();
 
@@ -274,14 +279,14 @@ io.on('connection', function(socket){
 						// 같은 회의실 방을 사용하므로 뒤에 함수를 줘서 바꾸던가해야할듯
 						clearInterval(timerId);
 						// 탐색 후 회의 시간
-						Timeset(10,gamephase);
+						Timeset(1,gamephase);
 						io.to(i.id).emit('GO_MEETING2');
 					}); //end_forEach
 					
-				}, 600000); 
+				}, 60000); 
 
 				// 시간 보내주기 
-				Timeset(10,gamephase);
+				Timeset(1,gamephase);
 
 
 			} else if ( gamephase == 5 ){
@@ -293,8 +298,12 @@ io.on('connection', function(socket){
 				// 투표로 보내버리기
 				clients.forEach( function(i) {
 					// 여기다가 투표로 가는 메소드 주기
-					// io.to(i.id).emit('GO_MAP');
+					console.log("[system] 투표하러 갑시다.");
+					io.to(i.id).emit('GO_VOTE');
 				});//end_forEach
+
+				// 시간 보내주기 
+				Timeset(1,gamephase);
 
 				// 탐색 시간 : 10분 = 600000
 				setTimeout(function () {
@@ -306,14 +315,11 @@ io.on('connection', function(socket){
 						// 투표가 끝난 경우
 						clearInterval(timerId);
 						// 결과 창으로 이동
-
-						// io.to(i.id).emit('GO_MEETING');
+						
+						io.to(i.id).emit('GO_VOTE_RESULT');
 					}); //end_forEach
 					
-				}, 600000); 
-
-				// 시간 보내주기 
-				Timeset(10,gamephase);
+				}, 60000); 
 
 			}
 
@@ -323,6 +329,35 @@ io.on('connection', function(socket){
 	    // 변환
 
 	});
+
+	socket.on('first_vote', function(data) {
+
+		console.log("[INFO] player가 투표 했습니다.");
+		first_vote_number++;
+
+
+		if(data == "Ma"){
+			votes[0]++;
+		}else if(data == "Kim"){
+			votes[1]++;
+		}else if(data == "Chun"){
+			votes[2]++;
+		}else if(data == "Jang"){
+			votes[3]++;
+		}else if(data == "Choi"){
+			votes[4]++;
+		}else if(data == "Yun"){
+			votes[5]++;
+		}
+
+		if(first_vote_number == clients.length){
+			console.log("[INFO] player 모두가 투표 했습니다.");
+			clients.forEach( function(i){
+				io.to(i.id).emit('GO_VOTE_RESULT', votes);
+			})
+		}
+
+	})
 		
 });//END_IO.ON
 
@@ -353,14 +388,17 @@ function Timeset(minutes, phase){
 			io.emit('SET_ROLE_TIMER', time, minute, second);
 		} else if ( phase == 3 ) {
 			// 3. 미팅 시간 업데이트
-			io.emit('SET_MEETING_TIMER', time, minute, second);
+			io.emit('SET_GAME_TIMER', time, minute, second);
 		} else if ( phase == 4 ) {
 			// 4. 게임 시간 업데이트
 			io.emit('SET_GAME_TIMER', time, minute, second);
 		} else if ( phase == 5 ) {
 			// 5. 1차 회의 시간 업데이트
-			io.emit('SET_MEETING_TIMER', time, minute, second);
-		} else {
+			io.emit('SET_GAME_TIMER', time, minute, second);
+		} else if ( phase == 6) {
+			// 6. 투표 시간 업데이트
+			io.emit('SET_VOTE_TIMER', time, minute, second);
+		}  else {
 			clearInterval(timerId);
 		}
 		
