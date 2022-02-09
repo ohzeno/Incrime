@@ -363,6 +363,9 @@ io.on('connection', function(socket){
 		
 });//END_IO.ON
 
+var proof = require('./share_server');
+proof.shareProof(io);
+
 
 http.listen(process.env.PORT ||3000, function(){
 	console.log('listening on *:3000');
