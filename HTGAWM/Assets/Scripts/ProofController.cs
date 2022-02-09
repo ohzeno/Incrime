@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using System;
 
 public class ProofController : MonoBehaviour
 {
@@ -34,7 +33,7 @@ public class ProofController : MonoBehaviour
     [SerializeField]
     private OrbitCamera orbitCamera;
 
-    private Proof proof;
+    private Proof.ProofJson proofJson;
 
     [SerializeField]
     private RenderTexture proofRenderTexture;
@@ -54,6 +53,9 @@ public class ProofController : MonoBehaviour
     private RaycastHit oldHitInfo;
     private RaycastHit hitInfo;
     private Outline outline;
+
+    private GameObject tempProofObject;
+    private GameObject sharedProofObject;
 
 
     [SerializeField]
@@ -89,7 +91,7 @@ public class ProofController : MonoBehaviour
         Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.TransformDirection(range * Vector3.forward), Color.red);
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.TransformDirection(Vector3.forward), out hitInfo, range, layerMask))
         {
-            if(oldHitInfo.transform != null && oldHitInfo.transform != hitInfo.transform)
+            if (oldHitInfo.transform != null && oldHitInfo.transform != hitInfo.transform)
             {
                 oldHitInfo.transform.GetComponent<Outline>().enabled = false;
                 SetLayersRecursively(oldHitInfo.transform, 7);
@@ -141,7 +143,7 @@ public class ProofController : MonoBehaviour
     {
         if (pickupActivated)
         {
-            if(oldHitInfo.transform != null)
+            if (oldHitInfo.transform != null)
             {
                 Debug.Log("아이템 수집");
                 Proof dest = oldHitInfo.transform.GetComponent<Proof>();
@@ -177,12 +179,21 @@ public class ProofController : MonoBehaviour
         }
     }
 
+    public void LoadPrefabInTempProof(string path)
+    {
+        if(tempProofObject != null)
+        {
+            Destroy(tempProofObject);
+        }
+        tempProofObject = GameObject.Instantiate(Resources.Load(path)) as GameObject;
+    }
+
     public void OnClickCollectedSlot(BaseEventData data)
     {
         Debug.Log(data.selectedObject + "는 무엇인가");
         Slot targetSlot = data.selectedObject.transform.GetComponent<Slot>();
 
-        if (targetSlot.proof != null)
+        if (targetSlot.proof.proofName.Length != 0)
         {
             Debug.Log(targetSlot + "는 Slot이다.");
             if (SceneManager.GetActiveScene().name == "MeetingScene")
@@ -193,65 +204,42 @@ public class ProofController : MonoBehaviour
             {
                 shareButton.gameObject.SetActive(false);
             }
-            proof = targetSlot.proof;
-            Debug.Log(targetSlot.proof.GetSceneName() + "/" + targetSlot.proof.GetObjectName());
-            GameObject tempProof = GameObject.Instantiate(Resources.Load(proof.GetSceneName() + "/" + proof.GetObjectName())) as GameObject;
-            tempProof.transform.position = new Vector3(0f, 0f, 0f);
-            orbitCamera.m_Target = tempProof.transform;
-            SetLayersRecursively(tempProof.transform, 8);
+            proofJson = targetSlot.proof;
+            Debug.Log(targetSlot.proof.sceneName + "/" + targetSlot.proof.objectName);
+
+            LoadPrefabInTempProof(targetSlot.proof.sceneName + "/" + targetSlot.proof.objectName);
+
+            tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
+            orbitCamera.m_Target = tempProofObject.transform;
+            SetLayersRecursively(tempProofObject.transform, 8);
             
-            proofDescription.text = proof.proofDescription;
-            Debug.Log(proof.proofName + " 보기");
+            proofDescription.text = proofJson.proofDescription;
+            Debug.Log(proofJson.proofName + " 보기");
+
             playerController.FixPlayer();
             collectButton.gameObject.SetActive(false);
             proofUI.gameObject.SetActive(true);
-        }
-    }
-    [Serializable]
-    class ProofJson
-    {
-        public string no;
-
-        public string proofName;
-
-        public string proofDescription;
-
-        public string objectName;
-        public string sceneName;
-
-        public ProofJson()
-        {
-
-        }
-
-        public ProofJson(Proof _proof)
-        {
-            no = _proof.no;
-            proofName = _proof.proofName;
-            proofDescription = _proof.proofDescription;
-            sceneName = _proof.GetSceneName();
-            objectName = _proof.GetObjectName();
         }
     }
 
     public void OnClickShareProof()
     {
         Debug.Log("증거 공유");
-        ProofJson proofJson = new ProofJson(proof);
         Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson));
     }
 
     public void ReceiveSharedProof(string str)
     {
         Debug.Log("공유받은 증거 보기");
-        ProofJson receiveProof = JsonUtility.FromJson<ProofJson>(str);
+        Proof.ProofJson receiveProof = JsonUtility.FromJson<Proof.ProofJson>(str);
         Debug.Log("공유받은 증거: " + receiveProof.sceneName + "/" + receiveProof.objectName);
-        GameObject tempProof = GameObject.Instantiate(Resources.Load(receiveProof.sceneName + "/"+receiveProof.objectName)) as GameObject;
-        tempProof.transform.position = new Vector3(0f, 0f, 0f);
+        //sharedProofObject = GameObject.Instantiate(Resources.Load(receiveProof.sceneName + "/"+receiveProof.objectName)) as GameObject;
+        LoadPrefabInTempProof(receiveProof.sceneName + "/" + receiveProof.objectName);
+        tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
 
-        orbitCamera.m_Target = tempProof.transform;
-        SetLayersRecursively(tempProof.transform, 8);
-        proofDescription.text = tempProof.transform.GetComponent<Proof>().proofDescription;
+        orbitCamera.m_Target = tempProofObject.transform;
+        SetLayersRecursively(tempProofObject.transform, 8);
+        proofDescription.text = tempProofObject.transform.GetComponent<Proof>().proofDescription;
         proofUI.gameObject.SetActive(true);
         collectButton.gameObject.SetActive(false);
     }

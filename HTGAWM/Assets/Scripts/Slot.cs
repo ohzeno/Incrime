@@ -5,11 +5,18 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Proof proof;   // 획득한 증거
+
+    public Proof defaultProof;
+    public Proof.ProofJson proof;   // 획득한 증거
 
     public RawImage proofRawImage; // 증거의 이미지
 
 
+    void Start()
+    {
+        if(defaultProof != null)
+            proof = new Proof.ProofJson(defaultProof);
+    }
 
     private void SetColor(float _alpha)
     {
@@ -22,11 +29,11 @@ public class Slot : MonoBehaviour
     //증거 추가
     public void AddProof(Proof _proof)
     {
-        proof = _proof;
+        proof = new Proof.ProofJson(_proof);
+
         proofRawImage.texture = _proof.proofTexture;
 
         SetColor(1);
-
     }
 
     //슬롯에 증거 지우기

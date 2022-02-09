@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Proof : MonoBehaviour
 {
@@ -19,8 +20,18 @@ public class Proof : MonoBehaviour
     private string objectName;
     private string sceneName;
 
-    // Start is called before the first frame update
-    void Start()
+    public string GetSceneName()
+    {
+        return sceneName;
+    }
+
+    public string GetObjectName()
+    {
+        return objectName;
+    }
+
+    // Awake
+    void Awake()
     {
         objectName = name;
         sceneName = SceneManager.GetActiveScene().name;
@@ -32,14 +43,31 @@ public class Proof : MonoBehaviour
 
     }
 
-    public string GetSceneName()
+    [Serializable]
+    public class ProofJson
     {
-        return sceneName;
-    }
+        public string no;
 
-    public string GetObjectName()
-    {
-        return objectName;
+        public string proofName;
+
+        public string proofDescription;
+
+        public string objectName;
+        public string sceneName;
+
+        public ProofJson()
+        {
+
+        }
+
+        public ProofJson(Proof _proof)
+        {
+            no = _proof.no;
+            proofName = _proof.proofName;
+            proofDescription = _proof.proofDescription;
+            sceneName = _proof.GetSceneName();
+            objectName = _proof.GetObjectName();
+        }
     }
 }
 
