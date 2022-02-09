@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class Proof : MonoBehaviour
 {
     public string no;
@@ -17,11 +16,13 @@ public class Proof : MonoBehaviour
 
     public Texture2D proofTexture;
 
+    private string objectName;
     private string sceneName;
 
     // Start is called before the first frame update
     void Start()
     {
+        objectName = name;
         sceneName = SceneManager.GetActiveScene().name;
     }
 
@@ -34,6 +35,11 @@ public class Proof : MonoBehaviour
     public string GetSceneName()
     {
         return sceneName;
+    }
+
+    public string GetObjectName()
+    {
+        return objectName;
     }
 }
 

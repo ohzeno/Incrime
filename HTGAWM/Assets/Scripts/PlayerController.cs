@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
         
         originScaleY = theCamera.transform.localScale.y;
         applyCrouchScaleY = originScaleY;
-        myRigid.useGravity = false;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -299,8 +298,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-
-
         float _moveDirX = Input.GetAxisRaw("Horizontal");
         float _moveDirZ = Input.GetAxisRaw("Vertical");
 

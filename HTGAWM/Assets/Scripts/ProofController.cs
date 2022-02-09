@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using System;
 
 public class ProofController : MonoBehaviour
 {
@@ -32,6 +34,8 @@ public class ProofController : MonoBehaviour
     [SerializeField]
     private OrbitCamera orbitCamera;
 
+    private Proof proof;
+
     [SerializeField]
     private RenderTexture proofRenderTexture;
     [SerializeField]
@@ -39,6 +43,9 @@ public class ProofController : MonoBehaviour
 
     [SerializeField]
     private Button collectButton;
+
+    [SerializeField]
+    private Button shareButton;
 
     [SerializeField]
     private Inventory inventory;
@@ -111,6 +118,7 @@ public class ProofController : MonoBehaviour
             SetLayersRecursively(oldHitInfo.transform, 8);
             playerController.FixPlayer();
             proofUI.gameObject.SetActive(true);
+            collectButton.gameObject.SetActive(true);
         }
     }
 
@@ -125,7 +133,7 @@ public class ProofController : MonoBehaviour
         playerController.UnfixPlayer();
         proofUI.gameObject.SetActive(false);
         proofRawImage.texture = proofRenderTexture;
-        collectButton.gameObject.SetActive(true);
+        shareButton.gameObject.SetActive(false);
 
     }
 
@@ -169,7 +177,7 @@ public class ProofController : MonoBehaviour
         }
     }
 
-    public void OnClickedCollectedSlot(BaseEventData data)
+    public void OnClickCollectedSlot(BaseEventData data)
     {
         Debug.Log(data.selectedObject + "는 무엇인가");
         Slot targetSlot = data.selectedObject.transform.GetComponent<Slot>();
@@ -177,21 +185,73 @@ public class ProofController : MonoBehaviour
         if (targetSlot.proof != null)
         {
             Debug.Log(targetSlot + "는 Slot이다.");
-            proofRawImage.texture = targetSlot.proof.proofTexture;
-            proofDescription.text = targetSlot.proof.proofDescription;
-            Debug.Log(targetSlot.proof.proofName + " 보기");
+            if (SceneManager.GetActiveScene().name == "MeetingScene")
+            {
+                shareButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                shareButton.gameObject.SetActive(false);
+            }
+            proof = targetSlot.proof;
+            Debug.Log(targetSlot.proof.GetSceneName() + "/" + targetSlot.proof.GetObjectName());
+            GameObject tempProof = GameObject.Instantiate(Resources.Load(proof.GetSceneName() + "/" + proof.GetObjectName())) as GameObject;
+            tempProof.transform.position = new Vector3(0f, 0f, 0f);
+            orbitCamera.m_Target = tempProof.transform;
+            SetLayersRecursively(tempProof.transform, 8);
+            
+            proofDescription.text = proof.proofDescription;
+            Debug.Log(proof.proofName + " 보기");
             playerController.FixPlayer();
             collectButton.gameObject.SetActive(false);
             proofUI.gameObject.SetActive(true);
         }
     }
+    [Serializable]
+    class ProofJson
+    {
+        public string no;
 
-    public void ReceiveSharedProof(Transform _transform)
+        public string proofName;
+
+        public string proofDescription;
+
+        public string objectName;
+        public string sceneName;
+
+        public ProofJson()
+        {
+
+        }
+
+        public ProofJson(Proof _proof)
+        {
+            no = _proof.no;
+            proofName = _proof.proofName;
+            proofDescription = _proof.proofDescription;
+            sceneName = _proof.GetSceneName();
+            objectName = _proof.GetObjectName();
+        }
+    }
+
+    public void OnClickShareProof()
+    {
+        Debug.Log("증거 공유");
+        ProofJson proofJson = new ProofJson(proof);
+        Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson));
+    }
+
+    public void ReceiveSharedProof(string str)
     {
         Debug.Log("공유받은 증거 보기");
-        orbitCamera.m_Target = _transform;
-        SetLayersRecursively(_transform, 8);
-        proofDescription.text = _transform.GetComponent<Proof>().proofDescription;
+        ProofJson receiveProof = JsonUtility.FromJson<ProofJson>(str);
+        Debug.Log("공유받은 증거: " + receiveProof.sceneName + "/" + receiveProof.objectName);
+        GameObject tempProof = GameObject.Instantiate(Resources.Load(receiveProof.sceneName + "/"+receiveProof.objectName)) as GameObject;
+        tempProof.transform.position = new Vector3(0f, 0f, 0f);
+
+        orbitCamera.m_Target = tempProof.transform;
+        SetLayersRecursively(tempProof.transform, 8);
+        proofDescription.text = tempProof.transform.GetComponent<Proof>().proofDescription;
         proofUI.gameObject.SetActive(true);
         collectButton.gameObject.SetActive(false);
     }
