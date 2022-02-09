@@ -126,6 +126,95 @@ namespace Project {
             SceneManager.LoadScene("ResultPage");
         }
 
+        IEnumerator WaitForIt(string[] vote)
+        {
+            yield return new WaitForSeconds(1.5f);
+            for (int i = 0; i < 6; i++)
+            {
+                if (int.Parse(vote[0]) > 0)
+                {
+                    if (i == 0)
+                    {
+                        MaHand.SetActive(true);
+                        vote[0] = (int.Parse(vote[0]) - 1).ToString();
+                    }
+                    else
+                    {
+                        GameObject ins = Instantiate(MaHand, MaHand.transform.parent.transform) as GameObject;
+                        vote[0] = (int.Parse(vote[0]) - 1).ToString();
+                    }
+                }
+                if (int.Parse(vote[1]) > 0)
+                {
+                    if (i == 0)
+                    {
+                        KimHand.SetActive(true);
+                        vote[1] = (int.Parse(vote[1]) - 1).ToString();
+                    }
+                    else
+                    {
+                        GameObject ins = Instantiate(KimHand, KimHand.transform.parent.transform) as GameObject;
+                        vote[1] = (int.Parse(vote[1]) - 1).ToString();
+                    }
+                }
+                if (int.Parse(vote[2]) > 0)
+                {
+                    if (i == 0)
+                    {
+                        ChunHand.SetActive(true);
+                        vote[2] = (int.Parse(vote[2]) - 1).ToString();
+                    }
+                    else
+                    {
+                        GameObject ins = Instantiate(ChunHand, ChunHand.transform.parent.transform) as GameObject;
+                        vote[2] = (int.Parse(vote[2]) - 1).ToString();
+                    }
+                }
+                if (int.Parse(vote[3]) > 0)
+                {
+                    if (i == 0)
+                    {
+                        JangHand.SetActive(true);
+                        vote[3] = (int.Parse(vote[3]) - 1).ToString();
+                    }
+                    else
+                    {
+                        GameObject ins = Instantiate(JangHand, JangHand.transform.parent.transform) as GameObject;
+                        vote[3] = (int.Parse(vote[3]) - 1).ToString();
+                    }
+                }
+                if (int.Parse(vote[4]) > 0)
+                {
+                    if (i == 0)
+                    {
+                        ChoiHand.SetActive(true);
+                        vote[4] = (int.Parse(vote[4]) - 1).ToString();
+                    }
+                    else
+                    {
+                        GameObject ins = Instantiate(ChoiHand, ChoiHand.transform.parent.transform) as GameObject;
+                        vote[4] = (int.Parse(vote[4]) - 1).ToString();
+                    }
+                }
+                if (int.Parse(vote[5]) > 0)
+                {
+                    if (i == 0)
+                    {
+                        YunHand.SetActive(true);
+                        vote[5] = (int.Parse(vote[5]) - 1).ToString();
+                    }
+                    else
+                    {
+                        GameObject ins = Instantiate(YunHand, YunHand.transform.parent.transform) as GameObject;
+                        vote[5] = (int.Parse(vote[5]) - 1).ToString();
+                        Debug.Log("윤비서 투표 수 " + vote[5]);
+                    }
+
+                }
+                yield return new WaitForSeconds(1.5f);
+            }
+        }
+
         public void onVote(string data){
             ResultVote.SetActive(true);
             MaHand.SetActive(false);
@@ -138,58 +227,11 @@ namespace Project {
             var vote = data.Split (Delimiter);
             Debug.Log(vote[0] + " " + vote[1] + " " + vote[2] + " " + vote[3] + " " + vote[4] + " " + vote[5]);
 
-            for(int i = 0; i < int.Parse(vote[0]); i++){
-                if(i == 0){
-                    MaHand.SetActive(true);
-                }
-                else{
-                    Debug.Log("ma " + i);
-                    GameObject ins = Instantiate(MaHand, MaHand.transform.parent.transform) as GameObject;
-                }
-            }
-            for(int i = 0; i < int.Parse(vote[1]); i++){
-                if(i == 0){
-                    KimHand.SetActive(true);
-                }else{
-                    Debug.Log("kim " + i);
-                    GameObject ins = Instantiate(KimHand, KimHand.transform.parent.transform) as GameObject;
-                }
-            }
-            for(int i = 0; i < int.Parse(vote[2]); i++){
-                if(i == 0){
-                    ChunHand.SetActive(true);
-                }else {
-                    Debug.Log("Chun " + i);
-                    GameObject ins = Instantiate(ChunHand, ChunHand.transform.parent.transform) as GameObject;
-                }
-            }
-            for(int i = 0; i < int.Parse(vote[3]); i++){
-                if(i == 0){
-                    JangHand.SetActive(true);
-                } else {
-                    Debug.Log("Jang " + i);
-                    GameObject ins = Instantiate(JangHand, JangHand.transform.parent.transform) as GameObject;
-                }
-            }
-            for(int i = 0; i < int.Parse(vote[4]); i++){
-                if(i == 0){
-                    ChoiHand.SetActive(true);
-                }else {
-                    Debug.Log("Choi " + i);
-                    GameObject ins = Instantiate(ChoiHand, ChoiHand.transform.parent.transform) as GameObject;
-                }
-            }
-            for(int i = 0; i < int.Parse(vote[5]); i++){
-                if(i == 0){
-                    YunHand.SetActive(true);
-                }else {
-                    Debug.Log("Yun " + i);
-                    GameObject ins = Instantiate(YunHand, YunHand.transform.parent.transform) as GameObject;
-                }
-            }
 
+            StartCoroutine(WaitForIt(vote));
             // 15초 뒤에 스토리 결과 출력
-            Invoke("MoveResultStory", 15); 
+            Invoke("MoveResultStory", 15);
+
         }
     }
 }
