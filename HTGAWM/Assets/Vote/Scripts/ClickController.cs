@@ -58,6 +58,7 @@ namespace Project {
             YunCheck.SetActive(false);
             ChoiCheck.SetActive(false);
             ResultVote.SetActive(false);
+
         }
 
         void HideCheck(){
@@ -118,6 +119,11 @@ namespace Project {
             VoteText.text = "다른 플레이어를 기다려 주세요";
             VoteBtn.interactable = false;
             Application.ExternalCall("socket.emit", "first_vote", data);
+        }
+
+        public void MoveResultStory()
+        {
+            SceneManager.LoadScene("ResultPage");
         }
 
         public void onVote(string data){
@@ -181,6 +187,9 @@ namespace Project {
                     GameObject ins = Instantiate(YunHand, YunHand.transform.parent.transform) as GameObject;
                 }
             }
+
+            // 15초 뒤에 스토리 결과 출력
+            Invoke("MoveResultStory", 15); 
         }
     }
 }
