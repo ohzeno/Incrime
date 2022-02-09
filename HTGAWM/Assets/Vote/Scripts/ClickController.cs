@@ -38,6 +38,10 @@ namespace Project {
         [SerializeField]
         private Button VoteBtn;
 
+        private AudioSource musicPlayer;
+        public AudioClip handcuffsMusic;
+        public AudioClip gameEnd;
+
         private string name;
 
         public void nameSet(string name){
@@ -123,15 +127,41 @@ namespace Project {
 
         public void MoveResultStory()
         {
+            playSound(gameEnd, musicPlayer);
             SceneManager.LoadScene("ResultPage");
+        }
+
+        public void playSound(AudioClip clip, AudioSource audioPlayer)
+        {
+            audioPlayer.Stop();
+            audioPlayer.clip = clip;
+            audioPlayer.loop = false;
+            audioPlayer.time = 0;
+            audioPlayer.Play();
+        }
+
+        public int compare(string[] vote)
+        {
+            int max = 0;
+            for(int i = 0; i<6; i++)
+            {
+                if(max < int.Parse(vote[i]))
+                {
+                    max = int.Parse(vote[i]);
+                }
+            }
+            return max;
         }
 
         IEnumerator WaitForIt(string[] vote)
         {
+            int max = compare(vote);
+            musicPlayer = GetComponent<AudioSource>();
             yield return new WaitForSeconds(1.5f);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < max; i++)
             {
-                if (int.Parse(vote[0]) > 0)
+                
+                if (int.Parse(vote[0]) > 0) // 마이사
                 {
                     if (i == 0)
                     {
@@ -144,7 +174,7 @@ namespace Project {
                         vote[0] = (int.Parse(vote[0]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[1]) > 0)
+                if (int.Parse(vote[1]) > 0) // 김비서
                 {
                     if (i == 0)
                     {
@@ -157,7 +187,7 @@ namespace Project {
                         vote[1] = (int.Parse(vote[1]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[2]) > 0)
+                if (int.Parse(vote[2]) > 0) // 천보안
                 {
                     if (i == 0)
                     {
@@ -170,7 +200,7 @@ namespace Project {
                         vote[2] = (int.Parse(vote[2]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[3]) > 0)
+                if (int.Parse(vote[3]) > 0) // 장대행
                 {
                     if (i == 0)
                     {
@@ -183,7 +213,7 @@ namespace Project {
                         vote[3] = (int.Parse(vote[3]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[4]) > 0)
+                if (int.Parse(vote[4]) > 0) // 최과장
                 {
                     if (i == 0)
                     {
@@ -196,7 +226,7 @@ namespace Project {
                         vote[4] = (int.Parse(vote[4]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[5]) > 0)
+                if (int.Parse(vote[5]) > 0) // 윤사원
                 {
                     if (i == 0)
                     {
@@ -211,6 +241,7 @@ namespace Project {
                     }
 
                 }
+                playSound(handcuffsMusic, musicPlayer); // 음악 실행
                 yield return new WaitForSeconds(1.5f);
             }
         }
