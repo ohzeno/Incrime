@@ -305,19 +305,20 @@ io.on('connection', function(socket){
 				// 시간 보내주기 
 				Timeset(1,gamephase);
 
-				// 탐색 시간 : 10분 = 600000
+				// 투표 시간 : 1분 = 60000
 				setTimeout(function () {
-					clearInterval(timerId);
-					console.log("[system] 투표 시간이 끝났습니다. ");
-					// 
-					gamephase = 7;
-					clients.forEach( function(i) {
-						// 투표가 끝난 경우
+					if(gamephase != 7){
 						clearInterval(timerId);
-						// 결과 창으로 이동
-						
-						io.to(i.id).emit('GO_VOTE_RESULT');
-					}); //end_forEach
+						console.log("[system] 투표 시간이 끝났습니다. ");
+						// 
+						gamephase = 7;
+						clients.forEach( function(i) {
+							// 투표가 끝난 경우
+							clearInterval(timerId);
+							// 결과 창으로 이동
+							io.to(i.id).emit('GO_VOTE_RESULT', votes);
+						}); //end_forEach
+					}
 					
 				}, 60000); 
 
@@ -330,11 +331,11 @@ io.on('connection', function(socket){
 
 	});
 
+	// 투표 결과 
 	socket.on('first_vote', function(data) {
 
 		console.log("[INFO] player가 투표 했습니다.");
 		first_vote_number++;
-
 
 		if(data == "Ma"){
 			votes[0]++;
@@ -350,8 +351,9 @@ io.on('connection', function(socket){
 			votes[5]++;
 		}
 
-		if(first_vote_number == clients.length){
+		if(first_vote_number == 6){
 			console.log("[INFO] player 모두가 투표 했습니다.");
+			gamephase = 7;
 			clients.forEach( function(i){
 				io.to(i.id).emit('GO_VOTE_RESULT', votes);
 			})
