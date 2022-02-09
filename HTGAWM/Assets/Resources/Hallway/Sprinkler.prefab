@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6769537562925381100
+--- !u!1 &1584127135908417520
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3024701149895079069}
-  - component: {fileID: 6507960939693088280}
-  - component: {fileID: 4209858628270806378}
-  - component: {fileID: 4747851844939899619}
-  - component: {fileID: 6775369438243747508}
-  - component: {fileID: 1378812004822301387}
+  - component: {fileID: 1582678212535640560}
+  - component: {fileID: 1553716698160921192}
+  - component: {fileID: 1561653340202914690}
+  - component: {fileID: 1521577542927291238}
+  - component: {fileID: 601259203927579181}
+  - component: {fileID: 1945847643011118768}
   m_Layer: 7
-  m_Name: FaxMachine
+  m_Name: Sprinkler
   m_TagString: Proof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3024701149895079069
+--- !u!4 &1582678212535640560
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769537562925381100}
-  m_LocalRotation: {x: -0, y: 0.852426, z: -0, w: 0.52284795}
-  m_LocalPosition: {x: 4.618999, y: 0.94999886, z: 4.7529993}
+  m_GameObject: {fileID: 1584127135908417520}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.752004, y: 18.513, z: -6.3980026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 116.953, z: 0}
---- !u!33 &6507960939693088280
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1553716698160921192
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769537562925381100}
-  m_Mesh: {fileID: 4300000, guid: 32d2273247f26fe4088b5fb74376ed95, type: 3}
---- !u!23 &4209858628270806378
+  m_GameObject: {fileID: 1584127135908417520}
+  m_Mesh: {fileID: 4300000, guid: 853a96288c98b534e93df235ac607f41, type: 3}
+--- !u!23 &1561653340202914690
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769537562925381100}
+  m_GameObject: {fileID: 1584127135908417520}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,27 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4747851844939899619
+--- !u!64 &1521577542927291238
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769537562925381100}
+  m_GameObject: {fileID: 1584127135908417520}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 43624850434490410, guid: 248485f19e6de354aa28b699346aa604, type: 2}
---- !u!114 &6775369438243747508
+  m_Mesh: {fileID: 43744755683791320, guid: 266b286d4129aa5499bf0420f4dedc2d, type: 2}
+--- !u!114 &601259203927579181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769537562925381100}
+  m_GameObject: {fileID: 1584127135908417520}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -116,21 +116,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1378812004822301387
+--- !u!114 &1945847643011118768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6769537562925381100}
+  m_GameObject: {fileID: 1584127135908417520}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  no: 16
-  proofName: "\uD329\uC2A4"
-  proofDescription: "\uD329\uC2A4 \uBA38\uC2E0\uC774 \uB193\uC5EC \uC788\uB2E4.\n\uC544\uC9C1
-    \uB9CE\uC774 \uAD6C\uC2DD\uC778 \uBC29\uC2DD\uC73C\uB85C \uC11C\uB958\uB97C \uBCF4\uB0B4\uACE0
-    \uBC1B\uB294 \uBAA8\uC591\uC774\uB2E4."
+  no: 24
+  proofName: Sprinkler
+  proofDescription: "\uC2A4\uD504\uB9C1\uD074\uB7EC\uB2E4."
   proofTexture: {fileID: 0}

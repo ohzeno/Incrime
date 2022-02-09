@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7521852463883812232
+--- !u!1 &313309891441271249
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7526799626530833904}
-  - component: {fileID: 7502083443847067888}
-  - component: {fileID: 7509715417424775202}
-  - component: {fileID: 7530227195582438094}
-  - component: {fileID: 5608443716823480985}
-  - component: {fileID: 4683392237000839665}
+  - component: {fileID: 310595785905412521}
+  - component: {fileID: 299248023636944041}
+  - component: {fileID: 291673201646834811}
+  - component: {fileID: 340963940653893271}
+  - component: {fileID: 2445125300124722880}
+  - component: {fileID: 3226025613534432680}
   m_Layer: 7
   m_Name: Memo
   m_TagString: Proof
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7526799626530833904
+--- !u!4 &310595785905412521
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521852463883812232}
+  m_GameObject: {fileID: 313309891441271249}
   m_LocalRotation: {x: 0.68941027, y: -0.15720528, z: -0.15720533, w: -0.68941027}
   m_LocalPosition: {x: 1.8710017, y: 0.9509983, z: 7.8639994}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,21 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 25.691002}
---- !u!33 &7502083443847067888
+--- !u!33 &299248023636944041
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521852463883812232}
+  m_GameObject: {fileID: 313309891441271249}
   m_Mesh: {fileID: 4300000, guid: 4864d49df74b6184a99533639f64862d, type: 3}
---- !u!23 &7509715417424775202
+--- !u!23 &291673201646834811
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521852463883812232}
+  m_GameObject: {fileID: 313309891441271249}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,13 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7530227195582438094
+--- !u!64 &340963940653893271
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521852463883812232}
+  m_GameObject: {fileID: 313309891441271249}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -98,13 +98,13 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43592880506177040, guid: a999b4db1f2651f41b49a9a32489f522, type: 2}
---- !u!114 &5608443716823480985
+--- !u!114 &2445125300124722880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521852463883812232}
+  m_GameObject: {fileID: 313309891441271249}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -116,20 +116,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &4683392237000839665
+--- !u!114 &3226025613534432680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521852463883812232}
+  m_GameObject: {fileID: 313309891441271249}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  no: 19
+  no: 20
   proofName: "\uBA54\uBAA8"
   proofDescription: "- \uC815\uB9AC \uC880 \uD558\uBA74\uC11C \uB193\uC74D\uC2DC\uB2E4
     -"
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
