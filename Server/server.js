@@ -261,7 +261,7 @@ io.on('connection', function(socket){
 				// 자기소개 가 끝난 경우
 				// phase : 탐색 4
 				gamephase = 4;
-				console.log("[system] 모든 플레이어가 나가고 싶어합니다. ");	
+				console.log("[system] 자기소개를 끝내고 모든 플레이어가 나가고 싶어합니다. ");	
 
 				// 탐색화면으로 보내버리기
 				clients.forEach( function(i) {
@@ -279,21 +279,30 @@ io.on('connection', function(socket){
 						// 같은 회의실 방을 사용하므로 뒤에 함수를 줘서 바꾸던가해야할듯
 						clearInterval(timerId);
 						// 탐색 후 회의 시간
-						Timeset(1,gamephase);
+						Timeset(15,gamephase);
 						io.to(i.id).emit('GO_MEETING2');
 					}); //end_forEach
+
+					// 탐색 종료후 1분 뒤
+					setTimeout(function () {
+						console.log("[system] 새로운 증거를 공개합니다.");
+						clients.forEach( function(i) {
+							io.to(i.id).emit('VIEW_CLUE_VIDEO');
+						}); //end_forEach
+					}, 60000); 
+
 					
-				}, 60000); 
+				}, 600000); 
 
 				// 시간 보내주기 
-				Timeset(1,gamephase);
+				Timeset(10,gamephase);
 
 
 			} else if ( gamephase == 5 ){
 				// 1차회의가 끝난 경우
 				// phase 6 : 투표 씬 
 				gamephase = 6;
-				console.log("[system] 모든 플레이어가 나가고 싶어합니다. ");	
+				console.log("[system] 모든 플레이어가 1차회의를 마치고 나가고 싶어합니다. ");	
 
 				// 투표로 보내버리기
 				clients.forEach( function(i) {
@@ -411,6 +420,8 @@ function Timeset(minutes, phase){
 			minute -= 1;
 			second = 60;
 		}
+		// 나중에 min 0 && second 0 이 되었을 때 게임페이즈에 따라 맵으로 보내줘야함
+
 	}, 1000);
 
 

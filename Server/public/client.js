@@ -104,11 +104,23 @@ window.addEventListener('load', function() {
 	});//END_SOCKET.ON
 
 	// 탐색 후 1차 회의 시간
-	socket.on('GO_MEETING2', function() {
+	socket.on('GO_MEETING2', function() 
+	{
 		if(window.unityInstance!=null)
 		{
 			window.unityInstance.SendMessage ('PlayerObject', 'onMeeting');
 		}
+
+	});//END_SOCKET.ON
+
+	// 추가 증거 비디오 띄워주기
+	socket.on('VIEW_CLUE_VIDEO', function( phase ) 
+	{
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Meeting', 'OnPlayVideo', phase);
+		}
+		
 	});//END_SOCKET.ON
 
 });//END_window_addEventListener

@@ -48,7 +48,6 @@
     </div>
 		<script src="/socket.io/socket.io.js"></script>
 	<script src="client.js"></script>
-  <script src="vote.js"></script>
  
   <script>
    var container = document.querySelector("#unity-container");
@@ -83,11 +82,11 @@
       }
 
      var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/public.loader.js";
+    var loaderUrl = buildUrl + "/testbuild.loader.js";
        var config = {
-           dataUrl: buildUrl + "/public.data",
-           frameworkUrl: buildUrl + "/public.framework.js",
-           codeUrl: buildUrl + "/public.wasm",
+           dataUrl: buildUrl + "/testbuild.data",
+           frameworkUrl: buildUrl + "/testbuild.framework.js",
+           codeUrl: buildUrl + "/testbuild.wasm",
            streamingAssetsUrl: "StreamingAssets",
            companyName: "DefaultCompany",
            productName: "HTGAWM",
