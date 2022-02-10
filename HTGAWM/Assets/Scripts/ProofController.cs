@@ -113,6 +113,10 @@ public class ProofController : MonoBehaviour
     {
         if (hitInfo.transform != null)
         {
+            if (tempProofObject != null)
+            {
+                Destroy(tempProofObject);
+            }
             pickupActivated = true;
             orbitCamera.m_Target = oldHitInfo.transform;
             proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
@@ -126,6 +130,10 @@ public class ProofController : MonoBehaviour
 
     public void CloseProofUI()
     {
+        if (tempProofObject != null)
+        {
+            Destroy(tempProofObject);
+        }
         pickupActivated = false;
         if (oldHitInfo.transform != null)
         {
@@ -136,7 +144,6 @@ public class ProofController : MonoBehaviour
         proofUI.gameObject.SetActive(false);
         proofRawImage.texture = proofRenderTexture;
         shareButton.gameObject.SetActive(false);
-
     }
 
     public void CollectProof()
@@ -186,6 +193,7 @@ public class ProofController : MonoBehaviour
             Destroy(tempProofObject);
         }
         tempProofObject = GameObject.Instantiate(Resources.Load(path)) as GameObject;
+        tempProofObject.layer = 9;
     }
 
     public void OnClickCollectedSlot(BaseEventData data)
@@ -193,7 +201,7 @@ public class ProofController : MonoBehaviour
         Debug.Log(data.selectedObject + "는 무엇인가");
         Slot targetSlot = data.selectedObject.transform.GetComponent<Slot>();
 
-        if (targetSlot.proof.proofName.Length != 0)
+        if (targetSlot.proof.proofName.Length != 0 && !pickupActivated)
         {
             Debug.Log(targetSlot + "는 Slot이다.");
             if (SceneManager.GetActiveScene().name == "MeetingScene")

@@ -8,6 +8,7 @@ public class MapButton : MonoBehaviour
     
     bool map_view;
     public GameObject mapimage;
+    public ProofController proofController;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +26,16 @@ public class MapButton : MonoBehaviour
     public void MoveToMap()
     {   
         if (SceneManager.GetActiveScene().name != "MeetingScene" ){
+            proofController.CloseProofUI();
             SceneManager.LoadScene("Map");
         } else {
             if ( map_view == false ){
-                // 메모 키기
+                // 맵 키기
                 map_view = true;
                 mapimage.gameObject.SetActive(true);
 
             } else {
-                // 메모 끄기
+                // 맵 끄기
                 map_view = false;        
                 mapimage.gameObject.SetActive(false);
             }
