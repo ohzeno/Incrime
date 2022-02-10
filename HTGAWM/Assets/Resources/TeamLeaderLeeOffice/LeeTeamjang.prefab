@@ -3085,7 +3085,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300014, guid: 318840a7e38980943bb4c508fa842265, type: 3}
 --- !u!114 &5266233589421416555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   no: 1
   proofName: LeeTeamjang
   proofDescription: "\uD2B9\uBCC4\uD55C \uC678\uC0C1\uC740 \uBCF4\uC774\uC9C0 \uC54A\uB294\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
 --- !u!1 &6538107531533432787
 GameObject:
   m_ObjectHideFlags: 0
