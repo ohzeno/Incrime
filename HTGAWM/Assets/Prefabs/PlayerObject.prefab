@@ -1241,7 +1241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202ce3d083a308f4cb71fb5033bd0a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proof: {fileID: 0}
+  defaultProof: {fileID: 0}
+  proof:
+    no: 
+    proofName: 
+    proofDescription: 
+    objectName: 
+    sceneName: 
   proofRawImage: {fileID: 932879236964049096}
 --- !u!114 &5464883890805320030
 MonoBehaviour:
@@ -1907,7 +1913,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202ce3d083a308f4cb71fb5033bd0a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proof: {fileID: 0}
+  defaultProof: {fileID: 0}
+  proof:
+    no: 
+    proofName: 
+    proofDescription: 
+    objectName: 
+    sceneName: 
   proofRawImage: {fileID: 2275237186710544818}
 --- !u!114 &847587674079018449
 MonoBehaviour:
@@ -2357,7 +2369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202ce3d083a308f4cb71fb5033bd0a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proof: {fileID: 0}
+  defaultProof: {fileID: 0}
+  proof:
+    no: 
+    proofName: 
+    proofDescription: 
+    objectName: 
+    sceneName: 
   proofRawImage: {fileID: 2993278638294696348}
 --- !u!114 &4044064039654523311
 MonoBehaviour:
@@ -2520,7 +2538,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202ce3d083a308f4cb71fb5033bd0a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proof: {fileID: 0}
+  defaultProof: {fileID: 0}
+  proof:
+    no: 
+    proofName: 
+    proofDescription: 
+    objectName: 
+    sceneName: 
   proofRawImage: {fileID: 4834961253561850629}
 --- !u!114 &8098698619667098542
 MonoBehaviour:
@@ -3037,6 +3061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapimage: {fileID: 4166370262335859937}
+  proofController: {fileID: 4095307982249403694}
 --- !u!1 &6556832026990912714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,7 +3482,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202ce3d083a308f4cb71fb5033bd0a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proof: {fileID: 0}
+  defaultProof: {fileID: 0}
+  proof:
+    no: 
+    proofName: 
+    proofDescription: 
+    objectName: 
+    sceneName: 
   proofRawImage: {fileID: 700046706}
 --- !u!114 &2132079278
 MonoBehaviour:
