@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     {
         for(int i = 0; i < slots.Length; i++)
         {
-            if(slots[i].proof == null)
+            if(slots[i].proof.objectName.Length == 0)
             {
                 Debug.Log("슬롯에 증거 추가");
                 slots[i].AddProof(proof);
