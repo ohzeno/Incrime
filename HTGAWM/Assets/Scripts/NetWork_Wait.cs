@@ -16,9 +16,14 @@ public class NetWork_Wait : MonoBehaviour
 	public static NetWork_Wait instance;
     //  ':' 로 분리할 것
 	static private readonly char[] Delimiter = new char[] {':'};
+    int index;
+    int total;
 
     [Header("오브젝트 :")]
 	public GameObject StartButton;  
+    public GameObject Tuto;
+
+    public Text Message;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +37,14 @@ public class NetWork_Wait : MonoBehaviour
 			instance = this;// define the class as a static variable        
             StartButton.SetActive(false);
             emitTotalplayer();
+
+            total = Tuto.transform.childCount;
+
+            index = 0;
+            for(int i = 0; i < total; i++ ){
+                Tuto.transform.GetChild(i).gameObject.SetActive(false);
+            }
+            Tuto.transform.GetChild(0).gameObject.SetActive(true);
         }
 		else
 		{
@@ -89,6 +102,25 @@ public class NetWork_Wait : MonoBehaviour
         // Debug.Log(storydesc);   
 
         SceneManager.LoadScene("RoleScene");
+    }
+
+    void showTutorial(int index){
+        Tuto.transform.GetChild(index).gameObject.SetActive(true);        
+    }
+
+    public void nextTuto(){
+        Tuto.transform.GetChild(index).gameObject.SetActive(false);  
+        index += 1;
+        if ( index == total ) index = 0 ;
+        Tuto.transform.GetChild(index).gameObject.SetActive(true); 
+    
+    }
+    
+    public void beforeTuto(){
+        Tuto.transform.GetChild(index).gameObject.SetActive(false);  
+        index -= 1;
+        if ( index == -1) index = total-1 ;
+        Tuto.transform.GetChild(index).gameObject.SetActive(true); 
     }
 }
 }

@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using System.Text;
-using UnityEngine.UI;
 using System.Runtime.InteropServices;
-using UnityEngine.SceneManagement;
 using agora_gaming_rtc;
 
 namespace Project
@@ -26,6 +27,10 @@ public class NewWork_Meeting : MonoBehaviour
 
     [Header("오브젝트 :")]
     public GameObject btn_exitMeeting;
+    public GameObject btn_closeVideo;
+
+    public GameObject myVideo;
+    public VideoPlayer vp;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,11 @@ public class NewWork_Meeting : MonoBehaviour
         // 싱글 톤 코드
         if (instance == null) {
 		    // 
+            vp.url = System.IO.Path.Combine (Application.streamingAssetsPath,"Video_Clue.mp4");        
+            myVideo.gameObject.SetActive(false);
+            btn_closeVideo.gameObject.SetActive(false);
+            // OnPlayVideo();
+
             
 		} else {
 			//it destroys the class if already other class exists
@@ -68,6 +78,20 @@ public class NewWork_Meeting : MonoBehaviour
     public void onExitMeeting(){
         Debug.Log("[system] 게임으로 갑니다. ");
         SceneManager.LoadScene("Map", LoadSceneMode.Single);
+    }
+
+    public void OnPlayVideo() {
+        Debug.Log("[system] 비디오를 재생합니다." );
+        myVideo.gameObject.SetActive(true);
+        btn_closeVideo.gameObject.SetActive(true);
+        vp.Play();
+    }
+
+    public void CloseVideo(){
+        Debug.Log("[system] 비디오를 닫습니다." );
+        vp.Stop();
+        myVideo.gameObject.SetActive(false);
+        btn_closeVideo.gameObject.SetActive(false);
     }
 
 }

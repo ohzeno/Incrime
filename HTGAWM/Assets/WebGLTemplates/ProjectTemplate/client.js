@@ -110,6 +110,16 @@ window.addEventListener('load', function() {
 			window.unityInstance.SendMessage ('PlayerObject', 'onMeeting');
 		}
 	});//END_SOCKET.ON
+	
+	// 추가 증거 비디오 띄워주기
+	socket.on('VIEW_CLUE_VIDEO', function( phase ) 
+	{
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Meeting', 'OnPlayVideo', phase);
+		}
+		
+	});//END_SOCKET.ON
 
 });//END_window_addEventListener
 
