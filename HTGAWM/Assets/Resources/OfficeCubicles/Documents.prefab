@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6928190547649970398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7103139646783306890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6266780610855333086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1162834120149353810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2615905932996302705}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,9 +162,9 @@ GameObject:
   - component: {fileID: 4735768264990104580}
   - component: {fileID: 4811416553180449438}
   - component: {fileID: 8169443546752593420}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Documents
-  m_TagString: Untagged
+  m_TagString: Proof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
     \uC815\uB9AC\uAC00 \uC798 \uB418\uC5B4 \uC788\uB294 \uAC83 \uAC19\uC9C0\uB294
     \uC54A\uB2E4.\n\uBAA8\uB450 \uB2E4 \uBA3C\uC9C0\uAC00 \uC313\uC5EC \uC788\uB294
     \uAC83\uC744 \uBCF4\uB2C8 \uC798 \uC4F0\uC9C0 \uC54A\uB294 \uB4EF\uD558\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
 --- !u!1 &5384174169190128032
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 5388783823118456716}
   - component: {fileID: 5397895466208832496}
   - component: {fileID: 5357454206827153350}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_Holder_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 5389214588826450026}
   - component: {fileID: 5399806867757783284}
   - component: {fileID: 5357574647052266372}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_Holder_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 5388837427472685859}
   - component: {fileID: 5399528422443509141}
   - component: {fileID: 5357534894413734031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_Holder_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 5388837426464736176}
   - component: {fileID: 5399528423448837382}
   - component: {fileID: 5357534893274200092}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_Holder_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 5389661131429649216}
   - component: {fileID: 5399427274103749426}
   - component: {fileID: 5357970940175245814}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_Manila_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 5389196380819510912}
   - component: {fileID: 5398047794759759586}
   - component: {fileID: 5357381082069937776}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Paper_Pile_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 5387984494995247045}
   - component: {fileID: 5397945452313457927}
   - component: {fileID: 5358004793483730259}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_Manila_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 5388672345161167616}
   - component: {fileID: 5399730622916044960}
   - component: {fileID: 5358065722372170764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Folder_PVC_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5746848703974664812}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830983411868149141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

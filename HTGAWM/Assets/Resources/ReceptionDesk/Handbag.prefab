@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3951873424373018908}
   - component: {fileID: 2832563922789154041}
   - component: {fileID: 1928153274980315051}
+  - component: {fileID: -4530140048594422200}
   m_Layer: 7
   m_Name: Handbag
   m_TagString: Proof
@@ -116,4 +117,18 @@ MonoBehaviour:
   no: 8
   proofName: Handbag
   proofDescription: "\uAC00\uBC29\uC774\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
+--- !u!64 &-4530140048594422200
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951873424375017436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ec65028349259aa4b83edab233a145ce, type: 3}

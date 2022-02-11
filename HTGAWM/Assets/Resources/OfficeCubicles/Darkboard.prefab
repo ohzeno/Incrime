@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3985475749841014585}
   - component: {fileID: 4012435405798160599}
   - component: {fileID: 4012435405798160592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Darkboard
-  m_TagString: Untagged
+  m_TagString: Proof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,4 +132,4 @@ MonoBehaviour:
   proofName: "\uB2E4\uD2B8 \uBCF4\uB4DC"
   proofDescription: "\uB2E4\uD2B8 \uBCF4\uB4DC\uAC00 \uBD99\uC5B4 \uC788\uB2E4. \uB9C8\uC774\uC0AC
     \uC0AC\uC9C4\uC774 \uB2E4\uD2B8 \uD558\uB098\uC5D0 \uAF42\uD600 \uC788\uB2E4. "
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}

@@ -1496,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584127135908417520, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (3)
+      value: Sprinkler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
@@ -3328,7 +3328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114001858646714462, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_Name
-      value: SocketWall (3)
+      value: SocketWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
@@ -6110,7 +6110,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 435337722858249583, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_Name
-      value: FireDetector (4)
+      value: FireDetector
       objectReference: {fileID: 0}
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_RootOrder
@@ -6638,7 +6638,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1333126236169175606, guid: bc0032690d919684a90e6a17a2786222, type: 3}
       propertyPath: m_Name
-      value: BookGroup (1)
+      value: BookGroup
       objectReference: {fileID: 0}
     - target: {fileID: 1335925160396524236, guid: bc0032690d919684a90e6a17a2786222, type: 3}
       propertyPath: m_RootOrder
@@ -7558,7 +7558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 528437314468279781, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
       propertyPath: m_Name
-      value: SecurityCamera (1)
+      value: SecurityCamera
       objectReference: {fileID: 0}
     - target: {fileID: 531068725385185331, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8126,7 +8126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 528437314468279781, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
       propertyPath: m_Name
-      value: SecurityCamera (2)
+      value: SecurityCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
@@ -8300,7 +8300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584127135908417520, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (2)
+      value: Sprinkler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
@@ -8848,7 +8848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584127135908417520, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (6)
+      value: Sprinkler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
@@ -9251,7 +9251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114001858646714462, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_Name
-      value: SocketWall (6)
+      value: SocketWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
@@ -9420,7 +9420,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1810997101942003938, guid: 307961901c6419644ad71512f7584163, type: 3}
       propertyPath: m_Name
-      value: JanitorCart2
+      value: JanitorCart
       objectReference: {fileID: 0}
     - target: {fileID: 1817181506539812846, guid: 307961901c6419644ad71512f7584163, type: 3}
       propertyPath: m_RootOrder
@@ -9696,7 +9696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584127135908417520, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (4)
+      value: Sprinkler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
@@ -11661,7 +11661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114001858646714462, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_Name
-      value: SocketWall (2)
+      value: SocketWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
@@ -12263,7 +12263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4371076349405995, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
       propertyPath: m_Name
-      value: FireExtinguisher (1)
+      value: FireExtinguisher
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
@@ -14567,7 +14567,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3895480430054286268, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
       propertyPath: m_Name
-      value: PaperPile (1)
+      value: PaperPile
       objectReference: {fileID: 0}
     - target: {fileID: 3898768381269776218, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
       propertyPath: m_RootOrder
@@ -15415,7 +15415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114001858646714462, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_Name
-      value: SocketWall (1)
+      value: SocketWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
@@ -16133,7 +16133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584127135908417520, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (1)
+      value: Sprinkler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
@@ -18858,7 +18858,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5440613627674858616, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
       propertyPath: m_Name
-      value: Bin (1)
+      value: Bin
       objectReference: {fileID: 0}
     - target: {fileID: 5443004314671634208, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
       propertyPath: m_RootOrder
@@ -19400,7 +19400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114001858646714462, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_Name
-      value: SocketWall (4)
+      value: SocketWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
@@ -19908,7 +19908,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 435337722858249583, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_Name
-      value: FireDetector (3)
+      value: FireDetector
       objectReference: {fileID: 0}
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_RootOrder
@@ -20603,7 +20603,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 435337722858249583, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_Name
-      value: FireDetector (2)
+      value: FireDetector
       objectReference: {fileID: 0}
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_RootOrder
@@ -20765,7 +20765,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 435337722858249583, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_Name
-      value: FireDetector (1)
+      value: FireDetector
       objectReference: {fileID: 0}
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_RootOrder
@@ -25502,7 +25502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114001858646714462, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_Name
-      value: SocketWall (5)
+      value: SocketWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
@@ -25520,7 +25520,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3243752676059865159, guid: da00eb252c18cee468be4be50e84a455, type: 3}
       propertyPath: m_Name
-      value: EmergencyAxe (1)
+      value: EmergencyAxe
       objectReference: {fileID: 0}
     - target: {fileID: 3247326895135797977, guid: da00eb252c18cee468be4be50e84a455, type: 3}
       propertyPath: m_RootOrder
@@ -25859,7 +25859,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8326021378958827786, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
       propertyPath: m_Name
-      value: Plant (1)
+      value: Plant
       objectReference: {fileID: 0}
     - target: {fileID: 8331652340912771332, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
       propertyPath: m_RootOrder
@@ -25921,7 +25921,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 219117937725700379, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
       propertyPath: m_Name
-      value: WaterCooler (1)
+      value: WaterCooler
       objectReference: {fileID: 0}
     - target: {fileID: 224940353975154899, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
       propertyPath: m_RootOrder
@@ -26077,7 +26077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584127135908417520, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (5)
+      value: Sprinkler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c82941763a9279408db1ca8a1f01efd, type: 3}
