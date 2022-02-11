@@ -10203,6 +10203,7 @@ GameObject:
   - component: {fileID: 1183193536122873171}
   - component: {fileID: 8433094748795624260}
   - component: {fileID: 8251810996588158351}
+  - component: {fileID: -9145946557506272369}
   m_Layer: 7
   m_Name: Fish_Update
   m_TagString: Proof
@@ -10278,6 +10279,22 @@ MonoBehaviour:
   proofName: FishPreset
   proofDescription: "\uC5B4\uD56D\uC774 \uC788\uB2E4. \uBB3C\uACE0\uAE30\uAC00 \uADC0\uC5FD\uB2E4."
   proofTexture: {fileID: 0}
+--- !u!54 &-9145946557506272369
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190953514924433051}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1191158360753038357
 GameObject:
   m_ObjectHideFlags: 0

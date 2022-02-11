@@ -4720,7 +4720,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1037026915853759462, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
       propertyPath: m_Name
-      value: Certificate3
+      value: Certificate
       objectReference: {fileID: 0}
     - target: {fileID: 1039904051607347362, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
       propertyPath: m_RootOrder
@@ -4973,7 +4973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5829084848646595257, guid: 2c543de3f26cb6a46adb39d8ef7355ce, type: 3}
       propertyPath: m_Name
-      value: Sprinkler (1)
+      value: Sprinkler
       objectReference: {fileID: 0}
     - target: {fileID: 5829961976582638777, guid: 2c543de3f26cb6a46adb39d8ef7355ce, type: 3}
       propertyPath: m_RootOrder
@@ -6574,7 +6574,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1037026915853759462, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
       propertyPath: m_Name
-      value: Certificate2
+      value: Certificate
       objectReference: {fileID: 0}
     - target: {fileID: 1039904051607347362, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
       propertyPath: m_RootOrder

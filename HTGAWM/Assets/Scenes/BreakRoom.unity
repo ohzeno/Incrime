@@ -3931,7 +3931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8952394677441061654, guid: 23a57abe4d079904c83a106db927b561, type: 3}
       propertyPath: m_Name
-      value: Fire_Detector (1)
+      value: Fire_Detector
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23a57abe4d079904c83a106db927b561, type: 3}

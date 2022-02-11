@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1753456681199685705}
   - component: {fileID: 6345203486410582466}
   - component: {fileID: 3850154635206466570}
+  - component: {fileID: -6525862766132764360}
   m_Layer: 7
   m_Name: Papers
   m_TagString: Proof
@@ -116,4 +117,18 @@ MonoBehaviour:
   no: 4
   proofName: Papers
   proofDescription: "\uAC01\uC885 \uC11C\uB958\uB4E4\uC774 \uBC14\uB2E5\uC5D0 \uD769\uC5B4\uC838\uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
+--- !u!64 &-6525862766132764360
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729904645075583903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 53109d7b59f902d449558f5c73fa9cbd, type: 3}

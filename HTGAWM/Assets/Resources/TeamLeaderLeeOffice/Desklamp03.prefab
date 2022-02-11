@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6710037557777609491
+--- !u!1 &6557675867994175761
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6708000851030171783}
-  - component: {fileID: 6728498425149109039}
-  - component: {fileID: 6722692568278106289}
-  - component: {fileID: 4438026151613055698}
-  - component: {fileID: 1541454543666013975}
-  - component: {fileID: -705348565785072808}
+  - component: {fileID: 6562668633891211283}
+  - component: {fileID: 6590178394812661657}
+  - component: {fileID: 6580004732337956737}
+  - component: {fileID: 6557910012597290928}
+  - component: {fileID: 6557910012597290931}
+  - component: {fileID: 6557910012597290930}
   m_Layer: 7
-  m_Name: WallDressing
+  m_Name: Desklamp03
   m_TagString: Proof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6708000851030171783
+--- !u!4 &6562668633891211283
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710037557777609491}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
-  m_LocalPosition: {x: -3.3122406, y: -1.1243619, z: 5.6412916}
+  m_GameObject: {fileID: 6557675867994175761}
+  m_LocalRotation: {x: 0, y: 0.42261827, z: 0, w: 0.9063079}
+  m_LocalPosition: {x: 4.859, y: 0.7073381, z: 2.405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
---- !u!33 &6728498425149109039
+  m_LocalEulerAnglesHint: {x: 0, y: 50, z: 0}
+--- !u!33 &6590178394812661657
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710037557777609491}
-  m_Mesh: {fileID: 4300000, guid: 5f2795fed486e7a4dbd265d3b027e709, type: 3}
---- !u!23 &6722692568278106289
+  m_GameObject: {fileID: 6557675867994175761}
+  m_Mesh: {fileID: 4300000, guid: 02c3b3736665fd446a99f523cf7f5117, type: 3}
+--- !u!23 &6580004732337956737
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710037557777609491}
+  m_GameObject: {fileID: 6557675867994175761}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,13 +84,43 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4438026151613055698
+--- !u!65 &6557910012597290928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557675867994175761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.05, z: 0.04}
+  m_Center: {x: 0, y: 0.03, z: -0.05}
+--- !u!114 &6557910012597290931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710037557777609491}
+  m_GameObject: {fileID: 6557675867994175761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  no: 28
+  proofName: Desklamp03
+  proofDescription: "\uB7A8\uD504\uB97C \uB4E4\uC5B4\uBCF4\uB2C8 \uC804\uC120\uC758
+    \uD53C\uBCF5\uC774 \uBC97\uACA8\uC838 \uC788\uB2E4."
+  proofTexture: {fileID: 0}
+--- !u!114 &6557910012597290930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557675867994175761}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -102,34 +132,3 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1541454543666013975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710037557777609491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  no: 24
-  proofName: WallDressing
-  proofDescription: "\uBCBD\uC5D0 \uBD99\uC5B4\uC788\uB294 \uC885\uC774\uB4E4\uC5D0
-    \uC5C5\uBB34 \uAD00\uB828 \uB0B4\uC6A9\uB4E4\uC774 \uC801\uD600\uC788\uB2E4."
-  proofTexture: {fileID: 0}
---- !u!64 &-705348565785072808
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6710037557777609491}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5f2795fed486e7a4dbd265d3b027e709, type: 3}

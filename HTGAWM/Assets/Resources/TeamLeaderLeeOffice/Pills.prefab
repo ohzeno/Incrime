@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1505547416881036060}
   - component: {fileID: 8839828826427216111}
   - component: {fileID: 6784621885614656897}
+  - component: {fileID: 6480343384713481126}
   m_Layer: 7
   m_Name: Pills
   m_TagString: Proof
@@ -117,4 +118,18 @@ MonoBehaviour:
   proofName: Pills
   proofDescription: "\uC57D\uBCD1\uC774\uB2E4.\n\uACE0\uD608\uC555, \uC2EC\uBD80\uC804
     \uAE30\uB2A5\uC131 \uC758\uC57D\uD488\uC774\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
+--- !u!64 &6480343384713481126
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505547416878835164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 421dcb3ec7eaef84096ae43d8c2132e5, type: 3}

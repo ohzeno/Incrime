@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3589235677790309207
+--- !u!1 &7796089911083855229
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,14 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3593105018821491285}
-  - component: {fileID: 3583468877841632735}
-  - component: {fileID: 3575526950095852999}
-  - component: {fileID: 3544195788296320197}
-  - component: {fileID: 3542775868022028689}
-  - component: {fileID: 3542469550626132431}
-  - component: {fileID: 8813027294031567525}
-  - component: {fileID: 8059793586874885984}
+  - component: {fileID: 7796089909437964715}
+  - component: {fileID: 7796089911083855227}
+  - component: {fileID: 7796089911083855226}
+  - component: {fileID: 7796089911083855225}
+  - component: {fileID: 7796089911083855224}
+  - component: {fileID: 7796089911083855231}
+  - component: {fileID: 7796089911083855230}
   m_Layer: 7
   m_Name: Desklamp
   m_TagString: Proof
@@ -23,35 +22,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3593105018821491285
+--- !u!4 &7796089909437964715
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
+  m_GameObject: {fileID: 7796089911083855229}
   m_LocalRotation: {x: 0, y: 0.42261827, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: -1.18, y: -1.4686618, z: 2.405}
+  m_LocalPosition: {x: 4.859, y: 0.7073381, z: 2.405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 50, z: 0}
---- !u!33 &3583468877841632735
+--- !u!33 &7796089911083855227
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
+  m_GameObject: {fileID: 7796089911083855229}
   m_Mesh: {fileID: 4300000, guid: 02c3b3736665fd446a99f523cf7f5117, type: 3}
---- !u!23 &3575526950095852999
+--- !u!23 &7796089911083855226
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
+  m_GameObject: {fileID: 7796089911083855229}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,41 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3544195788296320197
+--- !u!64 &7796089911083855225
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43327629842084986, guid: b28ebd42345cf464ca81a514886cebf3, type: 2}
---- !u!64 &3542775868022028689
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43226321047687130, guid: b28ebd42345cf464ca81a514886cebf3, type: 2}
---- !u!64 &3542469550626132431
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
+  m_GameObject: {fileID: 7796089911083855229}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -128,13 +99,13 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43370505182937486, guid: b28ebd42345cf464ca81a514886cebf3, type: 2}
---- !u!114 &8813027294031567525
+--- !u!114 &7796089911083855224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
+  m_GameObject: {fileID: 7796089911083855229}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -146,13 +117,13 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &8059793586874885984
+--- !u!114 &7796089911083855231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589235677790309207}
+  m_GameObject: {fileID: 7796089911083855229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
@@ -162,4 +133,18 @@ MonoBehaviour:
   proofName: Desklamp
   proofDescription: "\uCC45\uC0C1\uC5D0 \uBD88\uC744 \uBC1D\uD788\uAE30 \uC704\uD55C
     \uC2A4\uD0E0\uB4DC\uC774\uB2E4.\r\n\uBAA8\uB378 : YANG-0318"
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
+--- !u!64 &7796089911083855230
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796089911083855229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 43226321047687130, guid: b28ebd42345cf464ca81a514886cebf3, type: 2}

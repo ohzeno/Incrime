@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7334004629722585470}
   - component: {fileID: 8300376348109691175}
   - component: {fileID: 6959934632082259872}
+  - component: {fileID: 1609962314408903581}
   m_Layer: 7
   m_Name: WallDressing
   m_TagString: Proof
@@ -117,4 +118,18 @@ MonoBehaviour:
   proofName: WallDressing
   proofDescription: "\uBCBD\uC5D0 \uB9CE\uC740 \uAE30\uB85D\uB4E4\uC774 \uC801\uD600\uC788\uB2E4.\n\uD654\uC7AC\uC2DC
     \uB300\uD53C\uC694\uB839\uC774 \uC801\uD600\uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
+--- !u!64 &1609962314408903581
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7319058047858535132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5f2795fed486e7a4dbd265d3b027e709, type: 3}

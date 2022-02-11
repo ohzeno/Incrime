@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8997371631120270452}
   - component: {fileID: 3125320169259515450}
   - component: {fileID: 4424613577356638500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire_Detector
-  m_TagString: Untagged
+  m_TagString: Proof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   no: 12
   proofName: "\uD654\uC7AC\uACBD\uBCF4\uAE30"
   proofDescription: "\uD654\uC7AC\uACBD\uBCF4\uAE30\uC774\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
 --- !u!114 &4424613577356638500
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8338271697596350722}
   - component: {fileID: 1309780325819671822}
   - component: {fileID: 2759565903044087707}
+  - component: {fileID: -4376542420870780719}
   m_Layer: 7
   m_Name: Postit1
   m_TagString: Proof
@@ -132,7 +133,23 @@ MonoBehaviour:
   no: 4
   proofName: Postit1
   proofDescription: "\uBA54\uBAA8\uC9C0\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
+--- !u!54 &-4376542420870780719
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8310615363057428036}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &8310142621536500085
 PrefabInstance:
   m_ObjectHideFlags: 0
