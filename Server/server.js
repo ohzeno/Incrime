@@ -366,6 +366,13 @@ io.on('connection', function(socket){
 			clients.forEach( function(i){
 				io.to(i.id).emit('GO_VOTE_RESULT', votes);
 			})
+			first_vote_number = 0;
+			votes[0] = 0;
+			votes[1] = 0;
+			votes[2] = 0;
+			votes[3] = 0;
+			votes[4] = 0;
+			votes[5] = 0;
 		}
 
 	})
@@ -375,6 +382,8 @@ io.on('connection', function(socket){
 var proof = require('./share_server');
 proof.shareProof(io);
 
+var voteResult = require('./vote_server');
+voteResult.voteResult(io);
 
 http.listen(process.env.PORT ||3000, function(){
 	console.log('listening on *:3000');
