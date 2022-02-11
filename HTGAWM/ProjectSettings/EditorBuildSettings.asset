@@ -45,6 +45,12 @@ EditorBuildSettings:
     path: Assets/Scenes/TeamLeaderLeeOffice.unity
     guid: 4143035b1f4052546adb60f8aba0036a
   - enabled: 1
+    path: Assets/Scenes/JoinScene.unity
+    guid: 18e13c096f577964dbf5388ccc077cc2
+  - enabled: 1
+    path: Assets/Scenes/MyPageScene.unity
+    guid: bcc301976fa38fb4493ca55071333186
+  - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: 916bf1957b4d0b54f979519e5f0484cf
   - enabled: 1

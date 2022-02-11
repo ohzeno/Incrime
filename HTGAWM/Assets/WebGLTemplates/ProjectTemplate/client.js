@@ -31,6 +31,25 @@ window.addEventListener('load', function() {
 		}
 	  
 	});//END_SOCKET.ON
+
+	socket.on('USERINFO', function(name, password, mail) {
+		console.log("USERINFO");
+  
+		var currentUserAtr = name + ':' + password + ':' + mail;
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_MyPage', 'CheckUserInfo', currentUserAtr);
+		}
+	 }); 
+  
+  
+	socket.on('CHANGE_STARTSSCENE', function() {
+		console.log("CHANGE_STARTSSCENE");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Join', 'ChangeStartScene');
+		}
+	 }); 
 		        
 	// 끊겼을 때 아직 안함
 	// socket.on('USER_DISCONNECTED', function(id) {

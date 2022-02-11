@@ -122,5 +122,9 @@ public class NetWork_Wait : MonoBehaviour
         if ( index == -1) index = total-1 ;
         Tuto.transform.GetChild(index).gameObject.SetActive(true); 
     }
+
+    public void ChangeMyPageScene() {
+        SceneManager.LoadScene("MyPageScene");
+    }
 }
 }

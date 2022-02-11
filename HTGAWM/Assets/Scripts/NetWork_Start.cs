@@ -30,6 +30,7 @@ public class NetWork_Start : MonoBehaviour
     [Header("Input field  :")]
     // 이름 입력하기
     public InputField JoinName;
+	public InputField JoinPassword;
 
 
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class NetWork_Start : MonoBehaviour
 		else
 		{
 			//it destroys the class if already other class exists
-			Destroy(this.gameObject);
+			// Destroy(this.gameObject);
 		}
         
     }
@@ -68,12 +69,12 @@ public class NetWork_Start : MonoBehaviour
 	/// </summary>
 	public void EmitJoinRoom()
 	{
-	
         // 키 밸류 데이터 
 		Dictionary<string, string> data = new Dictionary<string, string>();
 		
 		// 플레이어 이름
 		data["name"] = "empty";
+		data["password"] = "empty";
         //StartScene.instance.Login.text; 이런식은 안됨 왜 안되는지 모르겠지만
         // 또는 
         // GameObject.Find("JoinName").GetComponent<Text>();
@@ -81,6 +82,7 @@ public class NetWork_Start : MonoBehaviour
 		string msg = string.Empty;
 		data["callback_name"] = "JOIN";
         data["name"] = JoinName.text;
+		data["password"] = JoinPassword.text;
 
         // JSON으로 묶어서 보냄 
 		Application.ExternalCall("socket.emit", data["callback_name"], new JSONObject(data));
@@ -122,6 +124,10 @@ public class NetWork_Start : MonoBehaviour
 		Debug.Log(Client.name + " 은 대기화면으로 갑니다. 총 인원 수 : " + Variables.totalplayer);
         SceneManager.LoadScene("WaitScene");
 		
+	}
+
+	public void ChangeJoinScene() {
+		SceneManager.LoadScene("JoinScene");
 	}
 
 }
