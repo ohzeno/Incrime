@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "dependencies": {
-    "express": "^4.10.4",
+    "express": "^4.17.2",
     "mysql": "^2.18.1",
     "socket.io": ">=2.4.0",
     "socketio": "^1.0.0"

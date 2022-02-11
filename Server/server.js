@@ -76,13 +76,27 @@ io.on('connection', function(socket){
 		currentUser = {
 			id : socket.id, // 계속 사용할socket.id
 			name : data.name,
+			password: data.password,
 			socketID : socket.id, // fills out with the id of the socket that was open
 			usernumber : (clients.length +1 ), 
 		};
 					
 		console.log(currentUser)
 		console.log('[system] player '+currentUser.name+': 이 입장 했습니다.!');
+		console.log('로그인 시도 비밀번호 : ' + currentUser.password);
 
+		var SQL = "select * from user"
+			+ " where user_id = '" + currentUser.name + "'";
+
+		connection.query(SQL, function (error, results) {
+			if (error || results.length == 0) {
+				console.log(error);
+				console.log("존재하지 않는 아이디입니다.");
+			}
+			else if (results[0].user_pw != currentUser.password) {
+				console.log("아이디 혹은 비밀번호를 확인하세요")
+			}
+			else {
 		// clients list에 추가
 		clients.push(currentUser);
 		// add client in search engine
@@ -92,10 +106,118 @@ io.on('connection', function(socket){
 		// 
 		socket.emit("JOIN_SUCCESS",currentUser.id,currentUser.name, clients.length  );
 		// Client.js 의 JOIN_SUCCESS 로 가셈 
+	}
+});
+});//END_SOCKET_ON
 
-	});//END_SOCKET_ON
+// 회원가입
+socket.on('USERJOIN', function (_data) {
+console.log('[INFO] User가 회원가입을 시도합니다.')
+var data = JSON.parse(_data);
+
+console.log("datainfo : " + data.name + " " + data.password + " " + data.mail);
+
+// fills out with the information emitted by the player in the unity
+var User = {
+	name: data.name,
+	password: data.password,
+	mail: data.email,
+};//new user  in clients list
+
+console.log(User);
+console.log("userinfo : " + User.name + " " + User.password + " " + User.mail);
+
+var SQL = "insert into user (user_id, user_pw, user_email)"
+	+ " value ( '" + User.name + "', '" + User.password + "', '" + User.mail + "')";
+
+console.log(SQL);
+connection.query(SQL, function (error, results) {
+	if (error) {
+		console.log(error);
+		console.log("이미 존재하는 아이디입니다.");
+	}
+	else {
+		console.log('[INFO] player ' + User.name + ': join sucsess');
+		socket.emit('CHANGE_STARTSSCENE');
+	}
+});
+});//END_SOCKET_ON
 	
-	
+
+// 회원정보 수정
+socket.on('USERUPDATE', function (_data) {
+	console.log('[INFO] User가 정보 수정을 시도합니다.')
+	var data = JSON.parse(_data);
+
+	console.log("datainfo : " + data.name + " " + data.password + " " + data.mail);
+
+	// fills out with the information emitted by the player in the unity
+	var User = {
+		name: data.name,
+		password: data.password,
+		mail: data.email,
+	};//new user  in clients list
+
+	console.log(User);
+	console.log("userinfo : " + User.name + " " + User.password + " " + User.mail);
+
+	var SQL = "update user"
+		+ " set user_pw = '" + User.password + "', "
+		+ " user_email =  '" + User.mail + "'"
+		+ " where user_id = '" + User.name + "'";
+
+	console.log(SQL);
+	connection.query(SQL, function (error, results) {
+		if (error) {
+			console.log(error);
+			console.log("정보 수정에 실패하였습니다.");
+		}
+		else {
+			console.log('[INFO] player ' + User.name + ': update sucsess');
+			socket.emit('USERINFO', User.name, User.password, User.mail);
+		}
+	});
+});//END_SOCKET_ON
+
+
+// 회원 탈퇴
+socket.on('USERDELETE', function (_data) {
+	console.log('[INFO] User가 회원탈퇴를 시도합니다.')
+
+	var SQL = "delete from user"
+		+ " where user_id =  '" + currentUser.name + "'";
+
+	console.log(SQL);
+	connection.query(SQL, function (error, results) {
+		if (error) {
+			console.log(error);
+			console.log("삭제를 실패하였습니다..");
+		}
+		else {
+			console.log('[INFO] player ' + currentUser.name + ': delete sucsess');
+			socket.emit('CHANGE_STARTSSCENE');
+		}
+	});
+});//END_SOCKET_ON
+
+
+// 유저 마이페이지
+socket.on('USERINFOPAGE', function () {
+	var SQL = "select * from user"
+		+ " where user_id =  '" + currentUser.name + "'";
+
+	connection.query(SQL, function (error, results) {
+		if (error) {
+			console.log(error);
+			console.log("호출 실패");
+		}
+		else {
+			console.log('[INFO] player ' + currentUser.name + ': userinfo get sucsess');
+			socket.emit('USERINFO', results[0].user_id, results[0].user_pw, results[0].user_email);
+		}
+	});
+});
+
     // 유저가 끊겼을 때
 	socket.on('disconnect', function ()
 	{
