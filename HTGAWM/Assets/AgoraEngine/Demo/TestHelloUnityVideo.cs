@@ -191,15 +191,15 @@ public class TestHelloUnityVideo
         }
 
         // create a GameObject and assign to this new user
-        // VideoSurface videoSurface = makeImageSurface(uid.ToString());
-        if (!ReferenceEquals(camObject, null))
+        VideoSurface videoSurface = makeImageSurface(uid.ToString());
+        if (!ReferenceEquals(videoSurface, null))
         {
             camObject.AddOtherUser(uid);
 
             // configure videoSurface
-            // videoSurface.SetForUser(uid);
-            // videoSurface.SetEnable(true);
-            // videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
+            videoSurface.SetForUser(uid);
+            videoSurface.SetEnable(true);
+            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
         }
     }
 
@@ -253,14 +253,15 @@ public class TestHelloUnityVideo
         // 이부분 수정하기
         // float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
         // float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
-        float xPos = -875;
+        float xPos = -900;
         float yPos = 220;
-        go.transform.localPosition = new Vector3(xPos + ( temp * 290 ), yPos, 0f);
+        go.transform.localPosition = new Vector3(xPos + ( temp * 270 ), yPos, 0f);
         temp += 1;
+        if ( temp == 6) temp =1;
         Debug.Log("지금 연결된 수 : " + temp);
         // 화면 사이즈 조절
-        go.transform.localScale = new Vector3(  (2*1.6666f) * (float) 0.8 ,  (2f) * (float) 0.8 , 1f);
-        // go.transform.localScale = new Vector3(  (1*1.6666f)  ,  (1f)  , 1f);
+        // go.transform.localScale = new Vector3(  (2*1.6666f) * (float) 0.8 ,  (2f) * (float) 0.8 , 1f);
+        go.transform.localScale = new Vector3(  (1.5f*1.6666f)  ,  (1.5f)  , 1f);
 
         // configure videoSurface
         VideoSurface videoSurface = go.AddComponent<VideoSurface>();

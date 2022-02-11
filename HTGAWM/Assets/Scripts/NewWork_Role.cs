@@ -91,15 +91,15 @@ public class NewWork_Role : MonoBehaviour
     public void onConference(){
         Debug.Log("[System] Client : 첫 회의 하러 갑니다 ");
         
-         // create app if nonexistent
-        if (ReferenceEquals(app, null))
-        {
-            app = new TestHelloUnityVideo(); // create app
-            app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); // load engine
-        }
+        // // create app if nonexistent
+        // if (ReferenceEquals(app, null))
+        // {
+        //     app = new TestHelloUnityVideo(); // create app
+        //     app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); // load engine
+        // }
 
-        // // join channel and jump to next scene
-        app.join("TEST", true);
+        // // // join channel and jump to next scene
+        // app.join("TEST", true);
         // SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
         SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
 
