@@ -1,6 +1,3 @@
-var socket = io() || {};
-socket.isReady = false;
-
 // chatroom client .js 
 window.addEventListener('load', function() {
     // 첫 투표 씬 가기
@@ -26,5 +23,39 @@ window.addEventListener('load', function() {
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage('NetWork_Vote', 'VoteTimer', timer);
 		}
-	});
+	});//END_SOCKET.ON
+
+	// 투표에서 동표가 아닐경우
+	socket.on('GO_SINGLE_RESULT_VOTE', function (data) {
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('Typing', 'VoteTextResult', data);
+		}
+	});//END_SOCKET.ON
+
+	// 투표에서 동표일 경우
+	socket.on('GO_MULTI_RESULT_VOTE', function (data) {
+		var vote = "";
+		data.forEach(function(i) {
+			if(i != null){
+				vote += i + ":";
+			}
+		});
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('Typing', 'MultiVoteTextResult', vote);
+		}
+	});//END_SOCKET.ON
+
+	// 두번째 투표
+	socket.on('GO_SECOND_VOTE', function (data) {
+		var again = "";
+		data.forEach(function(i) {
+			if(i != null){
+				again += i + ":";
+			}
+		});
+		console.log("vote.js" + again);
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('ClickController', 'SecondVote', again);
+		}
+	});//END_SOCKET.ON
 });

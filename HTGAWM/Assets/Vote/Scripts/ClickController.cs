@@ -33,6 +33,20 @@ namespace Project {
         private GameObject ChoiHand;
         [SerializeField]
         private GameObject YunHand;
+
+        [SerializeField]
+        private GameObject MaPanel;
+        [SerializeField]
+        private GameObject KimPanel;
+        [SerializeField]
+        private GameObject ChunPanel;
+        [SerializeField]
+        private GameObject JangPanel;
+        [SerializeField]
+        private GameObject ChoiPanel;
+        [SerializeField]
+        private GameObject YunPanel;
+
         [SerializeField]
         private Text VoteText;
         [SerializeField]
@@ -43,6 +57,8 @@ namespace Project {
         public AudioClip gameEnd;
 
         private string name;
+
+        private string[] same; // 동표일 때, 누가 있는지
 
         public void nameSet(string name){
             this.name = name;
@@ -127,11 +143,11 @@ namespace Project {
 
         public void MoveResultStory()
         {
-            playSound(gameEnd, musicPlayer);
+            PlaySound(gameEnd, musicPlayer);
             SceneManager.LoadScene("ResultPage");
         }
 
-        public void playSound(AudioClip clip, AudioSource audioPlayer)
+        public void PlaySound(AudioClip clip, AudioSource audioPlayer)
         {
             audioPlayer.Stop();
             audioPlayer.clip = clip;
@@ -140,7 +156,7 @@ namespace Project {
             audioPlayer.Play();
         }
 
-        public int compare(string[] vote)
+        public int Compare(string[] vote)
         {
             int max = 0;
             for(int i = 0; i<6; i++)
@@ -153,9 +169,52 @@ namespace Project {
             return max;
         }
 
-        IEnumerator WaitForIt(string[] vote)
+        public bool VoteSame(string[] result)
         {
-            int max = compare(vote);
+            int max = Compare(result);
+            int cnt = 0;
+            bool flag = false;
+            same = new string[6];
+            for (int i = 0; i<6; i++)
+            {
+                if (max == int.Parse(result[i]))
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            same[cnt] = "마이사";
+                            break;
+                        case 1:
+                            same[cnt] = "김비서";
+                            break;
+                        case 2:
+                            same[cnt] = "천보안";
+                            break;
+                        case 3:
+                            same[cnt] = "장대행";
+                            break;
+                        case 4:
+                            same[cnt] = "최과장";
+                            break;
+                        case 5:
+                            same[cnt] = "윤사원";
+                            break;
+                    }
+                    cnt++;
+                }
+            }
+            if (cnt > 1)
+            {
+                flag = true;
+            }
+            Debug.Log(flag);
+            return flag;
+        }
+
+        IEnumerator WaitForIt(string[] vote, string[] result)
+        {
+
+            int max = Compare(vote);
             musicPlayer = GetComponent<AudioSource>();
             yield return new WaitForSeconds(1.5f);
             for (int i = 0; i < max; i++)
@@ -237,12 +296,25 @@ namespace Project {
                     {
                         GameObject ins = Instantiate(YunHand, YunHand.transform.parent.transform) as GameObject;
                         vote[5] = (int.Parse(vote[5]) - 1).ToString();
-                        Debug.Log("윤비서 투표 수 " + vote[5]);
                     }
 
                 }
-                playSound(handcuffsMusic, musicPlayer); // 음악 실행
+                PlaySound(handcuffsMusic, musicPlayer); // 음악 실행
                 yield return new WaitForSeconds(1.5f);
+            }
+
+            bool flag = VoteSame(result);
+            if (flag == true) // 동표가 나왔을 때
+            {
+                Debug.Log("동표가 나옴");
+                Application.ExternalCall("socket.emit", "MULTI_RESULT_VOTE", same);
+                SceneManager.LoadScene("VoteTextResult");
+            }
+            else // 한명이 최대 득표 일 때
+            {
+                Debug.Log("한명이 최대 득표 " + same[0]);
+                Application.ExternalCall("socket.emit", "SINGLE_RESULT_VOTE", same[0]);
+                SceneManager.LoadScene("VoteTextResult");
             }
         }
 
@@ -255,14 +327,58 @@ namespace Project {
             ChoiHand.SetActive(false);
             YunHand.SetActive(false);
 
-            var vote = data.Split (Delimiter);
-            Debug.Log(vote[0] + " " + vote[1] + " " + vote[2] + " " + vote[3] + " " + vote[4] + " " + vote[5]);
+            var vote = data.Split(Delimiter);
+            var result = data.Split(Delimiter);
 
+            StartCoroutine(WaitForIt(vote, result)); // 사용자에게 투표 갯수 알려줌
 
-            StartCoroutine(WaitForIt(vote));
+            
             // 15초 뒤에 스토리 결과 출력
-            Invoke("MoveResultStory", 15);
+            // Invoke("MoveResultStory", 15);
 
+        }
+
+        public void PanelHide()
+        {
+            MaPanel.SetActive(false);
+            KimPanel.SetActive(false);
+            ChunPanel.SetActive(false);
+            JangPanel.SetActive(false);
+            ChoiPanel.SetActive(false);
+            YunPanel.SetActive(false);
+        }
+
+        public void SecondVote(string data)
+        {
+            Debug.Log("두번째 투표" + data);
+            PanelHide();
+            var again = data.Split(Delimiter);
+            for(int i = 0; i<again.Length; i++)
+            {
+                if(again[i] == "마이사")
+                {
+                    MaPanel.SetActive(true);
+                }else if(again[i] == "김비서")
+                {
+                    KimPanel.SetActive(true);
+                }
+                else if (again[i] == "천보안")
+                {
+                    ChunPanel.SetActive(true);
+                }
+                else if (again[i] == "장대행")
+                {
+                    JangPanel.SetActive(true);
+                }
+                else if (again[i] == "최과장")
+                {
+                    ChoiPanel.SetActive(true);
+                }
+                else if (again[i] == "윤사원")
+                {
+                    YunPanel.SetActive(true);
+                }
+            }
         }
     }
 }

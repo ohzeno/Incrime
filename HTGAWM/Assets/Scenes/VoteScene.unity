@@ -4868,6 +4868,12 @@ MonoBehaviour:
   JangHand: {fileID: 1113681693}
   ChoiHand: {fileID: 187657830}
   YunHand: {fileID: 463821639}
+  MaPanel: {fileID: 1322149322}
+  KimPanel: {fileID: 32460776}
+  ChunPanel: {fileID: 1818114217}
+  JangPanel: {fileID: 1797845792}
+  ChoiPanel: {fileID: 127856765}
+  YunPanel: {fileID: 1507431390}
   VoteText: {fileID: 856750597}
   VoteBtn: {fileID: 849658139}
   handcuffsMusic: {fileID: 8300000, guid: da61845303f818143970230b43fa6d8d, type: 3}
