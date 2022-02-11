@@ -433,9 +433,6 @@ socket.on('USERINFOPAGE', function () {
 					io.to(i.id).emit('GO_VOTE');
 				});//end_forEach
 
-				// 시간 보내주기 
-				Timeset(1,gamephase);
-
 				// 투표 시간 : 1분 = 60000
 				setTimeout(function () {
 					if(gamephase != 7){
@@ -452,6 +449,9 @@ socket.on('USERINFOPAGE', function () {
 					}
 					
 				}, 60000); 
+				
+				// 시간 보내주기 
+				Timeset(1,gamephase);
 
 			}
 
@@ -485,16 +485,10 @@ socket.on('USERINFOPAGE', function () {
 		if(first_vote_number == 6){
 			console.log("[INFO] player 모두가 투표 했습니다.");
 			gamephase = 7;
+			clearInterval(timerId);
 			clients.forEach( function(i){
 				io.to(i.id).emit('GO_VOTE_RESULT', votes);
 			})
-			first_vote_number = 0;
-			votes[0] = 0;
-			votes[1] = 0;
-			votes[2] = 0;
-			votes[3] = 0;
-			votes[4] = 0;
-			votes[5] = 0;
 		}
 
 	})
