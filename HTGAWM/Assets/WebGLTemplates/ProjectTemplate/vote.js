@@ -1,3 +1,4 @@
+
 // chatroom client .js 
 window.addEventListener('load', function() {
     // 첫 투표 씬 가기
@@ -21,7 +22,7 @@ window.addEventListener('load', function() {
 	socket.on('SET_VOTE_TIMER', function (time, minute, second) {
 		var timer = time + ':' + minute + ':' + second;
 		if (window.unityInstance != null) {
-			window.unityInstance.SendMessage('NetWork_Vote', 'VoteTimer', timer);
+			window.unityInstance.SendMessage('ClickController', 'VoteTimer', timer);
 		}
 	});//END_SOCKET.ON
 
@@ -45,8 +46,8 @@ window.addEventListener('load', function() {
 		}
 	});//END_SOCKET.ON
 
-	// 두번째 투표
-	socket.on('GO_SECOND_VOTE', function (data) {
+	// 두번째 투표 씬으로 이동
+	socket.on('GO_MOVE_SECOND_VOTE', function (data) {
 		var again = "";
 		data.forEach(function(i) {
 			if(i != null){
@@ -55,7 +56,45 @@ window.addEventListener('load', function() {
 		});
 		console.log("vote.js" + again);
 		if (window.unityInstance != null) {
-			window.unityInstance.SendMessage('ClickController', 'SecondVote', again);
+			window.unityInstance.SendMessage('VoteSecondController', 'SecondVote', again);
 		}
 	});//END_SOCKET.ON
+
+	// 투표 내 타이머
+	socket.on('SET_SECOND_VOTE_TIMER', function (time, minute, second) {
+		var timer = time + ':' + minute + ':' + second;
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('VoteSecondController', 'VoteTimer', timer);
+		}
+	});//END_SOCKET.ON
+
+	// 두번째 투표 결과 창으로 이동
+	socket.on('GO_SECOND_VOTE', function(votes){
+		console.log("[vote.js] 두번째 투표 들어옴");
+		var vote = votes[0] + ':' +votes[1] + ':' +votes[2] + ':' + votes[3] + ':' + votes[4] + ':' + votes[5];
+		if(window.unityInstance!=null){
+			window.unityInstance.SendMessage ('VoteSecondController', 'onVote', vote);
+		}
+	})
+
+	// 두번째 투표에서 동표가 아닐경우
+	socket.on('GO_SINGLE_RESULT_SECOND_VOTE', function (data) {
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('Typing', 'VoteTextResult', data);
+		}
+	});//END_SOCKET.ON
+
+	// 두번째 투표에서 동표일 경우
+	socket.on('GO_MULTI_RESULT_SECOND_VOTE', function (data) {
+		var vote = "";
+		data.forEach(function(i) {
+			if(i != null){
+				vote += i + ":";
+			}
+		});
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage('Typing', 'MultiSecondVoteTextResult', vote);
+		}
+	});//END_SOCKET.ON
+	
 });

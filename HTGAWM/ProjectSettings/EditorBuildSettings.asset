@@ -57,6 +57,12 @@ EditorBuildSettings:
     path: Assets/Scenes/VoteScene.unity
     guid: 0fb3651eb98e4964d8f4b96744b16aff
   - enabled: 1
+    path: Assets/Scenes/VoteSecondScene.unity
+    guid: 07f7725dd652cb24ab201d5aca4fbc45
+  - enabled: 1
+    path: Assets/Scenes/VoteTextResult.unity
+    guid: 693c19447875b704ebeaa840fc9ffe74
+  - enabled: 1
     path: Assets/Scenes/ResultPage.unity
     guid: 84027025e7f12084f8dcf5b1ba4b1c7d
   m_configObjects: {}

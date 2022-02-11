@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Project {
-    public class ClickController : MonoBehaviour
+namespace Project
+{
+    public class VoteSecondController : MonoBehaviour
     {
         [SerializeField]
         private GameObject KimCheck;
@@ -35,11 +36,25 @@ namespace Project {
         private GameObject YunHand;
 
         [SerializeField]
+        private GameObject MaBtn;
+        [SerializeField]
+        private GameObject KimBtn;
+        [SerializeField]
+        private GameObject ChunBtn;
+        [SerializeField]
+        private GameObject JangBtn;
+        [SerializeField]
+        private GameObject ChoiBtn;
+        [SerializeField]
+        private GameObject YunBtn;
+        
+        [SerializeField]
+        private Text timer;
+
+        [SerializeField]
         private Text VoteText;
         [SerializeField]
         private Button VoteBtn;
-        [SerializeField]
-        private Text timer;
 
         private AudioSource musicPlayer;
         public AudioClip handcuffsMusic;
@@ -47,30 +62,28 @@ namespace Project {
 
         private string name;
 
-        private string[] same; // ë™í‘œì¼ ë•Œ, ëˆ„ê°€ ìˆëŠ”ì§€
+        private string[] same; // µ¿Ç¥ÀÏ ¶§, ´©°¡ ÀÖ´ÂÁö
 
-        public void nameSet(string name){ 
+        public void nameSet(string name)
+        {
             this.name = name;
         }
 
-        public string nameGet(){
+        public string nameGet()
+        {
             return name;
         }
 
-        static private readonly char[] Delimiter = new char[] {':'};
+        static private readonly char[] Delimiter = new char[] { ':' };
 
-        void Start(){
-            KimCheck.SetActive(false);
-            MaCheck.SetActive(false);
-            ChunCheck.SetActive(false);
-            JangCheck.SetActive(false);
-            YunCheck.SetActive(false);
-            ChoiCheck.SetActive(false);
+        void Start()
+        {
+            HideCheck();
             ResultVote.SetActive(false);
-
         }
 
-        void HideCheck(){
+        void HideCheck()
+        {
             KimCheck.SetActive(false);
             MaCheck.SetActive(false);
             ChunCheck.SetActive(false);
@@ -79,69 +92,63 @@ namespace Project {
             ChoiCheck.SetActive(false);
         }
 
-        public void ChunClick(){
+        public void ChunClick()
+        {
             name = "Chun";
             nameSet(name);
             HideCheck();
             ChunCheck.SetActive(true);
         }
 
-        public void KimClick(){
+        public void KimClick()
+        {
+            Debug.Log("±èºñ¼­ Å¬¸¯");
             name = "Kim";
             nameSet(name);
             HideCheck();
             KimCheck.SetActive(true);
         }
 
-        public void JangClick(){
+        public void JangClick()
+        {
             name = "Jang";
             nameSet(name);
             HideCheck();
             JangCheck.SetActive(true);
         }
 
-        public void MaClick(){
+        public void MaClick()
+        {
             name = "Ma";
             nameSet(name);
             HideCheck();
             MaCheck.SetActive(true);
         }
 
-        public void YunClick(){
+        public void YunClick()
+        {
             name = "Yun";
             nameSet(name);
             HideCheck();
             YunCheck.SetActive(true);
         }
 
-        public void ChoiClick(){
+        public void ChoiClick()
+        {
             name = "Choi";
             nameSet(name);
             HideCheck();
             ChoiCheck.SetActive(true);
         }
 
-        public void VoteClick(){
-            // emitVote ì„œë²„ì— ë³´ë‚¼ í´ë¼ì´ì–¸íŠ¸ íˆ¬í‘œ ë°ì´í„°
-            string data = nameGet();
-            Debug.Log("[System] Client : ìºë¦­í„° íˆ¬í‘œ server.jsë¡œ ë³´ë‚´ê¸° " + data);
-            VoteText.text = "ë‹¤ë¥¸ í”Œë ˆì´ì–´ë¥¼ ê¸°ë‹¤ë ¤ ì£¼ì„¸ìš”";
-            VoteBtn.interactable = false;
-            Application.ExternalCall("socket.emit", "first_vote", data);
-        }
-
-        // íˆ¬í‘œ ì‹œê°„
-        public void VoteTimer(string data)
+        public void VoteClick()
         {
-            var pack = data.Split(Delimiter);
-            // Debug.Log(pack[1] + " : " + pack[2]);
-
-            Client.minute = pack[1];
-            Client.second = pack[2];
-
-            var timetxt = "";
-            timetxt = pack[1] + ":" + pack[2];
-            timer.text = timetxt;
+            // emitVote ¼­¹ö¿¡ º¸³¾ Å¬¶óÀÌ¾ğÆ® ÅõÇ¥ µ¥ÀÌÅÍ
+            string data = nameGet();
+            Debug.Log("[System] Client : Ä³¸¯ÅÍ ÅõÇ¥ server.js·Î º¸³»±â " + data);
+            VoteText.text = "´Ù¸¥ ÇÃ·¹ÀÌ¾î¸¦ ±â´Ù·Á ÁÖ¼¼¿ä";
+            VoteBtn.interactable = false;
+            Application.ExternalCall("socket.emit", "SECOND_VOTE", data);
         }
 
         public void MoveResultStory()
@@ -159,12 +166,36 @@ namespace Project {
             audioPlayer.Play();
         }
 
+        public void PanelHide()
+        {
+            MaBtn.SetActive(false);
+            KimBtn.SetActive(false);
+            ChunBtn.SetActive(false);
+            JangBtn.SetActive(false);
+            ChoiBtn.SetActive(false);
+            YunBtn.SetActive(false);
+        }
+
+        // ÅõÇ¥ ½Ã°£
+        public void VoteTimer(string data)
+        {
+            var pack = data.Split(Delimiter);
+            // Debug.Log(pack[1] + " : " + pack[2]);
+
+            Client.minute = pack[1];
+            Client.second = pack[2];
+
+            var timetxt = "";
+            timetxt = pack[1] + ":" + pack[2];
+            timer.text = timetxt;
+        }
+
         public int Compare(string[] vote)
         {
             int max = 0;
-            for(int i = 0; i<6; i++)
+            for (int i = 0; i < 6; i++)
             {
-                if(max < int.Parse(vote[i]))
+                if (max < int.Parse(vote[i]))
                 {
                     max = int.Parse(vote[i]);
                 }
@@ -178,29 +209,29 @@ namespace Project {
             int cnt = 0;
             bool flag = false;
             same = new string[6];
-            for (int i = 0; i<6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (max == int.Parse(result[i]))
                 {
                     switch (i)
                     {
                         case 0:
-                            same[cnt] = "ë§ˆì´ì‚¬";
+                            same[cnt] = "¸¶ÀÌ»ç";
                             break;
                         case 1:
-                            same[cnt] = "ê¹€ë¹„ì„œ";
+                            same[cnt] = "±èºñ¼­";
                             break;
                         case 2:
-                            same[cnt] = "ì²œë³´ì•ˆ";
+                            same[cnt] = "Ãµº¸¾È";
                             break;
                         case 3:
-                            same[cnt] = "ì¥ëŒ€í–‰";
+                            same[cnt] = "Àå´ëÇà";
                             break;
                         case 4:
-                            same[cnt] = "ìµœê³¼ì¥";
+                            same[cnt] = "ÃÖ°úÀå";
                             break;
                         case 5:
-                            same[cnt] = "ìœ¤ì‚¬ì›";
+                            same[cnt] = "À±»ç¿ø";
                             break;
                     }
                     cnt++;
@@ -222,8 +253,8 @@ namespace Project {
             yield return new WaitForSeconds(1.5f);
             for (int i = 0; i < max; i++)
             {
-                
-                if (int.Parse(vote[0]) > 0) // ë§ˆì´ì‚¬
+
+                if (int.Parse(vote[0]) > 0) // ¸¶ÀÌ»ç
                 {
                     if (i == 0)
                     {
@@ -236,7 +267,7 @@ namespace Project {
                         vote[0] = (int.Parse(vote[0]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[1]) > 0) // ê¹€ë¹„ì„œ
+                if (int.Parse(vote[1]) > 0) // ±èºñ¼­
                 {
                     if (i == 0)
                     {
@@ -249,7 +280,7 @@ namespace Project {
                         vote[1] = (int.Parse(vote[1]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[2]) > 0) // ì²œë³´ì•ˆ
+                if (int.Parse(vote[2]) > 0) // Ãµº¸¾È
                 {
                     if (i == 0)
                     {
@@ -262,7 +293,7 @@ namespace Project {
                         vote[2] = (int.Parse(vote[2]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[3]) > 0) // ì¥ëŒ€í–‰
+                if (int.Parse(vote[3]) > 0) // Àå´ëÇà
                 {
                     if (i == 0)
                     {
@@ -275,7 +306,7 @@ namespace Project {
                         vote[3] = (int.Parse(vote[3]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[4]) > 0) // ìµœê³¼ì¥
+                if (int.Parse(vote[4]) > 0) // ÃÖ°úÀå
                 {
                     if (i == 0)
                     {
@@ -288,7 +319,7 @@ namespace Project {
                         vote[4] = (int.Parse(vote[4]) - 1).ToString();
                     }
                 }
-                if (int.Parse(vote[5]) > 0) // ìœ¤ì‚¬ì›
+                if (int.Parse(vote[5]) > 0) // À±»ç¿ø
                 {
                     if (i == 0)
                     {
@@ -302,44 +333,77 @@ namespace Project {
                     }
 
                 }
-                PlaySound(handcuffsMusic, musicPlayer); // ìŒì•… ì‹¤í–‰
+                PlaySound(handcuffsMusic, musicPlayer); // À½¾Ç ½ÇÇà
                 yield return new WaitForSeconds(1.5f);
             }
-
             bool flag = VoteSame(result);
-            if (flag == true) // ë™í‘œê°€ ë‚˜ì™”ì„ ë•Œ
+            if (flag == true) // µ¿Ç¥°¡ ³ª¿ÔÀ» ¶§
             {
-                Debug.Log("ë™í‘œê°€ ë‚˜ì˜´");
-                Application.ExternalCall("socket.emit", "MULTI_RESULT_VOTE", same);
+                Debug.Log("µÎ¹øÂ° ÅõÇ¥¿¡¼­ µ¿Ç¥°¡ ³ª¿È");
+                Application.ExternalCall("socket.emit", "MULTI_RESULT_SECOND_VOTE", same);
                 SceneManager.LoadScene("VoteTextResult");
             }
-            else // í•œëª…ì´ ìµœëŒ€ ë“í‘œ ì¼ ë•Œ
+            else // ÇÑ¸íÀÌ ÃÖ´ë µæÇ¥ ÀÏ ¶§
             {
-                Debug.Log("í•œëª…ì´ ìµœëŒ€ ë“í‘œ " + same[0]);
-                Application.ExternalCall("socket.emit", "SINGLE_RESULT_VOTE", same[0]);
+                Debug.Log("µÎ¹øÂ° ÅõÇ¥¿¡¼­ ÇÑ¸íÀÌ ÃÖ´ë µæÇ¥ " + same[0]);
+                Application.ExternalCall("socket.emit", "SINGLE_RESULT_SECOND_VOTE", same[0]);
                 SceneManager.LoadScene("VoteTextResult");
             }
         }
 
-        public void onVote(string data){
-            ResultVote.SetActive(true);
-            MaHand.SetActive(false);
-            KimHand.SetActive(false);
-            ChunHand.SetActive(false);
-            JangHand.SetActive(false);
-            ChoiHand.SetActive(false);
-            YunHand.SetActive(false);
+            public void onVote(string data)
+            {
+                ResultVote.SetActive(true);
+                MaHand.SetActive(false);
+                KimHand.SetActive(false);
+                ChunHand.SetActive(false);
+                JangHand.SetActive(false);
+                ChoiHand.SetActive(false);
+                YunHand.SetActive(false);
 
-            var vote = data.Split(Delimiter);
-            var result = data.Split(Delimiter);
+                var vote = data.Split(Delimiter);
+                var result = data.Split(Delimiter);
 
-            StartCoroutine(WaitForIt(vote, result)); // ì‚¬ìš©ìì—ê²Œ íˆ¬í‘œ ê°¯ìˆ˜ ì•Œë ¤ì¤Œ
+                StartCoroutine(WaitForIt(vote, result)); // »ç¿ëÀÚ¿¡°Ô ÅõÇ¥ °¹¼ö ¾Ë·ÁÁÜ
 
-            
-            // 15ì´ˆ ë’¤ì— ìŠ¤í† ë¦¬ ê²°ê³¼ ì¶œë ¥
-            // Invoke("MoveResultStory", 15);
 
+                // 15ÃÊ µÚ¿¡ ½ºÅä¸® °á°ú Ãâ·Â
+                // Invoke("MoveResultStory", 15);
+
+            }
+
+        public void SecondVote(string data)
+        {
+            Debug.Log("µÎ¹øÂ° ÅõÇ¥" + data);
+            PanelHide();
+            var again = data.Split(Delimiter);
+            for (int i = 0; i < again.Length; i++)
+            {
+                if (again[i] == "¸¶ÀÌ»ç")
+                {
+                    MaBtn.SetActive(true);
+                }
+                else if (again[i] == "±èºñ¼­")
+                {
+                    KimBtn.SetActive(true);
+                }
+                else if (again[i] == "Ãµº¸¾È")
+                {
+                    ChunBtn.SetActive(true);
+                }
+                else if (again[i] == "Àå´ëÇà")
+                {
+                    JangBtn.SetActive(true);
+                }
+                else if (again[i] == "ÃÖ°úÀå")
+                {
+                    ChoiBtn.SetActive(true);
+                }
+                else if (again[i] == "À±»ç¿ø")
+                {
+                    YunBtn.SetActive(true);
+                }
+            }
         }
     }
 }
-

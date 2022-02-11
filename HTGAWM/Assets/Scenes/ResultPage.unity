@@ -1293,9 +1293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446a3da9a78ceb043b20bf918ee707d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyTxt: {fileID: 0}
-  pageString: {fileID: 0}
-  typingSound: {fileID: 0}
+  storyTxt: {fileID: 1286334305}
+  pageString: {fileID: 1313541388}
+  typingSound: {fileID: 8300000, guid: 479c6d617f33f0d4b88697e2b9d85f2e, type: 3}
 --- !u!222 &1286334307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1436,9 +1436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446a3da9a78ceb043b20bf918ee707d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyTxt: {fileID: 0}
-  pageString: {fileID: 0}
-  typingSound: {fileID: 0}
+  storyTxt: {fileID: 1286334305}
+  pageString: {fileID: 1313541388}
+  typingSound: {fileID: 8300000, guid: 479c6d617f33f0d4b88697e2b9d85f2e, type: 3}
 --- !u!1 &1564539145
 GameObject:
   m_ObjectHideFlags: 0

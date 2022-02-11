@@ -22,6 +22,22 @@ public class typingeffect : MonoBehaviour
     {
         
     }
+
+    // second multi vote
+    IEnumerator _second_multi_typing(string m_text, string[] data)
+    {
+        yield return new WaitForSeconds(1f);
+        PlaySound(keyboard, musicPlayer);
+        for (int i = 0; i <= m_text.Length; i++)
+        {
+            tx.text = m_text.Substring(0, i);
+
+            yield return new WaitForSeconds(0.15f);
+        }
+        yield return new WaitForSeconds(2f);
+        MoveResultStory();
+    }
+
     // multi vote
     IEnumerator _multi_typing(string m_text, string[] data)
     {
@@ -34,7 +50,7 @@ public class typingeffect : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(2f);
-        MoveVote(data);
+        MoveSecondVote(data);
     }
 
     // single vote
@@ -71,16 +87,28 @@ public class typingeffect : MonoBehaviour
         StartCoroutine(_multi_typing(m_text, pack));
     }
 
+    public void MultiSecondVoteTextResult(string data)
+    {
+        Debug.Log("멀티수신" + data);
+        var pack = data.Split(Delimiter);
+        for (int i = 0; i < pack.Length; i++)
+        {
+            m_text += pack[i] + " ";
+        }
+        m_text += "동표가 나왔습니다. \n 범인이 이겼습니다.";
+        StartCoroutine(_second_multi_typing(m_text, pack));
+    }
+
     public void MoveResultStory()
     {
         SceneManager.LoadScene("ResultPage");
     }
 
-    public void MoveVote(string[] data)
+    public void MoveSecondVote(string[] data)
     {
         Debug.Log("MoveVote" + data[0] + data[1]);
-        Application.ExternalCall("socket.emit", "SECOND_VOTE", data);
-        SceneManager.LoadScene("VoteScene");
+        Application.ExternalCall("socket.emit", "MOVE_SECOND_VOTE", data);
+        SceneManager.LoadScene("VoteSecondScene");
     }
 
     public void PlaySound(AudioClip clip, AudioSource audioPlayer)
