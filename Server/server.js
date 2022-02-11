@@ -53,9 +53,13 @@ var connection = mysql.createConnection({
 	host     : 'exbodcemtop76rnz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
 	user     : 'kw60r04ib61nxpzk',
 	password : 'req2v8wchyhantdn',
-	database : 'nlgr288toijev7z6'
+	database : 'nlgr288toijev7z6',
+	multipleStatements: true
 });
 connection.connect();
+
+//로비기능
+var lobbyFunc = require('./lobby');
 
 //open a connection with the specific client
 io.on('connection', function(socket){
@@ -79,6 +83,7 @@ io.on('connection', function(socket){
 			password: data.password,
 			socketID : socket.id, // fills out with the id of the socket that was open
 			usernumber : (clients.length +1 ), 
+			joinedRoomId : 0
 		};
 					
 		console.log(currentUser)
@@ -106,6 +111,7 @@ io.on('connection', function(socket){
 		// 
 		socket.emit("JOIN_SUCCESS",currentUser.id,currentUser.name, clients.length  );
 		// Client.js 의 JOIN_SUCCESS 로 가셈 
+        lobbyFunc.roomSocketEvent(socket, currentUser, connection);
 	}
 });
 });//END_SOCKET_ON
@@ -224,9 +230,9 @@ socket.on('USERINFOPAGE', function () {
 	    if(currentUser)
 		{
 			currentUser.isDead = true;
-		
+			lobbyFunc.leaveRoom(socket, currentUser, connection);
 		//  socket.broadcast.emit('USER_DISCONNECTED', currentUser.id);
-			
+		
 		for (var i = 0; i < clients.length; i++)
 		{
 			if (clients[i].name == currentUser.name && clients[i].id == currentUser.id) 
