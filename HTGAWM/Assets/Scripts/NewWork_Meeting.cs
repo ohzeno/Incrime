@@ -20,7 +20,7 @@ public class NewWork_Meeting : MonoBehaviour
     //  ':' 로 분리할 것
 	static private readonly char[] Delimiter = new char[] {':'};
     // 비디오용
-    static TestHelloUnityVideo app = null;
+    static TestHelloUnityVideo app;
     
     Text RoleDesc;
     Text StoryName;
@@ -46,13 +46,8 @@ public class NewWork_Meeting : MonoBehaviour
             // OnPlayVideo();
 
             // 미팅 룸으로 들어오기
-            // create app if nonexistent
-            if (ReferenceEquals(app, null))
-            {
-                app = new TestHelloUnityVideo(); // create app
-                app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); // load engine
-            }
-
+            app = new TestHelloUnityVideo(); // create app
+            app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
             // 미팅 씬이란 채널로 들어오기
             app.join("MeetingScene", true);
             //
@@ -61,9 +56,11 @@ public class NewWork_Meeting : MonoBehaviour
 			//it destroys the class if already other class exists
 			Destroy(this.gameObject);
 		}
+        
+    }
 
-        
-        
+    void OnEnable(){
+        // Debug.Log("OnEnable");
     }
 
     // Update is called once per frame
@@ -71,7 +68,6 @@ public class NewWork_Meeting : MonoBehaviour
     {
         
     }
-
 
     public void emitExitMeeting(){
         Debug.Log("[system] 미팅에서 나갑니다. ");

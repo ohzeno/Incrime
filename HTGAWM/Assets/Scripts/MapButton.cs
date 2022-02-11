@@ -9,6 +9,9 @@ public class MapButton : MonoBehaviour
     bool map_view;
     public GameObject mapimage;
     public ProofController proofController;
+    
+    // 비디오용
+    static TestHelloUnityVideo app;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,17 @@ public class MapButton : MonoBehaviour
 
     public void MoveToMap()
     {   
+        
+
         if (SceneManager.GetActiveScene().name != "MeetingScene" ){
+            
+            // 맵버튼을 눌렀을 경우 해야할 일
+            // 1. 아고라 맵 나가기
+            app.leave(); // leave channel
+            app.unloadEngine(); // delete engine
+            app = null; // delete app
+            
+
             proofController.CloseProofUI();
             SceneManager.LoadScene("Map");
         } else {
