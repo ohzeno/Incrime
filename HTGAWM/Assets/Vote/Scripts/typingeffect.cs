@@ -50,6 +50,7 @@ public class typingeffect : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(2f);
+        musicPlayer.Stop();
         MoveSecondVote(data);
     }
 
@@ -65,6 +66,7 @@ public class typingeffect : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(2f);
+        musicPlayer.Stop();
         MoveResultStory();
     }
 
