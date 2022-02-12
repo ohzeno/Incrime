@@ -414,15 +414,6 @@ io.on("connection", function (socket) {
 						// 각자 게임 화면으로 보내버리면서 시간 처리
 						clearInterval(timerId);
 						// 탐색시간 10분
-<<<<<<< Updated upstream
-						Timeset(10, gamephase);
-						io.to(i.id).emit("GO_MAP");
-					}); //end_forEach
-				}
-			}, 600000);
-			// 시간 보내주기
-			Timeset(10, gamephase);
-=======
 						Timeset(1,gamephase);
 						io.to(i.id).emit('GO_MAP');
 					}); //end_forEach
@@ -431,7 +422,6 @@ io.on("connection", function (socket) {
 			// 시간 보내주기 
 			Timeset(1,gamephase);
 
->>>>>>> Stashed changes
 		} else {
 			console.log("[system] 현재 준비 인원 : " + conference_number);
 		}
@@ -481,10 +471,6 @@ io.on("connection", function (socket) {
 						clients.forEach(function (i) {
 							io.to(i.id).emit("VIEW_CLUE_VIDEO");
 						}); //end_forEach
-<<<<<<< Updated upstream
-					}, 60000);
-				}, 600000);
-=======
 					}, 60000); 
 
 					
@@ -493,10 +479,6 @@ io.on("connection", function (socket) {
 				// 시간 보내주기 
 				Timeset(1,gamephase);
 
->>>>>>> Stashed changes
-
-				// 시간 보내주기
-				Timeset(10, gamephase);
 			} else if (gamephase == 5) {
 				// 1차회의가 끝난 경우
 				// phase 6 : 투표 씬
