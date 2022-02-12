@@ -16,11 +16,11 @@ public class ProofController : MonoBehaviour
     private Camera mainCamera;
 
     [SerializeField]
-    private float range;    //Áõ°Å ½Àµæ °¡´ÉÇÑ ÃÖ´ë °Å¸®
+    private float range;    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½
 
-    private bool pickupActivated = false; // ½Àµæ °¡´ÉÇÒ ½Ã¿¡ true
+    private bool pickupActivated = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ true
 
-    //ÇÊ¿ä ÄÄÆ÷³ÍÆ®
+    //ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     [SerializeField]
     private Text proofName;
 
@@ -63,6 +63,9 @@ public class ProofController : MonoBehaviour
 
     [SerializeField]
     private Text actionText;
+    private int isCoroutinesActive;
+    private AudioSource musicPlayer;
+    public AudioClip typingSound;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +85,12 @@ public class ProofController : MonoBehaviour
         {
             CheckProof();
             OpenProofUI();
+            if (isCoroutinesActive == 1){   
+                musicPlayer = GetComponent<AudioSource>();
+                musicPlayer.Stop();
+                StopAllCoroutines();
+                proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;        
+            }
         }
     }
 
@@ -109,6 +118,28 @@ public class ProofController : MonoBehaviour
         }
     }
 
+    IEnumerator _typing(string tmpstory, Text obj)
+    {
+        musicPlayer = GetComponent<AudioSource>();
+        PlaySound(typingSound, musicPlayer);
+        yield return new WaitForSeconds(0.2f);
+        isCoroutinesActive = 1;
+        for (int i = 0; i <= tmpstory.Length; i++)
+        {
+            obj.text = tmpstory.Substring(0, i);
+            yield return new WaitForSeconds(0.05f);
+        }
+        musicPlayer.Stop();
+    }
+
+    public void PlaySound(AudioClip clip, AudioSource audioPlayer)
+    {
+        audioPlayer.Stop();
+        audioPlayer.clip = clip;
+        audioPlayer.loop = false;
+        audioPlayer.time = 0;
+        audioPlayer.Play();
+    }
     private void OpenProofUI()
     {
         if (hitInfo.transform != null)
@@ -119,17 +150,20 @@ public class ProofController : MonoBehaviour
             }
             pickupActivated = true;
             orbitCamera.m_Target = oldHitInfo.transform;
-            proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
-            Debug.Log(proofName + " º¸±â");
+            Debug.Log(proofName + " ï¿½ï¿½ï¿½ï¿½");
             SetLayersRecursively(oldHitInfo.transform, 8);
             playerController.FixPlayer();
+            proofDescription.text = "";
             proofUI.gameObject.SetActive(true);
+            StartCoroutine(_typing(oldHitInfo.transform.GetComponent<Proof>().proofDescription, proofDescription));
+            // proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             collectButton.gameObject.SetActive(true);
         }
     }
 
     public void CloseProofUI()
     {
+        isCoroutinesActive = 0;
         if (tempProofObject != null)
         {
             Destroy(tempProofObject);
@@ -138,9 +172,12 @@ public class ProofController : MonoBehaviour
         if (oldHitInfo.transform != null)
         {
             SetLayersRecursively(oldHitInfo.transform, 7);
-            Debug.Log(proofName + " ´Ý±â");
+            Debug.Log(proofName + " ï¿½Ý±ï¿½");
         }
         playerController.UnfixPlayer();
+        musicPlayer = GetComponent<AudioSource>();
+        musicPlayer.Stop();
+        StopAllCoroutines();
         proofUI.gameObject.SetActive(false);
         proofRawImage.texture = proofRenderTexture;
         shareButton.gameObject.SetActive(false);
@@ -152,7 +189,7 @@ public class ProofController : MonoBehaviour
         {
             if (oldHitInfo.transform != null)
             {
-                Debug.Log("¾ÆÀÌÅÛ ¼öÁý");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 Proof dest = oldHitInfo.transform.GetComponent<Proof>();
                 dest.proofTexture = new Texture2D(proofRenderTexture.width, proofRenderTexture.height, TextureFormat.RGBA32, false);
                 dest.proofTexture.Apply(false);
@@ -198,12 +235,12 @@ public class ProofController : MonoBehaviour
 
     public void OnClickCollectedSlot(BaseEventData data)
     {
-        Debug.Log(data.selectedObject + "´Â ¹«¾ùÀÎ°¡");
+        Debug.Log(data.selectedObject + "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½");
         Slot targetSlot = data.selectedObject.transform.GetComponent<Slot>();
 
         if (targetSlot.proof.proofName.Length != 0 && !pickupActivated)
         {
-            Debug.Log(targetSlot + "´Â SlotÀÌ´Ù.");
+            Debug.Log(targetSlot + "ï¿½ï¿½ Slotï¿½Ì´ï¿½.");
             if (SceneManager.GetActiveScene().name == "MeetingScene")
             {
                 shareButton.gameObject.SetActive(true);
@@ -222,7 +259,7 @@ public class ProofController : MonoBehaviour
             SetLayersRecursively(tempProofObject.transform, 8);
             
             proofDescription.text = proofJson.proofDescription;
-            Debug.Log(proofJson.proofName + " º¸±â");
+            Debug.Log(proofJson.proofName + " ï¿½ï¿½ï¿½ï¿½");
 
             playerController.FixPlayer();
             collectButton.gameObject.SetActive(false);
@@ -232,15 +269,15 @@ public class ProofController : MonoBehaviour
 
     public void OnClickShareProof()
     {
-        Debug.Log("Áõ°Å °øÀ¯");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson));
     }
 
     public void ReceiveSharedProof(string str)
     {
-        Debug.Log("°øÀ¯¹ÞÀº Áõ°Å º¸±â");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         Proof.ProofJson receiveProof = JsonUtility.FromJson<Proof.ProofJson>(str);
-        Debug.Log("°øÀ¯¹ÞÀº Áõ°Å: " + receiveProof.sceneName + "/" + receiveProof.objectName);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: " + receiveProof.sceneName + "/" + receiveProof.objectName);
         //sharedProofObject = GameObject.Instantiate(Resources.Load(receiveProof.sceneName + "/"+receiveProof.objectName)) as GameObject;
         LoadPrefabInTempProof(receiveProof.sceneName + "/" + receiveProof.objectName);
         tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
