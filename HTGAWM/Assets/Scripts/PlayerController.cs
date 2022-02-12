@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
     // 앉기 시도
     private void TryCrouch()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown("c"))
         {
             Crouch();
         }
