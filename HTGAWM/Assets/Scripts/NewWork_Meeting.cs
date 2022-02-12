@@ -49,7 +49,7 @@ public class NewWork_Meeting : MonoBehaviour
             app = new TestHelloUnityVideo(); // create app
             app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
             // 미팅 씬이란 채널로 들어오기
-            app.join("MeetingScene", true);
+            app.join( Client.room + "MeetingScene", true);
             //
             
 		} else {

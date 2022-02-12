@@ -272,7 +272,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC8C\uC784 \uC2DC\uC791"
+  m_Text: "\uAC8C\uC784\uBC29\uBC95\uC744\n\uC774\uD574\uD588\uC2B5\uB2C8\uB2E4"
 --- !u!222 &7976992
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1460,7 +1460,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 83ea056442a03794195350e90357b4da, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1777,8 +1777,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552, y: -278}
-  m_SizeDelta: {x: 150, y: 100}
+  m_AnchoredPosition: {x: -552, y: -217}
+  m_SizeDelta: {x: 220, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1342461312
 MonoBehaviour:

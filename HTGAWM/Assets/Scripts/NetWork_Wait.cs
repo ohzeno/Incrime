@@ -31,6 +31,10 @@ public class NetWork_Wait : MonoBehaviour
             StartButton.SetActive(false);
             emitTotalplayer();
 
+            // Debug.Log("테스트로그");
+            // Debug.Log(Client.name);
+            // Debug.Log(Client.room);
+
             total = Tuto.transform.childCount;
 
             index = 0;

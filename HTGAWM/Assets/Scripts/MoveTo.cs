@@ -25,7 +25,8 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo();
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
         Debug.Log("[system] 팀장실로 입장합니다.");
-        app.join("TeamLeaderLeeOffice", true);
+        app.join( Client.room + "TeamLeaderLeeOffice", true);
+        
         SceneManager.LoadScene("TeamLeaderLeeOffice");
     }
 
@@ -34,7 +35,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo(); //
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
         Debug.Log("[system] 보안실로 입장합니다.");
-        app.join("SecurityRoom", true);
+        app.join( Client.room + "SecurityRoom", true);
 
         SceneManager.LoadScene("SecurityRoom");
     }
@@ -44,7 +45,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo(); // 
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); 
         Debug.Log("[system] 비서실로 입장합니다.");
-        app.join("ReceptionDesk", true);
+        app.join( Client.room + "ReceptionDesk", true);
 
         SceneManager.LoadScene("ReceptionDesk");
     }
@@ -54,7 +55,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo(); 
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); 
         Debug.Log("[system] 사무실로 입장합니다.");
-        app.join("OfficeCubicles", true);
+        app.join( Client.room +  "OfficeCubicles", true);
 
         SceneManager.LoadScene("OfficeCubicles");
     }
@@ -64,7 +65,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo();
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); 
         Debug.Log("[system] 회의실로 입장합니다.");
-        app.join("MeetingRoom", true);
+        app.join( Client.room +  "MeetingRoom", true);
 
         SceneManager.LoadScene("MeetingRoom");
     }
@@ -74,7 +75,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo(); 
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
         Debug.Log("[system] 화장실로 입장합니다.");
-        app.join("RestRoom", true);
+        app.join( Client.room + "RestRoom", true);
 
         SceneManager.LoadScene("RestRoom");
     }
@@ -84,7 +85,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo(); 
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); 
         Debug.Log("[system] 마이사 방으로 입장합니다.");
-        app.join("DirectorMaOffice", true);
+        app.join( Client.room + "DirectorMaOffice", true);
 
         SceneManager.LoadScene("DirectorMaOffice");
     }
@@ -94,7 +95,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo();
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); 
         Debug.Log("[system] 탕비실로 입장합니다.");
-        app.join("BreakRoom", true);
+        app.join( Client.room + "BreakRoom", true);
 
         SceneManager.LoadScene("BreakRoom");
     }
@@ -104,7 +105,7 @@ public class MoveTo : MonoBehaviour
         app = new TestHelloUnityVideo(); 
         app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340"); 
         Debug.Log("[system] 복도로 입장합니다.");
-        app.join("Hallway", true);
+        app.join( Client.room + "Hallway", true);
 
         SceneManager.LoadScene("Hallway");
     }

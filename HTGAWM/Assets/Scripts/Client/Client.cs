@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project
-{
+
 public static class Client
 {
   // 유저 별로 저장
@@ -21,11 +20,13 @@ public static class Client
 
   // 메모
   public static string memo = "";
+
+  // 대기실 이름
+  public static string room = "temproom";
   
   
   
   
   public static bool isLocalPlayer;
 
-}
 }
