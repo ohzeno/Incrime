@@ -66,6 +66,7 @@ public class ProofController : MonoBehaviour
     private int isCoroutinesActive;
     private AudioSource musicPlayer;
     public AudioClip typingSound;
+    private Coroutine cntCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -85,10 +86,10 @@ public class ProofController : MonoBehaviour
         {
             CheckProof();
             OpenProofUI();
-            if (isCoroutinesActive == 1){   
+            if (isCoroutinesActive == 1 && cntCoroutine != null){   
                 musicPlayer = GetComponent<AudioSource>();
                 musicPlayer.Stop();
-                StopAllCoroutines();
+                StopCoroutine(cntCoroutine);
                 proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;        
             }
         }
@@ -155,7 +156,7 @@ public class ProofController : MonoBehaviour
             playerController.FixPlayer();
             proofDescription.text = "";
             proofUI.gameObject.SetActive(true);
-            StartCoroutine(_typing(oldHitInfo.transform.GetComponent<Proof>().proofDescription, proofDescription));
+            cntCoroutine = StartCoroutine(_typing(oldHitInfo.transform.GetComponent<Proof>().proofDescription, proofDescription));
             // proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             collectButton.gameObject.SetActive(true);
         }
@@ -177,7 +178,7 @@ public class ProofController : MonoBehaviour
         playerController.UnfixPlayer();
         musicPlayer = GetComponent<AudioSource>();
         musicPlayer.Stop();
-        StopAllCoroutines();
+        StopCoroutine(cntCoroutine);
         proofUI.gameObject.SetActive(false);
         proofRawImage.texture = proofRenderTexture;
         shareButton.gameObject.SetActive(false);

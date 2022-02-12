@@ -12,7 +12,7 @@ public class StoryTable : MonoBehaviour
     public Text pageString;
     private AudioSource musicPlayer;
     public AudioClip typingSound;
-
+    private Coroutine cntCoroutine;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class StoryTable : MonoBehaviour
         story2 = "  이팀장의 책상 위 스탠드의 전선 피복을 벗겨 전류가 노출되도록 만든 것. 잠시 후 팀장실로 돌아온 이팀장의 커피에 미리 준비해둔 수면제를 섞은 뒤에 그녀가 약기운에 취해 엎드려 잠들기만을 기다리는데... 그리고 드디어 때가 왔다. 책상에 엎드린 채 깊은 잠에 빠져버린 이팀장을 발견. 김비서는 계획했던 대로 탕비실로 가 탕비실에 있던 가연성 방향제 스프레이와 마이사의 방에서 훔친 라이터로 스프링클러를 향해 불을 쐈는데...\n\n  그 시각 다른 용의자들은, 최과장은 회의실에, 천보안은 시설보안실에, 마이사와 윤사원은 각각 화장실에, 그리고 장대행은 귀가길에 있었는데... 스프링클러가 터지며 물이 쏟아져 나왔고 피복이 벗겨진 구리선에 물이 닿으며 책상 위로 흐르기 시작한 전류는 젖은 책상과 맞닿아있던 이팀장의 팔을 타고 순식간에 심장을 관통, 결국 그녀는 갑작스런 감전에 의한 심장마비로 사망에 이르게 된다. 그 시각 이 모든 것을 계획한 김비서는 모두가 혼잡한 틈을 이용해 사건 현장을 빠져나갔다.";
         pageString.text = "1/2";
 
-        StartCoroutine(_typing(story1, storyTxt));
+        cntCoroutine = StartCoroutine(_typing(story1, storyTxt));
     }
 
     IEnumerator _typing(string tmpstory, Text obj)
@@ -43,7 +43,7 @@ public class StoryTable : MonoBehaviour
             storyTxt.text = "";
             pageNum -= 1;
             pageString.text = "1/2";
-            StartCoroutine(_typing(story1, storyTxt));
+            cntCoroutine = StartCoroutine(_typing(story1, storyTxt));
         }
     }
 
@@ -53,7 +53,7 @@ public class StoryTable : MonoBehaviour
             storyTxt.text = "";
             pageNum += 1;
             pageString.text = "2/2";
-            StartCoroutine(_typing(story2, storyTxt));
+            cntCoroutine = StartCoroutine(_typing(story2, storyTxt));
         }
     }
 
@@ -63,11 +63,11 @@ public class StoryTable : MonoBehaviour
             if (pageString.text == "1/2")
             {                
                 musicPlayer.Stop();
-                StopAllCoroutines();
+                StopCoroutine(cntCoroutine);
                 storyTxt.text = story1;
             } else if (pageString.text == "2/2"){
                 musicPlayer.Stop();
-                StopAllCoroutines();
+                StopCoroutine(cntCoroutine);
                 storyTxt.text = story2;
             }
         }
