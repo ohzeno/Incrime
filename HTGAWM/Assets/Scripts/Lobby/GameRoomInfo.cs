@@ -11,5 +11,7 @@ namespace GameInfo
         public static string roomTitle;
         public static string roomStory;
 
+        public static int roomReadyPlayer = 0;
+
     }
 }

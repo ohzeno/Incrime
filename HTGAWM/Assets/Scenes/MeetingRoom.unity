@@ -6597,6 +6597,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1182558576461219467, guid: 2eacbf13aff461b4982814090522f58e, type: 3}
+      propertyPath: proofDescription
+      value: "\uB9CE\uC740 \uC4F0\uB808\uAE30\uB4E4\uC774 \uB2F4\uACA8\uC788\uB294
+        \uD734\uC9C0\uD1B5\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 1184432117868715739, guid: 2eacbf13aff461b4982814090522f58e, type: 3}
       propertyPath: m_Name
       value: Bin
@@ -7049,6 +7054,11 @@ PrefabInstance:
     - target: {fileID: 1743951022724993428, guid: b11f75189a1cd424fa9411c81ecb210a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5712573583901871686, guid: b11f75189a1cd424fa9411c81ecb210a, type: 3}
+      propertyPath: proofDescription
+      value: "\uD654\uC7AC\uACBD\uBCF4\uAE30\uC774\uB2E4. \uC5F4\uC744 \uAC10\uC9C0\uD558\uBA74
+        \uC54C\uB78C\uC774 \uC6B8\uB9B4 \uAC83\uC774\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b11f75189a1cd424fa9411c81ecb210a, type: 3}

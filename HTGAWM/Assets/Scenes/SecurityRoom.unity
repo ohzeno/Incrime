@@ -1392,13 +1392,13 @@ Transform:
   - {fileID: 1320589307}
   - {fileID: 1771961253}
   - {fileID: 2050314969}
+  - {fileID: 1028693676}
   - {fileID: 108790835}
   - {fileID: 2102490034}
   - {fileID: 460102104}
   - {fileID: 1078214841}
   - {fileID: 1234802787}
   - {fileID: 1896346510}
-  - {fileID: 1028693676}
   - {fileID: 791756042}
   - {fileID: 1446909357}
   - {fileID: 1596801337}
@@ -1717,7 +1717,7 @@ Transform:
   - {fileID: 1653600096}
   - {fileID: 1327780637}
   m_Father: {fileID: 823748689}
-  m_RootOrder: 35
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1071248123
 PrefabInstance:
@@ -3858,6 +3858,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 823748689}
     m_Modifications:
+    - target: {fileID: 832259430621327797, guid: a85e08d33b79db84c96a89d5f53ef74c, type: 3}
+      propertyPath: proofDescription
+      value: "\uCF58\uC13C\uD2B8\uB97C \uC5EC\uB7EC\uAD6C \uAF42\uC744 \uC218 \uC788\uB294
+        \uBA40\uD2F0 \uD0ED\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 6432038619080725947, guid: a85e08d33b79db84c96a89d5f53ef74c, type: 3}
       propertyPath: m_RootOrder
       value: 13

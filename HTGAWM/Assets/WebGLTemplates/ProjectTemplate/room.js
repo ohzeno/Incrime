@@ -28,6 +28,9 @@ window.addEventListener("load", function () {
 	socket.on("JOIN_ROOM_SUCCESS", function (_roomNumber) {
 		socket.emit("REFRESH_INFO_IN_ROOM");
 		socket.emit("REFRESH_USERS_IN_ROOM");
+		// server.js 의 변수에다가 저장 하기
+		socket.emit("UPDATE_ROOMINFO_IN_GAMES", _roomNumber );
+
 	});
 
 	socket.on("LEAVE_ROOM_SUCCESS", function () {
@@ -77,4 +80,17 @@ window.addEventListener("load", function () {
 			);
 		}
 	});
+
+	socket.on("ON_PLAY_CRIMESCENE", function ( _data ) {
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage(
+				"LobbyController",
+				"onRefreshReadyPlayer",
+				_data
+			);
+		}
+	});
+
+
+
 }); //END_window_addEventListener

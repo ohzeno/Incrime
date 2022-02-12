@@ -3193,6 +3193,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5517874321692098818, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
+      propertyPath: proofDescription
+      value: "\uC561\uCCB4\uB97C \uC18C\uB7C9 \uB2F4\uC744 \uC218 \uC788\uB294 \uCEF5\uC774\uB2E4.
+        \uC0AC\uC6A9\uB41C \uD754\uC801\uC740 \uC5C6\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
 --- !u!1001 &824930378
@@ -3885,6 +3890,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 168251919}
     m_Modifications:
+    - target: {fileID: 3125320169259515450, guid: 23a57abe4d079904c83a106db927b561, type: 3}
+      propertyPath: proofDescription
+      value: "\uD654\uC7AC\uACBD\uBCF4\uAE30\uC774\uB2E4. \uB728\uAC70\uC6B4 \uC5F4\uC744
+        \uAC10\uC9C0\uD558\uBA74 \uC2DC\uB044\uB7EC\uC6B4 \uC54C\uB78C\uC744 \uC6B8\uB9B4
+        \uAC83\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8947455631663571432, guid: 23a57abe4d079904c83a106db927b561, type: 3}
       propertyPath: m_RootOrder
       value: 74
@@ -5787,6 +5798,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5517874321692098818, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
+      propertyPath: proofDescription
+      value: "\uC561\uCCB4\uB97C \uC18C\uB7C9 \uB2F4\uC744 \uC218 \uC788\uB294 \uCEF5\uC774\uB2E4.
+        \uC0AC\uC6A9\uB41C \uD754\uC801\uC774 \uC788\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
 --- !u!1001 &1564507137
@@ -7047,6 +7063,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Cake
       objectReference: {fileID: 0}
+    - target: {fileID: 1120874687463514, guid: 279aef1f65d6c5145afeb409c33a9ea6, type: 3}
+      propertyPath: m_TagString
+      value: Proof
+      objectReference: {fileID: 0}
     - target: {fileID: 4363329602460280, guid: 279aef1f65d6c5145afeb409c33a9ea6, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -7086,6 +7106,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4363329602460280, guid: 279aef1f65d6c5145afeb409c33a9ea6, type: 3}
   m_PrefabInstance: {fileID: 1986310746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1986310748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1120874687463514, guid: 279aef1f65d6c5145afeb409c33a9ea6, type: 3}
+  m_PrefabInstance: {fileID: 1986310746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1986310749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986310748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  no: 13
+  proofName: "\uCF00\uC774\uD06C"
+  proofDescription: "\uCD08\uAC00 \uAF42\uD600\uC788\uB294 \uCF00\uC774\uD06C\uC774\uB2E4. 
+    \uBA39\uC740 \uD754\uC801\uC740 \uC5C6\uB2E4."
+  proofTexture: {fileID: 0}
+--- !u!114 &1986310750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986310748}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &2008018957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 138165233122190234, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
@@ -7325,6 +7385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_ID_Card_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1938695310604038, guid: 93fd52222d23d4b4a9f6a381ae3fd32b, type: 3}
+      propertyPath: m_TagString
+      value: Proof
+      objectReference: {fileID: 0}
     - target: {fileID: 4966802434238538, guid: 93fd52222d23d4b4a9f6a381ae3fd32b, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -7368,6 +7432,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4966802434238538, guid: 93fd52222d23d4b4a9f6a381ae3fd32b, type: 3}
   m_PrefabInstance: {fileID: 2112137656}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2112137658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1938695310604038, guid: 93fd52222d23d4b4a9f6a381ae3fd32b, type: 3}
+  m_PrefabInstance: {fileID: 2112137656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2112137659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112137658}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &2112137660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112137658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  no: 13
+  proofName: "\uC0AC\uC6D0\uC99D"
+  proofDescription: "\uC724\uC0AC\uC6D0\uC758 \uC0AC\uC6D0\uC99D\uC774\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!1001 &2143097793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7538,6 +7641,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5517874321692098818, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
+      propertyPath: proofDescription
+      value: "\uC561\uCCB4\uB97C \uC18C\uB7C9 \uB2F4\uC744 \uC218 \uC788\uB294 \uCEF5\uC774\uB2E4.
+        \uC0AC\uC6A9\uB41C \uD754\uC801\uC774 \uC788\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edbd8360b43fedd47884d5500b35410a, type: 3}
 --- !u!4 &138165234354792411 stripped
@@ -7600,6 +7708,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5657223783297444788, guid: 00f8621ca0378e646915a7ebac584cd4, type: 3}
+      propertyPath: proofDescription
+      value: "\uC138\uC815\uC81C\uC774\uB2E4. \uD76C\uBBF8\uD558\uAC8C \uC18C\uB3C5\uC57D
+        \uB0C4\uC0C8\uAC00 \uB09C\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f8621ca0378e646915a7ebac584cd4, type: 3}
 --- !u!1001 &900987982172585551
@@ -7609,6 +7722,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 168251919}
     m_Modifications:
+    - target: {fileID: 900987981549241945, guid: e6630c431b856604db4eab6cad08066d, type: 3}
+      propertyPath: proofDescription
+      value: "\uC74C\uC2DD \uB4F1\uC744 \uB370\uC6B8 \uC218 \uC788\uB294 \uC804\uC790\uB808\uC778\uC9C0\uC774\uB2E4. 
+        \uC548\uC740 \uBE44\uC5B4\uC788\uB2E4. "
+      objectReference: {fileID: 0}
     - target: {fileID: 902260002452918239, guid: e6630c431b856604db4eab6cad08066d, type: 3}
       propertyPath: m_Name
       value: Microwave
@@ -7766,6 +7884,11 @@ PrefabInstance:
     - target: {fileID: 5077227984434331702, guid: 09f2a4d99be02374faa26fdf019055c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078592928911137598, guid: 09f2a4d99be02374faa26fdf019055c8, type: 3}
+      propertyPath: proofDescription
+      value: "\uC4F0\uB808\uAE30\uD1B5\uC774\uB2E4. \uC548\uC5D0\uB294 \uCEF5\uB77C\uBA74\uC6A9\uAE30\uC640
+        \uB098\uBB34 \uC813\uAC00\uB77D\uC774 \uB4E4\uC5B4\uC788\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 5079058873373934446, guid: 09f2a4d99be02374faa26fdf019055c8, type: 3}
       propertyPath: m_Name
@@ -7948,6 +8071,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoffeeMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 8432132349095968341, guid: fd43d58bd3865f7429fcaff2e475efa2, type: 3}
+      propertyPath: proofName
+      value: "\uCEE4\uD53C\uBA38\uC2E0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432132349095968341, guid: fd43d58bd3865f7429fcaff2e475efa2, type: 3}
+      propertyPath: proofDescription
+      value: "\uC5D0\uC2A4\uD504\uB808\uC18C\uB97C \uB0B4\uB9B4 \uC218 \uC788\uB294
+        \uCEE4\uD53C\uBA38\uC2E0\uC774\uB2E4.  \uCEE4\uD53C\uD5A5\uC774 \uB09C\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd43d58bd3865f7429fcaff2e475efa2, type: 3}
 --- !u!1001 &6329910347027214959
@@ -8071,6 +8203,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 168251919}
     m_Modifications:
+    - target: {fileID: 832857507537784712, guid: 69723638c09245d4eb38c630480bf508, type: 3}
+      propertyPath: proofDescription
+      value: "\uCE7C \uAC70\uCE58\uB300\uC5D0 \uCE7C \uB4E4\uC774 \uB193\uC5EC\uC788\uB2E4.
+        \uD2B9\uBCC4\uD55C \uD754\uC801\uC740 \uBCF4\uC774\uC9C0 \uC54A\uB294\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 6891727614341794712, guid: 69723638c09245d4eb38c630480bf508, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -8242,6 +8379,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 168251919}
     m_Modifications:
+    - target: {fileID: 3125320169259515450, guid: 23a57abe4d079904c83a106db927b561, type: 3}
+      propertyPath: proofDescription
+      value: "\uD654\uC7AC\uACBD\uBCF4\uAE30\uC774\uB2E4. \uB728\uAC70\uC6B4 \uC5F4\uC744
+        \uAC10\uC9C0\uD558\uBA74 \uC2DC\uB044\uB7EC\uC6B4 \uC54C\uB78C\uC744 \uC6B8\uB9B4
+        \uAC83\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8947455631663571432, guid: 23a57abe4d079904c83a106db927b561, type: 3}
       propertyPath: m_RootOrder
       value: 73

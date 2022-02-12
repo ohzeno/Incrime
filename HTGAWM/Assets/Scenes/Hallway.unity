@@ -3282,6 +3282,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -6156,6 +6160,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2568612808288039584, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uC7AC \uACBD\uBCF4\uAE30"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
 --- !u!4 &513859588 stripped
@@ -6687,6 +6695,10 @@ PrefabInstance:
     - target: {fileID: 1335925160396524236, guid: bc0032690d919684a90e6a17a2786222, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919219450390905142, guid: bc0032690d919684a90e6a17a2786222, type: 3}
+      propertyPath: proofName
+      value: "\uCC45 \uB354\uBBF8"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc0032690d919684a90e6a17a2786222, type: 3}
@@ -7568,6 +7580,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: 0.26221415
       objectReference: {fileID: 0}
+    - target: {fileID: 7486548637029165240, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
+      propertyPath: proofName
+      value: CCTV
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486548637029165240, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
+      propertyPath: proofDescription
+      value: "\uBCF5\uB3C4 \uC804\uCCB4\uB97C \uBCFC \uC218 \uC788\uB294 CCTV\uC774\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
 --- !u!4 &646078493 stripped
@@ -8127,6 +8147,14 @@ PrefabInstance:
     - target: {fileID: 528437314468279781, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
       propertyPath: m_Name
       value: SecurityCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486548637029165240, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
+      propertyPath: proofName
+      value: CCTV
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486548637029165240, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
+      propertyPath: proofDescription
+      value: "\uBCF5\uB3C4 \uC804\uCCB4\uB97C \uBCFC \uC218 \uC788\uB294 CCTV\uC774\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
@@ -9205,6 +9233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -9465,6 +9497,15 @@ PrefabInstance:
     - target: {fileID: 1817181506539812846, guid: 307961901c6419644ad71512f7584163, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273830532728177821, guid: 307961901c6419644ad71512f7584163, type: 3}
+      propertyPath: proofName
+      value: "\uCCAD\uC18C\uCE74\uD2B8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273830532728177821, guid: 307961901c6419644ad71512f7584163, type: 3}
+      propertyPath: proofDescription
+      value: "\uCCAD\uC18C\uB3C4\uAD6C\uAC00 \uB2F4\uACA8\uC788\uB2E4.\n\uC0AC\uBB34\uC2E4
+        \uCCAD\uC18C\uB97C \uD558\uB358 \uC911\uC778 \uB4EF \uD558\uB2E4. "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307961901c6419644ad71512f7584163, type: 3}
@@ -11615,6 +11656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -12264,6 +12309,10 @@ PrefabInstance:
     - target: {fileID: 4371076349405995, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
       propertyPath: m_Name
       value: FireExtinguisher
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817340309011711571, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
+      propertyPath: proofName
+      value: "\uC18C\uD654\uAE30"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
@@ -14613,6 +14662,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7574285598428222763, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
+      propertyPath: proofName
+      value: "\uC885\uC774 \uB354\uBBF8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574285598428222763, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
+      propertyPath: proofDescription
+      value: "\uB9CE\uC740 \uC885\uC774\uAC00 \uC313\uC5EC\uC788\uB2E4. \uD2B9\uBCC4\uD55C
+        \uAC83\uC740 \uC5C6\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
 --- !u!4 &1234401174 stripped
@@ -15369,6 +15427,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -18856,6 +18918,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 5330663084476807051, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
+      propertyPath: proofName
+      value: "\uC4F0\uB808\uAE30\uD1B5"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330663084476807051, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
+      propertyPath: proofDescription
+      value: "\uC4F0\uB808\uAE30\uD1B5\uC774\uB2E4. \uD2B9\uBCC4\uD55C \uAC83\uC740
+        \uC5C6\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 5440613627674858616, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
       propertyPath: m_Name
       value: Bin
@@ -19354,6 +19425,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -19953,6 +20028,10 @@ PrefabInstance:
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568612808288039584, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uC7AC \uACBD\uBCF4\uAE30"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
@@ -20649,6 +20728,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2568612808288039584, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uC7AC \uACBD\uBCF4\uAE30"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
 --- !u!4 &1696054895 stripped
@@ -20810,6 +20893,10 @@ PrefabInstance:
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568612808288039584, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uC7AC \uACBD\uBCF4\uAE30"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
@@ -25456,6 +25543,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -25565,6 +25656,16 @@ PrefabInstance:
     - target: {fileID: 3247326895135797977, guid: da00eb252c18cee468be4be50e84a455, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161014148063363999, guid: da00eb252c18cee468be4be50e84a455, type: 3}
+      propertyPath: proofName
+      value: "\uBE44\uC0C1\uC6A9 \uB3C4\uB07C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161014148063363999, guid: da00eb252c18cee468be4be50e84a455, type: 3}
+      propertyPath: proofDescription
+      value: "\uC704\uAE09\uD560 \uB54C \uC720\uB9AC\uB97C \uAE68\uACE0 \uC0AC\uC6A9\uD558\uB294
+        \uBE44\uC0C1\uC6A9 \uB3C4\uB07C \uC774\uB2E4. \uC0AC\uC6A9\uB41C \uD754\uC801\uC740
+        \uC5C6\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da00eb252c18cee468be4be50e84a455, type: 3}
@@ -25857,6 +25958,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 3874256301073113649, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uBD84"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874256301073113649, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
+      propertyPath: proofDescription
+      value: "\uC2DD\uBB3C\uC744 \uC7AC\uBC30\uD558\uB294\uB370 \uC0AC\uC6A9\uD558\uB294
+        \uD654\uBD84\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8326021378958827786, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
       propertyPath: m_Name
       value: Plant
@@ -25966,6 +26076,14 @@ PrefabInstance:
     - target: {fileID: 224940353975154899, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981746165739269900, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
+      propertyPath: proofName
+      value: "\uC815\uC218\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981746165739269900, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
+      propertyPath: proofDescription
+      value: "\uBB3C\uC744 \uB9C8\uC2E4 \uC218 \uC788\uB294 \uC815\uC218\uAE30\uC774\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
@@ -26323,6 +26441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireExtinguisher
       objectReference: {fileID: 0}
+    - target: {fileID: 1817340309011711571, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
+      propertyPath: proofName
+      value: "\uC18C\uD654\uAE30"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f65c9319e6c1ede468cfbfd211a22393, type: 3}
 --- !u!4 &4115495269631352 stripped
@@ -26485,6 +26607,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7981746165739269900, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
+      propertyPath: proofName
+      value: "\uC815\uC218\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981746165739269900, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
+      propertyPath: proofDescription
+      value: "\uBB3C\uC744 \uB9C8\uC2E4 \uC218 \uC788\uB294 \uC815\uC218\uAE30\uC774\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c583c9aa67990c4aa683c582686c56a, type: 3}
 --- !u!1001 &435925362424146410
@@ -26541,6 +26671,10 @@ PrefabInstance:
     - target: {fileID: 440321013777162129, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568612808288039584, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uC7AC \uACBD\uBCF4\uAE30"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d42afdd78c0a447a0a41bc5d109b53, type: 3}
@@ -26604,6 +26738,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SecurityCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 7486548637029165240, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
+      propertyPath: proofName
+      value: CCTV
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486548637029165240, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
+      propertyPath: proofDescription
+      value: "\uBCF5\uB3C4 \uC804\uCCB4\uB97C \uBCFC \uC218 \uC788\uB294 CCTV\uC774\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d2e95e09ed4314fad79f3976fea5cb, type: 3}
 --- !u!1001 &828448761070483773
@@ -26661,6 +26803,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magazine02
       objectReference: {fileID: 0}
+    - target: {fileID: 4638093350505538883, guid: 82626e6a608b2dc4fa7f04836c1f7c78, type: 3}
+      propertyPath: proofName
+      value: "\uC7A1\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638093350505538883, guid: 82626e6a608b2dc4fa7f04836c1f7c78, type: 3}
+      propertyPath: proofDescription
+      value: "\uC5EC\uB7EC \uC815\uBCF4\uB4E4\uC744 \uC5BB\uC744 \uC218 \uC788\uB294
+        \uC7A1\uC9C0\uC774\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82626e6a608b2dc4fa7f04836c1f7c78, type: 3}
 --- !u!1001 &858829329649571208
@@ -26713,6 +26864,10 @@ PrefabInstance:
     - target: {fileID: 279947944042853410, guid: d9a491ddba1a7e546bc58aa9ea05653e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846261561504313193, guid: d9a491ddba1a7e546bc58aa9ea05653e, type: 3}
+      propertyPath: proofName
+      value: "\uC11C\uB958\uC640 \uBC15\uC2A4\uB4E4"
       objectReference: {fileID: 0}
     - target: {fileID: 4373863875958734976, guid: d9a491ddba1a7e546bc58aa9ea05653e, type: 3}
       propertyPath: m_Name
@@ -26780,6 +26935,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3195960152541517939, guid: ef147340df7ca6847870a924c46a87ba, type: 3}
+      propertyPath: proofName
+      value: "\uBCF5\uC0AC\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195960152541517939, guid: ef147340df7ca6847870a924c46a87ba, type: 3}
+      propertyPath: proofDescription
+      value: "\uB300\uD615 \uBCF5\uC0AC\uAE30\uAC00 \uB193\uC5EC\uC838\uC788\uB2E4.
+        \uACE0\uC7A5\uB098\uC11C \uC791\uB3D9\uC740 \uD558\uC9C0 \uC54A\uB294\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef147340df7ca6847870a924c46a87ba, type: 3}
 --- !u!1001 &1334346763286043763
@@ -26836,6 +27000,10 @@ PrefabInstance:
     - target: {fileID: 1335925160396524236, guid: bc0032690d919684a90e6a17a2786222, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919219450390905142, guid: bc0032690d919684a90e6a17a2786222, type: 3}
+      propertyPath: proofName
+      value: "\uCC45 \uB354\uBBF8"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc0032690d919684a90e6a17a2786222, type: 3}
@@ -27008,6 +27176,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3850154635206466570, guid: 91ff08c29224fca489b341234aaabae4, type: 3}
+      propertyPath: proofName
+      value: "\uB110\uBE0C\uB7EC\uC838 \uC788\uB294 \uC11C\uB958 \uB4E4"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ff08c29224fca489b341234aaabae4, type: 3}
 --- !u!1001 &1812511871290042138
@@ -27064,6 +27236,15 @@ PrefabInstance:
     - target: {fileID: 1817181506539812846, guid: 307961901c6419644ad71512f7584163, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273830532728177821, guid: 307961901c6419644ad71512f7584163, type: 3}
+      propertyPath: proofName
+      value: "\uCCAD\uC18C\uCE74\uD2B8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273830532728177821, guid: 307961901c6419644ad71512f7584163, type: 3}
+      propertyPath: proofDescription
+      value: "\uCCAD\uC18C\uB3C4\uAD6C\uAC00 \uB2F4\uACA8\uC838\uC788\uB2E4.\n\uC0AC\uBB34\uC2E4
+        \uCCAD\uC18C\uB97C \uD558\uB358 \uC911\uC778 \uB4EF \uD558\uB2E4. "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307961901c6419644ad71512f7584163, type: 3}
@@ -27122,6 +27303,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaperShredder
       objectReference: {fileID: 0}
+    - target: {fileID: 8525711838434618530, guid: da12538614d7c144e98a060cf076de46, type: 3}
+      propertyPath: proofName
+      value: "\uD30C\uC1C4\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525711838434618530, guid: da12538614d7c144e98a060cf076de46, type: 3}
+      propertyPath: proofDescription
+      value: "\uC138\uC808\uAE30(\uD30C\uC1C4\uAE30)\uC774\uB2E4. \uACF5\uBB38\uC11C\uB97C
+        \uAC00\uB8E8\uB85C \uB9CC\uB4E4\uC5B4\uBC84\uB9AC\uB294 \uAE30\uACC4\uC774\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da12538614d7c144e98a060cf076de46, type: 3}
 --- !u!1001 &3242604660753596537
@@ -27178,6 +27368,16 @@ PrefabInstance:
     - target: {fileID: 3247326895135797977, guid: da00eb252c18cee468be4be50e84a455, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161014148063363999, guid: da00eb252c18cee468be4be50e84a455, type: 3}
+      propertyPath: proofName
+      value: "\uBE44\uC0C1\uC6A9 \uB3C4\uB07C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161014148063363999, guid: da00eb252c18cee468be4be50e84a455, type: 3}
+      propertyPath: proofDescription
+      value: "\uC704\uAE09\uD560 \uB54C \uC720\uB9AC\uB97C \uAE68\uACE0 \uC0AC\uC6A9\uD558\uB294
+        \uBE44\uC0C1\uC6A9 \uB3C4\uB07C \uC774\uB2E4. \uC0AC\uC6A9\uB41C \uD754\uC801\uC740
+        \uC5C6\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da00eb252c18cee468be4be50e84a455, type: 3}
@@ -27236,6 +27436,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7574285598428222763, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
+      propertyPath: proofName
+      value: "\uC885\uC774 \uB354\uBBF8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574285598428222763, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
+      propertyPath: proofDescription
+      value: "\uB9CE\uC740 \uC885\uC774\uAC00 \uC313\uC5EC\uC788\uB2E4. \uD2B9\uBCC4\uD55C
+        \uAC83\uC740 \uC5C6\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a15f6babfab8b3b4fbc3ded92189ef16, type: 3}
 --- !u!1001 &4172766755119916756
@@ -27292,6 +27501,10 @@ PrefabInstance:
     - target: {fileID: 4172766753828223935, guid: b8c82c31978c74944a252720dd61f440, type: 3}
       propertyPath: m_Name
       value: SmartPhone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231597575614033222, guid: b8c82c31978c74944a252720dd61f440, type: 3}
+      propertyPath: proofName
+      value: "\uC2A4\uB9C8\uD2B8 \uD3F0"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8c82c31978c74944a252720dd61f440, type: 3}
@@ -27350,6 +27563,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magazine
       objectReference: {fileID: 0}
+    - target: {fileID: 8955973629361535542, guid: 81a5e416f4a0b6a4c9b8818682e01783, type: 3}
+      propertyPath: proofName
+      value: "\uD328\uC158 \uC7A1\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955973629361535542, guid: 81a5e416f4a0b6a4c9b8818682e01783, type: 3}
+      propertyPath: proofDescription
+      value: "Vogue 2\uC6D4\uD638 \uCEE4\uBC84 \uBAA8\uB378\uC740 \uD55C\uC9C0\uBBFC\uC774\uB2E4."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81a5e416f4a0b6a4c9b8818682e01783, type: 3}
 --- !u!1001 &5442117715278577889
@@ -27359,6 +27580,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 5330663084476807051, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
+      propertyPath: proofName
+      value: "\uC4F0\uB808\uAE30\uD1B5"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330663084476807051, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
+      propertyPath: proofDescription
+      value: "\uC4F0\uB808\uAE30\uD1B5\uC774\uB2E4. \uD2B9\uBCC4\uD55C \uAC83\uC740
+        \uC5C6\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 5440613627674858616, guid: 6796988e7bdd8e04b9492a75274e1918, type: 3}
       propertyPath: m_Name
       value: Bin
@@ -27416,6 +27646,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 3018414933290147332, guid: 2cd9062739ee433419a28030ef7be499, type: 3}
+      propertyPath: proofName
+      value: "\uCC45 \uB354\uBBF8"
+      objectReference: {fileID: 0}
     - target: {fileID: 6660877515549200374, guid: 2cd9062739ee433419a28030ef7be499, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -27473,6 +27707,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 7285646327338841757, guid: ad806fdf179c88c48af504ff04cbf405, type: 3}
+      propertyPath: proofName
+      value: "\uB300\uAC78\uB808"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285646327338841757, guid: ad806fdf179c88c48af504ff04cbf405, type: 3}
+      propertyPath: proofDescription
+      value: "\uCCAD\uC18C\uD560 \uB54C \uC0AC\uC6A9\uD558\uB294 \uB300\uAC78\uB808\uC774\uB2E4. 
+        \uBC14\uB2E5\uC5D0 \uBB3C\uAE30\uB97C \uB300\uAC78\uB808\uB294 \uC816\uC5B4\uC788\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 7363182478397673323, guid: ad806fdf179c88c48af504ff04cbf405, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -27530,6 +27773,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 2623073630056403744, guid: c3dbbc52f20effa40b28adcd01808e9a, type: 3}
+      propertyPath: proofName
+      value: "\uC774\uB2EC\uC758 \uC0AC\uC6D0 \uBAA9\uB85D"
+      objectReference: {fileID: 0}
     - target: {fileID: 7866349427438437828, guid: c3dbbc52f20effa40b28adcd01808e9a, type: 3}
       propertyPath: m_Name
       value: EmployeeWall
@@ -27587,6 +27834,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 7368800891585880859, guid: f22247ed4a97df4448c968f2ab06e5dd, type: 3}
+      propertyPath: proofName
+      value: "\uC11C\uB958\uAC00 \uB4E4\uC5B4\uC788\uB294 \uCE90\uBE44\uB137"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368800891585880859, guid: f22247ed4a97df4448c968f2ab06e5dd, type: 3}
+      propertyPath: proofDescription
+      value: "\uCE90\uBE44\uB137\uC774\uB2E4. \uC5C5\uBB34 \uAD00\uB828\uD55C \uC11C\uB958\uAC00
+        \uB4E4\uC5B4\uC788\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8172425122233656209, guid: f22247ed4a97df4448c968f2ab06e5dd, type: 3}
       propertyPath: m_Name
       value: Cabinets
@@ -27644,6 +27900,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 3874256301073113649, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
+      propertyPath: proofName
+      value: "\uD654\uBD84"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874256301073113649, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
+      propertyPath: proofDescription
+      value: "\uC2DD\uBB3C\uC744 \uC7AC\uBC30\uD558\uB294\uB370 \uC0AC\uC6A9\uD558\uB294
+        \uD654\uBD84\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8326021378958827786, guid: 9cb51eb27f9382548866ee5fd5a52e3e, type: 3}
       propertyPath: m_Name
       value: Plant
@@ -27701,6 +27966,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246526231}
     m_Modifications:
+    - target: {fileID: 6758693520465142666, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
+      propertyPath: proofName
+      value: "\uCF58\uC13C\uD2B8"
+      objectReference: {fileID: 0}
     - target: {fileID: 9112934076661022692, guid: f09f8e523174de245b243aa5e6fbf77d, type: 3}
       propertyPath: m_RootOrder
       value: 18

@@ -23,6 +23,8 @@ public class LobbyController : MonoBehaviour
 
     public State CurrentState = State.Create;
     public PasswordState CurrntPasswordState = PasswordState.Close;
+    public GameObject PlayCrimeSceneButton;
+    public Text ReadyUserText;
 
     [Serializable]
     public class RoomsWrapper
@@ -40,6 +42,8 @@ public class LobbyController : MonoBehaviour
         public int story_no;
         public int people_count;
         public bool is_password;
+
+        public int waitingroom_ready;
 
         public Room(string waitingroom_nm, string waitingroom_pw, int story_no)
         {
@@ -239,11 +243,14 @@ public class LobbyController : MonoBehaviour
         if (receiveRoom.waitingroom_no != 0)
         {
             roomInnerUIObject.SetActive(true);
+            Debug.Log("[system] 대기실 " + Client.room + " 에 입장했습니다.");
             GameInfo.GameRoomInfo.roomNo = roomInfo.roomNo = receiveRoom.waitingroom_no;
             GameInfo.GameRoomInfo.roomTitle =  roomInfo.roomInfoTitleText.text = receiveRoom.waitingroom_nm;
             //TODO 상용화 및 개선시엔 고쳐야 할 부분.
             GameInfo.GameRoomInfo.roomStory = roomInfo.roomInfoStroyText.text = "이팀장 살인사건";
             roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 인";
+            // 클라이언트의 룸 바꿔주기
+            Client.room = receiveRoom.waitingroom_no.ToString();
         }
     }
 
@@ -313,5 +320,33 @@ public class LobbyController : MonoBehaviour
         OnClickRefreshButton();
         //TODO 추가적으로 나갈 때의 제어 넣어야 함.
     }
+
+    public void OnClickPlayCrimeScene()
+    {
+        Debug.Log("[system] 대기실에서 크라임씬 시작하기 버튼 : " + Client.room);
+
+        Debug.Log("[system] 현재 준비 인원 : " + GameInfo.GameRoomInfo.roomReadyPlayer );
+
+        if ( GameInfo.GameRoomInfo.roomReadyPlayer == 5 )
+        {
+            Debug.Log("[system] 모든 플레이어가 준비 되었습니다. 게임을 시작합니다. : " + Client.room);
+
+        } else
+        {
+            PlayCrimeSceneButton.SetActive(false);
+            GameInfo.GameRoomInfo.roomReadyPlayer += 1;
+            Application.ExternalCall("socket.emit", "READY_CRIMESCENE", GameInfo.GameRoomInfo.roomReadyPlayer);
+        }
+    }
+
+    public void onRefreshReadyPlayer(int readyPlayer)
+    {
+        Debug.Log("[system] 준비된 유저 업데이트 : " + readyPlayer);
+        GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+        ReadyUserText.text = readyPlayer.ToString();
+
+    }
+
+
 }
 

@@ -4766,6 +4766,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8644473796212794285, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
+      propertyPath: proofDescription
+      value: "\uADC0\uD558\uB294 2011 \uC0AC\uB0B4 \uB178\uB798\uC790\uB791\uC5D0\uC11C
+        \uC6B0\uC218\uD55C \uC131\uC801\uC744 \uAC70\uB450\uC5C8\uC73C\uBBC0\uB85C
+        \uC774 \uC0C1\uC7A5\uC744 \uC218\uC5EC\uD568.\n\uB300\uC0C1 : \uB9C8\uC774\uC0AC"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
 --- !u!4 &1762425261 stripped
@@ -6287,6 +6293,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 682182130}
     m_Modifications:
+    - target: {fileID: 2525559941164911, guid: d996be5f48803c54789b723c23c02bdb, type: 3}
+      propertyPath: proofDescription
+      value: "\uACE8\uD504\uACF5\uC774 \uB9C8\uC774\uC0AC\uC758 \uC0AC\uBB34\uC2E4\uC5D0\uC11C
+        \uAD74\uB7EC\uB2E4\uB2CC\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 873809046568043568, guid: d996be5f48803c54789b723c23c02bdb, type: 3}
       propertyPath: m_Name
       value: Golf_Ball
@@ -6391,6 +6402,12 @@ PrefabInstance:
     - target: {fileID: 1039904051607347362, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8644473796212794285, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
+      propertyPath: proofDescription
+      value: "2015\uB144 \uC0AC\uB0B4 \uC6CC\uD06C\uC0F5\uC5D0\uC11C \uC6B0\uC218\uD55C
+        \uC131\uC801\uC744 \uAC70\uB450\uC5C8\uC73C\uBBC0\uB85C \uC774 \uC0C1\uC7A5\uC744
+        \uC218\uC5EC\uD568. \n\uB300\uC0C1 : \uB9C8\uC774\uC0AC"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
@@ -6620,6 +6637,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8644473796212794285, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
+      propertyPath: proofDescription
+      value: "\uADC0\uD558\uB294 2014 \uC0AC\uB0B4 \uC7A5\uAE30\uC790\uB791\uC5D0\uC11C
+        \uC6B0\uC218\uD55C \uC131\uC801\uC744 \uAC70\uB450\uC5C8\uC73C\uBBC0\uB85C
+        \uC774 \uC0C1\uC7A5\uC744 \uC218\uC5EC\uD568.\n\uB300\uC0C1 : \uB9C8\uC774\uC0AC"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601160b0d68b4614aa11f5aa75cf2567, type: 3}
 --- !u!4 &1819338928205691196 stripped
@@ -6681,6 +6704,11 @@ PrefabInstance:
     - target: {fileID: 1880481870885847191, guid: 4bd190623351c0e41ae838f2f79eb8d9, type: 3}
       propertyPath: m_Name
       value: Golf_Club
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881923205304267045, guid: 4bd190623351c0e41ae838f2f79eb8d9, type: 3}
+      propertyPath: proofDescription
+      value: "\uACE8\uD504\uCC44\uC774\uB2E4. \uBB35\uC9C1\uD55C \uC678\uD615\uACFC
+        \uB2EC\uB9AC \uAC00\uBCCD\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bd190623351c0e41ae838f2f79eb8d9, type: 3}
@@ -6852,6 +6880,10 @@ PrefabInstance:
     - target: {fileID: 3463786328639308839, guid: 3158ee7069ef92946830dbf3afab347d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118067773116135926, guid: 3158ee7069ef92946830dbf3afab347d, type: 3}
+      propertyPath: proofDescription
+      value: "\uACE8\uD504\uAE43\uB300\uC774\uB2E4. \uD640 \uC704\uC5D0 \uAF42\uD600\uC788\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3158ee7069ef92946830dbf3afab347d, type: 3}
@@ -7495,6 +7527,11 @@ PrefabInstance:
     - target: {fileID: 8485023567949805610, guid: 4aac90d4f1738e940a63a4b22d033b72, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489348610548039025, guid: 4aac90d4f1738e940a63a4b22d033b72, type: 3}
+      propertyPath: proofDescription
+      value: "\uD654\uC7AC\uACBD\uBCF4\uAE30\uC774\uB2E4. \uBD88\uC744 \uAC10\uC9C0\uD558\uBA74
+        \uC54C\uB78C\uC774 \uC6B8\uB9B0\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 8491025831134493396, guid: 4aac90d4f1738e940a63a4b22d033b72, type: 3}
       propertyPath: m_Name
