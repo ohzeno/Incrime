@@ -14,7 +14,7 @@ namespace Project
 {
 public class PlayerObject : MonoBehaviour
 {
-    
+    public static PlayerObject instance;
     static private readonly char[] Delimiter = new char[] {':'};
     bool memo_view;
 
@@ -28,13 +28,13 @@ public class PlayerObject : MonoBehaviour
 
     private void Awake()
     {
-        var obj = FindObjectsOfType<PlayerObject>(); 
-        if (obj.Length == 1) { 
+        if (instance == null) { 
             // PlayerObject = (GameObject)Instantiate(Resources.Load("Prefab/block")); 
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
         } 
         else { 
-            Destroy(gameObject); 
+            Destroy(this.gameObject); 
         }
     }
     // Start is called before the first frame update

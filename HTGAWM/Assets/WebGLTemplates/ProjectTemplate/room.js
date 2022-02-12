@@ -67,4 +67,14 @@ window.addEventListener("load", function () {
 		socket.emit("REFRESH_INFO_IN_ROOM");
 		socket.emit("REFRESH_USERS_IN_ROOM");
 	});
+
+	socket.on("LOBBY_ERROR", function (_strdata) {
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage(
+				"ErrorMessageSystem",
+				"OnRecieveErrorMessage",
+				_strdata
+			);
+		}
+	});
 }); //END_window_addEventListener
