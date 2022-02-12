@@ -71,9 +71,6 @@ public class LobbyController : MonoBehaviour
     [SerializeField]
     private Button joinTabButton;
 
-    private Vector3 smallUi = new Vector3(1f, 1f, 1f);
-    private Vector3 bigUi = new Vector3(1.2f, 1.2f, 1.2f);
-
     [SerializeField]
     private Button refreshButton;
 
@@ -101,7 +98,6 @@ public class LobbyController : MonoBehaviour
     void Start()
     {
         roomUsers = userListParent.GetComponentsInChildren<RoomUser>();
-        createTabButton.transform.localScale = bigUi;
         OnClickCreateTabButton();
         roomInnerUIObject.SetActive(false);
         
@@ -121,8 +117,8 @@ public class LobbyController : MonoBehaviour
         CurrentState = State.Create;
         joinTab.SetActive(false);
         createTab.SetActive(true);
-        createTabButton.transform.localScale = bigUi;
-        joinTabButton.transform.localScale = smallUi;
+        createTabButton.animator.SetTrigger(Animator.StringToHash("Selected"));
+
         refreshButton.gameObject.SetActive(false);
         OnClickClosePasswordInput();
     }
@@ -132,8 +128,7 @@ public class LobbyController : MonoBehaviour
         CurrentState = State.Join;
         joinTab.SetActive(true);
         createTab.SetActive(false);
-        createTabButton.transform.localScale = smallUi;
-        joinTabButton.transform.localScale = bigUi;
+
         refreshButton.gameObject.SetActive(true);
         OnClickClosePasswordInput();
         OnClickRefreshButton();
