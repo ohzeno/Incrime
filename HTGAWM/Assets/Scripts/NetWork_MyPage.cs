@@ -19,9 +19,19 @@ public class NetWork_MyPage : MonoBehaviour
     public InputField MyPassword;
     public InputField MyMail;
     // Start is called before the first frame update
+
+    public Image update_image;
+	public Text text;
+	public Button update_button1;
+	public Button update_button2;
+
+    public Image delete_image;
+
     void Start()
     {
         Application.ExternalCall("socket.emit", "USERINFOPAGE");
+        update_image.gameObject.SetActive(false);
+        delete_image.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -67,7 +77,18 @@ public class NetWork_MyPage : MonoBehaviour
 	}
 
     public void ChangeStartScene() {
-        SceneManager.LoadScene("WaitScene");
+        delete_image.gameObject.SetActive(false);
+
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void CheckDelete() {
+        update_image.gameObject.SetActive(false);
+        delete_image.gameObject.SetActive(true);
+    }
+
+    public void DeleteCancel() {
+        delete_image.gameObject.SetActive(false);
     }
 
     public void DeleteUser()
@@ -76,4 +97,35 @@ public class NetWork_MyPage : MonoBehaviour
 		Application.ExternalCall("socket.emit", "USERDELETE");
 		// server.js : JOIN 으로 가셈
 	}
+
+    public void UpdateSuccessMSG(string data) {
+        update_image.gameObject.SetActive(true);
+        delete_image.gameObject.SetActive(false);
+
+        text.text = data;
+
+        update_button1.gameObject.SetActive(true);
+		update_button2.gameObject.SetActive(false);
+    }
+
+    public void UpdateSuccess() {
+        update_image.gameObject.SetActive(false);
+
+        // Application.ExternalCall("socket.emit", "USERINFOPAGE");
+    }
+
+    public void UpdateFailMSG(string data) {
+        update_image.gameObject.SetActive(true);
+        delete_image.gameObject.SetActive(false);
+
+        text.text = data;
+
+        update_button1.gameObject.SetActive(false);
+		update_button2.gameObject.SetActive(true);
+    }
+
+    public void UpdateFail() {
+        update_image.gameObject.SetActive(false);
+    }
+
 }

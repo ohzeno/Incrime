@@ -17,6 +17,58 @@ window.addEventListener('load', function() {
 		}
 		
 	};//END_exe_In_Unity 
+
+	
+	socket.on("CHECK_ID_PW", function(msg) {
+		console.log("CHECK_ID_PW : 아이디나 비밀번호를 확인해야할 때 들어오는 곳");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Start', 'ErrMsg', msg);
+		}
+	});
+
+
+	socket.on("JOINERROR", function(msg) {
+		console.log("JOINERROR : 회원가입 문제 발생시 들어오는 곳");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Join', 'ErrMsg', msg);
+		}
+	});
+
+
+	socket.on("JOINSUCCESS", function(msg) {
+		console.log("JOINSUCCESS : 회원가입 성공 시 들어오는 곳");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_Join', 'JoinSuccess', msg);
+		}
+	});
+
+
+	socket.on("UPDATEERROR", function(msg) {
+		console.log("UPDATEERROR : 유저 정보 수정 문제 발생시 들어오는 곳");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_MyPage', 'UpdateFailMSG', msg);
+		}
+	});
+
+	socket.on("UPDATESUCCESS", function(msg) {
+		console.log("UPDATESUCCESS : 유저 정보 수정 성공 시 들어오는 곳");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_MyPage', 'UpdateSuccessMSG', msg);
+		}
+	});
+
+	socket.on("DELETESUCCESS", function() {
+		console.log("DELETESUCCESS : 유저 정보 삭제 성공 시 들어오는 곳");
+		if(window.unityInstance!=null)
+		{
+			window.unityInstance.SendMessage ('NetWork_MyPage', 'ChangeStartScene');
+		}
+	});
 	
 					  
 	// 조인이 성공했을 때

@@ -29,11 +29,16 @@ public class NetWork_Join : MonoBehaviour
     public InputField JoinPassword;
     public InputField JoinMail;
 
+    public Image image;
+	public Text text;
+	public Button button1;
+	public Button button2;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        image.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -68,7 +73,28 @@ public class NetWork_Join : MonoBehaviour
 		// server.js : JOIN 으로 가셈
 	}
 
+    public void JoinSuccess(string data) {
+		image.gameObject.SetActive(true);
+		text.text = data;
+
+		button1.gameObject.SetActive(true);
+		button2.gameObject.SetActive(false);
+    }
+
+    public void ErrMsg(string data) {
+		image.gameObject.SetActive(true);
+		text.text = data;
+
+		button1.gameObject.SetActive(false);
+		button2.gameObject.SetActive(true);
+	}
+
     public void ChangeStartScene() {
+        image.gameObject.SetActive(false);
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void JoinFail() {
+        image.gameObject.SetActive(false);
     }
 }
