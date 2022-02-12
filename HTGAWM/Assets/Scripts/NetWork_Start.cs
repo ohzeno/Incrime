@@ -13,8 +13,6 @@ namespace Project
 
 public class NetWork_Start : MonoBehaviour
 {
-    // 자기 자신을 instance로 선언
-	public static NetWork_Start instance;
 
     // 모든 연결된 클라이언트 저장
 	//public Dictionary<string, Client> connectedClients = new Dictionary<string, Client>();
@@ -32,32 +30,14 @@ public class NetWork_Start : MonoBehaviour
     public InputField JoinName;
 	public InputField JoinPassword;
 
-	public Image image;
-	public Text text;
-	public Button button1;
-	public Button button2;
-
+	public GameObject loginSuccessBox;
 
     // Start is called before the first frame update
     void Start()
     {
-		if (image.gameObject.activeSelf == true) {
-			image.gameObject.SetActive(false);
+		if (loginSuccessBox.activeSelf == true) {
+			loginSuccessBox.SetActive(false);
 		}
-        // // 싱글 톤 코드
-        // if (instance == null) {
-		//     // 
-        //     // 만약 다른 씬이 있으면 오브젝트를 파괴하지 않음
-        //     // it doesn't destroy the object, if other scene be loaded
-		//     DontDestroyOnLoad (this.gameObject);
-		// 	instance = this;// define the class as a static variable
-        //     Debug.Log(" ------- WELCOME ------");
-		// }
-		// else
-		// {
-		// 	//it destroys the class if already other class exists
-		// 	Destroy(this.gameObject);
-		// }
         
     }
 
@@ -129,34 +109,22 @@ public class NetWork_Start : MonoBehaviour
 
 		StartScene.instance.SetUpProfile(tempname);
         
-		Debug.Log(Client.name + " 은 대기화면으로 갑니ㅇ다. 총 인원 수 : " + Variables.totalplayer);
+		Debug.Log(Client.name + " 은 대기화면으로 갑니다. 총 인원 수 : " + Variables.totalplayer);
 
-		text.text = "로그인에 성공하였습니다.";
-
-		button1.gameObject.SetActive(true);
-		button2.gameObject.SetActive(false);
-		image.gameObject.SetActive(true);
-	}
-
-	public void ErrMsg(string data) {
-		image.gameObject.SetActive(true);
-		text.text = data;
-
-		button1.gameObject.SetActive(false);
-		button2.gameObject.SetActive(true);
+		loginSuccessBox.SetActive(true);
 	}
 
 	public void ChangeJoinScene() {
 		SceneManager.LoadScene("JoinScene");
 	}
 
-	public void ChangeWaitScene() {
-		image.gameObject.SetActive(false);
-		SceneManager.LoadScene("WaitScene");
+	public void OnClickJoinSucceesButton() {
+		loginSuccessBox.SetActive(false);
+		SceneManager.LoadScene("Lobby");
 	}
 
 	public void CloseImage() {
-		image.gameObject.SetActive(false);
+		loginSuccessBox.SetActive(false);
 	}
 
 }
