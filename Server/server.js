@@ -93,14 +93,18 @@ io.on('connection', function(socket){
 		var SQL = "select * from user"
 			+ " where user_id = '" + currentUser.name + "'";
 
-		connection.query(SQL, function (error, results) {
-			if (error || results.length == 0) {
-				console.log(error);
-				console.log("존재하지 않는 아이디입니다.");
-			}
-			else if (results[0].user_pw != currentUser.password) {
-				console.log("아이디 혹은 비밀번호를 확인하세요")
-			}
+			connection.query(SQL, function (error, results) {
+				if (error || results.length == 0) {
+					console.log(error);
+					var msg = "아이디 혹은 비밀번호를 확인하세요";
+					console.log(msg);
+					socket.emit("CHECK_ID_PW", msg);
+				}
+				else if (results[0].user_pw != currentUser.password) {
+					var msg = "아이디 혹은 비밀번호를 확인하세요";
+					console.log("아이디 혹은 비밀번호를 확인하세요");
+					socket.emit("CHECK_ID_PW", msg);
+				}
 			else {
 		// clients list에 추가
 		clients.push(currentUser);
@@ -136,17 +140,31 @@ console.log("userinfo : " + User.name + " " + User.password + " " + User.mail);
 var SQL = "insert into user (user_id, user_pw, user_email)"
 	+ " value ( '" + User.name + "', '" + User.password + "', '" + User.mail + "')";
 
-console.log(SQL);
-connection.query(SQL, function (error, results) {
-	if (error) {
-		console.log(error);
-		console.log("이미 존재하는 아이디입니다.");
-	}
-	else {
-		console.log('[INFO] player ' + User.name + ': join sucsess');
-		socket.emit('CHANGE_STARTSSCENE');
-	}
-});
+	console.log(SQL);
+	connection.query(SQL, function (error, results) {
+		if (error) {
+			console.log(error);
+			var msg = "이미 존재하는 아이디입니다.";
+			console.log("이미 존재하는 아이디입니다.");
+			socket.emit("JOINERROR", msg);
+		}
+		else if (User.name.length < 6 || User.name.length > 16) {
+			var msg = "아이디를 확인해주세요.";
+			console.log(msg);
+			socket.emit("JOINERROR", msg);
+		}
+		else if (User.password.length < 8 || User.password.length > 16) {
+			var msg = "비밀번호를 확인해주세요.";
+			console.log(msg);
+			socket.emit("JOINERROR", msg);
+		}
+		else {
+			var msg = "회원가입을 성공하였습니다.";
+			console.log('[INFO] player ' + User.name + ': join sucsess');
+			socket.emit("JOINSUCCESS", msg);
+			// socket.emit('CHANGE_STARTSSCENE');
+		}
+	});
 });//END_SOCKET_ON
 	
 
@@ -172,18 +190,27 @@ socket.on('USERUPDATE', function (_data) {
 		+ " user_email =  '" + User.mail + "'"
 		+ " where user_id = '" + User.name + "'";
 
-	console.log(SQL);
-	connection.query(SQL, function (error, results) {
-		if (error) {
-			console.log(error);
-			console.log("정보 수정에 실패하였습니다.");
-		}
-		else {
-			console.log('[INFO] player ' + User.name + ': update sucsess');
-			socket.emit('USERINFO', User.name, User.password, User.mail);
-		}
-	});
-});//END_SOCKET_ON
+		console.log(SQL);
+		connection.query(SQL, function (error, results) {
+			if (error) {
+				console.log(error);
+				var msg = "정보 수정에 실패하였습니다.";
+				console.log("정보 수정에 실패하였습니다.");
+				socket.emit("UPDATEERROR", msg);
+			}
+			else if (User.password.length < 8 || User.password.length > 16) {
+				var msg = "비밀번호를 확인해주세요.";
+				console.log(msg);
+				socket.emit("UPDATEERROR", msg);
+			}
+			else {
+				console.log('[INFO] player ' + User.name + ': update sucsess');
+				var msg = "회원 정보 수정에 성공하였습니다.";
+				socket.emit('UPDATESUCCESS', msg);
+				socket.emit('USERINFO', User.name, User.password, User.mail);
+			}
+		});
+	});//END_SOCKET_ON
 
 
 // 회원 탈퇴
@@ -201,7 +228,7 @@ socket.on('USERDELETE', function (_data) {
 		}
 		else {
 			console.log('[INFO] player ' + currentUser.name + ': delete sucsess');
-			socket.emit('CHANGE_STARTSSCENE');
+			socket.emit('DELETESUCCESS');
 		}
 	});
 });//END_SOCKET_ON
