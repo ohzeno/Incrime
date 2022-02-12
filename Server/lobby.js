@@ -84,8 +84,10 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 			];
 
 			connection.query(createRoomSQL, params, function (error, rows) {
-				if (error) console.log(error);
-				else {
+				if (error) {
+					console.log(error);
+					socket.emit("LOBBY_ERROR", "이미 방을 생성하셨습니다.");
+				} else {
 					console.log(rows[0] + "방 생성 정보");
 					console.log(rows[0].insertId + "번 방을 생성했습니다.");
 					currentUser.joinedRoomId = rows[0].insertId;
@@ -229,9 +231,4 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 			}
 		});
 	},
-
-	//제거될 듯한 소켓 이벤트 함수
-	refreshInfoInRoom: function (socket, currentUser, connection) {},
-
-	refreshUsersInRoom: function (socket, currentUser, connection) {},
 });
