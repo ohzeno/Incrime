@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -92,7 +92,6 @@ public class LobbyController : MonoBehaviour
 
     private RoomUIWrapper currentPickRoom;
 
-
     public RoomUIWrapper tempRoomUI;
 
     [SerializeField]
@@ -101,9 +100,16 @@ public class LobbyController : MonoBehaviour
     [SerializeField]
     TMP_InputField joinRoomPassword;
 
+    private AgoraController agoraController;
+
+
+    [SerializeField]
+    private CanvasGroup menuCanvasGroup;
+
     void Start()
     {
-        roomUsers = userListParent.GetComponentsInChildren<RoomUser>();
+        roomUsers = userListParent.GetComponentsInChildren<RoomUser>(true);
+
         OnClickCreateTabButton();
         roomInnerUIObject.SetActive(false);
         PlayCrimeSceneButton_cancel.SetActive(false);
@@ -111,6 +117,10 @@ public class LobbyController : MonoBehaviour
         Button tempButton = tempRoomUI.gameObject.GetComponent<Button>();
         tempButton.onClick.AddListener(() => OnClickRoomUI(tempRoomUI));
         //ClearChildsDataInRoomUser();
+
+        ClearChildsDataInRoomUser();
+
+        agoraController = AgoraController.GetAgoraControllerInstance();
     }
 
     // Update is called once per frame
@@ -160,16 +170,15 @@ public class LobbyController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log(currentPickRoom.title.text + "ÀÔÀå");
+                        Debug.Log(currentPickRoom.title.text + "ë²ˆ ë°©");
                         CurrntPasswordState = PasswordState.Close;
-                        Debug.Log(joinRoomPassword.text + "À¯´ÏÆ¼ ºñ¹Ğ¹øÈ£ ÀÔ·Â°ª");
                         Application.ExternalCall("socket.emit", "JOIN_ROOM", currentPickRoom.roomNo, joinRoomPassword.text);
                         OnClickClosePasswordInput();
                     }
                 }
                 else
                 {
-                    Debug.Log(currentPickRoom.title.text + "ÀÔÀå");
+                    Debug.Log(currentPickRoom.title.text + "ë²ˆ ë°©");
                     Application.ExternalCall("socket.emit", "JOIN_ROOM", currentPickRoom.roomNo, "");
                 }
             }
@@ -192,8 +201,9 @@ public class LobbyController : MonoBehaviour
 
     public void OnClickRefreshButton()
     {
+        DestoryChildsInRoomList();
         OnClickClosePasswordInput();
-        Debug.Log("¹æ ¸®½ºÆ® »õ·Î°íÄ§ È£Ãâ");
+        Debug.Log("ìƒˆë¡œ ê³ ì¹¨ ë²„íŠ¼ í´ë¦­");
         Application.ExternalCall("socket.emit", "REFRESH_ROOM_LIST");
     }
 
@@ -208,10 +218,8 @@ public class LobbyController : MonoBehaviour
     }
 
     public void ReceiveRoomList(string jsonstr)
-    {
-        DestoryChildsInRoomList();
-
-        Debug.Log("¼ö½ÅµÈ ¹æ ¸®½ºÆ® json: " + jsonstr);
+    {     
+        Debug.Log("ë£¸ ë¦¬ìŠ¤íŠ¸ ìˆ˜ì‹  json: " + jsonstr);
         RoomsWrapper receiveRoomsWrapper = JsonUtility.FromJson<RoomsWrapper>(jsonstr);
 
         Debug.Log(receiveRoomsWrapper.rooms);
@@ -237,24 +245,37 @@ public class LobbyController : MonoBehaviour
         }
     }
 
+    private void MenuShow()
+    {
+        menuCanvasGroup.alpha = 1;
+        menuCanvasGroup.interactable = true;
+        menuCanvasGroup.blocksRaycasts = true;
+    }
+    private void MenuHide()
+    {
+        menuCanvasGroup.alpha = 0;
+        menuCanvasGroup.interactable = false;
+        menuCanvasGroup.blocksRaycasts = false;
+    }
+
+    //ë°©ì •ë³´ë¥¼ ë°›ìœ¼ë©´ ê·¸ ë•Œ ë¡œë¹„ í™”ë©´ì´ ì¼œì§
     public void ReceiveRoomInfo(string roomjsonstr)
     {
-        Debug.Log("¼ö½ÅµÈ ¹æ Á¤º¸ json: " + roomjsonstr);
-        //¼ö½ÅµÇ´Â Á¤º¸ waitingroom_no, waitingroom_nm, story_no, people_count
+        Debug.Log("ìˆ˜ì‹ ëœ ë£¸ ì •ë³´ json: " + roomjsonstr);
+        //ê²Œì„ ë°ì´í„° ìˆ˜ì‹  waitingroom_no, waitingroom_nm, story_no, people_count
         Room receiveRoom = JsonUtility.FromJson<Room>(roomjsonstr);
 
         if (receiveRoom.waitingroom_no != 0)
         {
-            roomInnerUIObject.SetActive(true);
-            Debug.Log("[system] ´ë±â½Ç " + Client.room + " ¿¡ ÀÔÀåÇß½À´Ï´Ù.");
-            GameInfo.GameRoomInfo.roomNo = roomInfo.roomNo = receiveRoom.waitingroom_no;
-            GameInfo.GameRoomInfo.roomTitle =  roomInfo.roomInfoTitleText.text = receiveRoom.waitingroom_nm;
-            //TODO »ó¿ëÈ­ ¹× °³¼±½Ã¿£ °íÃÄ¾ß ÇÒ ºÎºĞ.
-            GameInfo.GameRoomInfo.roomStory = roomInfo.roomInfoStroyText.text = "ÀÌÆÀÀå »ìÀÎ»ç°Ç";
-            roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 ÀÎ";
-            
-            // Å¬¶óÀÌ¾ğÆ® º¯¼ö¿¡´Ù°¡ ÀúÀåÇØµÎ±â 
+            MenuHide();
+            GameRoomInfo.roomNo = roomInfo.roomNo = receiveRoom.waitingroom_no;
+            GameRoomInfo.roomTitle =  roomInfo.roomInfoTitleText.text = receiveRoom.waitingroom_nm;
+            //TODO ìƒìš©í™”ì‹œ ë°”ê¿”ì•¼ í•  ë¶€ë¶„.
+            GameRoomInfo.roomStory = roomInfo.roomInfoStroyText.text = "ì´íŒ€ì¥ ì‚´ì¸ì‚¬ê±´";
+            roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 ì¸";
             Client.room = receiveRoom.waitingroom_no.ToString();
+            roomInnerUIObject.SetActive(true);
+            agoraController.JoinAgoraRoom(GameRoomInfo.roomNo + "Lobby", false);
         }
     }
 
@@ -262,7 +283,7 @@ public class LobbyController : MonoBehaviour
     {
         ClearChildsDataInRoomUser();
         
-        Debug.Log("¼ö½ÅµÈ À¯Àú ¸®½ºÆ® json: " + usersjsonstr);
+        Debug.Log("ìˆ˜ì‹ ëœ ë£¸ ìœ ì € ì •ë³´ json: " + usersjsonstr);
         UsersWrapper receiveUsersWrapper = JsonUtility.FromJson<UsersWrapper>(usersjsonstr);
 
         Debug.Log(receiveUsersWrapper.users);
@@ -273,7 +294,7 @@ public class LobbyController : MonoBehaviour
             {
                 roomUsers[i].userId = receiveUsersWrapper.users[i].user_id;
                 roomUsers[i].userNameTextMesh.text = receiveUsersWrapper.users[i].user_id;
-                //ÇØ´ç Çà º¸ÀÌ±â
+                //ìì‹ ì˜¤ë¸Œì íŠ¸ ë³€ê²½
                 SetActiveRecursively(roomUsers[i].transform, true, true);
             }
         }
@@ -290,7 +311,7 @@ public class LobbyController : MonoBehaviour
         }
     }
 
-    //³»¿ëÀ» Á¦°ÅÇÏ´Â °ÍÀÌ ¾Æ´Ñ Àç±ÍÀûÀ¸·Î Active »óÅÂ¸¦ ÇØÁ¦ÇÔ.
+    //ë£¸ ì•ˆì˜ ìì‹ User ì •ë³´ë“¤ì„ ì‚­ì œí•¨. ë¼ì¸ë“¤ë§Œ Active falseë¡œ ë°”ê¿ˆ.
     private void ClearChildsDataInRoomUser()
     {
         roomUsers[0].userNameTextMesh.text = "";
@@ -318,7 +339,7 @@ public class LobbyController : MonoBehaviour
         if ( Client.ready == true )
         {
             Client.ready = false;
-            // ·¹µğÇÑ »óÅÂÀÏ °æ¿ì¿¡´Â ÁØºñ¸¦ Ç®¾îÁÖ±â 
+            // ë‚˜ê°€ê¸° ìš”ì²­ ë³´ë‚´ê¸°
             Application.ExternalCall("socket.emit", "NOT_READY_CRIMESCENE", Client.room );
         }
 
@@ -326,23 +347,24 @@ public class LobbyController : MonoBehaviour
         {
             Client.room = "empty";
             Application.ExternalCall("socket.emit", "LEAVE_ROOM", roomInfo.roomNo);
-
+            agoraController.LeaveAgoraRoom();
         }
-        PlayCrimeSceneButton.SetActive(true);
+        MenuShow();
+        GameRoomInfo.ClearGameRoomInfo();
         roomInnerUIObject.SetActive(false);
         OnClickRefreshButton();
-        //TODO Ãß°¡ÀûÀ¸·Î ³ª°¥ ¶§ÀÇ Á¦¾î ³Ö¾î¾ß ÇÔ.
+        //TODO ì¢€ ë” ìµœì í™” ê°€ëŠ¥í•œ ë¶€ë¶„
     }
 
     public void OnClickPlayCrimeScene()
     {
-        Debug.Log("[system] ´ë±â½Ç¿¡¼­ Å©¶óÀÓ¾À ½ÃÀÛÇÏ±â ¹öÆ° : " + Client.room);
+        Debug.Log("[system] ê²Œì„ ì‹œì‘ ë²„íŠ¼ ëˆ„ë¦„: " + Client.room);
 
-        Debug.Log("[system] ÇöÀç ÁØºñ ÀÎ¿ø : " + GameInfo.GameRoomInfo.roomReadyPlayer );
+        Debug.Log("[system] ì¤€ë¹„í•œ í”Œë ˆì´ì–´: " + GameInfo.GameRoomInfo.roomReadyPlayer );
 
         if ( GameInfo.GameRoomInfo.roomReadyPlayer == 5 )
         {
-            Debug.Log("[system] ¸ğµç ÇÃ·¹ÀÌ¾î°¡ ÁØºñ µÇ¾ú½À´Ï´Ù. °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù. : " + Client.room );
+            Debug.Log("[system] í”Œë ˆì´ì–´ê°€ ëª¨ë‘ ì¤€ë¹„ë¨ : " + Client.room );
             Application.ExternalCall("socket.emit", "PLAY_CRIMESCENE", Client.room);
 
         } else
@@ -365,7 +387,7 @@ public class LobbyController : MonoBehaviour
 
     public void onRefreshReadyPlayer(int readyPlayer)
     {
-        Debug.Log("[system] ÁØºñµÈ À¯Àú ¾÷µ¥ÀÌÆ® : " + readyPlayer);
+        Debug.Log("[system] ì¤€ë¹„ëœ í”Œë ˆì´ì–´ : " + readyPlayer);
         GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
         ReadyUserText.text = readyPlayer.ToString();
 
@@ -374,7 +396,7 @@ public class LobbyController : MonoBehaviour
     public void playCrimeScene()
     {
         Client.ready = false;
-        Debug.Log("[system] °ÔÀÓÀ» ½ÃÀÛ ÇÕ´Ï´Ù. : " + Client.room);
+        Debug.Log("[system] ë‹¤ìŒ ë°©ì´ ê²Œì„ì‹œì‘ : " + Client.room);
         SceneManager.LoadScene("WaitScene");
     }
 
