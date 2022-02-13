@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log(scene.name+"씬이름");
         if (movingScene.Contains(scene.name))
