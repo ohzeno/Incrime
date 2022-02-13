@@ -23,6 +23,16 @@ public class TestHelloUnityVideo
     // 
     public CamObject camObject;
 
+    public TestHelloUnityVideo()
+    {
+
+    }
+
+    public TestHelloUnityVideo(CamObject camObject)
+    {
+        this.camObject = camObject;
+    }
+
     // load agora engine
     public void loadEngine(string appId)
     {
@@ -134,150 +144,45 @@ public class TestHelloUnityVideo
         }
     }
 
-    // accessing GameObject in Scnene1
-    // set video transform delegate for statically created GameObject
-    public void onSceneHelloVideoLoaded()
-    {
-        // Attach the SDK Script VideoSurface for video rendering
-        GameObject quad = GameObject.Find("Quad");
-        if (ReferenceEquals(quad, null))
-        {
-            Debug.Log("failed to find Quad");
-            return;
-        }
-        else
-        {
-            quad.AddComponent<VideoSurface>();
-        }
-
-        GameObject cube = GameObject.Find("Cube");
-        if (ReferenceEquals(cube, null))
-        {
-            Debug.Log("failed to find Cube");
-            return;
-        }
-        else
-        {
-            cube.AddComponent<VideoSurface>();
-        }
-
-        GameObject text = GameObject.Find("MessageText");
-        if (!ReferenceEquals(text, null))
-        {
-            MessageText = text.GetComponent<Text>();
-        }
-    }
-
     // implement engine callbacks
     private void onJoinChannelSuccess(string channelName, uint uid, int elapsed)
     {
         Debug.Log("JoinChannelSuccessHandler: uid = " + uid);
-        GameObject textVersionGameObject = GameObject.Find("VersionText");
-        textVersionGameObject.GetComponent<Text>().text = "SDK Version : " + getSdkVersion();
     }
 
-    // When a remote user joined, this delegate will be called. Typically
-    // create a GameObject to render video on it
     private void onUserJoined(uint uid, int elapsed)
     {
-        Debug.Log("onUserJoined: uid = " + uid + " elapsed = " + elapsed);
+        Debug.Log("Agora: onUserJoined: uid = " + uid + " elapsed = " + elapsed);
         // this is called in main thread
 
         // find a game object to render video stream from 'uid'
-        GameObject go = GameObject.Find(uid.ToString());
-        if (!ReferenceEquals(go, null))
-        {
-            return; // reuse
-        }
+        Debug.Log(uid.ToString());
 
         // create a GameObject and assign to this new user
-        VideoSurface videoSurface = makeImageSurface(uid.ToString());
-        if (!ReferenceEquals(videoSurface, null))
+        //VideoSurface videoSurface = makeImageSurface(uid.ToString());
+        if (!ReferenceEquals(camObject, null))
         {
+            Debug.Log("캠오브젝트는 NULL이 아닙니다");
             camObject.AddOtherUser(uid);
 
-            // configure videoSurface
-            videoSurface.SetForUser(uid);
-            videoSurface.SetEnable(true);
-            videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
+            //// configure videoSurface
+            //videoSurface.SetForUser(uid);
+            //videoSurface.SetEnable(true);
+            //videoSurface.SetVideoSurfaceType(AgoraVideoSurfaceType.RawImage);
         }
     }
-
-    public VideoSurface makePlaneSurface(string goName)
-    {
-        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Plane);
-
-        if (go == null)
-        {
-            return null;
-        }
-        go.name = goName;
-        // set up transform
-        go.transform.Rotate(-90.0f, 0.0f, 0.0f);
-        float yPos = Random.Range(3.0f, 5.0f);
-        float xPos = Random.Range(-2.0f, 2.0f);
-        go.transform.position = new Vector3(xPos, yPos, 0f);
-        go.transform.localScale = new Vector3(0.25f, 0.5f, .5f);
-
-        // configure videoSurface
-        VideoSurface videoSurface = go.AddComponent<VideoSurface>();
-        return videoSurface;
-    }
-
-    private const float Offset = 100;
-    //
-    static int temp = 1;
-    public VideoSurface makeImageSurface(string goName)
-    {
-        GameObject go = new GameObject();
-
-        if (go == null)
-        {
-            return null;
-        }
-
-        go.name = goName;
-
-        // to be renderered onto
-        go.AddComponent<RawImage>();
-
-        // make the object draggable
-        go.AddComponent<UIElementDragger>();
-        GameObject canvas = GameObject.Find("Canvas");
-        if (canvas != null)
-        {
-            go.transform.parent = canvas.transform;
-        }
-         // set up transform
-        go.transform.Rotate(0f, 0.0f, 180.0f);
-        // 이부분 수정하기
-        // float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
-        // float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
-        float xPos = -900;
-        float yPos = 220;
-        go.transform.localPosition = new Vector3(xPos + ( temp * 270 ), yPos, 0f);
-        temp += 1;
-        if ( temp == 6) temp =1;
-        Debug.Log("지금 연결된 수 : " + temp);
-        // 화면 사이즈 조절
-        // go.transform.localScale = new Vector3(  (2*1.6666f) * (float) 0.8 ,  (2f) * (float) 0.8 , 1f);
-        go.transform.localScale = new Vector3(  (1.5f*1.6666f)  ,  (1.5f)  , 1f);
-
-        // configure videoSurface
-        VideoSurface videoSurface = go.AddComponent<VideoSurface>();
-        return videoSurface;
-    }
+    
     // When remote user is offline, this delegate will be called. Typically
     // delete the GameObject for this user
     private void onUserOffline(uint uid, USER_OFFLINE_REASON reason)
     {
         // remove video stream
-        Debug.Log("onUserOffline: uid = " + uid + " reason = " + reason);
+        Debug.Log("Agora: onUserOffline: uid = " + uid + " reason = " + reason);
         // this is called in main thread
-        GameObject go = GameObject.Find(uid.ToString());
-        if (!ReferenceEquals(go, null))
+        if (!ReferenceEquals(camObject, null))
         {
-            Object.Destroy(go);
+            Debug.Log("캠오브젝트는 NULL이 아닙니다");
+            camObject.DeleteOtherUser(uid);
         }
     }
 
@@ -311,6 +216,70 @@ public class TestHelloUnityVideo
 
         LastError = error;
     }
+
+    //public VideoSurface makePlaneSurface(string goName)
+    //{
+    //    GameObject go = GameObject.CreatePrimitive(PrimitiveType.Plane);
+
+    //    if (go == null)
+    //    {
+    //        return null;
+    //    }
+    //    go.name = goName;
+    //    // set up transform
+    //    go.transform.Rotate(-90.0f, 0.0f, 0.0f);
+    //    float yPos = Random.Range(3.0f, 5.0f);
+    //    float xPos = Random.Range(-2.0f, 2.0f);
+    //    go.transform.position = new Vector3(xPos, yPos, 0f);
+    //    go.transform.localScale = new Vector3(0.25f, 0.5f, .5f);
+
+    //    // configure videoSurface
+    //    VideoSurface videoSurface = go.AddComponent<VideoSurface>();
+    //    return videoSurface;
+    //}
+
+    //
+    //static int temp = 1;
+    //public VideoSurface makeImageSurface(string goName)
+    //{
+    //    GameObject go = new GameObject();
+
+    //    if (go == null)
+    //    {
+    //        return null;
+    //    }
+
+    //    go.name = goName;
+
+    //    // to be renderered onto
+    //    go.AddComponent<RawImage>();
+
+    //    // make the object draggable
+    //    go.AddComponent<UIElementDragger>();
+    //    GameObject canvas = GameObject.Find("Canvas");
+    //    if (canvas != null)
+    //    {
+    //        go.transform.parent = canvas.transform;
+    //    }
+    //    // set up transform
+    //    go.transform.Rotate(0f, 0.0f, 180.0f);
+    //    // 이부분 수정하기
+    //    // float xPos = Random.Range(Offset - Screen.width / 2f, Screen.width / 2f - Offset);
+    //    // float yPos = Random.Range(Offset, Screen.height / 2f - Offset);
+    //    float xPos = -900;
+    //    float yPos = 220;
+    //    go.transform.localPosition = new Vector3(xPos + (temp * 270), yPos, 0f);
+    //    temp += 1;
+    //    if (temp == 6) temp = 1;
+    //    Debug.Log("지금 연결된 수 : " + temp);
+    //    // 화면 사이즈 조절
+    //    // go.transform.localScale = new Vector3(  (2*1.6666f) * (float) 0.8 ,  (2f) * (float) 0.8 , 1f);
+    //    go.transform.localScale = new Vector3((1.5f * 1.6666f), (1.5f), 1f);
+
+    //    // configure videoSurface
+    //    VideoSurface videoSurface = go.AddComponent<VideoSurface>();
+    //    return videoSurface;
+    //}
 
     #endregion
 }

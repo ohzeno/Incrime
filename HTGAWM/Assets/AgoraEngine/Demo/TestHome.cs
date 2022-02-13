@@ -144,10 +144,10 @@ public class TestHome : MonoBehaviour
     {
         if (scene.name == PlaySceneName)
         {
-            if (!ReferenceEquals(app, null))
-            {
-                app.onSceneHelloVideoLoaded(); // call this after scene is loaded
-            }
+            //if (!ReferenceEquals(app, null))
+            //{
+            //    app.OnSceneHelloVideoLoaded(); // call this after scene is loaded
+            //}
             SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         }
     }
