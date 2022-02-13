@@ -2,7 +2,7 @@
 
 var self = (module.exports = {
 	//공실인지 확인
-	checkEmpty: function (roomId, connection) {
+	checkEmpty: function (roomId, connection, socket) {
 		console.log("방 공실 체크");
 		var checkEmptySQL = `select count(user_id) as count from waiting_user where waitingroom_no = ?`;
 		let params = [roomId];
@@ -14,6 +14,7 @@ var self = (module.exports = {
 			} else {
 				if (rows[0].count == 0) {
 					console.log(roomId + "번 방은 공실입니다. 삭제합니다.");
+					socket.emit("DELETE_GAME_ROOM", roomId);
 					var removeRoomSQL = `delete from waitingroom where waitingroom_no = ?`;
 					let params = [roomId];
 					connection.query(
@@ -52,10 +53,10 @@ var self = (module.exports = {
 			if (error) {
 				console.log(error);
 			} else {
-				self.checkEmpty(currentUser.joinedRoomId, connection);
+				self.checkEmpty(currentUser.joinedRoomId, connection, socket);
 				socket.to("room" + currentUser.joinedRoomId).emit("SOMEONE_LEAVE_ROOM");
 				currentUser.joinedRoomId = 0;
-				socket.leave("room" + currentUser.joinedRoomId);
+				socket.leave("room" + currentUser.joinedRoomId); /////////////////////////////////
 				socket.emit("LEAVE_ROOM_SUCCESS");
 			}
 		});
@@ -137,7 +138,8 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 					} else {
 						console.log(_password + "전송받은 비밀번호 값");
 						console.log(rows[0].waitingroom_pw + "서버 비밀번호 값");
-						if (_password == rows[0].waitingroom_pw) {
+						// 비밀번호가 같으면 입장
+						if (_password == rows[0].waitingroom_pw) { 
 							var joinRoomSQL = `insert into waiting_user (waitingroom_no, user_id)
 							values (?, ?)`;
 							let params = [_roomNumber, currentUser.name];
@@ -184,6 +186,8 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 
 			self.getUsersInRoom(currentUser.joinedRoomId, socket, connection);
 		});
+
+
 	},
 
 	getRoomInfo: function (roomId, socket, connection) {
@@ -231,4 +235,8 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 			}
 		});
 	},
+
+	
+
+
 });

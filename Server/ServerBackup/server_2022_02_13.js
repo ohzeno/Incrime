@@ -29,9 +29,8 @@ var sockets = {}; //// to storage sockets
 // 게임단계 변수
 var gamephase = 0;
 // 나중에 복합적으로 관리하게 되면 phase를 리스트로 변경해야할듯.
-// gamephase == 1 : 게임시작 전 로비
-// gamephase == 1 : 게임 방법 숙지 화면 - WaitScene
-// gamephase == 2 : 역할 대기화면 - RoleScene
+// gamephase == 1 : 게임시작 전 로비 & 역할 전
+// gamephase == 2 : 역할 대기화면
 // gamephase == 3 : 자기소개시간
 // gamephase == 4 : 탐색
 // gamephase == 5 : 1차 회의
@@ -419,14 +418,13 @@ io.on("connection", function (socket) {
 						// 각자 게임 화면으로 보내버리면서 시간 처리
 						clearInterval(timerId);
 						// 탐색시간 10분
-						Timeset(1,gamephase);
-						io.to(i.id).emit('GO_MAP');
+						Timeset(10, gamephase);
+						io.to(i.id).emit("GO_MAP");
 					}); //end_forEach
 				}
-			}, 60000); 
-			// 시간 보내주기 
-			Timeset(1,gamephase);
-
+			}, 600000);
+			// 시간 보내주기
+			Timeset(10, gamephase);
 		} else {
 			console.log("[system] 현재 준비 인원 : " + conference_number);
 		}
@@ -476,14 +474,11 @@ io.on("connection", function (socket) {
 						clients.forEach(function (i) {
 							io.to(i.id).emit("VIEW_CLUE_VIDEO");
 						}); //end_forEach
-					}, 60000); 
+					}, 60000);
+				}, 600000);
 
-					
-				}, 60000); 
-
-				// 시간 보내주기 
-				Timeset(1,gamephase);
-
+				// 시간 보내주기
+				Timeset(10, gamephase);
 			} else if (gamephase == 5) {
 				// 1차회의가 끝난 경우
 				// phase 6 : 투표 씬
@@ -559,27 +554,33 @@ io.on("connection", function (socket) {
 		games[_roomNumber].ReadyUser += 1;
 		refreshreadyUser(_roomNumber);
 	});
-	// 준비 취소 함수
-	socket.on("NOT_READY_CRIMESCENE", function ( _roomNumber ) {
-		console.log("[system] 플레이어가 크라임씬을 준비를 취소 했습니다.");
-		games[_roomNumber].ReadyUser -= 1;
-		refreshreadyUser(_roomNumber);
+
+	socket.on("UPDATE_ROOMINFO_IN_GAMES", function ( _roomNumber ) {
+		console.log("[system] 유저 대기실 등록 하겠습니다.");
+		console.log(_roomNumber);
+
+		
+		// io.sockets.in("room" + currentUser.joinedRoomId).emit("ON_PLAY_CRIMESCENE", _data);
 	});
-	// 준비된 인원 업데이트
+
 	socket.on("REFRESH_READY_USER", function ( _roomNumber ) {
 		console.log("[system] 준비 된 인원 업데이트  ( 방 번호 : "+  _roomNumber + " ) " );
+		// if ( games[_roomNumber] == null ){
+		// 	// 생성된 방이 없는 경우 games에 방을 생성해서 넣기.
+		// 	console.log("[system] 새로 생성한 방입니다. " );
+		// 	games[_roomNumber] = {
+		// 		SocketRoomName : "room" + _roomNumber,
+		// 		GamePhase : 1,
+		// 		ReadyUser : 0,
+		// 	}
+		// }
+		// // 생성된 방이 있으면 준비된 인원 변수를 리턴한다.
+		// io.sockets.in( games[_roomNumber].SocketRoomName ).emit("REFRESH_READY_USER_SUCCESS", games[_roomNumber].ReadyUser );
+		// // socket.emit("REFRESH_READY_USER_SUCCESS",  games[_roomNumber].ReadyUser );
+
+
 		refreshreadyUser(_roomNumber);
-	});
-	// games에 저장된 룸 삭제하기
-	socket.on("DELETE_GAME_ROOM_IN_SERVER", function ( _roomNumber ) {
-		delete games[_roomNumber];
-		console.log("[system] 대기실을 삭제했습니다.(games) 현재 진행 중인 games : " +  Object.keys(games).length );
-	});
-	// 대기실에서 크라임씬 시작하기
-	socket.on("PLAY_CRIMESCENE", function ( _roomNumber ) {
-		games[_roomNumber].GamePhase = 1;
-		games[_roomNumber].ReadyUser = 0;
-		io.sockets.in( games[_roomNumber].SocketRoomName ).emit("ON_PLAY_CRIMESCENE");
+
 	});
 
 	
@@ -652,7 +653,7 @@ function refreshreadyUser(_roomNumber) {
 		console.log("[system] 새로 생성한 방입니다. " );
 		games[_roomNumber] = {
 			SocketRoomName : "room" + _roomNumber,
-			GamePhase : 0,
+			GamePhase : 1,
 			ReadyUser : 0,
 		}
 	}
