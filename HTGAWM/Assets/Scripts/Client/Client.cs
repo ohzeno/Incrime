@@ -21,8 +21,9 @@ public static class Client
   // 메모
   public static string memo = "";
 
-  // 대기실 이름
+  // 대기실 관련
   public static string room = "temproom";
+  public static bool ready = false;
   
   
   

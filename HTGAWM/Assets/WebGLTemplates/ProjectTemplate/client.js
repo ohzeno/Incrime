@@ -195,4 +195,16 @@ window.addEventListener("load", function () {
 			window.unityInstance.SendMessage("NetWork_Meeting", "OnPlayVideo", phase);
 		}
 	}); //END_SOCKET.ON
+
+	// 게임 시작하기
+	socket.on("ON_PLAY_CRIMESCENE", function () {
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage(
+				"LobbyController",
+				"playCrimeScene"
+			);
+		}
+	}); //END_SOCKET.ON
+
+
 }); //END_window_addEventListener

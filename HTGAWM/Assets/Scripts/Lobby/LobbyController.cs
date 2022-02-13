@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using User;
 using GameInfo;
+using UnityEngine.SceneManagement;
 
 public class LobbyController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class LobbyController : MonoBehaviour
     public State CurrentState = State.Create;
     public PasswordState CurrntPasswordState = PasswordState.Close;
     public GameObject PlayCrimeSceneButton;
+    public GameObject PlayCrimeSceneButton_cancel;
     public Text ReadyUserText;
 
     [Serializable]
@@ -104,7 +106,8 @@ public class LobbyController : MonoBehaviour
         roomUsers = userListParent.GetComponentsInChildren<RoomUser>();
         OnClickCreateTabButton();
         roomInnerUIObject.SetActive(false);
-        
+        PlayCrimeSceneButton_cancel.SetActive(false);
+
         Button tempButton = tempRoomUI.gameObject.GetComponent<Button>();
         tempButton.onClick.AddListener(() => OnClickRoomUI(tempRoomUI));
         //ClearChildsDataInRoomUser();
@@ -249,7 +252,8 @@ public class LobbyController : MonoBehaviour
             //TODO 상용화 및 개선시엔 고쳐야 할 부분.
             GameInfo.GameRoomInfo.roomStory = roomInfo.roomInfoStroyText.text = "이팀장 살인사건";
             roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 인";
-            // 클라이언트의 룸 바꿔주기
+            
+            // 클라이언트 변수에다가 저장해두기 
             Client.room = receiveRoom.waitingroom_no.ToString();
         }
     }
@@ -311,11 +315,20 @@ public class LobbyController : MonoBehaviour
 
     public void OnClickLeaveRoomButton()
     {
+        if ( Client.ready == true )
+        {
+            Client.ready = false;
+            // 레디한 상태일 경우에는 준비를 풀어주기 
+            Application.ExternalCall("socket.emit", "NOT_READY_CRIMESCENE", Client.room );
+        }
+
         if (roomInfo.roomNo != 0)
         {
+            Client.room = "empty";
             Application.ExternalCall("socket.emit", "LEAVE_ROOM", roomInfo.roomNo);
 
         }
+        PlayCrimeSceneButton.SetActive(true);
         roomInnerUIObject.SetActive(false);
         OnClickRefreshButton();
         //TODO 추가적으로 나갈 때의 제어 넣어야 함.
@@ -329,14 +342,25 @@ public class LobbyController : MonoBehaviour
 
         if ( GameInfo.GameRoomInfo.roomReadyPlayer == 5 )
         {
-            Debug.Log("[system] 모든 플레이어가 준비 되었습니다. 게임을 시작합니다. : " + Client.room);
+            Debug.Log("[system] 모든 플레이어가 준비 되었습니다. 게임을 시작합니다. : " + Client.room );
+            Application.ExternalCall("socket.emit", "PLAY_CRIMESCENE", Client.room);
 
         } else
         {
+            Client.ready = true;
             PlayCrimeSceneButton.SetActive(false);
-            GameInfo.GameRoomInfo.roomReadyPlayer += 1;
-            Application.ExternalCall("socket.emit", "READY_CRIMESCENE", GameInfo.GameRoomInfo.roomReadyPlayer);
+            PlayCrimeSceneButton_cancel.SetActive(true);
+            Application.ExternalCall("socket.emit", "READY_CRIMESCENE", Client.room );
         }
+    }
+
+    public void OnClickPlayCrimeScene_Cancel()
+    {
+        Client.ready = false;
+        PlayCrimeSceneButton.SetActive(true);
+        PlayCrimeSceneButton_cancel.SetActive(false);
+        Application.ExternalCall("socket.emit", "NOT_READY_CRIMESCENE", Client.room);
+
     }
 
     public void onRefreshReadyPlayer(int readyPlayer)
@@ -345,6 +369,13 @@ public class LobbyController : MonoBehaviour
         GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
         ReadyUserText.text = readyPlayer.ToString();
 
+    }
+
+    public void playCrimeScene()
+    {
+        Client.ready = false;
+        Debug.Log("[system] 게임을 시작 합니다. : " + Client.room);
+        SceneManager.LoadScene("WaitScene");
     }
 
 

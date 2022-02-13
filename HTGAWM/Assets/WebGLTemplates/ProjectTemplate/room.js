@@ -9,6 +9,10 @@ window.addEventListener("load", function () {
 			console.log("방생성정보" + _roomNumber);
 			socket.emit("REFRESH_INFO_IN_ROOM");
 			socket.emit("REFRESH_USERS_IN_ROOM");
+			
+			// 준비 유저 업데이트
+			socket.emit("REFRESH_READY_USER", _roomNumber );
+			
 			//window.unityInstance.SendMessage("Player", "ReceiveSharedProof", _data);
 		}
 	}); //END_SOCKET.ON
@@ -30,6 +34,9 @@ window.addEventListener("load", function () {
 		socket.emit("REFRESH_USERS_IN_ROOM");
 		// server.js 의 변수에다가 저장 하기
 		socket.emit("UPDATE_ROOMINFO_IN_GAMES", _roomNumber );
+
+		// 준비 유저 업데이트
+		socket.emit("REFRESH_READY_USER", _roomNumber );
 
 	});
 
@@ -91,6 +98,19 @@ window.addEventListener("load", function () {
 		}
 	});
 
+	socket.on("REFRESH_READY_USER_SUCCESS", function ( _data ) {
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage(
+				"LobbyController",
+				"onRefreshReadyPlayer",
+				_data
+			);
+		}
+	});
+
+	socket.on("DELETE_GAME_ROOM", function ( _data ) {
+		socket.emit("DELETE_GAME_ROOM_IN_SERVER", _data);
+	});
 
 
 }); //END_window_addEventListener
