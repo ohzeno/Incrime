@@ -18,16 +18,19 @@ app.use(
 app.use("/public/Build", express.static(__dirname + "/public/Build"));
 app.use(express.static(__dirname + "/public"));
 
-// 게임 로비별 변수
+// 게임 로비별 변수 // 룸이름, 게임페이즈, 레디플레이어
 var games = {};
+// 인게임
+var IngameTimer = {};
 
 // 사용하는 변수들
 var clients = []; // to storage clients
 var clientLookup = {}; // clients search engine
-var sockets = {}; //// to storage sockets
+// var sockets = {}; //// to storage sockets
 
 // 게임단계 변수
-var gamephase = 0;
+// var gamephase = 0;
+
 // 나중에 복합적으로 관리하게 되면 phase를 리스트로 변경해야할듯.
 // gamephase == 0 : 게임시작 전 로비
 // gamephase == 1 : 게임 방법 숙지 화면 - WaitScene
@@ -39,11 +42,11 @@ var gamephase = 0;
 // gamephase == 7 : 게임 종료
 
 // 시간관련 변수
-var time;
-var minute;
-var second;
+// var time;
+// var minute;
+// var second;
 // 타임 업데이트 함수
-let timerId;
+// let timerId;
 // 미팅을 나가고 싶어하는 사람
 var exitMeeting_people = 0;
 // 회의 가고싶어하는 사람
@@ -84,6 +87,7 @@ var lobbyFunc = require("./lobby");
 
 //open a connection with the specific client
 io.on("connection", function (socket) {
+	
 	//print a log in node.js command prompt
 	console.log("[system] 클라이언트가 연결되었습니다");
 
@@ -339,218 +343,136 @@ io.on("connection", function (socket) {
 	});
 
 	// 역할 배정
-	socket.on("setrole", function () {
-		console.log("[system] 역할 배정 합니다.");
-		if (clients.length == 6) {
-			// phase : 역할 배정
-			gamephase = 2;
-			console.log("[system] 플레이어가 모두 모였습니다. 역할을 배정합니다. ");
-			var role = [0, 0, 0, 0, 0, 0];
-			for (let index = 1; index <= 6; index++) {
-				while (true) {
-					var temp = Math.floor(Math.random() * 6);
-					if (role[temp] == 0) {
-						// 역할이 없을 경우
-						role[temp] = index;
-						break;
-					}
+	socket.on("SET_ROLE", function ( _roomNumber) {
+		
+		// io.sockets.adapter.rooms[room];
+		// var socketsinroom = io.sockets.clients('room'+_roomNumber ); 
+
+		console.log("[system] 역할 배정을 시작 합니다.");
+		// phase 2 : 역할 배정
+		games[_roomNumber].GamePhase = 2;
+		games[_roomNumber].ReadyUser = 0;
+		var role = [0, 0, 0, 0, 0, 0];
+		for (let index = 1; index <= 6; index++) {
+			while (true) {
+				var temp = Math.floor(Math.random() * 6);
+				if (role[temp] == 0) {
+					// 역할이 없을 경우
+					role[temp] = index;
+					break;
 				}
 			}
-			// console.log(role);
-			// 역할 배치 완료.
+		}
+		// console.log(role);
+		// 역할 배치 완료.
 
-			var roleindex = 0;
+		var roleindex = 0;
+		// 해당 룸에 연결되어 있는 모든 클라이언트 불러오기 ( SET 형 )
+		var socketsinroom = io.sockets.adapter.rooms.get('room'+_roomNumber);
+		// console.log(socketsinroom);
+		socketsinroom.forEach( function( element ) {
+			// console.log(element + " --> index : " + index);
+			var rolenumber = role[roleindex];
+			var myrole;
+			var SQL =
+				"SELECT s.story_nm, s.story_description, r.role_name " +
+				" FROM story AS s INNER JOIN role AS r " +
+				" ON s.story_no = r.story_no " +
+				" WHERE s.story_no = 1" +
+				" AND r.role_id = " +
+				rolenumber;
+			connection.query(SQL, function (error, results, fields) {
+				if (error) {
+					console.log(error);
+				}
+				// console.log(results);
+
+				myrole = results[0].role_name;
+				mystoryname = results[0].story_nm;
+				mystorydesc = results[0].story_description;
+
+				console.log("[system] 역할 -" + myrole);
+				io.to( element ).emit(
+					"ON_SET_ROLE",
+					myrole,
+					mystoryname,
+					mystorydesc
+				);
+
+
+			});
+			roleindex += 1;
+		});
+
+		// gamephse 2 : 역할 숙지 시간
+		// 시간 : 10분
+		// 타이머 기능이 처음이라 바로 생성해버리면 됨.
+		IngameTimer[_roomNumber] = New_Timer( 10, _roomNumber );
+
+	});
+
+	// 자기소개 하기
+	socket.on("GO_MEETING_SCENE", function ( _roomNumber ) {
+		console.log("[system] 미팅실로 이동합니다.");
+		// gamephse 3 : 자기 소개 시간
+		games[_roomNumber].GamePhase = 3;
+		games[_roomNumber].ReadyUser = 0;
+		// 미팅씬으로 이동
+		io.sockets.in( 'room' + _roomNumber ).emit("GO_MEETING");
+		// 시간 제한 - 시간이 지나면 맵 화면으로 바꾸기
+		// 15분
+		
+		clearInterval(IngameTimer[_roomNumber]);
+		IngameTimer[_roomNumber] = New_Timer( 15, _roomNumber );
+	});
+
+	socket.on("EXIT_MEETING", function ( _roomNumber ) {
+		if ( games[_roomNumber].GamePhase == 3) {
+			// 자기소개가 끝난 경우
+			// phase : 탐색 4
+			games[_roomNumber].GamePhase = 4;
+			games[_roomNumber].ReadyUser = 0;
+			console.log("[system] 자기소개를 끝내고 모든 플레이어가 나가고 싶어합니다. ");
+			// 탐색화면으로 보내버리기
+			io.sockets.in( 'room' + _roomNumber ).emit("GO_MAP");
+			// 탐색 시간 15분
+			clearInterval(IngameTimer[_roomNumber]);
+			// 지금은 게임 테스트를 위해 1분
+			IngameTimer[_roomNumber] = New_Timer( 1, _roomNumber );
+
+		} else if ( games[_roomNumber].GamePhase == 5) {
+			// 1차회의가 끝난 경우
+			// phase 6 : 투표 씬
+			games[_roomNumber].GamePhase = 6;
+			console.log("[system] 모든 플레이어가 1차회의를 마치고 나가고 싶어합니다. ");
+
+			// 투표로 보내버리기
 			clients.forEach(function (i) {
-				var rolenumber = role[roleindex];
-				var myrole;
-				var SQL =
-					"SELECT s.story_nm, s.story_description, r.role_name " +
-					" FROM story AS s INNER JOIN role AS r " +
-					" ON s.story_no = r.story_no " +
-					" WHERE s.story_no = 1" +
-					" AND r.role_id = " +
-					rolenumber;
-				connection.query(SQL, function (error, results, fields) {
-					if (error) {
-						console.log(error);
-					}
-					// console.log(results);
-
-					myrole = results[0].role_name;
-					mystoryname = results[0].story_nm;
-					mystorydesc = results[0].story_description;
-
-					console.log("[system] 역할 -" + myrole);
-					io.to(i.id).emit(
-						"SET_ROLE",
-						i.id,
-						i.name,
-						myrole,
-						mystoryname,
-						mystorydesc
-					);
-				});
-
-				roleindex += 1;
+				// 여기다가 투표로 가는 메소드 주기
+				console.log("[system] 투표하러 갑시다.");
+				io.to(i.id).emit("GO_VOTE");
 			}); //end_forEach
 
-			// 10 분 : 600000
-			// 시간 초과 시 // 10분
+			// 투표 시간 : 1분 = 60000
 			setTimeout(function () {
-				if (gamephase == 2) {
+				if (gamephase != 7) {
 					clearInterval(timerId);
-					console.log(
-						"[system] 역할 확인 시간이 끝났습니다. 회의실로 갑니다. "
-					);
-					// 자기소개 : 3
-					gamephase = 3;
+					console.log("[system] 투표 시간이 끝났습니다. ");
+					//
+					gamephase = 7;
 					clients.forEach(function (i) {
+						// 투표가 끝난 경우
 						clearInterval(timerId);
-						// 자기소개시간 : 10분
-						Timeset(10, gamephase);
-						io.to(i.id).emit("GO_MEETING");
+						// 결과 창으로 이동
+						io.to(i.id).emit("GO_VOTE_RESULT", votes);
 					}); //end_forEach
 				}
-			}, 600000);
+			}, 60000);
 
 			// 시간 보내주기
-			Timeset(10, gamephase);
-		} else {
-			console.log("[system] We can't play crime scene");
+			Timeset(1, gamephase);
 		}
-	});
-
-	// 화상회의 씬
-	socket.on("go_firstconference", function () {
-		console.log("[system] 미팅실로 이동합니다.");
-		conference_number += 1;
-		// 모든 플레이어가 준비 됐을 때.
-		if (conference_number == clients.length) {
-			conference_number = 0;
-
-			gamephase = 3;
-			console.log("[system] 모든 플레이어가 준비 상태 입니다. ");
-
-			conference = true;
-			// 회의 실로 보내버리기
-			clients.forEach(function (i) {
-				io.to(i.id).emit("GO_MEETING");
-			}); //end_forEach
-
-			// 시간 제한 - 시간이 지나면 맵 화면으로 바꾸기
-			// 600000 - 10분
-			setTimeout(function () {
-				if (gamephase == 3) {
-					clearInterval(timerId);
-					console.log("[system] 미팅 시간이 끝났습니다. ");
-					// 이동시키기
-					gamephase = 4;
-					clients.forEach(function (i) {
-						// 각자 게임 화면으로 보내버리면서 시간 처리
-						clearInterval(timerId);
-						// 탐색시간 10분
-						Timeset(1,gamephase);
-						io.to(i.id).emit('GO_MAP');
-					}); //end_forEach
-				}
-			}, 60000); 
-			// 시간 보내주기 
-			Timeset(1,gamephase);
-
-		} else {
-			console.log("[system] 현재 준비 인원 : " + conference_number);
-		}
-	});
-
-	socket.on("exit_meeting", function (_data) {
-		var data = JSON.parse(_data);
-		console.log(
-			"[system] 플레이어 " + data.name + " 이 미팅을 나가려고 합니다. "
-		);
-		exitMeeting_people += 1;
-		// 모든 플레이어가 나가고 싶어할 때.
-		if (exitMeeting_people == clients.length) {
-			exitMeeting_people = 0;
-
-			if (gamephase == 3) {
-				// 자기소개 가 끝난 경우
-				// phase : 탐색 4
-				gamephase = 4;
-				console.log(
-					"[system] 자기소개를 끝내고 모든 플레이어가 나가고 싶어합니다. "
-				);
-
-				// 탐색화면으로 보내버리기
-				clients.forEach(function (i) {
-					io.to(i.id).emit("GO_MAP");
-				}); //end_forEach
-
-				// 탐색 시간 : 10분 = 600000
-				setTimeout(function () {
-					clearInterval(timerId);
-					console.log("[system] 탐색시간이 끝났습니다. 1차회의로 갑니다. ");
-					//
-					gamephase = 5;
-					clients.forEach(function (i) {
-						// 탐색시간이 종료되면 미팅으로 보내야한다.
-						// 같은 회의실 방을 사용하므로 뒤에 함수를 줘서 바꾸던가해야할듯
-						clearInterval(timerId);
-						// 탐색 후 회의 시간
-						Timeset(15, gamephase);
-						io.to(i.id).emit("GO_MEETING2");
-					}); //end_forEach
-
-					// 탐색 종료후 1분 뒤
-					setTimeout(function () {
-						console.log("[system] 새로운 증거를 공개합니다.");
-						clients.forEach(function (i) {
-							io.to(i.id).emit("VIEW_CLUE_VIDEO");
-						}); //end_forEach
-					}, 60000); 
-
-					
-				}, 60000); 
-
-				// 시간 보내주기 
-				Timeset(1,gamephase);
-
-			} else if (gamephase == 5) {
-				// 1차회의가 끝난 경우
-				// phase 6 : 투표 씬
-				gamephase = 6;
-				console.log(
-					"[system] 모든 플레이어가 1차회의를 마치고 나가고 싶어합니다. "
-				);
-
-				// 투표로 보내버리기
-				clients.forEach(function (i) {
-					// 여기다가 투표로 가는 메소드 주기
-					console.log("[system] 투표하러 갑시다.");
-					io.to(i.id).emit("GO_VOTE");
-				}); //end_forEach
-
-				// 투표 시간 : 1분 = 60000
-				setTimeout(function () {
-					if (gamephase != 7) {
-						clearInterval(timerId);
-						console.log("[system] 투표 시간이 끝났습니다. ");
-						//
-						gamephase = 7;
-						clients.forEach(function (i) {
-							// 투표가 끝난 경우
-							clearInterval(timerId);
-							// 결과 창으로 이동
-							io.to(i.id).emit("GO_VOTE_RESULT", votes);
-						}); //end_forEach
-					}
-				}, 60000);
-
-				// 시간 보내주기
-				Timeset(1, gamephase);
-			}
-		} else {
-			console.log("[system] 회의 나가기 대기 인원 : " + exitMeeting_people);
-		}
+		
 		// 변환
 	});
 
@@ -611,13 +533,6 @@ io.on("connection", function (socket) {
 		games[_roomNumber].ReadyUser = 0;
 		io.sockets.in( games[_roomNumber].SocketRoomName ).emit("ON_PLAY_CRIMESCENE");
 	});
-
-	
-
-
-
-
-
 
 }); //END_IO.ON
 
@@ -686,7 +601,105 @@ function refreshreadyUser(_roomNumber) {
 			ReadyUser : 0,
 		}
 	}
+	console.log(" 준비인원 -->" + games[_roomNumber].ReadyUser );
 	// 생성된 방이 있으면 준비된 인원 변수를 리턴한다.
-	io.sockets.in( games[_roomNumber].SocketRoomName ).emit("REFRESH_READY_USER_SUCCESS", games[_roomNumber].ReadyUser );
+	io.sockets.in( games[_roomNumber].SocketRoomName ).emit("REFRESH_READY_USER_SUCCESS", games[_roomNumber].ReadyUser, games[_roomNumber].GamePhase );
 	
+}
+
+// 새로운 통합 시간 관련 함수
+function New_Timer( minutes, _roomNumber ){
+	// gamephase == 0 : 게임시작 전 로비
+	// gamephase == 1 : 게임 방법 숙지 화면 - WaitScene
+	// gamephase == 2 : 역할 대기화면 - RoleScene
+	// gamephase == 3 : 자기소개시간
+	// gamephase == 4 : 탐색
+	// gamephase == 5 : 1차 회의
+	// gamephase == 6 : 투표시간
+	// gamephase == 7 : 게임 종료
+
+	var time = 0;
+	var minute = minutes - 1;
+	var second = 60;
+	// 게임 페이즈 받기
+	var phase = games[_roomNumber].GamePhase;
+
+	// 시간 보내주는 함수
+	var TIME_FUNCTION = setInterval(function () {
+		second--;
+		// console.log(phase + " --> " + minute + ":" + second );
+		if (phase == 2) {
+			// 2 : 역할 시간 업데이트
+			io.sockets.in( 'room' + _roomNumber ).emit("SET_ROLE_TIMER", time, minute, second);
+		} else if (phase == 3) {
+			// 3. 미팅 시간 업데이트
+			io.sockets.in( 'room' + _roomNumber ).emit("SET_GAME_TIMER", time, minute, second);
+		} else if (phase == 4) {
+			// 4. 게임 시간 업데이트
+			io.sockets.in( 'room' + _roomNumber ).emit("SET_GAME_TIMER", time, minute, second);
+		} else if (phase == 5) {
+			// 5. 1차 회의 시간 업데이트
+			io.sockets.in( 'room' + _roomNumber ).emit("SET_GAME_TIMER", time, minute, second);
+		} else if (phase == 6) {
+			// 6. 투표 시간 업데이트
+			io.emit("SET_VOTE_TIMER", time, minute, second);
+		} else {
+		}
+
+		if ( second == 0 && minute == 0 ){
+			console.log("[system] 시간이 끝났습니다. 타이머 종료. ");
+			clearInterval(IngameTimer[_roomNumber]);
+			// 시간이 종료 되었을 때 실행할 곳.
+			if (phase == 2) {
+				console.log("[system] 역할 확인시간이 끝났습니다. 자기소개로 갑니다. ");
+				// 2 : 역할 시간이 끝났을 경우.
+				games[_roomNumber].GamePhase = 3; // 페이즈 3으로. 
+				// 자기 소개 시간 10분 
+				clearInterval(IngameTimer[_roomNumber]);
+				IngameTimer[_roomNumber] = New_Timer( 15, _roomNumber );
+				io.sockets.in( 'room' + _roomNumber ).emit("GO_MEETING");
+
+			} else if (phase == 3) {
+				// 3. 자기 소개 시간 종료의 경우 
+				console.log("[system] 자기 소개 시간이 끝났습니다. 자기소개로 갑니다. ");
+				games[_roomNumber].GamePhase = 4; // 페이즈 4 (탐색)으로. 
+				// 탐색 시간 15분
+				clearInterval(IngameTimer[_roomNumber]);
+				IngameTimer[_roomNumber] = New_Timer( 15, _roomNumber );
+				io.sockets.in( 'room' + _roomNumber ).emit('GO_MAP');
+			
+			} else if (phase == 4) {
+				// 4. 탐색 시간 종료의 경우
+				console.log("[system ]탐색 시간이 끝났습니다. 자기소개로 갑니다. ");
+				games[_roomNumber].GamePhase = 5; // 페이즈 5 (1차회의) 으로. 
+				// 1차 회의시간 20분
+				// 1분 있다가 추가 증거 영상 재생하기.
+				clearInterval(IngameTimer[_roomNumber]);
+				IngameTimer[_roomNumber] = New_Timer( 20, _roomNumber );
+				setTimeout(function(){
+					console.log("[system] 새로운 증거를 공개합니다.");
+					io.sockets.in( 'room' + _roomNumber ).emit('VIEW_CLUE_VIDEO');
+				}, 60000);
+
+				io.sockets.in( 'room' + _roomNumber ).emit('GO_MEETING2');
+
+			} else if (phase == 5) {
+				// 5. 1차 회의 시간 업데이트
+			} else if (phase == 6) {
+				// 6. 투표 시간 업데이트
+			} else {
+			}
+
+		} else if (second == 0 ) {
+			minute -= 1;
+			second = 60;
+		}
+
+		
+		// 나중에 min 0 && second 0 이 되었을 때 게임페이즈에 따라 맵으로 보내줘야함
+	}, 1000);
+
+	return TIME_FUNCTION;
+
+
 }
