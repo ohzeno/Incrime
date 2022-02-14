@@ -114,9 +114,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   no: 14
   proofName: "\uB3C4\uC2DC\uB77D"
-  proofDescription: "\uCD9C\uBC1C \uC804\uC5D0 \uAC00\uC838\uAC08\uAC70\uB2C8 \uC808\uB300
-    \uC190\uB300\uC9C0 \uB9C8!\n\t\t\t- \uC774\uD300\uC7A5"
-  proofImage: {fileID: 0}
+  proofDescription: "\uB3C4\uC2DC\uB77D\uC774\uB2E4.\n\uCD9C\uBC1C \uC804\uC5D0 \uAC00\uC838\uAC08\uAC70\uB2C8
+    \uC808\uB300 \uC190\uB300\uC9C0 \uB9C8!\n\t\t\t- \uC774\uD300\uC7A5\n\uB77C\uACE0
+    \uC801\uD600\uC788\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!114 &5757246781964564275
 MonoBehaviour:
   m_ObjectHideFlags: 0

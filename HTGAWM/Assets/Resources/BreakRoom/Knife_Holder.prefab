@@ -113,8 +113,9 @@ MonoBehaviour:
   no: 13
   proofName: "\uCE7C\uAC70\uCE58\uB300"
   proofDescription: "\uCE7C\uB4E4\uC774 \uB193\uC5EC\uC788\uB2E4. \uD2B9\uBCC4\uD55C
-    \uD754\uC801\uC740 \uBCF4\uC774\uC9C0 \uC54A\uB294\uB2E4."
-  proofImage: {fileID: 0}
+    \uD754\uC801\uC740 \uBCF4\uC774\uC9C0 \uC54A\uB294\uB2E4. \uD749\uAE30\uAC00
+    \uB420 \uAC83\uCC98\uB7FC \uB0A0\uCE74\uB86D\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!114 &7916033350707130619
 MonoBehaviour:
   m_ObjectHideFlags: 0

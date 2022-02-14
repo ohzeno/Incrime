@@ -146,9 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   no: 8
   proofName: "\uD074\uB7FD \uB77C\uC774\uD130"
-  proofDescription: "\uBE44\uC2F8\uBCF4\uC774\uB294 \uB77C\uC774\uD130\uB2E4. \uC120\uBB3C\uC6A9\uC778
-    \uB4EF\uD558\uB2E4."
-  proofImage: {fileID: 0}
+  proofDescription: "\uC624\uBE60\uC624\uBE60\uD074\uB7FD \uD64D\uBCF4\uC6A9 \uB77C\uC774\uD130\uB85C
+    \uBCF4\uC778\uB2E4. -\uC2F8\uD53C\uD074\uB7FD"
+  proofTexture: {fileID: 0}
 --- !u!114 &6329910346791321993
 MonoBehaviour:
   m_ObjectHideFlags: 0

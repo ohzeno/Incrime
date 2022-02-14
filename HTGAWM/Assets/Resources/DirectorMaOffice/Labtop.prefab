@@ -129,8 +129,9 @@ MonoBehaviour:
   no: 3
   proofName: "\uB178\uD2B8\uBD81"
   proofDescription: "\uD2B9\uBCC4\uD55C \uAC83\uC740 \uC5C6\uC5B4\uBCF4\uC774\uB294
-    \uAE54\uB054\uD55C \uB178\uD2B8\uBD81\uC774\uB2E4."
-  proofImage: {fileID: 0}
+    \uAE54\uB054\uD55C \uB178\uD2B8\uBD81\uC774\uB2E4. \uBCC4\uB85C \uC0AC\uC6A9\uD558\uC9C0
+    \uC54A\uC740 \uAC83\uCC98\uB7FC \uBCF4\uC778\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!114 &3264751643620664707
 MonoBehaviour:
   m_ObjectHideFlags: 0

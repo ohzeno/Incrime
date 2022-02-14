@@ -111,8 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   no: 10
   proofName: "\uACE8\uD504\uACF5"
-  proofDescription: "\uACE8\uD504\uACF5\uC774\uB2E4."
-  proofImage: {fileID: 0}
+  proofDescription: "\uACE8\uD504\uACF5\uC774\uB2E4. \uB531\uB531\uD558\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!114 &8456450101672273675
 MonoBehaviour:
   m_ObjectHideFlags: 0

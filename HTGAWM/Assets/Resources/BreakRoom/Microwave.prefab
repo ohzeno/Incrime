@@ -198,8 +198,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   no: 1
   proofName: "\uC804\uC790\uB808\uC778\uC9C0"
-  proofDescription: "\uC804\uC790\uB808\uC778\uC9C0\uC774\uB2E4."
-  proofImage: {fileID: 0}
+  proofDescription: "\uC804\uC790\uB808\uC778\uC9C0\uC774\uB2E4. \uC804\uAE30\uAC00
+    \uC5F0\uACB0\uB418\uC5B4\uC788\uB2E4. \uC548\uC5D0\uB294 \uC544\uBB34\uAC83\uB3C4
+    \uC5C6\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!65 &900987981549241946
 BoxCollider:
   m_ObjectHideFlags: 0

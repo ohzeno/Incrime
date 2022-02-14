@@ -112,8 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   no: 4
   proofName: "\uCEF5"
-  proofDescription: "\uCEF5\uC774\uB2E4."
-  proofImage: {fileID: 0}
+  proofDescription: "\uCEF5\uC774\uB2E4. \uB204\uAD70\uAC00\uAC00 \uC0AC\uC6A9\uD55C
+    \uAC83\uCC98\uB7FC \uBCF4\uC778\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!114 &3327834150184416082
 MonoBehaviour:
   m_ObjectHideFlags: 0

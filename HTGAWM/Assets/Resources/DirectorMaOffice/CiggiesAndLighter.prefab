@@ -83,8 +83,9 @@ MonoBehaviour:
   no: 5
   proofName: "\uB2F4\uBC30\uC640 \uB77C\uC774\uD130"
   proofDescription: "\uB2F4\uBC30\uC640 \uB77C\uC774\uD130\uC774\uB2E4. \uC0AC\uC6A9\uD55C
-    \uD754\uC801\uC774 \uB0A8\uC544 \uC788\uB2E4."
-  proofImage: {fileID: 0}
+    \uD754\uC801\uC774 \uB0A8\uC544 \uC788\uB2E4. \uB77C\uC774\uD130\uC5D0\uB294
+    \uC624\uBE60\uC624\uBE60\uD074\uB7FD\uC774 \uC801\uD600\uC788\uB2E4."
+  proofTexture: {fileID: 0}
 --- !u!1001 &1127316258425149861
 PrefabInstance:
   m_ObjectHideFlags: 0
