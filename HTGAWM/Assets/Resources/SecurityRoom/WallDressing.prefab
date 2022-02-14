@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 8
-  proofName: WallDressing
-  proofDescription: "\uBCBD\uC5D0 \uB9CE\uC740 \uAE30\uB85D\uB4E4\uC774 \uC801\uD600\uC788\uB2E4.\n\uD654\uC7AC\uC2DC
-    \uB300\uD53C\uC694\uB839\uC774 \uC801\uD600\uC788\uB2E4."
+  proofName: "\uBA54\uBAA8"
+  proofDescription: "\uBCBD\uC5D0 \uB9CE\uC740 \uAE30\uB85D\uB4E4\uC774 \uC801\uD600\uC788\uB2E4.\n\uD654\uC7AC
+    \uC2DC \uB300\uD53C\uC694\uB839\uC774 \uC801\uD600\uC788\uB2E4."
   proofTexture: {fileID: 0}
 --- !u!64 &1609962314408903581
 MeshCollider:

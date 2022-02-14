@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2233304683861986232}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.1642408, y: -0.70036185, z: 1.1528382}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 11
-  proofName: Trophy
-  proofDescription: "\uC6B0\uC218\uC0AC\uC6D0 \uD2B8\uB85C\uD53C\uB2E4."
-  proofImage: {fileID: 0}
+  proofName: "\uC6B0\uC218 \uC0AC\uC6D0\uD2B8\uB85C\uD53C"
+  proofDescription: "\uADC0\uD558\uB294 (\uC8FC)ssafy \uC778\uD130\uB124\uC154\uB110\uC758
+    \uBC1C\uC804\uC5D0 \uD06C\uAC8C \uAE30\uC5EC\uD558\uC600\uC73C\uBBC0\uB85C \uC774
+    \uD2B8\uB85C\uD53C\uB97C \uC218\uC5EC\uD568."
+  proofTexture: {fileID: 0}

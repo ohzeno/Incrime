@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 3
-  proofName: BookGroup
+  proofName: "\uCC45 \uBB49\uCE58"
   proofDescription: "\uCC45\uB4E4\uC774 \uC5EC\uB7EC\uAD8C \uC788\uB2E4.  \n\uCC45
     \uBAA9\uB85D\uC740 \uB2E4\uC74C\uACFC \uAC19\uB2E4.\n\uC2E4\uC6A9\uC5F0\uC560\uC804\uC11C,
     \uC2EC\uB9AC\uD559\uC774 \uC5F0\uC560\uB97C \uB9D0\uD558\uB2E4, \n\uC0AC\uB791+\uC758\uC220=\uAE30\uC801,
     \uC0AC\uB791\uC744 \uBC30\uC6B0\uBA74 \uC0B6\uC744 \uBC30\uC6B0\uBA70"
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}

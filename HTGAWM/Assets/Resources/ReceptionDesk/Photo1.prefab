@@ -130,9 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 3
-  proofName: Photo1
+  proofName: "\uC0AC\uC9C4"
   proofDescription: "\uAE40\uBE44\uC11C\uC758 \uC140\uCE74\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
 --- !u!1 &2527030578740458409
 GameObject:
   m_ObjectHideFlags: 0

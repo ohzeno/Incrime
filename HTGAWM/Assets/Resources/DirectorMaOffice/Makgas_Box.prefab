@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7505502307461676242}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.06124, y: -0.431638, z: 2.6980085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -102,8 +102,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.60937864, y: 0.3461469, z: 0.53}
-  m_Center: {x: -0.03, y: 0.17307346, z: 0.000025629997}
+  m_Size: {x: 0.34, y: 0.29, z: 0.53}
+  m_Center: {x: 0, y: 0.14, z: 0}
 --- !u!114 &8713785502664640516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   proofName: "\uB9C9\uAC00\uC2A4 \uC0C1\uC790"
   proofDescription: "\uB9C9\uAC00\uC2A4 \uC0C1\uC790\uC774\uB2E4. \uD55C \uCE94\uC774
     \uBE44\uC5B4\uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
 --- !u!114 &2401617158411543552
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7419263347586665350}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5442405, y: 1.6919999, z: 0.9397707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 13
-  proofName: Certificate
+  proofName: "\uD45C\uCC3D\uC7A5"
   proofDescription: "\uAC11\uBD80 \uBD80\uB300\uCC0C\uAC1C \uB3D9\uB0A8\uC544 \uC9C4\uCD9C
     \uAE30\uD68D\uC73C\uB85C \uBC1B\uC740 \uD45C\uCC3D\uC7A5\uC774\uB2E4."
   proofTexture: {fileID: 0}

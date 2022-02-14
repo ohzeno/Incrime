@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442704852448796802}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.198, y: -1.472, z: 2.658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 9
-  proofName: CupPens
-  proofDescription: "\uD544\uAE30\uAD6C\uAC00 \uB2F4\uACA8\uC788\uB2E4. \uB0A0\uCE74\uB85C\uC6B4
-    \uAC83\uB4E4\uB3C4 \uC788\uB2E4."
+  proofName: "\uC5F0\uD544\uAF42\uC774"
+  proofDescription: "\uC774\uD300\uC7A5\uC774 \uC0AC\uC6A9\uD558\uB358 \uD544\uAE30\uAD6C\uAC00
+    \uB2F4\uACA8\uC788\uB2E4. \uC798 \uC815\uB3C8\uB418\uC5B4 \uC788\uB2E4. \uB0A0\uCE74\uB85C\uC6B4
+    \uBB3C\uAC74\uB3C4 \uC788\uC5B4\uBCF4\uC778\uB2E4."
   proofTexture: {fileID: 0}

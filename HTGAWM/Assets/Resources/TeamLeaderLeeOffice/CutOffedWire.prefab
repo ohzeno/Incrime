@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3412079100791225070}
-  m_LocalRotation: {x: -0.291931, y: 0.012729691, z: -0.13420597, w: 0.94689125}
+  m_LocalRotation: {x: -0.29192752, y: 0.0127289165, z: -0.13420722, w: 0.94689214}
   m_LocalPosition: {x: -0.575, y: -2.362, z: 3.399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,6 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 17
-  proofName: CutOffedWire
-  proofDescription: "\uB04A\uC5B4\uC9C4 \uC804\uC120\uC774\uB2E4."
+  proofName: "\uB04A\uC5B4\uC9C4 \uC804\uC120"
+  proofDescription: "\uC804\uC120\uC774 \uB04A\uACA8\uC788\uB2E4."
   proofTexture: {fileID: 0}

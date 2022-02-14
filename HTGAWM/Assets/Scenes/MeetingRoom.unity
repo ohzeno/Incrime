@@ -5603,46 +5603,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4676914170214726, guid: 833e136933ed4c04fbccff29bc05bcdb, type: 3}
   m_PrefabInstance: {fileID: 1866528439}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1870788684 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1430102348841372, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
-  m_PrefabInstance: {fileID: 2100200689}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1870788685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870788684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59eb3d86b30cab4092c3f444d868980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  no: 3
-  proofName: "\uD504\uB808\uC820\uD14C\uC774\uC158"
-  proofDescription: "\uD68C\uC0AC\uC758 \uC18C\uAC1C \uBC0F \uB9E4\uCD9C\uC5D0 \uB300\uD55C
-    \uD504\uB808\uC820\uD14C\uC774\uC158\uC774 \uAC78\uB824\uC788\uB2E4."
-  proofTexture: {fileID: 0}
---- !u!114 &1870788686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870788684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 5
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &1876702725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6056,14 +6016,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectorScreen_Down
       objectReference: {fileID: 0}
-    - target: {fileID: 1430102348841372, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430102348841372, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
-      propertyPath: m_TagString
-      value: Proof
-      objectReference: {fileID: 0}
     - target: {fileID: 4666233842903064, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -6096,10 +6048,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 23429486604056556, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6468ce8e93c861f4ebaff024ef7cda8d, type: 2}
+    - target: {fileID: 4666233842903064, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666233842903064, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666233842903064, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea634ef5668e60a4dbdda0c4079abb88, type: 3}
 --- !u!4 &2100200690 stripped
@@ -7054,11 +7014,6 @@ PrefabInstance:
     - target: {fileID: 1743951022724993428, guid: b11f75189a1cd424fa9411c81ecb210a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5712573583901871686, guid: b11f75189a1cd424fa9411c81ecb210a, type: 3}
-      propertyPath: proofDescription
-      value: "\uD654\uC7AC\uACBD\uBCF4\uAE30\uC774\uB2E4. \uC5F4\uC744 \uAC10\uC9C0\uD558\uBA74
-        \uC54C\uB78C\uC774 \uC6B8\uB9B4 \uAC83\uC774\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b11f75189a1cd424fa9411c81ecb210a, type: 3}

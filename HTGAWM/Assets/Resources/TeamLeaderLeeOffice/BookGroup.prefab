@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359595769598770469}
-  m_LocalRotation: {x: -0, y: -0.7071064, z: -0, w: 0.7071072}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5.4192405, y: -1.3254719, z: 3.8532927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,6 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 21
-  proofName: BookGroup
-  proofDescription: "\uCC45\uB4E4\uC774 \uC313\uC5EC\uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofName: "\uC5EC\uB7EC\uAC00\uC9C0 \uCC45 \uB4E4"
+  proofDescription: "\uCC45\uB4E4\uC774 \uC313\uC5EC\uC788\uB2E4.  \uCC45 \uC81C\uBAA9\uB4E4\n<
+    \uD504\uB85C\uC81D\uD2B8 \uD798\uB4E4\uC5B4\uC694 > \uB958\uAE30\uD0C1\n< \uAC74\uAC15\uC758
+    \uC911\uC694\uC131 >  \uC7A5\uC608\uCC2C\n< \uBA54\uC774\uD50C \uC2A4\uD1A0\uB9AC
+    > \uAE40\uC7AC\uC6B1"
+  proofTexture: {fileID: 0}

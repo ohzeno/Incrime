@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7821163322923641822}
-  m_LocalRotation: {x: -0, y: -0.89208966, z: -0, w: 0.4518584}
+  m_LocalRotation: {x: 0, y: -0.89208955, z: 0, w: 0.4518587}
   m_LocalPosition: {x: 0.7627592, y: -2.2183619, z: 4.978292}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 4
-  proofName: PresentationBoard
-  proofDescription: "\uD504\uB808\uC820\uD14C\uC774\uC158 \uBCF4\uB4DC\uB2E4. \uC0AC\uC5C5\uAD00\uB828
-    \uB0B4\uC6A9\uB4E4\uC774 \uB9CE\uC774 \uC801\uD600\uC788\uB2E4."
+  proofName: "\uD504\uB808\uC820\uD14C\uC774\uC158 \uBCF4\uB4DC"
+  proofDescription: "\uD504\uB808\uC820\uD14C\uC774\uC158\uC744 \uD560 \uB54C \uC0AC\uC6A9\uD558\uB294\uD504\uB808\uC820\uD14C\uC774\uC158
+    \uBCF4\uB4DC\uC774\uB2E4. \uD06C\uAE30\uAC00 \uAF64 \uD06C\uB2E4."
   proofTexture: {fileID: 0}

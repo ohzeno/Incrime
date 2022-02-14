@@ -211,6 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 8
-  proofName: SecurityCamera
+  proofName: CCTV
   proofDescription: "CCTV\uAC00 \uBC30\uCE58\uB418\uC5B4 \uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}

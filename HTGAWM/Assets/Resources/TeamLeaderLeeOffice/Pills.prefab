@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505547416878835164}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.04, y: -1.472, z: 2.829}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 10
-  proofName: Pills
+  proofName: "\uC57D\uBCD1"
   proofDescription: "\uC57D\uBCD1\uC774\uB2E4.\n\uACE0\uD608\uC555, \uC2EC\uBD80\uC804
     \uAE30\uB2A5\uC131 \uC758\uC57D\uD488\uC774\uB2E4.\n\uD3C9\uC18C\uC5D0 \uBAB8\uC774
     \uC88B\uC9C0 \uC54A\uC740 \uAC83 \uAC19\uB2E4."

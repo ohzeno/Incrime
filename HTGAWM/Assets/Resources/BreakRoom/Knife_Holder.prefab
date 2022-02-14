@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6895244914986758534}
-  m_LocalRotation: {x: -0, y: 0.76054746, z: -0, w: 0.64928246}
+  m_LocalRotation: {x: 0, y: 0.76054764, z: 0, w: 0.6492822}
   m_LocalPosition: {x: 0.61210406, y: 0.7236704, z: 4.8714943}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 99.025, z: 0}
 --- !u!33 &6900626254955673768
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -111,10 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 13
-  proofName: "\uCE7C\uAC70\uCE58\uB300"
-  proofDescription: "\uCE7C\uB4E4\uC774 \uB193\uC5EC\uC788\uB2E4. \uD2B9\uBCC4\uD55C
-    \uD754\uC801\uC740 \uBCF4\uC774\uC9C0 \uC54A\uB294\uB2E4. \uD749\uAE30\uAC00
-    \uB420 \uAC83\uCC98\uB7FC \uB0A0\uCE74\uB86D\uB2E4."
+  proofName: "\uCE7C\uACFC \uAC70\uCE58\uB300"
+  proofDescription: "\uCE7C \uAC70\uCE58\uB300\uC5D0 \uCE7C \uB4E4\uC774 \uB193\uC5EC\uC788\uB2E4.
+    \uD2B9\uBCC4\uD55C \uD754\uC801\uC740 \uBCF4\uC774\uC9C0 \uC54A\uB294\uB2E4."
   proofTexture: {fileID: 0}
 --- !u!114 &7916033350707130619
 MonoBehaviour:

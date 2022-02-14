@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 7
-  proofName: BinWithCiggie
+  proofName: "\uC4F0\uB808\uAE30\uD1B5\uACFC \uB2F4\uBC30\uAF41\uCD08"
   proofDescription: "\uD734\uC9C0\uD1B5 \uC548\uC5D0 3\uAC1C\uC758 \uB2F4\uBC30\uAF41\uCD08\uAC00
     \uB4E4\uC5B4\uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}
 --- !u!1001 &6424609578673537496
 PrefabInstance:
   m_ObjectHideFlags: 0

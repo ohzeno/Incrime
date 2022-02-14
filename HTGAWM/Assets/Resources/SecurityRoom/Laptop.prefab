@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 1
-  proofName: Laptop
+  proofName: "\uB178\uD2B8\uBD81"
   proofDescription: "\uB178\uD2B8\uBD81\uC774\uB2E4. \n\uD504\uB85C\uADF8\uB7A8 \uD558\uB098\uB97C
     \uC5F4\uC5B4\uBCF4\uB2C8 \uC774\uD300\uC7A5\uC758 \uC0AC\uCCB4\uAC00 \uC601\uC0C1\uC73C\uB85C
     \uBCF4\uC778\uB2E4."
-  proofImage: {fileID: 0}
+  proofTexture: {fileID: 0}

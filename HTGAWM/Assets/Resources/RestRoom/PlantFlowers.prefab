@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 11
-  proofName: PlantFlowers
-  proofDescription: "\uD654\uBD84\uC774 \uB193\uC5EC\uC788\uB2E4."
-  proofImage: {fileID: 0}
+  proofName: "\uD654\uBD84"
+  proofDescription: "\uD654\uBD84\uC774 \uB193\uC5EC\uC788\uB2E4. \uBD84\uC704\uAE30\uAC00
+    \uC0B0\uB73B\uD574\uC9C0\uB294 \uAC83 \uAC19\uB2E4."
+  proofTexture: {fileID: 0}

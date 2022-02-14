@@ -129,6 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 10
-  proofName: Broom
-  proofDescription: "\uC816\uC740 \uBC00\uB300\uB2E4."
-  proofImage: {fileID: 0}
+  proofName: "\uC816\uC740 \uBC00\uB300"
+  proofDescription: "\uC816\uC740 \uBC00\uB300\uB2E4. \uD718\uB450\uB974\uAE30 \uC88B\uC544\uBCF4\uC778\uB2E4."
+  proofTexture: {fileID: 0}

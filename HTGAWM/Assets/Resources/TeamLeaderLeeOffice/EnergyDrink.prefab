@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5445211982499346453}
-  m_LocalRotation: {x: -0.0068443036, y: -0.36432648, z: 0.70707273, w: 0.60602605}
+  m_LocalRotation: {x: -0.006843135, y: -0.3643296, z: 0.7070737, w: 0.6060231}
   m_LocalPosition: {x: -3.617, y: -1.635, z: 3.404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.459, y: -31.568, z: 90}
 --- !u!33 &5471069506424464243
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   no: 14
-  proofName: EnergyDrink
-  proofDescription: "\uBE44\uC5B4\uC788\uB294 \uB9C9\uAC70\uC2A4 \uBCD1\uC774\uB2E4.
-    \uB118\uC5B4\uC838\uC788\uB2E4."
+  proofName: "\uB9C9\uAC70\uC2A4 \uBCD1"
+  proofDescription: "\uB9C9\uAC70\uC2A4 \uBCD1\uC774 \uC4F0\uB7EC\uC838 \uC788\uB2E4."
   proofTexture: {fileID: 0}
