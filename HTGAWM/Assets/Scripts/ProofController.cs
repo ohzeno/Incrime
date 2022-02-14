@@ -86,12 +86,6 @@ public class ProofController : MonoBehaviour
         {
             CheckProof();
             OpenProofUI();
-            if (isCoroutinesActive == 1 && cntCoroutine != null){   
-                musicPlayer = GetComponent<AudioSource>();
-                musicPlayer.Stop();
-                StopCoroutine(cntCoroutine);
-                proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;        
-            }
         }
     }
 
@@ -150,13 +144,30 @@ public class ProofController : MonoBehaviour
                 Destroy(tempProofObject);
             }
             pickupActivated = true;
-            orbitCamera.m_Target = oldHitInfo.transform;
-            Debug.Log(proofName + " ����");
-            SetLayersRecursively(oldHitInfo.transform, 8);
+
+            Debug.Log(proofName.text + " 보기");
+            //orbitCamera.m_Target = oldHitInfo.transform;
+            //SetLayersRecursively(oldHitInfo.transform, 8);
+
+            LoadPrefabInTempProof(SceneManager.GetActiveScene().name + "/" + oldHitInfo.transform.gameObject.name);
+
+            if (isCoroutinesActive == 1 && cntCoroutine != null)
+            {
+                Debug.Log("코루틴 종료");
+                musicPlayer = GetComponent<AudioSource>();
+                musicPlayer.Stop();
+                StopCoroutine(cntCoroutine);
+            }
+
+            tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
+            orbitCamera.m_Target = tempProofObject.transform;
+            SetLayersRecursively(tempProofObject.transform, 8);
+            Proof tempProof = tempProofObject.GetComponent<Proof>();
+
             playerController.FixPlayer();
             proofDescription.text = "";
             proofUI.gameObject.SetActive(true);
-            cntCoroutine = StartCoroutine(_typing(oldHitInfo.transform.GetComponent<Proof>().proofDescription, proofDescription));
+            cntCoroutine = StartCoroutine(_typing(tempProof.proofDescription, proofDescription));
             // proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             collectButton.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -193,7 +204,7 @@ public class ProofController : MonoBehaviour
         {
             if (oldHitInfo.transform != null)
             {
-                Debug.Log("������ ����");
+                Debug.Log("증거 수집 호출");
                 Proof dest = oldHitInfo.transform.GetComponent<Proof>();
                 dest.proofTexture = new Texture2D(proofRenderTexture.width, proofRenderTexture.height, TextureFormat.RGBA32, false);
                 dest.proofTexture.Apply(false);
@@ -239,12 +250,12 @@ public class ProofController : MonoBehaviour
 
     public void OnClickCollectedSlot(BaseEventData data)
     {
-        Debug.Log(data.selectedObject + "�� �����ΰ�");
+        Debug.Log(data.selectedObject + "의 타입 == Slot");
         Slot targetSlot = data.selectedObject.transform.GetComponent<Slot>();
 
         if (targetSlot.proof.proofName.Length != 0 && !pickupActivated)
         {
-            Debug.Log(targetSlot + "�� Slot�̴�.");
+            Debug.Log(targetSlot + "= Slot");
             if (SceneManager.GetActiveScene().name == "MeetingScene")
             {
                 shareButton.gameObject.SetActive(true);
@@ -273,15 +284,15 @@ public class ProofController : MonoBehaviour
 
     public void OnClickShareProof()
     {
-        Debug.Log("���� ����");
+        Debug.Log("증거 공유");
         Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson));
     }
 
     public void ReceiveSharedProof(string str)
     {
-        Debug.Log("�������� ���� ����");
+        Debug.Log("증거 정보 유니티 수신");
         Proof.ProofJson receiveProof = JsonUtility.FromJson<Proof.ProofJson>(str);
-        Debug.Log("�������� ����: " + receiveProof.sceneName + "/" + receiveProof.objectName);
+        Debug.Log("증거 프리팹 경로: " + receiveProof.sceneName + "/" + receiveProof.objectName);
         //sharedProofObject = GameObject.Instantiate(Resources.Load(receiveProof.sceneName + "/"+receiveProof.objectName)) as GameObject;
         LoadPrefabInTempProof(receiveProof.sceneName + "/" + receiveProof.objectName);
         tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
