@@ -39,6 +39,17 @@ window.addEventListener("load", function () {
 		}
 	});
 
+	socket.on("ERROR_OCCUR", function (msg) {
+		console.log("Error 발생 : " + msg);
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage(
+				"ErrorMessageSystem",
+				"OnRecieveErrorMessage",
+				msg
+			);
+		}
+	});
+
 	socket.on("JOINSUCCESS", function (msg) {
 		console.log("JOINSUCCESS : 회원가입 성공 시 들어오는 곳");
 		if (window.unityInstance != null) {
@@ -125,17 +136,12 @@ window.addEventListener("load", function () {
 	}); // end
 
 	// 역할 배정
-	socket.on("ON_SET_ROLE", function ( role, storyname, storydesc) {
-		var _data  =
-			role + ":" + storyname + ":" + storydesc;
+	socket.on("ON_SET_ROLE", function (role, storyname, storydesc) {
+		var _data = role + ":" + storyname + ":" + storydesc;
 
 		console.log(_data);
 		if (window.unityInstance != null) {
-			window.unityInstance.SendMessage(
-				"NetWork_Wait",
-				"OnSetRole",
-				_data
-			);
+			window.unityInstance.SendMessage("NetWork_Wait", "OnSetRole", _data);
 		}
 	}); //END_SOCKET.ON
 
@@ -199,29 +205,26 @@ window.addEventListener("load", function () {
 	// 게임 시작하기
 	socket.on("ON_PLAY_CRIMESCENE", function () {
 		if (window.unityInstance != null) {
-			window.unityInstance.SendMessage(
-				"LobbyController",
-				"playCrimeScene"
-			);
+			window.unityInstance.SendMessage("LobbyController", "playCrimeScene");
 		}
 	}); //END_SOCKET.ON
 
 	// 준비된 인원 업데이트
-	socket.on("REFRESH_READY_USER_SUCCESS", function ( _data, _phase ) {
+	socket.on("REFRESH_READY_USER_SUCCESS", function (_data, _phase) {
 		var SceneName;
-		if ( _phase == 0 ) {
+		if (_phase == 0) {
 			// 로비 씬
 			SceneName = "LobbyController";
-		} else if ( _phase == 1 ){
+		} else if (_phase == 1) {
 			// 게임 방법 숙지화면 : WaitScene
 			SceneName = "NetWork_Wait";
-		} else if ( _phase == 2 ){
+		} else if (_phase == 2) {
 			// 역할 숙지화면 : RoleScene
 			SceneName = "NetWork_Role";
-		} else if ( _phase == 3 ){
+		} else if (_phase == 3) {
 			// 자기소개 화면 : Meeting Scene
 			SceneName = "NetWork_Meeting";
-		} 
+		}
 
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage(
@@ -231,5 +234,4 @@ window.addEventListener("load", function () {
 			);
 		}
 	});
-
 }); //END_window_addEventListener
