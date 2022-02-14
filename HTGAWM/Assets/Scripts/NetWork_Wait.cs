@@ -28,8 +28,8 @@ public class NetWork_Wait : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-            StartButton.SetActive(false);
-            emitTotalplayer();
+            
+            // emitTotalplayer();
 
             // Debug.Log("테스트로그");
             // Debug.Log(Client.name);
@@ -51,8 +51,9 @@ public class NetWork_Wait : MonoBehaviour
     }
 
     public void emitTotalplayer(){
-        Debug.Log("대기 페이지로 들어왔다.");
-        Application.ExternalCall("socket.emit", "totalplayer");
+        Debug.Log("[system] wait player update ");
+
+        // Application.ExternalCall("socket.emit", "totalplayer");
     }
 
     void test(){
@@ -61,7 +62,11 @@ public class NetWork_Wait : MonoBehaviour
     
     void onTotalplayer(string data)
     {
-        var pack = data.Split (Delimiter);
+            //Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);
+            //GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+            //ReadyUserText.text = readyPlayer.ToString();
+
+            var pack = data.Split (Delimiter);
         Debug.Log("총 유저 수를 유저를 업데이트 한다. >> " + pack[0] + " -- " + pack[1] );
         // 전체 인원이 6이고 내가 6번째인원인 경우만 가능하다.
         if ( pack[0] == "6" && pack[1] == "6" ) {  
@@ -72,26 +77,38 @@ public class NetWork_Wait : MonoBehaviour
     }
 
     public void emitSetRole(){
-        Debug.Log("역할 배정하기");
-        Application.ExternalCall("socket.emit", "setrole");
+        Debug.Log("[system] 역할 배정하기");
+        StartButton.SetActive(false);
+
+        if ( GameInfo.GameRoomInfo.roomReadyPlayer == 5 ){
+                Debug.Log("[system] 플레이어가 모두 준비됨 : " + Client.room);
+                Application.ExternalCall("socket.emit", "SET_ROLE", Client.room);
+
+        } else {
+                Client.ready = true;
+                Application.ExternalCall("socket.emit", "READY_CRIMESCENE", Client.room);
+        }
+    }
+
+    public void onRefreshReadyPlayer(int readyPlayer)
+    {
+        Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);
+        GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+        Text txt_player = GameObject.Find("txt_player").GetComponent<Text>();
+        txt_player.text = readyPlayer.ToString();
     }
 
     void OnSetRole(string data){
         var pack = data.Split (Delimiter);
 
-        string myrole = pack[2]; // myrole
-        // string storyname = pack[3];
-        // string storydesc = pack[4];
-        
-		Client.role = myrole;
-        Client.storyname = pack[3];
-        Client.storydesc = pack[4];
+	    Client.role = pack[0];
+        Client.storyname = pack[1];
+        Client.storydesc = pack[2];
 
-        Debug.Log("역할을 배정 받았습니다. 역할 설명화면으로 갑니다. ");
-        // Debug.Log(myrole);   
-        // Debug.Log(storyname);   
-        // Debug.Log(storydesc);   
+        Client.ready = false;
+        GameInfo.GameRoomInfo.roomReadyPlayer = 0;
 
+        Debug.Log("[system] 역할을 배정 받았습니다. 역할 설명화면으로 갑니다. ");
         SceneManager.LoadScene("RoleScene");
     }
 

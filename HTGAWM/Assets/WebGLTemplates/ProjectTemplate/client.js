@@ -125,16 +125,16 @@ window.addEventListener("load", function () {
 	}); // end
 
 	// 역할 배정
-	socket.on("SET_ROLE", function (id, name, role, storyname, storydesc) {
-		var currentUserAtr =
-			id + ":" + name + ":" + role + ":" + storyname + ":" + storydesc;
+	socket.on("ON_SET_ROLE", function ( role, storyname, storydesc) {
+		var _data  =
+			role + ":" + storyname + ":" + storydesc;
 
-		console.log(currentUserAtr);
+		console.log(_data);
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage(
 				"NetWork_Wait",
 				"OnSetRole",
-				currentUserAtr
+				_data
 			);
 		}
 	}); //END_SOCKET.ON
@@ -206,5 +206,30 @@ window.addEventListener("load", function () {
 		}
 	}); //END_SOCKET.ON
 
+	// 준비된 인원 업데이트
+	socket.on("REFRESH_READY_USER_SUCCESS", function ( _data, _phase ) {
+		var SceneName;
+		if ( _phase == 0 ) {
+			// 로비 씬
+			SceneName = "LobbyController";
+		} else if ( _phase == 1 ){
+			// 게임 방법 숙지화면 : WaitScene
+			SceneName = "NetWork_Wait";
+		} else if ( _phase == 2 ){
+			// 역할 숙지화면 : RoleScene
+			SceneName = "NetWork_Role";
+		} else if ( _phase == 3 ){
+			// 자기소개 화면 : Meeting Scene
+			SceneName = "NetWork_Meeting";
+		} 
+
+		if (window.unityInstance != null) {
+			window.unityInstance.SendMessage(
+				SceneName,
+				"onRefreshReadyPlayer",
+				_data
+			);
+		}
+	});
 
 }); //END_window_addEventListener

@@ -403,6 +403,7 @@ public class LobbyController : MonoBehaviour
     public void playCrimeScene()
     {
         Client.ready = false;
+        GameInfo.GameRoomInfo.roomReadyPlayer = 0;
         Debug.Log("[system] 다음 방이 게임시작 : " + Client.room);
         agoraController.LoadNewAgoraInstance();
         SceneManager.LoadScene("WaitScene");

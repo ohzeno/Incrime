@@ -80,13 +80,34 @@ public class NewWork_Role : MonoBehaviour
     }
 
     public void emitConference(){
-        Debug.Log("[System] Client : 첫 회의 하러 가자");
         btn_Conference.SetActive(false);
-        Application.ExternalCall("socket.emit", "go_firstconference");
+
+        if (GameInfo.GameRoomInfo.roomReadyPlayer == 5)
+        {
+            Debug.Log("[System] Client : 첫 회의 하러 가자");
+            Debug.Log("[system] 플레이어가 모두 준비됨 : " + Client.room);
+            Application.ExternalCall("socket.emit", "GO_MEETING_SCENE", Client.room );
+
+        }
+        else
+        {
+            Client.ready = true;
+            Application.ExternalCall("socket.emit", "READY_CRIMESCENE", Client.room);
+        }
 
     }
 
+
+    public void onRefreshReadyPlayer(int readyPlayer)
+    {
+        Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);
+        GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+    }
+
+
     public void onConference(){
+        Client.ready = false;
+        GameInfo.GameRoomInfo.roomReadyPlayer = 0;
         Debug.Log("[System] Client : 첫 회의 하러 갑니다 ");
         
         // // create app if nonexistent
@@ -100,9 +121,6 @@ public class NewWork_Role : MonoBehaviour
         // app.join("TEST", true);
         // SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
         SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
-
-
-        // SceneManager.LoadScene("RTCScene");
     }
 
     // 역할 설정 시간 

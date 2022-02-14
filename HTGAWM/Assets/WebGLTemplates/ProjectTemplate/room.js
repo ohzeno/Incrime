@@ -87,17 +87,7 @@ window.addEventListener("load", function () {
 		}
 	});
 
-	socket.on("REFRESH_READY_USER_SUCCESS", function (_data) {
-		if (window.unityInstance != null) {
-			window.unityInstance.SendMessage(
-				"LobbyController",
-				"onRefreshReadyPlayer",
-				_data
-			);
-		}
-	});
-
-	socket.on("DELETE_GAME_ROOM", function (_data) {
+	socket.on("DELETE_GAME_ROOM", function ( _data ) {
 		socket.emit("DELETE_GAME_ROOM_IN_SERVER", _data);
 	});
 }); //END_window_addEventListener

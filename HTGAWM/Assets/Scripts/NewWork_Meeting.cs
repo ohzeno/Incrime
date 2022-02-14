@@ -69,21 +69,38 @@ namespace Project
         public void emitExitMeeting(){
             Debug.Log("[system] 미팅에서 나갑니다. ");
             btn_exitMeeting.SetActive(false);
+            if (GameInfo.GameRoomInfo.roomReadyPlayer == 5)
+            {
+                Debug.Log("[system] 플레이어가 모두 나가고 싶어 합니다. : " + Client.room);
+                Application.ExternalCall("socket.emit", "EXIT_MEETING", Client.room);
+            }
+            else
+            {
+                Client.ready = true;
+                Application.ExternalCall("socket.emit", "READY_CRIMESCENE", Client.room);
+            }
 
             // 키 밸류 데이터 
-		    Dictionary<string, string> data = new Dictionary<string, string>();
-		    // 보낼 정보 저장
-		    data["callback_name"] = "exit_meeting";
-            data["name"] = Client.name;
+      //      Dictionary<string, string> data = new Dictionary<string, string>();
+		    //// 보낼 정보 저장
+		    //data["callback_name"] = "EXIT_MEETING";
+      //      data["name"] = Client.name;
 
-            // JSON으로 묶어서 보냄 
-		    Application.ExternalCall("socket.emit", data["callback_name"], new JSONObject(data));
-		    // server.js : exit_meeting 호출
+      //      // JSON으로 묶어서 보냄 
+		    //Application.ExternalCall("socket.emit", data["callback_name"], new JSONObject(data));
         }
+        public void onRefreshReadyPlayer(int readyPlayer)
+        {
+            Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);
+            GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+        }
+
 
         public void onExitMeeting(){
             Debug.Log("[system] 게임으로 갑니다. ");
 
+            Client.ready = false;
+            GameInfo.GameRoomInfo.roomReadyPlayer = 0;
             SceneManager.LoadScene("Map", LoadSceneMode.Single);
         }
 
