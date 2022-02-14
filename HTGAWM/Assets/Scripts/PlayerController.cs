@@ -160,13 +160,11 @@ public class PlayerController : MonoBehaviour
     {
         isFixCamera = true;
         Debug.Log("카메라 고정"+isFixCamera);
-        Cursor.lockState = CursorLockMode.None;
     }
 
     public void UnfixPlayer()
     {
         isFixCamera = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void TryFix()
@@ -174,21 +172,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             isFixCamera = !isFixCamera;
-
-            mouse = !mouse;
-            MouseLock(mouse);
-        }
-    }
-
-    private void MouseLock(bool mouse)
-    {
-        if (mouse)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
+            Debug.Log(Cursor.lockState);
+            if(Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 
