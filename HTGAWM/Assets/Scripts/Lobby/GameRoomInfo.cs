@@ -30,7 +30,7 @@ namespace GameInfo
             agoraVideoScene.Add("TeamLeaderLeeOffice");
 
             agoraVideoScene.Add("MeetingScene");
-            //���� �ư��󿡼� ������ �ʴ� ���� ������ ���þ����� �̾���.
+            //아고라 상태를 유지할 목록
             agoraKeepScene.Add("VoteScene");
             agoraKeepScene.Add("VoteSecondScene");
             agoraKeepScene.Add("ResultPage");

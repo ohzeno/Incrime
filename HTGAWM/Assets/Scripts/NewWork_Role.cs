@@ -33,8 +33,6 @@ public class NewWork_Role : MonoBehaviour
 
     public GameObject btn_Conference;
     
-    // 비디오용
-    static TestHelloUnityVideo app = null;
         
 
     // Start is called before the first frame update
@@ -142,8 +140,6 @@ public class NewWork_Role : MonoBehaviour
     {
         Debug.Log("테스트2");
 
-        // // join channel and jump to next scene
-        app.join("TEST", true);
         // SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
         SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
 

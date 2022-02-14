@@ -318,6 +318,7 @@ namespace agora_gaming_rtc
 
         void Awake()
         {
+            Debug.Log("이벤트 핸들러 실행됨");
             // 싱글톤
             if (_webglEventHandlerInstance == null)
             {

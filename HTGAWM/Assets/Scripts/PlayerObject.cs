@@ -18,9 +18,6 @@ public class PlayerObject : MonoBehaviour
     static private readonly char[] Delimiter = new char[] {':'};
     bool memo_view;
 
-    static TestHelloUnityVideo app;
-
-
     [Header("Object :")]
     public Text Timer;
     public InputField MemoInput;
@@ -89,10 +86,6 @@ public class PlayerObject : MonoBehaviour
     // 탐색 종료 미팅씬으로 돌아가기
     public void onMeeting(){
         Debug.Log("[System] Client : 탐색이 끝났습니다. 회의실로 갑니다. ");
-
-        app.leave(); // leave channel
-        app.unloadEngine(); // delete engine
-        app = null; // delete app
 
         // 탐색 종료 후
         Cursor.lockState = CursorLockMode.None;

@@ -11,24 +11,26 @@ using agora_utilities;
 // How to join/leave channel
 // 
 
-
-
-
 public class TestHelloUnityVideo
 {
-
+    private static TestHelloUnityVideo instance = null;
     // instance of agora engine
     public static IRtcEngine mRtcEngine;
     private Text MessageText;
     // 
     public CamObject camObject;
 
-    public TestHelloUnityVideo()
-    {
-
+    private TestHelloUnityVideo()
+    {        
     }
 
-    public TestHelloUnityVideo(CamObject camObject)
+    public static TestHelloUnityVideo GetTestHelloUnityVideoInstance()
+    {
+        if (instance == null) instance = new TestHelloUnityVideo();
+        return instance;
+    }
+
+    public void SetCamObject(CamObject camObject)
     {
         this.camObject = camObject;
     }
@@ -59,7 +61,22 @@ public class TestHelloUnityVideo
         if (mRtcEngine == null)
             return;
 
+        if (mRtcEngine.GetConnectionState() == CONNECTION_STATE_TYPE.CONNECTION_STATE_CONNECTED)
+        {
+            int result = mRtcEngine.LeaveChannel();
+
+            if (result == 0)
+            {
+                Debug.Log("Agora: join 전 leave 성공");
+            }
+            else
+            {
+                Debug.Log("Agora: join 전 leave 실패");
+            }
+        }
+        Debug.Log("Agora: 연결된 접속이 없습니다. 채널에 접속합니다.");
         // set callbacks (optional)
+        Debug.Log(mRtcEngine.OnUserJoined.GetInvocationList().Length);
         mRtcEngine.OnJoinChannelSuccess = onJoinChannelSuccess;
         mRtcEngine.OnUserJoined = onUserJoined;
         mRtcEngine.OnUserOffline = onUserOffline;
@@ -109,7 +126,17 @@ public class TestHelloUnityVideo
             return;
 
         // leave channel
-        mRtcEngine.LeaveChannel();
+        int result = mRtcEngine.LeaveChannel();
+
+        if (result == 0)
+        {
+            Debug.Log("Agora: leave 성공");
+        }
+        else
+        {
+            Debug.Log("Agora: leave 실패");
+        }
+
         // deregister video frame observers in native-c code
         mRtcEngine.DisableVideoObserver();
     }

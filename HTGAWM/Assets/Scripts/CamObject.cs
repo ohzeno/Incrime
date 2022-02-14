@@ -1,7 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using agora_gaming_rtc;
+
+using UnityEngine.SceneManagement;
 
 public class CamObject : MonoBehaviour
 {
@@ -11,29 +13,45 @@ public class CamObject : MonoBehaviour
     private VideoSurface[] surfaces;
     public Dictionary<string, int> surfaceIndexDict = new Dictionary<string, int>();
 
+    private void Awake()
+    {
+        SceneManager.sceneUnloaded += ClearSurfaces;
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+    public void ClearSurfaces(Scene scene)
+    {
         surfaces = go_CamsParent.GetComponentsInChildren<VideoSurface>(true);
         Debug.Log(surfaces.Length);
-        foreach(VideoSurface vid in surfaces){
+        surfaceIndexDict.Clear();
+        foreach (VideoSurface vid in surfaces)
+        {
             vid.gameObject.SetActive(false);
         }
     }
-
     public void AddOtherUser(uint uid)
     {
+        string targetString = uid.ToString();
         for (int i = 0; i < surfaces.Length; i++)
         {
-            if (!surfaces[i].gameObject.activeSelf)
+            if (!surfaces[i].gameObject.activeSelf && !surfaceIndexDict.ContainsKey(targetString))
             {
                 surfaces[i].videoFps = 30;
                 surfaces[i].SetForUser(uid);
                 surfaces[i].SetEnable(true);
                 surfaces[i].gameObject.SetActive(true);
                 surfaceIndexDict.Add(uid.ToString(), i);
-                Debug.Log("Agora: ´Ù¸¥ À¯ÀúÀÇ ÀÔÀåÀÌ ¼º°ø Çß½À´Ï´Ù.");
+                Debug.Log("Agora: ë‹¤ë¥¸ ìœ ì €ì˜ ìž…ìž¥ì´ ì„±ê³µ í–ˆìŠµë‹ˆë‹¤.");
                 return;
+            }
+            else
+            {
+                Debug.Log("Agora: ì´ë¯¸ ì¡´ìž¬í•˜ëŠ” ìœ ì €ìž…ë‹ˆë‹¤");
             }
         }
     }
@@ -42,13 +60,15 @@ public class CamObject : MonoBehaviour
     {
         string targetString = uid.ToString();
 
+        Debug.Log("Agora: " + targetString + "ìœ ì €ê°€ ë‚˜ê°€ë ¤ê³  ì‹œë„í•©ë‹ˆë‹¤.");
         if (surfaceIndexDict.ContainsKey(targetString)) {
             int targetIndex = surfaceIndexDict[targetString];
             surfaces[targetIndex].SetEnable(false);
             surfaces[targetIndex].gameObject.SetActive(false);
-            Debug.Log("Agora: ³ª°£ À¯ÀúÀÇ »èÁ¦¿¡ ¼º°øÇß½À´Ï´Ù.");
+            surfaceIndexDict.Remove(targetString);
+            Debug.Log("Agora: ë‚˜ê°„ ìœ ì €ì˜ ì‚­ì œì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
             return;
         }
-        Debug.Log("Agora: ³ª°£ À¯ÀúÀÇ »èÁ¦°¡ ½ÇÆÐ Çß½À´Ï´Ù.");
+        Debug.Log("Agora: ë‚˜ê°„ ìœ ì €ì˜ ì‚­ì œê°€ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.");
     }
 }

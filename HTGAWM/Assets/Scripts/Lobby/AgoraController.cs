@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,16 +6,16 @@ using GameInfo;
 
 public class AgoraController : MonoBehaviour
 {
-    private static AgoraController agoraController = null; // ½Ì±ÛÅæ
+    private static AgoraController agoraController = null; // ì‹±ê¸€í†¤
 
     public CamObject camObject;
-    static TestHelloUnityVideo app;      // ºñµğ¿À¿ë
+    static TestHelloUnityVideo app;      // ë¹„ë””ì˜¤ìš©
 
     private CanvasGroup camCanvasGroup;
 
     void Awake()
     {
-        // ½Ì±ÛÅæ
+        // ì‹±ê¸€í†¤
         if (agoraController == null)
         {
             agoraController = this;
@@ -23,18 +23,18 @@ public class AgoraController : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             if (ReferenceEquals(app, null) && !ReferenceEquals(camObject, null))
             {
-                Debug.Log("Ä· ÀÎ½ºÅÏ½º »ı¼º");
-                app = new TestHelloUnityVideo(camObject); // create app
+                app = TestHelloUnityVideo.GetTestHelloUnityVideoInstance();
+                Debug.Log("ìº  ì¸ìŠ¤í„´ìŠ¤ ìƒì„±");
                 app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
+                app.SetCamObject(camObject); // create app
             }
-            // ¹ÌÆÃ ¾ÀÀÌ¶õ Ã¤³Î·Î µé¾î¿À±â
-            app.join(Client.room + "MeetingScene", true);
             camCanvasGroup = camObject.gameObject.GetComponent<CanvasGroup>();
 
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoadedAgora;
         }
         else
         {
+            Debug.Log("AgoraController ì‚­ì œ");
             Destroy(this.gameObject);
         }
     }
@@ -63,23 +63,25 @@ public class AgoraController : MonoBehaviour
         camCanvasGroup.blocksRaycasts = false;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoadedAgora(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(scene.name + "¾Æ°í¶ó·Î Á¢¼ÓÇÕ´Ï´Ù.");
+        Debug.Log(scene.name + "ì•„ê³ ë¼ë¡œ ì ‘ì†í•©ë‹ˆë‹¤.");
         if(app != null)
         {
             if (GameRoomInfo.agoraVideoScene.Contains(scene.name))
             {
-                app.leave();
+                Debug.Log(scene.name + "agora ë¹„ë””ì˜¤ ì—°ê²°");
                 JoinAgoraRoom(GameRoomInfo.roomNo + scene.name, true);
                 CamShow();
             }
             else if (GameRoomInfo.agoraKeepScene.Contains(scene.name))
             {
-                //ºóºí·Ï: ±×³É ¾Æ°í¶óÀÇ ÀÌÀü »óÅÂ¸¦ À¯ÁöÇÏ±â À§ÇÔÀÓ
+                Debug.Log(scene.name + "agora ìƒíƒœ ìœ ì§€");
+                //ë¹ˆë¸”ë¡: ê·¸ëƒ¥ ì•„ê³ ë¼ì˜ ì´ì „ ìƒíƒœë¥¼ ìœ ì§€í•˜ê¸° ìœ„í•¨ì„
             }
             else
             {
+                Debug.Log(scene.name + "agora ë‚˜ê°€ê¸°");
                 app.leave();
                 CamHide();
             }
@@ -93,12 +95,19 @@ public class AgoraController : MonoBehaviour
             app.join(joinRoomID, audioFlag);
     }
 
-    //¾Æ°í¶ó ³ª°¡´Â ¸Ş¼­µå
+    //ì•„ê³ ë¼ ë‚˜ê°€ëŠ” ë©”ì„œë“œ
     public void LeaveAgoraRoom()
     {
-        // ¾Æ°í¶ó ³ª°¡±â Å×½ºÆ®
+        // ì•„ê³ ë¼ ë‚˜ê°€ê¸° í…ŒìŠ¤íŠ¸
         if(app != null)
             app.leave(); // leave channel
+    }
+
+    public void LoadNewAgoraInstance()
+    {
+        app.leave();
+        app.unloadEngine();
+        app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
     }
 
     

@@ -95,16 +95,18 @@ public class LobbyController : MonoBehaviour
     public RoomUIWrapper tempRoomUI;
 
     [SerializeField]
-    GameObject passwordInputBoxObject;
+    private GameObject passwordInputBoxObject;
 
     [SerializeField]
-    TMP_InputField joinRoomPassword;
+    private TMP_InputField joinRoomPassword;
 
     private AgoraController agoraController;
 
 
     [SerializeField]
     private CanvasGroup menuCanvasGroup;
+
+    private bool isFIrst = true;
 
     void Start()
     {
@@ -275,7 +277,11 @@ public class LobbyController : MonoBehaviour
             roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 인";
             Client.room = receiveRoom.waitingroom_no.ToString();
             roomInnerUIObject.SetActive(true);
-            agoraController.JoinAgoraRoom(GameRoomInfo.roomNo + "Lobby", false);
+            if (isFIrst)
+            {
+                isFIrst = false;
+                agoraController.JoinAgoraRoom(GameRoomInfo.roomNo + "Lobby", false);
+            }
         }
     }
 
@@ -353,6 +359,7 @@ public class LobbyController : MonoBehaviour
         GameRoomInfo.ClearGameRoomInfo();
         roomInnerUIObject.SetActive(false);
         OnClickRefreshButton();
+        isFIrst = true;
         //TODO 좀 더 최적화 가능한 부분
     }
 
@@ -397,6 +404,7 @@ public class LobbyController : MonoBehaviour
     {
         Client.ready = false;
         Debug.Log("[system] 다음 방이 게임시작 : " + Client.room);
+        agoraController.LoadNewAgoraInstance();
         SceneManager.LoadScene("WaitScene");
     }
 

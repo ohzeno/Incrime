@@ -97,7 +97,7 @@ public class TestHome : MonoBehaviour
         // create app if nonexistent
         if (ReferenceEquals(app, null))
         {
-            app = new TestHelloUnityVideo(); // create app
+            app = TestHelloUnityVideo.GetTestHelloUnityVideoInstance(); // create app
             app.loadEngine(AppID); // load engine
         }
 
@@ -118,7 +118,7 @@ public class TestHome : MonoBehaviour
         // create app if nonexistent
         if (ReferenceEquals(app, null))
         {
-            app = new TestHelloUnityVideo(); // create app
+            app = TestHelloUnityVideo.GetTestHelloUnityVideoInstance(); // create app
             app.loadEngine(AppID); // load engine
         }
 
