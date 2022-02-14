@@ -76,7 +76,6 @@ public class TestHelloUnityVideo
         }
         Debug.Log("Agora: 연결된 접속이 없습니다. 채널에 접속합니다.");
         // set callbacks (optional)
-        Debug.Log(mRtcEngine.OnUserJoined.GetInvocationList().Length);
         mRtcEngine.OnJoinChannelSuccess = onJoinChannelSuccess;
         mRtcEngine.OnUserJoined = onUserJoined;
         mRtcEngine.OnUserOffline = onUserOffline;
