@@ -44,7 +44,8 @@ namespace Project {
         private AudioSource musicPlayer;
         public AudioClip handcuffsMusic;
         public AudioClip gameEnd;
-
+        public AudioClip shortTime;
+        private int isShortTimeOn;
         private string name;
 
         private string[] same; // 동표일 때, 누가 있는지
@@ -67,7 +68,7 @@ namespace Project {
             YunCheck.SetActive(false);
             ChoiCheck.SetActive(false);
             ResultVote.SetActive(false);
-
+            isShortTimeOn = 0;
         }
 
         void HideCheck(){
@@ -142,6 +143,24 @@ namespace Project {
             var timetxt = "";
             timetxt = pack[1] + ":" + pack[2];
             timer.text = timetxt;
+            if ( isShortTimeOn == 0 ){
+                // Debug.Log("if들어옴");
+                // Debug.Log(pack[2]);
+                // Debug.Log(pack[2].Length);
+                if( pack[2] == "10" || pack[2] == "9" ){
+                    isShortTimeOn = 1;
+                    musicPlayer = GetComponent<AudioSource>();
+                    PlaySound(shortTime, musicPlayer);
+                }
+            } else if ( isShortTimeOn == 1 ){
+                // Debug.Log("elif들어옴");
+                // Debug.Log(pack[2]);
+                // Debug.Log(pack[2].Length);
+                if(pack[2] == "0"){
+                    musicPlayer = GetComponent<AudioSource>();
+                    musicPlayer.Stop();
+                }
+            }
         }
 
         public void MoveResultStory()
