@@ -15,7 +15,7 @@ public class MoveTo : MonoBehaviour
 {
     void Start()
     {
-
+        
     }
 
     public void ToTeamLeaderLeeOffice()
@@ -23,6 +23,8 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 팀장실로 입장합니다.");
         
         SceneManager.LoadScene("TeamLeaderLeeOffice");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToSecurityRoom()
@@ -30,6 +32,8 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 보안실로 입장합니다.");
 
         SceneManager.LoadScene("SecurityRoom");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToReceptionDesk()
@@ -37,12 +41,15 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 비서실로 입장합니다.");
 
         SceneManager.LoadScene("ReceptionDesk");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToOfficeCubicles()
     {
         Debug.Log("[system] 사무실로 입장합니다.");
         SceneManager.LoadScene("OfficeCubicles");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToMeetingRoom()
@@ -50,6 +57,8 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 회의실로 입장합니다.");
 
         SceneManager.LoadScene("MeetingRoom");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToRestRoom()
@@ -57,6 +66,8 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 화장실로 입장합니다.");
 
         SceneManager.LoadScene("RestRoom");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToDirectorMaOffice()
@@ -64,6 +75,8 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 마이사 방으로 입장합니다.");
 
         SceneManager.LoadScene("DirectorMaOffice");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToBreakRoom()
@@ -71,6 +84,8 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 탕비실로 입장합니다.");
 
         SceneManager.LoadScene("BreakRoom");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToHallway()
@@ -78,5 +93,7 @@ public class MoveTo : MonoBehaviour
         Debug.Log("[system] 복도로 입장합니다.");
 
         SceneManager.LoadScene("Hallway");
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

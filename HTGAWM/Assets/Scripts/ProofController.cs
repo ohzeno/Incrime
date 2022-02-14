@@ -159,6 +159,7 @@ public class ProofController : MonoBehaviour
             cntCoroutine = StartCoroutine(_typing(oldHitInfo.transform.GetComponent<Proof>().proofDescription, proofDescription));
             // proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             collectButton.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -182,6 +183,8 @@ public class ProofController : MonoBehaviour
         proofUI.gameObject.SetActive(false);
         proofRawImage.texture = proofRenderTexture;
         shareButton.gameObject.SetActive(false);
+        // ui, close it and hold the mouse
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void CollectProof()

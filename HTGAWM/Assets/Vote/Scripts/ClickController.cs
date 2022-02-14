@@ -178,7 +178,7 @@ namespace Project {
             audioPlayer.Play();
         }
 
-        public int Compare(string[] vote)
+        public int Compare(string[] vote) // max 투표 수
         {
             int max = 0;
             for(int i = 0; i<6; i++)
@@ -191,7 +191,7 @@ namespace Project {
             return max;
         }
 
-        public bool VoteSame(string[] result)
+        public bool VoteSame(string[] result) // 동표인지 아닌지 체크
         {
             int max = Compare(result);
             int cnt = 0;

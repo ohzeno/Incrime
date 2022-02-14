@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
 
     HashSet<string> movingScene = new HashSet<string>();
+
+    private bool mouse = true;
   
 
     //void Update()
@@ -109,6 +111,7 @@ public class PlayerController : MonoBehaviour
         originScaleY = theCamera.transform.localScale.y;
         applyCrouchScaleY = originScaleY;
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -125,7 +128,6 @@ public class PlayerController : MonoBehaviour
         transform.position = defaultPosAndAngle;
         currentCameraRotationX = 0;
         myRigid.MoveRotation(Quaternion.Euler(0, 0, 0));
-        
     }
 
 
@@ -158,11 +160,13 @@ public class PlayerController : MonoBehaviour
     {
         isFixCamera = true;
         Debug.Log("카메라 고정"+isFixCamera);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void UnfixPlayer()
     {
         isFixCamera = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void TryFix()
@@ -170,6 +174,21 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             isFixCamera = !isFixCamera;
+
+            mouse = !mouse;
+            MouseLock(mouse);
+        }
+    }
+
+    private void MouseLock(bool mouse)
+    {
+        if (mouse)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

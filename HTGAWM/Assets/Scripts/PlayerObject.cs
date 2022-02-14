@@ -41,7 +41,7 @@ public class PlayerObject : MonoBehaviour
     void Start()
     {
         memo_view = false;
-        MemoInput.gameObject.SetActive(false);    
+        MemoInput.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -95,6 +95,7 @@ public class PlayerObject : MonoBehaviour
         app = null; // delete app
 
         // 탐색 종료 후
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
     }
 
