@@ -4829,6 +4829,7 @@ MonoBehaviour:
   timer: {fileID: 1171540188}
   handcuffsMusic: {fileID: 8300000, guid: da61845303f818143970230b43fa6d8d, type: 3}
   gameEnd: {fileID: 8300000, guid: d4ca9793616a6ab43b7b00cd849cfadb, type: 3}
+  shortTime: {fileID: 8300000, guid: e32a718299cc44847b24aa5b765c10ca, type: 3}
 --- !u!212 &2071194374
 SpriteRenderer:
   m_ObjectHideFlags: 0
