@@ -33,6 +33,7 @@ namespace Project
         
         public GameObject myVideo;
         public VideoPlayer vp;
+        private AudioSource musicPlayer;
 
         // Start is called before the first frame update
         void Start()
@@ -88,6 +89,8 @@ namespace Project
 
         public void OnPlayVideo() {
             Debug.Log("[system] 비디오를 재생합니다." );
+            musicPlayer = GetComponent<AudioSource>();
+            musicPlayer.Play();
             myVideo.gameObject.SetActive(true);
             btn_closeVideo.gameObject.SetActive(true);
             vp.Play();
