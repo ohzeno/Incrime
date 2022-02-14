@@ -122,11 +122,28 @@ io.on("connection", function (socket) {
 				var msg = "아이디 혹은 비밀번호를 확인하세요";
 				console.log("아이디 혹은 비밀번호를 확인하세요");
 				socket.emit("CHECK_ID_PW", msg);
-			} else {
+			} else if (results[0].is_login == 1) {
+				var msg = "이미 로그인 되어있는 아이디입니다.";
+				console.log(msg);
+				socket.emit("CHECK_ID_PW", msg);
+			}
+			else {
 				// clients list에 추가
 				clients.push(currentUser);
 				// add client in search engine
 				clientLookup[currentUser.id] = currentUser;
+
+				var SQL = `update user set is_login = ? where user_id = ?`;
+
+				let params = [1, currentUser.name];
+				connection.query(SQL, params, function (error, results) {
+					if (error) {
+						console.log(error);
+						console.log("정보 수정에 실패하였습니다.");
+					} else {
+						console.log("[INFO] player " + currentUser.name + ": update sucsess");
+					}
+				});
 
 				console.log("[system] 지금 참가자 수 : " + clients.length);
 				//
@@ -285,6 +302,18 @@ io.on("connection", function (socket) {
 			currentUser.isDead = true;
 			lobbyFunc.leaveRoom(socket, currentUser, connection);
 			//  socket.broadcast.emit('USER_DISCONNECTED', currentUser.id);
+
+			var SQL = `update user set is_login = ? where user_id = ?`;
+
+			let params = [0, currentUser.name];
+			connection.query(SQL, params, function (error, results) {
+				if (error) {
+					console.log(error);
+					console.log("정보 수정에 실패하였습니다.");
+				} else {
+					console.log("[INFO] player " + currentUser.name + ": update sucsess");
+				}
+			});
 
 			for (var i = 0; i < clients.length; i++) {
 				if (
