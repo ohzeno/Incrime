@@ -69,18 +69,18 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-// var truncateRoomsSQL = `SET FOREIGN_KEY_CHECKS = 0;
-// truncate table waitingroom;
-// truncate table waiting_user;
-// SET FOREIGN_KEY_CHECKS = 1;`;
+var truncateRoomsSQL = `SET FOREIGN_KEY_CHECKS = 0;
+truncate table waitingroom;
+truncate table waiting_user;
+SET FOREIGN_KEY_CHECKS = 1;`;
 
-// connection.query(truncateRoomsSQL, function (error, rows, fields) {
-// 	if (error) {
-// 		console.log(error);
-// 	} else {
-// 		console.log("전체 룸 삭제 완료");
-// 	}
-// });
+connection.query(truncateRoomsSQL, function (error, rows, fields) {
+	if (error) {
+		console.log(error);
+	} else {
+		console.log("전체 룸 삭제 완료");
+	}
+});
 
 //로비기능
 var lobbyFunc = require("./lobby");
@@ -374,8 +374,9 @@ io.on("connection", function (socket) {
 			// console.log(element + " --> index : " + index);
 			var rolenumber = role[roleindex];
 			var myrole;
+			var myrolealibi;
 			var SQL =
-				"SELECT s.story_nm, s.story_description, r.role_name " +
+				"SELECT s.story_nm, s.story_description, r.role_name, r.role_alibi " +
 				" FROM story AS s INNER JOIN role AS r " +
 				" ON s.story_no = r.story_no " +
 				" WHERE s.story_no = 1" +
@@ -390,13 +391,15 @@ io.on("connection", function (socket) {
 				myrole = results[0].role_name;
 				mystoryname = results[0].story_nm;
 				mystorydesc = results[0].story_description;
+				myrolealibi = results[0].role_alibi;
 
 				console.log("[system] 역할 -" + myrole);
 				io.to( element ).emit(
 					"ON_SET_ROLE",
 					myrole,
 					mystoryname,
-					mystorydesc
+					mystorydesc,
+					myrolealibi
 				);
 
 
