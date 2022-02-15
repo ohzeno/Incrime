@@ -303,7 +303,6 @@ namespace agora_gaming_rtc
 
     }
 
-    // 이게 찐이다.
     public class AgoraWebGLEventHandler : MonoBehaviour
     {
         private static AgoraWebGLEventHandler _webglEventHandlerInstance = null; // singleton instance
@@ -318,8 +317,6 @@ namespace agora_gaming_rtc
 
         void Awake()
         {
-            Debug.Log("이벤트 핸들러 실행됨");
-            // 싱글톤
             if (_webglEventHandlerInstance == null)
             {
                 _webglEventHandlerInstance = this;
@@ -333,12 +330,6 @@ namespace agora_gaming_rtc
             PrepareErrors();
 
         }
-
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        // 류기탁 추가 
-       
-        /////////////////////////////////////////////////////////////////////////////////////////////
-
 
         private VideoRawDataManager _rawD;
 

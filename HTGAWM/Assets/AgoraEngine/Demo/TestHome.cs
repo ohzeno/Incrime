@@ -9,9 +9,6 @@ using System.Collections;
 /// <summary>
 ///    TestHome serves a game controller object for this application.
 /// </summary>
-
-
-
 public class TestHome : MonoBehaviour
 {
 
@@ -28,7 +25,25 @@ public class TestHome : MonoBehaviour
     // PLEASE KEEP THIS App ID IN SAFE PLACE
     // Get your own App ID at https://dashboard.agora.io/
     [SerializeField]
-    private string AppID = "15cb9ae9658f4a39811de57a2250db4fd";
+    private string AppID = "539d6dace7d74d6f8c7c9a86e6c79f68";
+
+    private string ChannelName { 
+        get {
+            string cached = PlayerPrefs.GetString("ChannelName");
+            if (string.IsNullOrEmpty(cached)) {
+                cached = inputField.text;
+	        }
+
+            return cached;
+	    }
+
+        set {
+            PlayerPrefs.SetString("ChannelName", value);
+	    }
+    }
+
+    [SerializeField]
+    private InputField inputField;
 
     void Awake()
     {
@@ -36,13 +51,13 @@ public class TestHome : MonoBehaviour
 		permissionList.Add(Permission.Microphone);         
 		permissionList.Add(Permission.Camera);               
 #endif
-
         // keep this alive across scenes
         DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
     {
+        inputField.text = ChannelName;
         CheckAppId();
     }
 
@@ -88,46 +103,23 @@ public class TestHome : MonoBehaviour
 #endif
     }
 
-    public void onJoinButtonClicked()
+    public void onJoinButtonClicked(bool enableVideo, bool muted = false)
     {
-        // get parameters (channel name, channel profile, etc.)
-        GameObject go = GameObject.Find("ChannelName");
-        InputField field = go.GetComponent<InputField>();
-
         // create app if nonexistent
         if (ReferenceEquals(app, null))
         {
-            app = TestHelloUnityVideo.GetTestHelloUnityVideoInstance(); // create app
+            app = new TestHelloUnityVideo(); // create app
             app.loadEngine(AppID); // load engine
         }
 
+        ChannelName = inputField.text;
+
         // join channel and jump to next scene
-        app.join(field.text, true);
+        app.join(ChannelName, enableVideo, muted);
         SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
         SceneManager.LoadScene(PlaySceneName, LoadSceneMode.Single);
-
-        //LoadSceneMode.single -> 현재 씬의 오브젝트를 날리고 감.
     }
     
-    public void onJoinButtonClicked2()
-    {
-        // get parameters (channel name, channel profile, etc.)
-        GameObject go = GameObject.Find("ChannelName");
-        InputField field = go.GetComponent<InputField>();
-
-        // create app if nonexistent
-        if (ReferenceEquals(app, null))
-        {
-            app = TestHelloUnityVideo.GetTestHelloUnityVideoInstance(); // create app
-            app.loadEngine(AppID); // load engine
-        }
-
-        // join channel and jump to next scene
-        app.join(field.text, false);
-        SceneManager.sceneLoaded += OnLevelFinishedLoading; // configure GameObject after scene is loaded
-        SceneManager.LoadScene(PlaySceneName, LoadSceneMode.Single);
-    }
-
     public void onLeaveButtonClicked()
     {
         if (!ReferenceEquals(app, null))
@@ -144,10 +136,10 @@ public class TestHome : MonoBehaviour
     {
         if (scene.name == PlaySceneName)
         {
-            //if (!ReferenceEquals(app, null))
-            //{
-            //    app.OnSceneHelloVideoLoaded(); // call this after scene is loaded
-            //}
+            if (!ReferenceEquals(app, null))
+            {
+                app.onSceneHelloVideoLoaded(); // call this after scene is loaded
+            }
             SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         }
     }

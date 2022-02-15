@@ -11,7 +11,7 @@ public class MapButton : MonoBehaviour
     public ProofController proofController;
     
     // 비디오용
-    static TestHelloUnityVideo app;
+    static WebAgoraUnityVideo app;
 
     // Start is called before the first frame update
     void Start()

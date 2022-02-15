@@ -33,6 +33,9 @@ class ClientManager {
     this.client = null;
     _logger("created new client");
     this.client = AgoraRTC.createClient({ mode: mode, codec: "vp8" });
+    if (mode == "live") {
+      setClientMode_LIVE(); // let multichannel know
+    } // else default is "rtc"
   }
 
   getChannelProfileMode = function () {
@@ -236,6 +239,14 @@ class ClientManager {
     }
   }
 
+  isHosting() {
+    if (this._storedChannelProfile == 0) { return true; }
+    if (this._storedChannelProfile == 1) {
+	return (this.client_role == 1);
+    }
+    return false;
+  }
+
   async joinChannelWithUserAccount_WGL(
     token_str,
     channelId_str,
@@ -251,14 +262,14 @@ class ClientManager {
     this.client.on("exception", this.handleException.bind(this));
     this.client.on("error", this.handleError.bind(this));
 
-    if (this.videoEnabled) {
+    if (this.videoEnabled && this.isHosting()) {
       [this.options.uid, localTracks.audioTrack, localTracks.videoTrack] =
         await Promise.all([
           this.client.join(
             this.options.appid,
             this.options.channel,
             this.options.token || null,
-            userAccount_str
+            userAccount_str.toString() || null
           ),
           AgoraRTC.createMicrophoneAudioTrack(),
           AgoraRTC.createCameraVideoTrack(),
@@ -297,7 +308,7 @@ class ClientManager {
           this.options.appid,
           this.options.channel,
           this.options.token || null,
-          userAccount_str
+          userAccount_str.toString() || null
         ),
         AgoraRTC.createMicrophoneAudioTrack(),
       ]);
@@ -329,13 +340,14 @@ class ClientManager {
     this.client.on("exception", this.handleException.bind(this));
     this.client.on("error", this.handleError.bind(this));
 
-    if (this.videoEnabled) {
+    if (this.videoEnabled && this.isHosting()) {
       [this.options.uid, localTracks.audioTrack, localTracks.videoTrack] =
         await Promise.all([
           this.client.join(
             this.options.appid,
             this.options.channel,
-            this.options.token || null
+            this.options.token || null,
+            this.options.uid || null
           ),
           AgoraRTC.createMicrophoneAudioTrack(),
           AgoraRTC.createCameraVideoTrack(),
@@ -365,18 +377,14 @@ class ClientManager {
 
       $("#local-player-name").text(`localVideo(${this.options.uid})`);
 
-      if (this.client_role == 1) {
-        await this.client.publish(
-          Object.values(localTracks).filter((track) => track !== null)
-        );
-      }
     } else {
       // video is not enabled
       [this.options.uid, localTracks.audioTrack] = await Promise.all([
         this.client.join(
           this.options.appid,
           this.options.channel,
-          this.options.token || null
+          this.options.token || null,
+          this.options.uid || null
         ),
         AgoraRTC.createMicrophoneAudioTrack(),
       ]);
@@ -393,16 +401,18 @@ class ClientManager {
         this.options.channel
       );
 
-      if (this.client_role == 1) {
+    }
+
+    if (this.client_role == 1) {
         await this.client.publish(
           Object.values(localTracks).filter((track) => track !== null)
         );
-      }
     }
   }
 
   async setClientRole(role) {
     if (this.client) {
+      this.client_role = role;
       if (role === 1) {
         this.client.setClientRole("host", function (e) {
           if (!e) {
@@ -749,5 +759,15 @@ class ClientManager {
     Object.keys(remoteUsers).forEach((uid2) => {
       this.client.setRemoteVideoStreamType(uid2, option);
     });
+  }
+
+  enableLogUpload() {
+    AgoraRTC.enableLogUpload();
+    console.log("----------- log upload to server enabled -------- ");
+  }
+
+  disableLogUpload() {
+    AgoraRTC.disableLogUpload();
+    console.log("----------- log upload to server disabled -------- ");
   }
 }
