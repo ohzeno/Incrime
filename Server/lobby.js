@@ -139,7 +139,7 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 						console.log(_password + "전송받은 비밀번호 값");
 						console.log(rows[0].waitingroom_pw + "서버 비밀번호 값");
 						// 비밀번호가 같으면 입장
-						if (_password == rows[0].waitingroom_pw) { 
+						if (_password == rows[0].waitingroom_pw) {
 							var joinRoomSQL = `insert into waiting_user (waitingroom_no, user_id)
 							values (?, ?)`;
 							let params = [_roomNumber, currentUser.name];
@@ -186,8 +186,6 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 
 			self.getUsersInRoom(currentUser.joinedRoomId, socket, connection);
 		});
-
-
 	},
 
 	getRoomInfo: function (roomId, socket, connection) {
@@ -214,7 +212,7 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 	//방에 있는 유저들을 자바스크립트 객체 형식으로 반환해주는 함수
 	getUsersInRoom: function (roomId, socket, connection) {
 		console.log(roomId + "번 방의 유저목록 송신 함수 요청");
-		var getUsersSQL = `select user_id
+		var getUsersSQL = `select user_id, enter_no
 		from waiting_user u
 		where u.waitingroom_no = ?
 		order by (enter_no)`;
@@ -235,8 +233,4 @@ insert into waiting_user (waitingroom_no, user_id) values (last_insert_id(), ?);
 			}
 		});
 	},
-
-	
-
-
 });

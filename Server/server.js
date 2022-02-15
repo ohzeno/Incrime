@@ -26,6 +26,8 @@ var IngameTimer = {};
 // 사용하는 변수들
 var clients = []; // to storage clients
 var clientLookup = {}; // clients search engine
+
+var loginsUsers = {};
 // var sockets = {}; //// to storage sockets
 
 // 게임단계 변수
@@ -107,6 +109,7 @@ io.on("connection", function (socket) {
 			socketID: socket.id, // fills out with the id of the socket that was open
 			usernumber: clients.length + 1,
 			joinedRoomId: 0,
+			isLogin: false,
 		};
 
 		console.log(currentUser);
@@ -126,28 +129,17 @@ io.on("connection", function (socket) {
 				var msg = "아이디 혹은 비밀번호를 확인하세요";
 				console.log("아이디 혹은 비밀번호를 확인하세요");
 				socket.emit("CHECK_ID_PW", msg);
-			} else if (results[0].is_login == 1) {
+			} else if (loginsUsers[results[0].user_id]) {
 				var msg = "이미 로그인 되어있는 아이디입니다.";
 				console.log(msg);
 				socket.emit("CHECK_ID_PW", msg);
-			}
-			else {
+			} else {
 				// clients list에 추가
 				clients.push(currentUser);
 				// add client in search engine
 				clientLookup[currentUser.id] = currentUser;
 
-				var SQL = `update user set is_login = ? where user_id = ?`;
-
-				let params = [1, currentUser.name];
-				connection.query(SQL, params, function (error, results) {
-					if (error) {
-						console.log(error);
-						console.log("정보 수정에 실패하였습니다.");
-					} else {
-						console.log("[INFO] player " + currentUser.name + ": update sucsess");
-					}
-				});
+				loginsUsers[results[0].user_id] = true;
 
 				console.log("[system] 지금 참가자 수 : " + clients.length);
 				//
