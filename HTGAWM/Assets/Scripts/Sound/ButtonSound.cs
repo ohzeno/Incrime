@@ -27,14 +27,8 @@ public class ButtonSound : MonoBehaviour
         soundPlayer.Play();
     }
 
-    public static ButtonSound GetButtonSound()
+    public static ButtonSound GetButtonSoundInstance()
     {
         return buttonSound;
-    }
-    
-    public void OnClickButtonUI()
-    {
-        buttonSound = ButtonSound.GetButtonSound();
-		buttonSound.PlayButtonSound();
     }
 }
