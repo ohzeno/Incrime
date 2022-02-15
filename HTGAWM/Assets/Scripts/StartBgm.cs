@@ -5,19 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class StartBgm : MonoBehaviour
 {
-  // Start is called before the first frame update
+    public static GameObject startBgm = null;
+    // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (startBgm == null)
+        {
+            startBgm = this.gameObject;
+            DontDestroyOnLoad(this.gameObject);
+        } else {
+            Destroy(this.gameObject);
+        }
         SceneManager.sceneLoaded += CheckScene;
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void CheckScene(Scene scene, LoadSceneMode mode)
     {
         if (!(scene.name == "StartScene" || scene.name == "JoinScene")){
