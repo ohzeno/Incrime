@@ -27,6 +27,7 @@ public class MainCameraAudio : MonoBehaviour
     {
         if (!(GameRoomInfo.buttonSoundScene.Contains(scene.name)))
         {
+            SceneManager.sceneLoaded -= CheckScene;
             Destroy(this.gameObject);
         }
     }

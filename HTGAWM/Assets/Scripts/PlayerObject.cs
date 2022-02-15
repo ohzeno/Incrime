@@ -33,6 +33,7 @@ public class PlayerObject : MonoBehaviour
         else { 
             Destroy(this.gameObject); 
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,15 @@ public class PlayerObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "Lobby")
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Destroy(this.gameObject);
+        }
     }
 
     // 메모

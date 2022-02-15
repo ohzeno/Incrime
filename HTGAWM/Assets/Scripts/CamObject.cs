@@ -4,6 +4,7 @@ using UnityEngine;
 using agora_gaming_rtc;
 
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class CamObject : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class CamObject : MonoBehaviour
         {
             if (!surfaces[i].gameObject.activeSelf && !surfaceIndexDict.ContainsKey(targetString))
             {
+                OtherCam tempCam = surfaces[i].gameObject.GetComponent<OtherCam>();
+                tempCam.userNo = (int)uid;
                 surfaces[i].videoFps = 30;
                 surfaces[i].SetForUser(uid);
                 surfaces[i].SetEnable(true);
@@ -55,6 +58,8 @@ public class CamObject : MonoBehaviour
             }
         }
     }
+
+
 
     public void DeleteOtherUser(uint uid)
     {

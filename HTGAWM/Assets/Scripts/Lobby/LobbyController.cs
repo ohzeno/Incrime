@@ -112,11 +112,12 @@ public class LobbyController : MonoBehaviour
     {
         roomUsers = userListParent.GetComponentsInChildren<RoomUser>(true);
 
-        if ( Client.ready == true)
+        if (Client.ready == true)
         {
             PlayCrimeSceneButton.SetActive(false);
             PlayCrimeSceneButton_cancel.SetActive(true);
-        } else
+        }
+        else
         {
             PlayCrimeSceneButton.SetActive(true);
             PlayCrimeSceneButton_cancel.SetActive(false);
@@ -171,8 +172,9 @@ public class LobbyController : MonoBehaviour
         }
         else
         {
-            if(currentPickRoom != null) { 
-                
+            if (currentPickRoom != null)
+            {
+
                 if (currentPickRoom.isPassword)
                 {
                     if (CurrntPasswordState == PasswordState.Close)
@@ -230,15 +232,15 @@ public class LobbyController : MonoBehaviour
     }
 
     public void ReceiveRoomList(string jsonstr)
-    {     
+    {
         Debug.Log("룸 리스트 수신 json: " + jsonstr);
         RoomsWrapper receiveRoomsWrapper = JsonUtility.FromJson<RoomsWrapper>(jsonstr);
 
         Debug.Log(receiveRoomsWrapper.rooms);
-        if(receiveRoomsWrapper.rooms != null)
+        if (receiveRoomsWrapper.rooms != null)
         {
             Debug.Log(receiveRoomsWrapper.rooms[0].waitingroom_nm);
-            for(int i=0, end=receiveRoomsWrapper.rooms.Length; i<end; i++)
+            for (int i = 0, end = receiveRoomsWrapper.rooms.Length; i < end; i++)
             {
                 GameObject tempGameObject = GameObject.Instantiate(Resources.Load("Lobby/RoomUIWrapper"), roomListParent.transform) as GameObject;
                 Debug.Log(tempGameObject);
@@ -281,7 +283,7 @@ public class LobbyController : MonoBehaviour
         {
             MenuHide();
             GameRoomInfo.roomNo = roomInfo.roomNo = receiveRoom.waitingroom_no;
-            GameRoomInfo.roomTitle =  roomInfo.roomInfoTitleText.text = receiveRoom.waitingroom_nm;
+            GameRoomInfo.roomTitle = roomInfo.roomInfoTitleText.text = receiveRoom.waitingroom_nm;
             //TODO 상용화시 바꿔야 할 부분.
             GameRoomInfo.roomStory = roomInfo.roomInfoStroyText.text = "이팀장 살인사건";
             roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 인";
@@ -293,7 +295,7 @@ public class LobbyController : MonoBehaviour
     public void ReceiveRoomUserInfo(string usersjsonstr)
     {
         ClearChildsDataInRoomUser();
-        
+
         Debug.Log("수신된 룸 유저 정보 json: " + usersjsonstr);
         UsersWrapper receiveUsersWrapper = JsonUtility.FromJson<UsersWrapper>(usersjsonstr);
 
@@ -329,7 +331,7 @@ public class LobbyController : MonoBehaviour
 
     public void SetActiveRecursively(Transform trans, bool flag, bool first_flag)
     {
-        if(!first_flag)
+        if (!first_flag)
             trans.gameObject.SetActive(flag);
         foreach (Transform child in trans)
         {
@@ -351,7 +353,7 @@ public class LobbyController : MonoBehaviour
     public void OnClickRoomUI(RoomUIWrapper roomData)
     {
         Debug.Log(roomData.title.text);
-        if(currentPickRoom != null)
+        if (currentPickRoom != null)
         {
             currentPickRoom.outline.color = ORIGIN_COLOR;
         }
@@ -362,11 +364,11 @@ public class LobbyController : MonoBehaviour
 
     public void OnClickLeaveRoomButton()
     {
-        if ( Client.ready == true )
+        if (Client.ready == true)
         {
             Client.ready = false;
             // 나가기 요청 보내기
-            Application.ExternalCall("socket.emit", "NOT_READY_CRIMESCENE", Client.room );
+            Application.ExternalCall("socket.emit", "NOT_READY_CRIMESCENE", Client.room);
         }
 
         if (roomInfo.roomNo != 0)
@@ -387,19 +389,20 @@ public class LobbyController : MonoBehaviour
     {
         Debug.Log("[system] 게임 시작 버튼 누름: " + Client.room);
 
-        Debug.Log("[system] 준비한 플레이어: " + GameInfo.GameRoomInfo.roomReadyPlayer );
+        Debug.Log("[system] 준비한 플레이어: " + GameInfo.GameRoomInfo.roomReadyPlayer);
 
-        if ( GameInfo.GameRoomInfo.roomReadyPlayer == 5 )
+        if (GameInfo.GameRoomInfo.roomReadyPlayer == 5)
         {
-            Debug.Log("[system] 플레이어가 모두 준비됨 : " + Client.room );
+            Debug.Log("[system] 플레이어가 모두 준비됨 : " + Client.room);
             Application.ExternalCall("socket.emit", "PLAY_CRIMESCENE", Client.room);
 
-        } else
+        }
+        else
         {
             Client.ready = true;
             PlayCrimeSceneButton.SetActive(false);
             PlayCrimeSceneButton_cancel.SetActive(true);
-            Application.ExternalCall("socket.emit", "READY_CRIMESCENE", Client.room );
+            Application.ExternalCall("socket.emit", "READY_CRIMESCENE", Client.room);
         }
     }
 
@@ -430,5 +433,9 @@ public class LobbyController : MonoBehaviour
     }
 
 
+    public void loadNext()
+    {
+        SceneManager.LoadScene("WaitScene");
+    }
 }
 

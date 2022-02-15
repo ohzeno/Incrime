@@ -122,7 +122,7 @@ public class AgoraController : MonoBehaviour
     {
         app.leave();
         app.unloadEngine();
-        app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
+        app.loadEngine("539d6dace7d74d6f8c7c9a86e6c79f68");
     }
 
     

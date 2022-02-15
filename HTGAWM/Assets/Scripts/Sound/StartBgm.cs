@@ -22,6 +22,7 @@ public class StartBgm : MonoBehaviour
     private void CheckScene(Scene scene, LoadSceneMode mode)
     {
         if (!(scene.name == "StartScene" || scene.name == "JoinScene")){
+            SceneManager.sceneLoaded -= CheckScene;
             Destroy(this.gameObject);
         }
     }

@@ -64,21 +64,21 @@ public class TestHelloUnityVideo
             mRtcEngine.EnableVideoObserver();
         }
 
-        var _orientationMode = ORIENTATION_MODE.ORIENTATION_MODE_FIXED_LANDSCAPE;
+        //var _orientationMode = ORIENTATION_MODE.ORIENTATION_MODE_FIXED_LANDSCAPE;
         if (muted)
         {
             mRtcEngine.EnableLocalAudio(false);
             mRtcEngine.MuteLocalAudioStream(true);
         }
 
-        VideoEncoderConfiguration config = new VideoEncoderConfiguration
-        {
-            orientationMode = _orientationMode,
-            degradationPreference = DEGRADATION_PREFERENCE.MAINTAIN_FRAMERATE,
-            mirrorMode = VIDEO_MIRROR_MODE_TYPE.VIDEO_MIRROR_MODE_DISABLED
-            // note: mirrorMode is not effective for WebGL
-        };
-        mRtcEngine.SetVideoEncoderConfiguration(config);
+        //VideoEncoderConfiguration config = new VideoEncoderConfiguration
+        //{
+        //    orientationMode = _orientationMode,
+        //    degradationPreference = DEGRADATION_PREFERENCE.MAINTAIN_FRAMERATE,
+        //    mirrorMode = VIDEO_MIRROR_MODE_TYPE.VIDEO_MIRROR_MODE_DISABLED
+        //    // note: mirrorMode is not effective for WebGL
+        //};
+        //mRtcEngine.SetVideoEncoderConfiguration(config);
         // join channel
         mRtcEngine.JoinChannel(channel, null, 0);
 

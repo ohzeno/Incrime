@@ -106,18 +106,6 @@ public class WebAgoraUnityVideo
         // mRtcEngine.EnableVideo();
         // mRtcEngine.EnableVideoObserver();
 
-        var _orientationMode = ORIENTATION_MODE.ORIENTATION_MODE_FIXED_LANDSCAPE;
-        VideoEncoderConfiguration config = new VideoEncoderConfiguration
-        {
-            orientationMode = _orientationMode,
-            degradationPreference = DEGRADATION_PREFERENCE.MAINTAIN_FRAMERATE,
-            mirrorMode = VIDEO_MIRROR_MODE_TYPE.VIDEO_MIRROR_MODE_DISABLED
-            // note: mirrorMode is not effective for WebGL
-        };
-        mRtcEngine.SetVideoEncoderConfiguration(config);
-
-
-
         // join channel 위는 uid버전 아래는 userAccount버전
         mRtcEngine.JoinChannel(channel, null, uid);
     }
