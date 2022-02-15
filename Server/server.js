@@ -81,7 +81,6 @@ io.on("connection", function (socket) {
 			socketID: socket.id, // fills out with the id of the socket that was open
 			usernumber: clients.length + 1,
 			joinedRoomId: 0,
-			isLogin: false,
 		};
 
 		console.log(currentUser);
@@ -268,6 +267,7 @@ io.on("connection", function (socket) {
 	socket.on("disconnect", function () {
 		if (currentUser) {
 			currentUser.isDead = true;
+			if (loginsUsers[currentUser.name]) loginsUsers[currentUser.name] = false;
 			lobbyFunc.leaveRoom(socket, currentUser, connection);
 			//  socket.broadcast.emit('USER_DISCONNECTED', currentUser.id);
 
