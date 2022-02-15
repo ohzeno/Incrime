@@ -11,22 +11,24 @@ using agora_utilities;
 // How to join/leave channel
 // 
 
-public class TestHelloUnityVideo
+public class WebAgoraUnityVideo
 {
-    private static TestHelloUnityVideo instance = null;
+    private static WebAgoraUnityVideo instance = null;
     // instance of agora engine
     public static IRtcEngine mRtcEngine;
     private Text MessageText;
     // 
     public CamObject camObject;
 
-    private TestHelloUnityVideo()
+    private string appId;
+
+    private WebAgoraUnityVideo()
     {        
     }
 
-    public static TestHelloUnityVideo GetTestHelloUnityVideoInstance()
+    public static WebAgoraUnityVideo GetTestHelloUnityVideoInstance()
     {
-        if (instance == null) instance = new TestHelloUnityVideo();
+        if (instance == null) instance = new WebAgoraUnityVideo();
         return instance;
     }
 
@@ -41,6 +43,8 @@ public class TestHelloUnityVideo
         // start sdk
         Debug.Log("해당 앱 키로 아고라 로드 합니다.");
 
+        this.appId = appId;
+
         if (mRtcEngine != null)
         {
             Debug.Log("Engine exists. Please unload it first!");
@@ -54,7 +58,7 @@ public class TestHelloUnityVideo
         mRtcEngine.SetLogFilter(LOG_FILTER.DEBUG | LOG_FILTER.INFO | LOG_FILTER.WARNING | LOG_FILTER.ERROR | LOG_FILTER.CRITICAL);
     }
 
-    public void join(string channel, bool enableVideoOrNot)
+    public void join(string channel, bool enableVideoOrNot, uint uid)
     {
         Debug.Log("calling join (channel = " + channel + ")");
 
@@ -76,7 +80,7 @@ public class TestHelloUnityVideo
         }
         Debug.Log("Agora: 연결된 접속이 없습니다. 채널에 접속합니다.");
         // set callbacks (optional)
-        mRtcEngine.OnJoinChannelSuccess = onJoinChannelSuccess;
+        mRtcEngine.OnJoinChannelSuccess = OnJoinChannelSuccess;
         mRtcEngine.OnUserJoined = onUserJoined;
         mRtcEngine.OnUserOffline = onUserOffline;
         mRtcEngine.OnLeaveChannel += OnLeaveChannelHandler;
@@ -102,8 +106,20 @@ public class TestHelloUnityVideo
         // mRtcEngine.EnableVideo();
         // mRtcEngine.EnableVideoObserver();
 
-        // join channel
-        mRtcEngine.JoinChannel(channel, null, 0);
+        var _orientationMode = ORIENTATION_MODE.ORIENTATION_MODE_FIXED_LANDSCAPE;
+        VideoEncoderConfiguration config = new VideoEncoderConfiguration
+        {
+            orientationMode = _orientationMode,
+            degradationPreference = DEGRADATION_PREFERENCE.MAINTAIN_FRAMERATE,
+            mirrorMode = VIDEO_MIRROR_MODE_TYPE.VIDEO_MIRROR_MODE_DISABLED
+            // note: mirrorMode is not effective for WebGL
+        };
+        mRtcEngine.SetVideoEncoderConfiguration(config);
+
+
+
+        // join channel 위는 uid버전 아래는 userAccount버전
+        mRtcEngine.JoinChannel(channel, null, uid);
     }
     
     void OnLeaveChannelHandler(RtcStats stats)
@@ -170,8 +186,33 @@ public class TestHelloUnityVideo
         }
     }
 
+    public void SetUserVolumeByUserId(uint userId, float volume)
+    {
+        if (mRtcEngine != null)
+        {
+            if (userId != 0)
+            {
+                Debug.Log("Agora: " + userId.ToString() + "의 볼륨을 변경:" + volume);
+                mRtcEngine.AdjustUserPlaybackSignalVolume(userId, (int)(volume * 100));
+            }
+            else
+            {
+                Debug.Log("Agora: volume변경 실패. uid가 0입니다.(자기자신)");
+            }
+        }
+    }
+
+    public void SetMyVolume(float volume)
+    {
+        if (mRtcEngine != null)
+        {
+            Debug.Log("Agora: 나의 볼륨을 변경:" + volume);
+            mRtcEngine.AdjustRecordingSignalVolume((int)(volume * 100));
+        }
+    }
+
     // implement engine callbacks
-    private void onJoinChannelSuccess(string channelName, uint uid, int elapsed)
+    private void OnJoinChannelSuccess(string channelName, uint uid, int elapsed)
     {
         Debug.Log("JoinChannelSuccessHandler: uid = " + uid);
     }

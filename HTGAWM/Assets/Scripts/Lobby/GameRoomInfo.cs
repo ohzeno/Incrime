@@ -8,6 +8,7 @@ namespace GameInfo
     public static class GameRoomInfo
     {
         public static int roomNo = 0;
+        public static int userNoByRoom = 0;
         public static string roomTitle = "";
         public static string roomStory = "";
 

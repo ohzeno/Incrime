@@ -9,7 +9,7 @@ public class AgoraController : MonoBehaviour
     private static AgoraController agoraController = null; // 싱글톤
 
     public CamObject camObject;
-    static TestHelloUnityVideo app;      // 비디오용
+    static WebAgoraUnityVideo app;      // 비디오용
 
     private CanvasGroup camCanvasGroup;
 
@@ -23,9 +23,9 @@ public class AgoraController : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             if (ReferenceEquals(app, null) && !ReferenceEquals(camObject, null))
             {
-                app = TestHelloUnityVideo.GetTestHelloUnityVideoInstance();
+                app = WebAgoraUnityVideo.GetTestHelloUnityVideoInstance();
                 Debug.Log("캠 인스턴스 생성");
-                app.loadEngine("b16baf20b1fc49e99bd375ad30d5e340");
+                app.loadEngine("539d6dace7d74d6f8c7c9a86e6c79f68");
                 app.SetCamObject(camObject); // create app
             }
             camCanvasGroup = camObject.gameObject.GetComponent<CanvasGroup>();
@@ -71,7 +71,7 @@ public class AgoraController : MonoBehaviour
             if (GameRoomInfo.agoraVideoScene.Contains(scene.name))
             {
                 Debug.Log(scene.name + "agora 비디오 연결");
-                JoinAgoraRoom(GameRoomInfo.roomNo + scene.name, true);
+                JoinAgoraRoom(GameRoomInfo.roomNo + scene.name, true, GameRoomInfo.userNoByRoom);
                 CamShow();
             }
             else if (GameRoomInfo.agoraKeepScene.Contains(scene.name))
@@ -89,10 +89,25 @@ public class AgoraController : MonoBehaviour
         
     }
 
-    public void JoinAgoraRoom(string joinRoomID, bool audioFlag)
+    public void SetVolumeByUserId(int userNo, float volume)
     {
-        if (app != null)
-            app.join(joinRoomID, audioFlag);
+        if(userNo != 0 && app != null)
+            app.SetUserVolumeByUserId((uint)userNo, volume);
+    }
+
+    public void SetMyVolume(float volume)
+    {
+        if(app != null)
+        {
+            app.SetMyVolume(volume);
+        }
+    }
+
+    public void JoinAgoraRoom(string joinRoomID, bool audioFlag, int userNo)
+    {
+        Debug.Log("아고라에 가입 요청 UID: " + userNo);
+        if (userNo != 0 && app != null)
+            app.join(joinRoomID, audioFlag, (uint)userNo);
     }
 
     //아고라 나가는 메서드

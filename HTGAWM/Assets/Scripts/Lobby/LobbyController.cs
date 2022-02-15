@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -287,13 +287,6 @@ public class LobbyController : MonoBehaviour
             roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 인";
             Client.room = receiveRoom.waitingroom_no.ToString();
             roomInnerUIObject.SetActive(true);
-            PlayCrimeSceneButton.SetActive(true);
-            PlayCrimeSceneButton_cancel.SetActive(false);
-            if (isFIrst)
-            {
-                isFIrst = false;
-                agoraController.JoinAgoraRoom(GameRoomInfo.roomNo + "Lobby", false);
-            }
         }
     }
 
@@ -312,8 +305,23 @@ public class LobbyController : MonoBehaviour
             {
                 roomUsers[i].userId = receiveUsersWrapper.users[i].user_id;
                 roomUsers[i].userNameTextMesh.text = receiveUsersWrapper.users[i].user_id;
+
+                roomUsers[i].userNoByRoom = (receiveUsersWrapper.users[i].enter_no % 9999) + 1;
+
+                if (roomUsers[i].userId == Client.name && isFIrst)
+                {
+                    isFIrst = false;
+                    GameRoomInfo.userNoByRoom = roomUsers[i].userNoByRoom;
+                    agoraController.JoinAgoraRoom(GameRoomInfo.roomNo + "Lobby", false, GameRoomInfo.userNoByRoom);
+                }
+
                 //자식 오브젝트 변경
                 SetActiveRecursively(roomUsers[i].transform, true, true);
+
+                if (roomUsers[i].userId == Client.name)
+                {
+                    roomUsers[i].slider.gameObject.SetActive(false);
+                }
             }
         }
     }

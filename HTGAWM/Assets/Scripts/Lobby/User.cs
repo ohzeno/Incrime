@@ -17,6 +17,7 @@ namespace User
     public class User
     {
         public string user_id;
+        public int enter_no;
         public string user_name;
         public string user_pw;
         public string user_email;

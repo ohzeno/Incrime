@@ -718,7 +718,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.65
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1015,8 +1015,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f400ce468b05342ab1eff91f0fff1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userNoByRoom: 0
   userId: 
   userNameTextMesh: {fileID: 4819338449681131788}
+  slider: {fileID: 6352760716048035392}
 --- !u!114 &8841616782313267825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,7 +1128,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3513661692819427382}
+        m_TargetAssemblyTypeName: RoomUser, Assembly-CSharp
+        m_MethodName: OnChangedVolumeSlider
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5653559774440053971
 GameObject:
   m_ObjectHideFlags: 0
