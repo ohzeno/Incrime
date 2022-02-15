@@ -4,9 +4,9 @@ module.exports = {
       //to store current client connection
       var currentUser;
       // 콜백  EmitJoin()
-      socket.on("SHARE_PROOF", function (_data) {
+      socket.on("SHARE_PROOF", function (_data, _roomNumber ) {
         console.log("Broadcast 증거 공유");
-        socket.broadcast.emit("SHARE_PROOF", _data);
+        socket.broadcast.to( 'room' + _roomNumber ).emit("SHARE_PROOF", _data);
       }); //END_SOCKET_ON
     });
   },
