@@ -11,10 +11,18 @@ public class typingeffect : MonoBehaviour
     private AudioSource musicPlayer;
     public AudioClip keyboard;
     static private readonly char[] Delimiter = new char[] { ':' };
+    public GameObject ReVoteBtn;
+    public Text vote_desc;
+
+    // 변수
+    static string[] votearr;
+
     // Start is called before the first frame update
     void Start()
     {
         musicPlayer = GetComponent<AudioSource>();
+        ReVoteBtn.SetActive(false);
+        vote_desc.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -106,13 +114,14 @@ public class typingeffect : MonoBehaviour
         SceneManager.LoadScene("ResultPage");
     }
 
-    public void MoveSecondVote(string[] data)
+    public void MoveSecondVote(string[] arrr)
     {
-        Debug.Log("MoveVote" + data[0] + data[1]);
-        Application.ExternalCall("socket.emit", "MOVE_SECOND_VOTE", data);
-        SceneManager.LoadScene("VoteSecondScene");
+        votearr = ( string[]) arrr.Clone();
+        ReVoteBtn.SetActive(true);
+        vote_desc.gameObject.SetActive(true);
+        Debug.Log("[system] 2차 투표가 필요합니다. " + arrr[0] + arrr[1]);
     }
-
+    
     public void PlaySound(AudioClip clip, AudioSource audioPlayer)
     {
         audioPlayer.Stop();
@@ -125,5 +134,11 @@ public class typingeffect : MonoBehaviour
     public void StopSound(AudioClip clip, AudioSource audioPlayer)
     {
         audioPlayer.Stop();
+    }
+
+    public void ClickReVoteBtn()
+    {
+        Application.ExternalCall("socket.emit", "MOVE_SECOND_VOTE", votearr, Client.room);
+        SceneManager.LoadScene("VoteSecondScene");
     }
 }

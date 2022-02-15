@@ -221,7 +221,7 @@ window.addEventListener("load", function () {
 		} else if (_phase == 2) {
 			// 역할 숙지화면 : RoleScene
 			SceneName = "NetWork_Role";
-		} else if (_phase == 3) {
+		} else if (_phase == 3 || _phase == 5 ) {
 			// 자기소개 화면 : Meeting Scene
 			SceneName = "NetWork_Meeting";
 		}

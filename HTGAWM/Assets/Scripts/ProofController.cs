@@ -290,7 +290,7 @@ public class ProofController : MonoBehaviour
     public void OnClickShareProof()
     {
         Debug.Log("증거 공유");
-        Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson));
+        Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson), Client.room );
     }
 
     public void ReceiveSharedProof(string str)

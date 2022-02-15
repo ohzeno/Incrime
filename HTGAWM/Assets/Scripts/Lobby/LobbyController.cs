@@ -112,6 +112,16 @@ public class LobbyController : MonoBehaviour
     {
         roomUsers = userListParent.GetComponentsInChildren<RoomUser>(true);
 
+        if ( Client.ready == true)
+        {
+            PlayCrimeSceneButton.SetActive(false);
+            PlayCrimeSceneButton_cancel.SetActive(true);
+        } else
+        {
+            PlayCrimeSceneButton.SetActive(true);
+            PlayCrimeSceneButton_cancel.SetActive(false);
+        }
+
         OnClickCreateTabButton();
         roomInnerUIObject.SetActive(false);
         PlayCrimeSceneButton_cancel.SetActive(false);
@@ -277,6 +287,8 @@ public class LobbyController : MonoBehaviour
             roomInfo.roomInfoPeopleCountText.text = receiveRoom.people_count + "/6 인";
             Client.room = receiveRoom.waitingroom_no.ToString();
             roomInnerUIObject.SetActive(true);
+            PlayCrimeSceneButton.SetActive(true);
+            PlayCrimeSceneButton_cancel.SetActive(false);
             if (isFIrst)
             {
                 isFIrst = false;

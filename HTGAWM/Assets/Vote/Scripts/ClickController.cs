@@ -50,6 +50,10 @@ namespace Project {
 
         private string[] same; // 동표일 때, 누가 있는지
 
+        public GameObject btn_next;
+        public Text txt_result;
+        bool flag;
+
         public void nameSet(string name){ 
             this.name = name;
         }
@@ -68,6 +72,9 @@ namespace Project {
             YunCheck.SetActive(false);
             ChoiCheck.SetActive(false);
             ResultVote.SetActive(false);
+            btn_next.SetActive(false);
+            txt_result.gameObject.SetActive(false);
+
             isShortTimeOn = 0;
         }
 
@@ -128,7 +135,8 @@ namespace Project {
             Debug.Log("[System] Client : 캐릭터 투표 server.js로 보내기 " + data);
             VoteText.text = "다른 플레이어를 기다려 주세요";
             VoteBtn.interactable = false;
-            Application.ExternalCall("socket.emit", "first_vote", data);
+//            Application.ExternalCall("socket.emit", "first_vote", data, Client.room, 1 );
+            Application.ExternalCall("socket.emit", "PLAY_VOTE", data, Client.room, 1);
         }
 
         // 투표 시간
@@ -325,23 +333,14 @@ namespace Project {
                 yield return new WaitForSeconds(1.5f);
             }
 
-            bool flag = VoteSame(result);
-            if (flag == true) // 동표가 나왔을 때
-            {
-                Debug.Log("동표가 나옴");
-                Application.ExternalCall("socket.emit", "MULTI_RESULT_VOTE", same);
-                SceneManager.LoadScene("VoteTextResult");
-            }
-            else // 한명이 최대 득표 일 때
-            {
-                Debug.Log("한명이 최대 득표 " + same[0]);
-                Application.ExternalCall("socket.emit", "SINGLE_RESULT_VOTE", same[0]);
-                SceneManager.LoadScene("VoteTextResult");
-            }
+            flag = VoteSame(result);
+            btn_next.SetActive(true);
         }
 
         public void onVote(string data){
             ResultVote.SetActive(true);
+            txt_result.gameObject.SetActive(true);
+
             MaHand.SetActive(false);
             KimHand.SetActive(false);
             ChunHand.SetActive(false);
@@ -357,6 +356,26 @@ namespace Project {
             
             // 15초 뒤에 스토리 결과 출력
             // Invoke("MoveResultStory", 15);
+
+        }
+
+        public void ClickNextBtn()
+        {
+            btn_next.SetActive(false);
+            if (flag == true) // 동표가 나왔을 때
+            {
+                Debug.Log("동표가 나왔습니다. 재투표를 실행합니다. ");
+                Application.ExternalCall("socket.emit", "RESULT_VOTE", same, Client.room, 1);
+                //                Application.ExternalCall("socket.emit", "MULTI_RESULT_VOTE", same, Client.room , 1);
+                SceneManager.LoadScene("VoteTextResult");
+            }
+            else // 한명이 최대 득표 일 때
+            {
+                Debug.Log("한명이 최대 득표 " + same[0]);
+                Application.ExternalCall("socket.emit", "RESULT_VOTE", same[0], Client.room, 0);
+                //              Application.ExternalCall("socket.emit", "SINGLE_RESULT_VOTE", same[0], Client.room, 0);
+                SceneManager.LoadScene("VoteTextResult");
+            }
 
         }
     }

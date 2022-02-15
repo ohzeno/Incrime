@@ -60,9 +60,15 @@ namespace Project
         public AudioClip handcuffsMusic;
         public AudioClip gameEnd;
 
+        public GameObject wait_image;
+
         private string name;
 
         private string[] same; // 동표일 때, 누가 있는지
+
+        public GameObject btn_next;
+        public Text txt_result;
+        bool flag;
 
         public void nameSet(string name)
         {
@@ -80,6 +86,9 @@ namespace Project
         {
             HideCheck();
             ResultVote.SetActive(false);
+
+            btn_next.SetActive(false);
+            txt_result.gameObject.SetActive(false);
         }
 
         void HideCheck()
@@ -148,7 +157,8 @@ namespace Project
             Debug.Log("[System] Client : 캐릭터 투표 server.js로 보내기 " + data);
             VoteText.text = "다른 플레이어를 기다려 주세요";
             VoteBtn.interactable = false;
-            Application.ExternalCall("socket.emit", "SECOND_VOTE", data);
+//            Application.ExternalCall("socket.emit", "SECOND_VOTE", data);
+            Application.ExternalCall("socket.emit", "PLAY_VOTE", data, Client.room, 2);
         }
 
         public void MoveResultStory()
@@ -336,44 +346,39 @@ namespace Project
                 PlaySound(handcuffsMusic, musicPlayer); // 음악 실행
                 yield return new WaitForSeconds(1.5f);
             }
-            bool flag = VoteSame(result);
-            if (flag == true) // 동표가 나왔을 때
-            {
-                Debug.Log("두번째 투표에서 동표가 나옴");
-                Application.ExternalCall("socket.emit", "MULTI_RESULT_SECOND_VOTE", same);
-                SceneManager.LoadScene("VoteTextResult");
-            }
-            else // 한명이 최대 득표 일 때
-            {
-                Debug.Log("두번째 투표에서 한명이 최대 득표 " + same[0]);
-                Application.ExternalCall("socket.emit", "SINGLE_RESULT_SECOND_VOTE", same[0]);
-                SceneManager.LoadScene("VoteTextResult");
-            }
+
+
+            btn_next.SetActive(true);
+            flag = VoteSame(result);
+            
         }
 
-            public void onVote(string data)
-            {
-                ResultVote.SetActive(true);
-                MaHand.SetActive(false);
-                KimHand.SetActive(false);
-                ChunHand.SetActive(false);
-                JangHand.SetActive(false);
-                ChoiHand.SetActive(false);
-                YunHand.SetActive(false);
+        public void onVote(string data)
+        {
+            ResultVote.SetActive(true);
+            txt_result.gameObject.SetActive(true);
 
-                var vote = data.Split(Delimiter);
-                var result = data.Split(Delimiter);
+            MaHand.SetActive(false);
+            KimHand.SetActive(false);
+            ChunHand.SetActive(false);
+            JangHand.SetActive(false);
+            ChoiHand.SetActive(false);
+            YunHand.SetActive(false);
 
-                StartCoroutine(WaitForIt(vote, result)); // 사용자에게 투표 갯수 알려줌
+            var vote = data.Split(Delimiter);
+            var result = data.Split(Delimiter);
+
+            StartCoroutine(WaitForIt(vote, result)); // 사용자에게 투표 갯수 알려줌
 
 
-                // 15초 뒤에 스토리 결과 출력
-                // Invoke("MoveResultStory", 15);
+            // 15초 뒤에 스토리 결과 출력
+            // Invoke("MoveResultStory", 15);
 
-            }
+        }
 
         public void SecondVote(string data)
         {
+            wait_image.SetActive(false);
             Debug.Log("두번째 투표" + data);
             PanelHide();
             var again = data.Split(Delimiter);
@@ -404,6 +409,23 @@ namespace Project
                     YunBtn.SetActive(true);
                 }
             }
+        }
+        public void ClickNextBtn()
+        {
+            btn_next.SetActive(false);
+            if (flag == true) // 동표가 나왔을 때
+            {
+                Debug.Log("두번째 투표에서 동표가 나옴");
+                Application.ExternalCall("socket.emit", "RESULT_SECOND_VOTE", same, Client.room ,1);
+                SceneManager.LoadScene("VoteTextResult");
+            }
+            else // 한명이 최대 득표 일 때
+            {
+                Debug.Log("두번째 투표에서 한명이 최대 득표 " + same[0]);
+                Application.ExternalCall("socket.emit", "RESULT_SECOND_VOTE", same[0], Client.room, 0);
+                SceneManager.LoadScene("VoteTextResult");
+            }
+
         }
     }
 }

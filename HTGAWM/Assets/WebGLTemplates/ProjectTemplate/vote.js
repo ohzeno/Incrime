@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
 
     // 첫 투표 결과
     socket.on('GO_VOTE_RESULT', function(votes) {
-		console.log("[client.js] 첫 투표 들어옴");
+		console.log("[system] 첫 투표가 끝이 났습니다.");
 		var vote = votes[0] + ':' +votes[1] + ':' +votes[2] + ':' + votes[3] + ':' + votes[4] + ':' + votes[5];
 		if(window.unityInstance!=null){
 			window.unityInstance.SendMessage ('ClickController', 'onVote', vote);
@@ -35,6 +35,8 @@ window.addEventListener('load', function() {
 
 	// 투표에서 동표일 경우
 	socket.on('GO_MULTI_RESULT_VOTE', function (data) {
+
+		console.log("여기가 문제지?");
 		var vote = "";
 		data.forEach(function(i) {
 			if(i != null){
