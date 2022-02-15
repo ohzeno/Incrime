@@ -150,6 +150,11 @@ public class ProofController : MonoBehaviour
             //SetLayersRecursively(oldHitInfo.transform, 8);
 
             LoadPrefabInTempProof(SceneManager.GetActiveScene().name + "/" + oldHitInfo.transform.gameObject.name);
+            SetLayersRecursively(tempProofObject.transform, 8);
+            tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
+            orbitCamera.m_Target = tempProofObject.transform;
+
+            Proof tempProof = tempProofObject.GetComponent<Proof>();
 
             if (isCoroutinesActive == 1 && cntCoroutine != null)
             {
@@ -157,17 +162,17 @@ public class ProofController : MonoBehaviour
                 musicPlayer = GetComponent<AudioSource>();
                 musicPlayer.Stop();
                 StopCoroutine(cntCoroutine);
+                proofDescription.text = tempProof.proofDescription;
             }
+            else
+            {
 
-            tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
-            orbitCamera.m_Target = tempProofObject.transform;
-            SetLayersRecursively(tempProofObject.transform, 8);
-            Proof tempProof = tempProofObject.GetComponent<Proof>();
+                proofDescription.text = "";
 
+                cntCoroutine = StartCoroutine(_typing(tempProof.proofDescription, proofDescription));
+            }
             playerController.FixPlayer();
-            proofDescription.text = "";
             proofUI.gameObject.SetActive(true);
-            cntCoroutine = StartCoroutine(_typing(tempProof.proofDescription, proofDescription));
             // proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             collectButton.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
