@@ -104,6 +104,8 @@ public class NetWork_Wait : MonoBehaviour
 	    Client.role = pack[0];
         Client.storyname = pack[1];
         Client.storydesc = pack[2];
+        Client.alibi = pack[3];
+        Debug.Log("[system] 알리바이" + pack[3]);
 
         Client.ready = false;
         GameInfo.GameRoomInfo.roomReadyPlayer = 0;

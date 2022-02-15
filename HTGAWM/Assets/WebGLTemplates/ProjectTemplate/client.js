@@ -136,8 +136,8 @@ window.addEventListener("load", function () {
 	}); // end
 
 	// 역할 배정
-	socket.on("ON_SET_ROLE", function (role, storyname, storydesc) {
-		var _data = role + ":" + storyname + ":" + storydesc;
+	socket.on("ON_SET_ROLE", function (role, storyname, storydesc, alibi) {
+		var _data = role + ":" + storyname + ":" + storydesc + ":" + alibi;
 
 		console.log(_data);
 		if (window.unityInstance != null) {

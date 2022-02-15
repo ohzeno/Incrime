@@ -9,6 +9,7 @@ public static class Client
   public static string id;
   public static string name;
   public static string role;
+  public static string alibi;
   
   // 스토리 저장
   public static string storyname;

@@ -22,6 +22,7 @@ public class NewWork_Role : MonoBehaviour
     Text RoleDesc;
     Text StoryName;
     Text StoryDesc;
+    public Text RoleAlibi;
 
     Text minute;
     Text second;
@@ -49,6 +50,8 @@ public class NewWork_Role : MonoBehaviour
         
             StoryName = GameObject.Find("txt_StoryName").GetComponent<Text>();
             StoryName.text = Client.storyname;
+
+            RoleAlibi.text = Client.alibi.Replace("\\n", "\n");
 
             page = 1;
             Description1.SetActive(true);
