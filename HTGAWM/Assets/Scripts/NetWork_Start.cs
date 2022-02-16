@@ -127,15 +127,5 @@ public class NetWork_Start : MonoBehaviour
 		loginSuccessBox.SetActive(false);
 	}
 
-		public void loadNext()
-        {
-			SceneManager.LoadScene("Lobby");
-        }
-
-		public void loadNext2()
-		{
-			SceneManager.LoadScene("JoinScene");
-		}
-
 	}
 }

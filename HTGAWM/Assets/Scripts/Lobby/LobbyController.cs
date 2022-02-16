@@ -166,6 +166,7 @@ public class LobbyController : MonoBehaviour
 
     public void OnClickStartButton()
     {
+        OnClickMyPageCloseButton();
         if (CurrentState == State.Create)
         {
             CreateRoom();
@@ -434,10 +435,22 @@ public class LobbyController : MonoBehaviour
         SceneManager.LoadScene("WaitScene");
     }
 
-
-    public void loadNext()
+    [SerializeField]
+    private GameObject myPageObject;
+    [SerializeField]
+    private GameObject updateImage;
+    [SerializeField]
+    private GameObject deleteImage;
+    public void OnClickMyPageButton()
     {
-        SceneManager.LoadScene("WaitScene");
+        myPageObject.SetActive(true);
+    }
+
+    public void OnClickMyPageCloseButton()
+    {
+        myPageObject.SetActive(false);
+        updateImage.SetActive(false);
+        deleteImage.SetActive(false);
     }
 }
 
