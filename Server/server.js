@@ -245,35 +245,45 @@ io.on("connection", function (socket) {
 	// 유저 마이페이지
 	socket.on("USERINFOPAGE", function () {
 		// var SQL = "select * from user" + " where user_id =  ?";
-		
+		var u_totalgames;
+		var u_games; 
+		var u_id;
+		var u_pw;
+		var u_email;
+		let params = [currentUser.name];
+
 		var SQL = `
-		SELECT user_id, user_pw, user_email, COUNT(*) AS 'totalgames', COUNT( CASE WHEN playresult_win = 1 THEN 1 END ) AS 'wingames'  
-		FROM playresult INNER JOIN user  
-		ON playresult.playresult_userid = user.user_id  
-		WHERE playresult_userid = ?;  
+		SELECT COUNT(*) AS 'totalgames', COUNT( CASE WHEN playresult_win = 1 THEN 1 END ) AS 'wingames'  
+		FROM playresult 
+		WHERE playresult_userid = ? ;
 		`;
 
-		let params = [currentUser.name];
 		connection.query(SQL, params, function (error, results) {
 			if (error) {
 				console.log(error);
-				console.log("호출 실패");
 			} else {
-				console.log(
-					"[INFO] player " + currentUser.name + ": userinfo get sucsess"
-				);
-				socket.emit(
-					"USERINFO",
-					results[0].user_id,
-					results[0].user_pw,
-					results[0].user_email, 
-					results[0].totalgames, 
-					results[0].wingames
-				);
+				u_totalgames = results[0].totalgames, 
+				u_games= results[0].wingames
+				var SQL2 = `
+					SELECT user_id, user_pw, user_email   
+					FROM user  
+					WHERE user_id = ? ;  
+					`;
+					connection.query(SQL2, params, function (error, results) {
+						if (error) {
+							console.log(error);
+						} else {
+							u_id = results[0].user_id;
+							u_pw = results[0].user_pw;
+							u_email = results[0].user_email;					
+							socket.emit( "USERINFO",  u_id, u_pw, u_email, u_totalgames, u_games );
+						}
+					});
 			}
 		});
 
 		
+
 	});
 
 	// 유저가 끊겼을 때
