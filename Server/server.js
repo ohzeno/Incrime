@@ -43,18 +43,18 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-var truncateRoomsSQL = `SET FOREIGN_KEY_CHECKS = 0;
-truncate table waitingroom;
-truncate table waiting_user;
-SET FOREIGN_KEY_CHECKS = 1;`;
+// var truncateRoomsSQL = `SET FOREIGN_KEY_CHECKS = 0;
+// truncate table waitingroom;
+// truncate table waiting_user;
+// SET FOREIGN_KEY_CHECKS = 1;`;
 
-connection.query(truncateRoomsSQL, function (error, rows, fields) {
-	if (error) {
-		console.log(error);
-	} else {
-		console.log("전체 룸 삭제 완료");
-	}
-});
+// connection.query(truncateRoomsSQL, function (error, rows, fields) {
+// 	if (error) {
+// 		console.log(error);
+// 	} else {
+// 		console.log("전체 룸 삭제 완료");
+// 	}
+// });
 
 //로비기능
 var lobbyFunc = require("./lobby");
@@ -244,7 +244,14 @@ io.on("connection", function (socket) {
 
 	// 유저 마이페이지
 	socket.on("USERINFOPAGE", function () {
-		var SQL = "select * from user" + " where user_id =  ?";
+		// var SQL = "select * from user" + " where user_id =  ?";
+		
+		var SQL = `
+		SELECT user_id, user_pw, user_email, COUNT(*) AS 'totalgames', COUNT( CASE WHEN playresult_win = 1 THEN 1 END ) AS 'wingames'  
+		FROM playresult INNER JOIN user  
+		ON playresult.playresult_userid = user.user_id  
+		WHERE playresult_userid = ?;  
+		`;
 
 		let params = [currentUser.name];
 		connection.query(SQL, params, function (error, results) {
@@ -259,10 +266,14 @@ io.on("connection", function (socket) {
 					"USERINFO",
 					results[0].user_id,
 					results[0].user_pw,
-					results[0].user_email
+					results[0].user_email, 
+					results[0].totalgames, 
+					results[0].wingames
 				);
 			}
 		});
+
+		
 	});
 
 	// 유저가 끊겼을 때
