@@ -151,7 +151,7 @@ public class ProofController : MonoBehaviour
             //SetLayersRecursively(oldHitInfo.transform, 8);
 
             LoadPrefabInTempProof(SceneManager.GetActiveScene().name + "/" + oldHitInfo.transform.gameObject.name);
-            SetLayersRecursively(tempProofObject.transform, 8);
+            SetLayersRecursively(tempProofObject.transform, 9);
             tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
             orbitCamera.m_Target = tempProofObject.transform;
 

@@ -519,30 +519,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 12453913105002162, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 12453913105002162, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 12453913105002162, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062345707397403788, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062345707397403788, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062345707397403788, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6556832027342890070, guid: 326100e24b0d40343b309c7d9b7f4f92, type: 3}
       propertyPath: m_Name
       value: PlayerObject
