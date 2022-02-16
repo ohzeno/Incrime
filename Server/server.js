@@ -234,6 +234,8 @@ io.on("connection", function (socket) {
 				console.log(error);
 				console.log("삭제를 실패하였습니다..");
 			} else {
+
+				if (loginsUsers[currentUser.name]) loginsUsers[currentUser.name] = false;
 				console.log("[INFO] player " + currentUser.name + ": delete sucsess");
 				socket.emit("DELETESUCCESS");
 			}
