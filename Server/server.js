@@ -578,6 +578,19 @@ io.on("connection", function (socket) {
 				}
 			);
 		}
+		
+		// console.log(_winint);
+		var SQL = `INSERT INTO playresult (playresult_userid, playresult_storyno, playresult_win) VALUES (?,?,?);`;
+		// TODO each story
+		var params = [ _playerid, 1, _winint ];
+		connection.query(SQL, params, function (error, rows) {
+			if (error) {
+				console.log(error);
+				socket.emit("[system] 결과를 기록하는 것에 에러가 발생했습니다. ");
+			} else {
+				return true;
+			}
+		});
 
 	});
 
