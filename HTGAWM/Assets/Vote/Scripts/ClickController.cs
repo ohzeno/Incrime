@@ -149,32 +149,15 @@ namespace Project {
             Client.second = pack[2];
 
             var timetxt = "";
-            if(pack[1].Length == 1){
-                if(pack[2].Length == 1){
-                    timetxt = "0" + pack[1] + ":" + "0" +pack[2];
-                } else {
-                    timetxt = "0" + pack[1] + ":" + pack[2];
-                }
-            } else {
-                if(pack[2].Length == 1){
-                    timetxt = pack[1] + ":" + "0" +pack[2];
-                } else {
-                    timetxt = pack[1] + ":" + pack[2];
-                }
-            }
-            // timetxt = pack[1] + ":" + pack[2];
+            timetxt = pack[1] + ":" + pack[2];
             timer.text = timetxt;
             if ( isShortTimeOn == 0 ){
-                // Debug.Log(pack[2]);
-                // Debug.Log(pack[2].Length);
                 if( pack[1] == "00" && (pack[2] == "10" || pack[2] == "09") ){
                     isShortTimeOn = 1;
                     musicPlayer = GetComponent<AudioSource>();
                     PlaySound(shortTime, musicPlayer);
                 }
             } else if ( isShortTimeOn == 1 ){
-                // Debug.Log(pack[2]);
-                // Debug.Log(pack[2].Length);
                 if(pack[2] == "00"){
                     musicPlayer = GetComponent<AudioSource>();
                     musicPlayer.Stop();
