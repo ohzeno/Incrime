@@ -281,6 +281,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 823748689}
     m_Modifications:
+    - target: {fileID: 4632510096853084164, guid: 861578b322593e74cb7dec1dfbf32e74, type: 3}
+      propertyPath: proofDescription
+      value: "\uAC74\uBB3C \uB0B4\uC5D0 \uACBD\uBCF4\uB97C \uC6B8\uB9B4 \uC218 \uC788\uB294
+        \uBC84\uD2BC\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 5464703132703704156, guid: 861578b322593e74cb7dec1dfbf32e74, type: 3}
       propertyPath: m_Name
       value: AlarmButton

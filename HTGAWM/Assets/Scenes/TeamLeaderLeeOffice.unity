@@ -1680,6 +1680,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 682182130}
     m_Modifications:
+    - target: {fileID: 4113932190024656146, guid: f2152ceed99657a4184ea9818cdd1e15, type: 3}
+      propertyPath: proofDescription
+      value: "\uB9C9\uAC00\uC2A4 \uBCD1\uC774 \uC4F0\uB7EC\uC838 \uC788\uB2E4. \n\uB0B4\uC6A9\uBB3C\uC740
+        \uC5C6\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 5445211982499346453, guid: f2152ceed99657a4184ea9818cdd1e15, type: 3}
       propertyPath: m_Name
       value: EnergyDrink
@@ -6333,6 +6338,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 682182130}
     m_Modifications:
+    - target: {fileID: 2829509414189804528, guid: 4b3ae269294a02443b91ad5e90c750ed, type: 3}
+      propertyPath: proofDescription
+      value: "\uB2EC\uB825\uC774\uB2E4.\n\uC774 \uD300\uC7A5\uC740 \uC624\uB298 \uBC24
+        22\uC2DC 40\uBD84 \uCD9C\uC7A5\uC744 \uC704\uD574 \uBE44\uD589\uAE30\uB97C
+        \uD0C8 \uC608\uC815\uC774\uC5C8\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 6586258662206067121, guid: 4b3ae269294a02443b91ad5e90c750ed, type: 3}
       propertyPath: m_Name
       value: Calender
@@ -7494,6 +7505,11 @@ PrefabInstance:
     - target: {fileID: 4150577453127301830, guid: b27fb2fc98249c349a8411fa7c50f720, type: 3}
       propertyPath: m_Name
       value: CupCoffee
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249641998303271132, guid: b27fb2fc98249c349a8411fa7c50f720, type: 3}
+      propertyPath: proofDescription
+      value: "\uCEF5\uC774\uB2E4. \uC2DD\uC740 \uCEE4\uD53C\uAC00 \uB0A8\uC544\uC788\uB2E4.
+        \n\uBD84\uD64D\uC0C9.. \uC57D ?"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b27fb2fc98249c349a8411fa7c50f720, type: 3}
