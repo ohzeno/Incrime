@@ -81,7 +81,7 @@ namespace Project
         public void emitExitMeeting(){
             Debug.Log("[system] 미팅에서 나갑니다. ");
             btn_exitMeeting.SetActive(false);
-            if (GameInfo.GameRoomInfo.roomReadyPlayer == 5)
+            if (GameInfo.GameRoomInfo.roomReadyPlayer == 5 && GameInfo.GameRoomInfo.roomReadyPlayer == 6)
             {
                 Debug.Log("[system] 플레이어가 모두 나가고 싶어 합니다. : " + Client.room);
                 Application.ExternalCall("socket.emit", "EXIT_MEETING", Client.room);
