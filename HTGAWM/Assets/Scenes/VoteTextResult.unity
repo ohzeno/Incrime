@@ -262,6 +262,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 663a287c9bc426f498a98bb8db9e7a50, type: 3}
+--- !u!114 &449241480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 78550630401827626, guid: 663a287c9bc426f498a98bb8db9e7a50, type: 3}
+  m_PrefabInstance: {fileID: 449241479}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee73be7e04902a4a8de66957d5ec666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &524477891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,6 +1059,18 @@ MonoBehaviour:
       - m_Target: {fileID: 974270696}
         m_TargetAssemblyTypeName: typingeffect, Assembly-CSharp
         m_MethodName: ClickReVoteBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 449241480}
+        m_TargetAssemblyTypeName: SoundLoader, Assembly-CSharp
+        m_MethodName: OnClickButtonUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
