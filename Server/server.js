@@ -479,12 +479,12 @@ io.on("connection", function (socket) {
 				// 투표 끝.
 				setTimeout(function () {
 					io.sockets.in( 'room' + _roomNumber ).emit('GO_SINGLE_RESULT_VOTE', data);
-				}, 2000); 
+				}, 1500); 
 			} else {
 				// 재투표
 				setTimeout(function () {
 					io.sockets.in( 'room' + _roomNumber ).emit('GO_MULTI_RESULT_VOTE', data);
-				}, 3000); 
+				}, 1500); 
 			}
 		}
 	});
@@ -522,7 +522,7 @@ io.on("connection", function (socket) {
 				// 투표 끝.
 				setTimeout(function () {
 					io.sockets.in( 'room' + _roomNumber ).emit('GO_SINGLE_RESULT_SECOND_VOTE', data);
-				}, 2000); 
+				}, 1500); 
 			} else {
 				// 재투표
 				var voteresultstr = "";
@@ -533,7 +533,7 @@ io.on("connection", function (socket) {
 				});
 				setTimeout(function () {
 					io.sockets.in( 'room' + _roomNumber ).emit('GO_MULTI_RESULT_SECOND_VOTE', data);
-				}, 3000); 
+				}, 1500); 
 
 			}
 		}
