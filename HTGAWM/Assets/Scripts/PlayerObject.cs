@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using agora_gaming_rtc;
+using TMPro;
 
 
 namespace Project 
@@ -21,6 +22,7 @@ public class PlayerObject : MonoBehaviour
     [Header("Object :")]
     public Text Timer;
     public InputField MemoInput;
+    public TMP_InputField MemoInputpro;
     public GameObject aimdot;
 
     private void Awake()
@@ -40,6 +42,7 @@ public class PlayerObject : MonoBehaviour
     {
         memo_view = false;
         MemoInput.gameObject.SetActive(false);
+        MemoInputpro.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,13 +67,14 @@ public class PlayerObject : MonoBehaviour
         if ( memo_view == false ){
             // 메모 키기
             memo_view = true;
-            MemoInput.gameObject.SetActive(true);
-            MemoInput.text = Client.memo;
-        } else {
+            // MemoInput.gameObject.SetActive(true);
+            MemoInputpro.gameObject.SetActive(true);
+            MemoInputpro.text = Client.memo;
+            } else {
             // 메모 끄기
             memo_view = false;
-            MemoInput.gameObject.SetActive(false);
-            Client.memo =  MemoInput.text;
+            //MemoInput.gameObject.SetActive(false);
+            //Client.memo =  MemoInput.text;
             // 저장
         }
     }
