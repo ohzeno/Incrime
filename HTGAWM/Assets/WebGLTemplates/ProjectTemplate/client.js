@@ -98,10 +98,10 @@ window.addEventListener("load", function () {
 		}
 	}); //END_SOCKET.ON
 
-	socket.on("USERINFO", function (name, password, mail) {
-		console.log("USERINFO");
-
-		var currentUserAtr = name + ":" + password + ":" + mail;
+	socket.on("USERINFO", function (name, password, mail, totalgames, wingames) {
+		
+		var currentUserAtr = name + ":" + password + ":" + mail + ":" + totalgames + ":" + wingames;
+		console.log(currentUserAtr);
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage(
 				"NetWork_MyPage",

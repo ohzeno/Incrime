@@ -18,6 +18,8 @@ public class NetWork_MyPage : MonoBehaviour
     public InputField MyName;
     public InputField MyPassword;
     public InputField MyMail;
+    public Text MyGames;
+    public Text MyWinGames;
     // Start is called before the first frame update
 
     public Image update_image;
@@ -46,6 +48,8 @@ public class NetWork_MyPage : MonoBehaviour
         MyName.text = pack[0];
         MyPassword.text = pack[1];
         MyMail.text = pack[2];
+        MyGames.text = pack[3].ToString();
+        MyWinGames.text = pack[4].ToString();
     }
 
     public void UpdateUser()

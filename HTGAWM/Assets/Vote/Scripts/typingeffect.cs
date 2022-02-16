@@ -80,7 +80,7 @@ public class typingeffect : MonoBehaviour
 
     public void VoteTextResult(string data)
     {
-        Debug.Log("수신 --> " + data + " : " + Client.role);
+        Debug.Log("수신 --> " + data + " : " + Client.role + " player ID " + Client.name );
         // TODO 
         if ( Client.role.Equals("김비서") && !data.Equals("김비서") )
         {
@@ -119,6 +119,11 @@ public class typingeffect : MonoBehaviour
             m_text += pack[i] + " ";
         }
         m_text += "동표가 나왔습니다. \n 범인이 이겼습니다.";
+        if (Client.role.Equals("김비서") )
+        {
+            Debug.Log("범인으로 승리했습니다. --> " + data + " : " + Client.role);
+            Client.win = 1;
+        }
         StartCoroutine(_second_multi_typing(m_text, pack));
     }
 
