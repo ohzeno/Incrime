@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class OtherCam : MonoBehaviour
 {
@@ -18,12 +19,12 @@ public class OtherCam : MonoBehaviour
     }
 
 
-    public void OnMouseEnter()
+    public void OnMouseEnterCam(BaseEventData data)
     {
         SliderObject.SetActive(true);
     }
 
-    public void OnMouseExit()
+    public void OnMouseExitCam(BaseEventData data)
     {
         SliderObject.SetActive(false);
     }
@@ -31,6 +32,7 @@ public class OtherCam : MonoBehaviour
 
     public void OnChangedSliderValue(float value)
     {
-        agoraController.SetVolumeByUserId(userNo, value);
+        if(!agoraController.isAppNull())
+            agoraController.SetVolumeByUserId(userNo, value);
     }
 }

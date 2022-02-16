@@ -175,7 +175,7 @@ public class ProofController : MonoBehaviour
             proofUI.gameObject.SetActive(true);
             // proofDescription.text = oldHitInfo.transform.GetComponent<Proof>().proofDescription;
             collectButton.gameObject.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
+            PlayerController.currentCurrentLockMode = CursorLockMode.None;
         }
     }
 
@@ -193,14 +193,19 @@ public class ProofController : MonoBehaviour
             Debug.Log(proofName + " �ݱ�");
         }
         playerController.UnfixPlayer();
-        musicPlayer = GetComponent<AudioSource>();
-        musicPlayer.Stop();
-        StopCoroutine(cntCoroutine);
+
+        if (isCoroutinesActive == 1 && cntCoroutine != null)
+        {
+            musicPlayer = GetComponent<AudioSource>();
+            musicPlayer.Stop();
+            StopCoroutine(cntCoroutine);
+        }
         proofUI.gameObject.SetActive(false);
         proofRawImage.texture = proofRenderTexture;
         shareButton.gameObject.SetActive(false);
+        sharingUserObject.SetActive(false);
         // ui, close it and hold the mouse
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void CollectProof()
@@ -253,10 +258,14 @@ public class ProofController : MonoBehaviour
         tempProofObject.layer = 9;
     }
 
+    [SerializeField]
+    private GameObject sharingUserObject;
     public void OnClickCollectedSlot(BaseEventData data)
     {
         Debug.Log(data.selectedObject + "의 타입 == Slot");
         Slot targetSlot = data.selectedObject.transform.GetComponent<Slot>();
+
+        sharingUserObject.SetActive(false);
 
         if (targetSlot.proof.proofName.Length != 0 && !pickupActivated)
         {
@@ -290,9 +299,12 @@ public class ProofController : MonoBehaviour
     public void OnClickShareProof()
     {
         Debug.Log("증거 공유");
+        proofJson.foundUserName = Client.role;
         Application.ExternalCall("socket.emit", "SHARE_PROOF", JsonUtility.ToJson(proofJson), Client.room );
     }
 
+    [SerializeField]
+    private Text sharingUserNameText;
     public void ReceiveSharedProof(string str)
     {
         Debug.Log("증거 정보 유니티 수신");
@@ -305,6 +317,9 @@ public class ProofController : MonoBehaviour
         orbitCamera.m_Target = tempProofObject.transform;
         SetLayersRecursively(tempProofObject.transform, 8);
         proofDescription.text = tempProofObject.transform.GetComponent<Proof>().proofDescription;
+
+        sharingUserNameText.text = receiveProof.foundUserName;
+
         proofUI.gameObject.SetActive(true);
         collectButton.gameObject.SetActive(false);
     }

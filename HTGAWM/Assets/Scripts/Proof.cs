@@ -55,6 +55,8 @@ public class Proof : MonoBehaviour
         public string objectName;
         public string sceneName;
 
+        public string foundUserName;
+
         public ProofJson()
         {
 

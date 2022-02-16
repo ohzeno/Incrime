@@ -13,7 +13,6 @@ namespace Project
         public Text Alibi;
 
         // 역할 버튼 클릭 시 알리바이 패널 SetActive
-        private bool AlibiCheck = false;
 
         // Start is called before the first frame update
         void Start()
@@ -29,16 +28,15 @@ namespace Project
 
         public void ClickAlibiBtn()
         {
-            if (AlibiCheck)
+            if (AlibiPanel.activeSelf)
             {
                 AlibiPanel.SetActive(false);
-                AlibiCheck = false;
             }
             else
             {
                 AlibiPanel.SetActive(true);
-                Alibi.text = Client.alibi.Replace("\\n", "\n"); ;
-                AlibiCheck = true;
+                if(Client.alibi != null)
+                    Alibi.text = Client.alibi.Replace("\\n", "\n");
                 Debug.Log(Client.alibi);
             }
         }

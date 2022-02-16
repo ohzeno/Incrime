@@ -53,6 +53,7 @@ public class PlayerObject : MonoBehaviour
     {
         if(scene.name == "Lobby" || scene.name == "ResultPage")
         {
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(this.gameObject);
         }
@@ -99,7 +100,7 @@ public class PlayerObject : MonoBehaviour
         Debug.Log("[System] Client : 탐색이 끝났습니다. 회의실로 갑니다. ");
 
         // 탐색 종료 후
-        Cursor.lockState = CursorLockMode.None;
+        PlayerController.currentCurrentLockMode = CursorLockMode.None;
         SceneManager.LoadScene("MeetingScene", LoadSceneMode.Single);
     }
 

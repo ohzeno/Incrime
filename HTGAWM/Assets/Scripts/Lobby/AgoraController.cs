@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using GameInfo;
 
@@ -9,6 +10,7 @@ public class AgoraController : MonoBehaviour
     private static AgoraController agoraController = null; // 싱글톤
 
     public CamObject camObject;
+    public Button toggleButton;
     static WebAgoraUnityVideo app;      // 비디오용
 
     private CanvasGroup camCanvasGroup;
@@ -44,6 +46,11 @@ public class AgoraController : MonoBehaviour
         return agoraController;
     }
 
+    public bool isAppNull()
+    {
+        return app == null;
+    }
+
     // Start is called before the first frame update
     void Start()
     { 
@@ -52,15 +59,18 @@ public class AgoraController : MonoBehaviour
 
     void CamShow()
     {
-        camCanvasGroup.alpha = 1;
-        camCanvasGroup.interactable = true;
-        camCanvasGroup.blocksRaycasts = true;
+        //camCanvasGroup.alpha = 1;
+        //camCanvasGroup.interactable = true;
+        //camCanvasGroup.blocksRaycasts = true;
+        camObject.gameObject.SetActive(true);
     }
     void CamHide()
     {
-        camCanvasGroup.alpha = 0;
-        camCanvasGroup.interactable = false;
-        camCanvasGroup.blocksRaycasts = false;
+        //camCanvasGroup.alpha = 0;
+        //camCanvasGroup.interactable = false;
+        //camCanvasGroup.blocksRaycasts = false;
+
+        camObject.gameObject.SetActive(false);
     }
 
     private void OnSceneLoadedAgora(Scene scene, LoadSceneMode mode)
@@ -73,6 +83,7 @@ public class AgoraController : MonoBehaviour
                 Debug.Log(scene.name + "agora 비디오 연결");
                 JoinAgoraRoom(GameRoomInfo.roomNo + scene.name, true, GameRoomInfo.userNoByRoom);
                 CamShow();
+                toggleButton.gameObject.SetActive(true);
             }
             else if (GameRoomInfo.agoraKeepScene.Contains(scene.name))
             {
@@ -84,6 +95,7 @@ public class AgoraController : MonoBehaviour
                 Debug.Log(scene.name + "agora 나가기");
                 app.leave();
                 CamHide();
+                toggleButton.gameObject.SetActive(false);
             }
         }
         
@@ -125,5 +137,22 @@ public class AgoraController : MonoBehaviour
         app.loadEngine("539d6dace7d74d6f8c7c9a86e6c79f68");
     }
 
+    public void CamToggle()
+    {
+        if (camObject.gameObject.activeSelf)
+        {
+            //camCanvasGroup.alpha = 0;
+            //camCanvasGroup.interactable = false;
+            //camCanvasGroup.blocksRaycasts = false;
+            camObject.gameObject.SetActive(false);
+        }
+        else
+        {
+            //camCanvasGroup.alpha = 1;
+            //camCanvasGroup.interactable = true;
+            //camCanvasGroup.blocksRaycasts = true;
+            camObject.gameObject.SetActive(true);
+        }
+    }
     
 }

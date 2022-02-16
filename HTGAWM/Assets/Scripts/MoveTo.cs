@@ -24,7 +24,7 @@ public class MoveTo : MonoBehaviour
         
         SceneManager.LoadScene("TeamLeaderLeeOffice");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToSecurityRoom()
@@ -33,7 +33,7 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("SecurityRoom");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToReceptionDesk()
@@ -42,14 +42,14 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("ReceptionDesk");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToOfficeCubicles()
     {
         Debug.Log("[system] 사무실로 입장합니다.");
         SceneManager.LoadScene("OfficeCubicles");
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToMeetingRoom()
@@ -58,7 +58,7 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("MeetingRoom");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToRestRoom()
@@ -67,7 +67,7 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("RestRoom");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToDirectorMaOffice()
@@ -76,7 +76,7 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("DirectorMaOffice");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToBreakRoom()
@@ -85,7 +85,7 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("BreakRoom");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 
     public void ToHallway()
@@ -94,6 +94,6 @@ public class MoveTo : MonoBehaviour
 
         SceneManager.LoadScene("Hallway");
 
-        Cursor.lockState = CursorLockMode.Locked;
+        PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
     }
 }

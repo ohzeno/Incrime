@@ -72,21 +72,9 @@ public class PlayerController : MonoBehaviour
     HashSet<string> movingScene = new HashSet<string>();
 
     private bool mouse = true;
-  
 
-    //void Update()
-    //{
-    //    var horizontalRotation = Input.GetAxis("Horizontal") * angularVelocity * Time.deltaTime;
-    //    var verticalRotaion = -Input.GetAxis("Vertical") * angularVelocity * Time.deltaTime;
+    public static CursorLockMode currentCurrentLockMode = CursorLockMode.None;
 
-    //    horizontalAngle += horizontalRotation;
-    //    verticalAngle += verticalRotaion;
-
-    //    verticalAngle = Mathf.Clamp(verticalAngle, -80f, 80f);
-
-    //    transform.rotation = Quaternion.Euler(verticalAngle, horizontalAngle, 0f);
-    //}
-    // Use this for initialization
     void Start()
     {
         movingScene.Add("BreakRoom");
@@ -145,12 +133,18 @@ public class PlayerController : MonoBehaviour
         TryCrouch();
         TryRun();
         MoveCheck();
+        IsLockCursor();
 
         if (!isFixCamera)
         {
             CameraRotation();
             CharacterRotation();
         }
+    }
+
+    void IsLockCursor()
+    {
+        Cursor.lockState = currentCurrentLockMode;
     }
 
     void FixedUpdate()
@@ -180,11 +174,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log(Cursor.lockState);
             if(Cursor.lockState == CursorLockMode.Locked)
             {
-                Cursor.lockState = CursorLockMode.None;
+                PlayerController.currentCurrentLockMode = CursorLockMode.None;
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                PlayerController.currentCurrentLockMode = CursorLockMode.Locked;
             }
         }
     }
