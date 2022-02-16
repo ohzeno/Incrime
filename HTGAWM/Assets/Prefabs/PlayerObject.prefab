@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4062345707397403788}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.11100572
+  m_Size: 0.1454153
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5633,7 +5633,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &42243683116590459
 MonoBehaviour:
   m_ObjectHideFlags: 0
