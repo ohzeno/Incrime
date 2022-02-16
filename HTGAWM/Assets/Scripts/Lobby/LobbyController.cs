@@ -379,6 +379,8 @@ public class LobbyController : MonoBehaviour
         }
         MenuShow();
         GameRoomInfo.ClearGameRoomInfo();
+        PlayCrimeSceneButton.SetActive(true);
+        PlayCrimeSceneButton_cancel.SetActive(false);
         roomInnerUIObject.SetActive(false);
         OnClickRefreshButton();
         isFIrst = true;

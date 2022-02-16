@@ -27,12 +27,14 @@ public class NewWork_Role : MonoBehaviour
     Text minute;
     Text second;
 
+    bool memo_view;
+
     [Header("오브젝트 :")]
 	int page;
     public GameObject Description1;
     public GameObject Description2;
-
     public GameObject btn_Conference;
+    public InputField MemoInput;
     
         
 
@@ -56,7 +58,11 @@ public class NewWork_Role : MonoBehaviour
             page = 1;
             Description1.SetActive(true);
             Description2.SetActive(false);
-		} else {
+
+            memo_view = false;
+            MemoInput.gameObject.SetActive(false);
+
+            } else {
 			//it destroys the class if already other class exists
 			Destroy(this.gameObject);
 		}
@@ -166,7 +172,27 @@ public class NewWork_Role : MonoBehaviour
 
         // //LoadSceneMode.single -> 현재 씬의 오브젝트를 날리고 감.
     }
+    public void View_Memo()
+    {
+        if (memo_view == false)
+        {
+            // 메모 키기
+            memo_view = true;
+            MemoInput.gameObject.SetActive(true);
+            MemoInput.text = Client.memo;
+        }
+        else
+        {
+            // 메모 끄기
+            memo_view = false;
+            MemoInput.gameObject.SetActive(false);
+            Client.memo = MemoInput.text;
+            // 저장
+        }
+    }
 
 
-}
+
+
+    }
 }
