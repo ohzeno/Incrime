@@ -91,7 +91,7 @@ public class NewWork_Role : MonoBehaviour
     public void emitConference(){
         btn_Conference.SetActive(false);
 
-        if (GameInfo.GameRoomInfo.roomReadyPlayer == 5)
+        if (GameInfo.GameRoomInfo.roomReadyPlayer == 5 || GameInfo.GameRoomInfo.roomReadyPlayer == 6 )
         {
             Debug.Log("[System] Client : 첫 회의 하러 가자");
             Debug.Log("[system] 플레이어가 모두 준비됨 : " + Client.room);
@@ -109,8 +109,12 @@ public class NewWork_Role : MonoBehaviour
 
     public void onRefreshReadyPlayer(int readyPlayer)
     {
-        Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);
+        Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);    
         GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+        if (GameInfo.GameRoomInfo.roomReadyPlayer >= 6)
+        {
+            Application.ExternalCall("socket.emit", "GO_MEETING_SCENE", Client.room);
+        }
     }
 
 

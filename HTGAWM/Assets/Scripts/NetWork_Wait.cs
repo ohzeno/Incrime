@@ -96,6 +96,11 @@ public class NetWork_Wait : MonoBehaviour
         GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
         Text txt_player = GameObject.Find("txt_player").GetComponent<Text>();
         txt_player.text = readyPlayer.ToString();
+        if (GameInfo.GameRoomInfo.roomReadyPlayer >= 6 )
+        {
+            Application.ExternalCall("socket.emit", "SET_ROLE", Client.room);
+
+        }
     }
 
     void OnSetRole(string data){

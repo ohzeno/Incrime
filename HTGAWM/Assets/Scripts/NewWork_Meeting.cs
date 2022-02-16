@@ -105,6 +105,11 @@ namespace Project
         {
             Debug.Log("[system] 준비된 플레이어 : " + readyPlayer);
             GameInfo.GameRoomInfo.roomReadyPlayer = readyPlayer;
+            if ( GameInfo.GameRoomInfo.roomReadyPlayer >= 6 )
+            {
+                Application.ExternalCall("socket.emit", "EXIT_MEETING", Client.room);
+            }
+
         }
 
 
