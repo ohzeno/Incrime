@@ -80,9 +80,22 @@ public class typingeffect : MonoBehaviour
 
     public void VoteTextResult(string data)
     {
-        Debug.Log("수신"+data);
+        Debug.Log("수신 --> " + data + " : " + Client.role);
+        // TODO 
+        if ( Client.role.Equals("김비서") && !data.Equals("김비서") )
+        {
+            Debug.Log("범인으로 승리했습니다. --> " + data + " : " + Client.role);
+            Client.win = 1;
+        }
+        if ( !Client.role.Equals("김비서") && data.Equals("김비서") )
+        {
+            Debug.Log("범인을 지목했습니다. --> " + data + " : " + Client.role);
+            Client.win = 1;
+        }
         m_text = data + "는 범인으로 지목되었습니다.";
         StartCoroutine(_typing(m_text));
+
+        
     }
 
     public void MultiVoteTextResult(string data)

@@ -25,9 +25,10 @@ public static class Client
   // 대기실 관련
   public static string room = "temproom";
   public static bool ready = false;
-  
-  
-  
+
+  // 기타 변수
+  public static int meeting_num = 0;
+  public static int win = 0;
   
   public static bool isLocalPlayer;
 

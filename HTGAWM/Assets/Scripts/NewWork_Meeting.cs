@@ -19,18 +19,18 @@ namespace Project
 	    public static NewWork_Meeting instance;
         //  ':' 로 분리할 것
 	    static private readonly char[] Delimiter = new char[] {':'};
-        
-    
+            
         Text RoleDesc;
         Text StoryName;
         Text StoryDesc;
-
 
         [Header("오브젝트 :")]
         public GameObject btn_exitMeeting;
         public GameObject btn_closeVideo;
 
-        
+        public Text phase3desc;
+        public Text phase5desc;
+
         public GameObject myVideo;
         public VideoPlayer vp;
         private AudioSource musicPlayer;
@@ -45,8 +45,20 @@ namespace Project
                 myVideo.gameObject.SetActive(false);
                 btn_closeVideo.gameObject.SetActive(false);
                 // OnPlayVideo();
-                // 미팅 룸으로 들어오기
-                
+                if (Client.meeting_num == 0)
+                {
+                    // 미팅 룸으로 들어오기
+                    phase3desc.gameObject.SetActive(true);
+                    phase5desc.gameObject.SetActive(false);
+                    Client.meeting_num += 1;
+                } else if (Client.meeting_num == 1)
+                {
+                    phase3desc.gameObject.SetActive(false);
+                    phase5desc.gameObject.SetActive(true);
+                }
+
+
+
 
             }
             else {
