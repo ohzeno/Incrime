@@ -20,6 +20,12 @@ window.addEventListener('load', function() {
 
 	// 투표 내 타이머
 	socket.on('SET_VOTE_TIMER', function (time, minute, second) {
+		if ( 10 > minute ){
+			minute = "0" + minute;
+		}
+		if ( 10 > second ){
+			second = "0" + second;
+		}
 		var timer = time + ':' + minute + ':' + second;
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage('ClickController', 'VoteTimer', timer);

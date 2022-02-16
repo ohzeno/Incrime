@@ -154,6 +154,12 @@ window.addEventListener("load", function () {
 
 	// 타이머
 	socket.on("SET_ROLE_TIMER", function (time, minute, second) {
+		if ( 10 > minute ){
+			minute = "0" + minute;
+		}
+		if ( 10 > second ){
+			second = "0" + second;
+		}
 		var timer = time + ":" + minute + ":" + second;
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage("NetWork_Role", "RoleTimer", timer);
@@ -175,6 +181,12 @@ window.addEventListener("load", function () {
 
 	// 게임 내 타이머
 	socket.on("SET_GAME_TIMER", function (time, minute, second) {
+		if ( 10 > minute ){
+			minute = "0" + minute;
+		}
+		if ( 10 > second ){
+			second = "0" + second;
+		}
 		var timer = time + ":" + minute + ":" + second;
 		if (window.unityInstance != null) {
 			window.unityInstance.SendMessage("PlayerObject", "InGameTimer", timer);
