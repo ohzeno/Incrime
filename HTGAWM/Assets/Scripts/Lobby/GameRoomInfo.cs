@@ -17,7 +17,6 @@ namespace GameInfo
 
         public static HashSet<string> agoraVideoScene = new HashSet<string>();
         public static HashSet<string> agoraKeepScene = new HashSet<string>();
-        public static HashSet<string> buttonSoundScene = new HashSet<string>();
 
         static GameRoomInfo()
         {
@@ -37,10 +36,6 @@ namespace GameInfo
             agoraKeepScene.Add("VoteSecondScene");
             agoraKeepScene.Add("ResultPage");
             agoraKeepScene.Add("ResultPage");
-
-            buttonSoundScene.Add("StartScene");
-            buttonSoundScene.Add("JoinScene");
-            buttonSoundScene.Add("Lobby");
         }
 
         public static void ClearGameRoomInfo()
