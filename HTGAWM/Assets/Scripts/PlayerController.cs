@@ -114,6 +114,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log(scene.name+"씬이름");

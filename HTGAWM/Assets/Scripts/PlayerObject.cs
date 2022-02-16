@@ -48,9 +48,10 @@ public class PlayerObject : MonoBehaviour
         
     }
 
+    private int count = 0;
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "Lobby")
+        if(scene.name == "Lobby" || scene.name == "ResultPage")
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(this.gameObject);
