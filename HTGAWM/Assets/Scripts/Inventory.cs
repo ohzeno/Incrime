@@ -30,8 +30,15 @@ public class Inventory : MonoBehaviour
 
     public void AcquireProof(Proof proof)
     {
-        for(int i = 0; i < slots.Length; i++)
+        string tempObjectName = proof.GetObjectName();
+        string tempSceneName = proof.GetSceneName();
+        
+        for (int i = 0; i < slots.Length; i++)
         {
+            if (slots[i].proof.objectName == tempObjectName && tempSceneName == slots[i].proof.sceneName)
+            {
+                ErrorMessageSystem.instance.OnRecieveErrorMessage("이미 같은 증거를 수집하셨습니다.");
+            }
             if(slots[i].proof.objectName.Length == 0)
             {
                 Debug.Log("슬롯에 증거 추가");

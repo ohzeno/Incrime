@@ -34,7 +34,7 @@ namespace GameInfo
             //아고라 상태를 유지할 목록
             agoraKeepScene.Add("VoteScene");
             agoraKeepScene.Add("VoteSecondScene");
-            agoraKeepScene.Add("ResultPage");
+            agoraKeepScene.Add("VoteTextResult");
             agoraKeepScene.Add("ResultPage");
         }
 

@@ -287,6 +287,7 @@ public class ProofController : MonoBehaviour
             orbitCamera.m_Target = tempProofObject.transform;
             SetLayersRecursively(tempProofObject.transform, 8);
             
+            proofName.text = proofJson.proofName;
             proofDescription.text = proofJson.proofDescription;
             Debug.Log(proofJson.proofName + " ����");
 
@@ -316,6 +317,8 @@ public class ProofController : MonoBehaviour
 
         orbitCamera.m_Target = tempProofObject.transform;
         SetLayersRecursively(tempProofObject.transform, 8);
+
+        proofName.text = tempProofObject.transform.GetComponent<Proof>().proofName;
         proofDescription.text = tempProofObject.transform.GetComponent<Proof>().proofDescription;
 
         sharingUserNameText.text = receiveProof.foundUserName;

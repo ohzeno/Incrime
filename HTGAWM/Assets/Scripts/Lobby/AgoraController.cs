@@ -145,6 +145,7 @@ public class AgoraController : MonoBehaviour
             //camCanvasGroup.interactable = false;
             //camCanvasGroup.blocksRaycasts = false;
             camObject.gameObject.SetActive(false);
+            toggleButton.GetComponentInChildren<Text>().text = "∨";
         }
         else
         {
@@ -152,6 +153,7 @@ public class AgoraController : MonoBehaviour
             //camCanvasGroup.interactable = true;
             //camCanvasGroup.blocksRaycasts = true;
             camObject.gameObject.SetActive(true);
+            toggleButton.GetComponentInChildren<Text>().text = "∧";
         }
     }
     
