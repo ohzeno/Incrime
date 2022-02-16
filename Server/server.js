@@ -557,7 +557,7 @@ io.on("connection", function (socket) {
 		io.sockets.in( games[_roomNumber].SocketRoomName ).emit("ON_PLAY_CRIMESCENE");
 	});
 	// 게임 종료
-	socket.on("END_GAME", function ( _roomNumber ) {
+	socket.on("END_GAME", function ( _roomNumber, _winint , _playerid) {
 		if ( games[_roomNumber] != null ){
 			console.log("[system] 방을 삭제 합니다. ")
 			// 방을 삭제합니다.
