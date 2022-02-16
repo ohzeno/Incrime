@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Project
 {
@@ -26,6 +27,8 @@ namespace Project
         
         }
 
+        [SerializeField]
+        private TextMeshProUGUI roleName;
         public void ClickAlibiBtn()
         {
             if (AlibiPanel.activeSelf)
@@ -35,7 +38,8 @@ namespace Project
             else
             {
                 AlibiPanel.SetActive(true);
-                if(Client.alibi != null)
+                roleName.text = Client.role;
+                if (Client.alibi != null)
                     Alibi.text = Client.alibi.Replace("\\n", "\n");
                 Debug.Log(Client.alibi);
             }
