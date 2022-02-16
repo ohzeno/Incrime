@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
             if (slots[i].proof.objectName == tempObjectName && tempSceneName == slots[i].proof.sceneName)
             {
                 ErrorMessageSystem.instance.OnRecieveErrorMessage("이미 같은 증거를 수집하셨습니다.");
+                return;
             }
             if(slots[i].proof.objectName.Length == 0)
             {

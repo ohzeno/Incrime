@@ -68,4 +68,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 3b466cbf7a3657649bbb876c70badf28
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/AgoraEngine/Demo/SceneHome.unity
+    guid: 04457f7085d109e45b51dd81bae1a412
+  - enabled: 0
+    path: Assets/AgoraEngine/Demo/SceneHelloVideo.unity
+    guid: c734c023bb739d947bed9ae751503194
   m_configObjects: {}
