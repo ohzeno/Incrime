@@ -107,16 +107,19 @@ public class PlayerController : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private bool isMouseScene = false;
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log(scene.name+"씬이름");
         if (movingScene.Contains(scene.name))
         {
             myRigid.useGravity = true;
+            isMouseScene = true;
         }
         else
         {
             myRigid.useGravity = false;
+            isMouseScene = false;
         }
         transform.position = defaultPosAndAngle;
         currentCameraRotationX = 0;
@@ -144,7 +147,12 @@ public class PlayerController : MonoBehaviour
 
     void IsLockCursor()
     {
-        Cursor.lockState = currentCurrentLockMode;
+        if(isMouseScene)
+            Cursor.lockState = currentCurrentLockMode;
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     void FixedUpdate()

@@ -137,6 +137,7 @@ public class ProofController : MonoBehaviour
     }
     private void OpenProofUI()
     {
+        sharingUserObject.SetActive(false);
         if (hitInfo.transform != null)
         {
             if (tempProofObject != null)
@@ -308,6 +309,7 @@ public class ProofController : MonoBehaviour
     private Text sharingUserNameText;
     public void ReceiveSharedProof(string str)
     {
+        sharingUserObject.SetActive(true);
         Debug.Log("증거 정보 유니티 수신");
         Proof.ProofJson receiveProof = JsonUtility.FromJson<Proof.ProofJson>(str);
         Debug.Log("증거 프리팹 경로: " + receiveProof.sceneName + "/" + receiveProof.objectName);
