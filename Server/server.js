@@ -43,18 +43,18 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-// var truncateRoomsSQL = `SET FOREIGN_KEY_CHECKS = 0;
-// truncate table waitingroom;
-// truncate table waiting_user;
-// SET FOREIGN_KEY_CHECKS = 1;`;
+var truncateRoomsSQL = `SET FOREIGN_KEY_CHECKS = 0;
+truncate table waitingroom;
+truncate table waiting_user;
+SET FOREIGN_KEY_CHECKS = 1;`;
 
-// connection.query(truncateRoomsSQL, function (error, rows, fields) {
-// 	if (error) {
-// 		console.log(error);
-// 	} else {
-// 		console.log("전체 룸 삭제 완료");
-// 	}
-// });
+connection.query(truncateRoomsSQL, function (error, rows, fields) {
+	if (error) {
+		console.log(error);
+	} else {
+		console.log("전체 룸 삭제 완료");
+	}
+});
 
 //로비기능
 var lobbyFunc = require("./lobby");
