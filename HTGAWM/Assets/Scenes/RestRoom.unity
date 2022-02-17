@@ -10165,6 +10165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakRoomDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 5723484667886994991, guid: af3a1a5a9a574fd42a8b70e968dbac2d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af3a1a5a9a574fd42a8b70e968dbac2d, type: 3}
 --- !u!1001 &6424609578160759976
