@@ -155,7 +155,7 @@ namespace Project
             // emitVote 서버에 보낼 클라이언트 투표 데이터
             string data = nameGet();
             Debug.Log("[System] Client : 캐릭터 투표 server.js로 보내기 " + data);
-            VoteText.text = "다른 플레이어를 기다려 주세요";
+            VoteText.text = "완료";
             VoteBtn.interactable = false;
 //            Application.ExternalCall("socket.emit", "SECOND_VOTE", data);
             Application.ExternalCall("socket.emit", "PLAY_VOTE", data, Client.room, 2);
