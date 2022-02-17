@@ -56,6 +56,7 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 | 웹빌드      | <img src="https://img.shields.io/badge/WebGL-990000?style=plastic&logo=WebGL&logoColor=white"> |                       |
 | 화상통화    | <img src="https://img.shields.io/badge/WebRTC-333333?style=plastic&logo=WebRTC&logoColor=white"> |                       |
 | 형상관리    | <img src="https://img.shields.io/badge/git-F05032?style=plastic&logo=git&logoColor=white"> |                       |
+| 협업        | <img src="https://img.shields.io/badge/Jira Software-0052CC?style=plastic&logo=Jira Software&logoColor=white"><img src="https://img.shields.io/badge/Notion-000000?style=plastic&logo=Notion&logoColor=white"> |                       |
 
 
 
@@ -71,14 +72,14 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 
 ## **Contributors**
 
-| 팀원   | 역할                 | 비고(깃헙/노션 주소?) |
-| ------ | -------------------- | --------------------- |
-| 김재욱 | 팀장(신), 백엔드     |                       |
-| 류기탁 | 백엔드               |                       |
-| 양재빈 | 팀장(구), 프론트엔드 | 일러스트 제공         |
-| 오제노 | 프론트엔드           |                       |
-| 우윤식 | 프론트엔드           |                       |
-| 장예찬 | 프론트엔드           | 유니티마스터          |
+| 팀원   | 역할                 | 비고          | 깃헙                           |
+| ------ | -------------------- | ------------- | ------------------------------ |
+| 김재욱 | 백엔드               |               | https://github.com/blackvill   |
+| 류기탁 | 팀장(신), 백엔드     |               | https://github.com/alwaysryu   |
+| 양재빈 | 팀장(구), 프론트엔드 | 일러스트 제공 | https://github.com/jaebin-yang |
+| 오제노 | 프론트엔드           |               | https://github.com/ohzeno      |
+| 우윤식 | 프론트엔드           |               | https://github.com/Y1sik       |
+| 장예찬 | 프론트엔드           | 유니티마스터  | https://github.com/redniche    |
 
 
 
