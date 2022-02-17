@@ -177,11 +177,11 @@ exec/DB/
     
     - 정보 수정
     
-      ![](README_Sources/회원 정보 수정.png)
+      ![](README_Sources/회원정보수정.png)
     
     - 회원 탈퇴
     
-      ![](README_Sources/회원 탈퇴.png)
+      ![](README_Sources/회원탈퇴.png)
 
 - 대기실 기능
 
