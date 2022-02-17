@@ -51,6 +51,8 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 | DB          | <img src="https://img.shields.io/badge/MySQL-4169E1?style=plastic&logo=MySQL&logoColor=white"> | 5.7.x / 5.7.35        |
 | 서버 설계   | <img src="https://img.shields.io/badge/node.js-339933?style=plastic&logo=Node.js&logoColor=white"> | node-v16.13.1-x64.msi |
 | 인게임 개발 | <img src="https://img.shields.io/badge/Unity-색상?style=plastic&logo=Unity&logoColor=white"> | 2020.3.25f1 (LTS)     |
+| 웹빌드      | <img src="https://img.shields.io/badge/WebGL-990000?style=plastic&logo=WebGL&logoColor=white"> |                       |
+| 화상통화    | <img src="https://img.shields.io/badge/WebRTC-333333?style=plastic&logo=WebRTC&logoColor=white"> |                       |
 | 형상관리    | <img src="https://img.shields.io/badge/git-F05032?style=plastic&logo=git&logoColor=white"> |                       |
 
 
@@ -71,10 +73,10 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 | ------ | -------------------- | --------------------- |
 | 김재욱 | 팀장(신), 백엔드     |                       |
 | 류기탁 | 백엔드               |                       |
-| 양재빈 | 팀장(구), 프론트엔드 |                       |
+| 양재빈 | 팀장(구), 프론트엔드 | 일러스트 제공         |
 | 오제노 | 프론트엔드           |                       |
 | 우윤식 | 프론트엔드           |                       |
-| 장예찬 | 프론트엔드           |                       |
+| 장예찬 | 프론트엔드           | 유니티마스터          |
 
 
 
@@ -90,19 +92,19 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 
     - UnityBuild_1
 
-      <img src="C:\Users\black\Desktop\2_1_pjt\느시\S06P12E105\exec\img\UnityBuild_1.PNG">
+      <img src="exec/img/UnityBuild_1.PNG">
 
     - file -> Build Settings -> WebGL -> Player Settings
 
     - UnityBuild_2
 
-      <img src="C:\Users\black\Desktop\2_1_pjt\느시\S06P12E105\exec\img\UnityBuild_2.PNG">
+      <img src="exec/img/UnityBuild_2.PNG">
 
     - Player -> WebGL -> Resolution and Presentation -> WebGL Template -> ProjectTemplate
 
     - UnityBuild_3
 
-      <img src="C:\Users\black\Desktop\2_1_pjt\느시\S06P12E105\exec\img\UnityBuild_3.PNG">
+      <img src="exec/img/UnityBuild_3.PNG">
 
     - Server 폴더 안에 있는 public 선택 후 빌드
 
@@ -137,9 +139,9 @@ exec/DB/
 
 - DBProperty.PNG
 
-  ![DB프로퍼티](C:\Users\black\Desktop\2_1_pjt\느시\S06P12E105\exec\DB\DBProperty.PNG)
+  ![DB프로퍼티](exec/DB/DBProperty.PNG)
 
-- [Property_URL](DB/Property_URL.md)
+- [Property_URL](exec/DB/Property_URL.md)
 
 - DB_DUMP.zip
 
@@ -155,19 +157,112 @@ exec/DB/
 
 
 
-## 주요 기능
+## 사이트 상세
 
 - 회원
   - 회원가입
+
+    ![](README_Sources/회원가입창.png)
+
+  - 로그인
+
+    ![](README_Sources/로그인화면.png)
+
   - 마이페이지
-    - 계정 별 승 패 횟수 기록
-- 실시간 화상회의
-  - 다른 사람 볼륨 조절 가능
+    - 계정 별 승, 패 횟수 기록
+    
+      ![](README_Sources/마이페이지.png)
+    
+    - 정보 수정
+    
+      ![](README_Sources/회원 정보 수정.png)
+    
+    - 회원 탈퇴
+    
+      ![](README_Sources/회원 탈퇴.png)
+
 - 대기실 기능
-  - 방 구분
+
+  - 방구분
+
+    ![](README_Sources/로비화면.png)
+
   - 비공개 방 생성 가능
+
+    ![](README_Sources/비공개방1.png)
+
+    ![](README_Sources/비공개2.png)
+
+  - 방 접속
+
+    - 다른 사람 볼륨 조절 가능
+
+      ![](README_Sources/로비방.png)
+
+- 게임설명
+
+  ![](README_Sources/게임설명.png)
+
+- 역할설명
+
+  ![](README_Sources/역할설명.png)
+
+- 실시간 화상회의
+
+  ![](README_Sources/화상회의.gif)
+
+  - 다른 사람 볼륨 조절 가능
+
+- 역할 팝업(스포일러 방지 위해 내용 가림)
+
+  ![](README_Sources/역할팝업.png)
+
+- 메모장
+
+  ![](README_Sources/메모장.png)
+
 - 실시간 상호작용
+
   - 증거 공유
+
+    ![](README_Sources/증거공유.png)
+
+- 맵 이동
+
+  ![](README_Sources/맵이동.png)
+
+- 오브젝트와 상호작용
+
+  - 화장실 문 등
+
+    ![](README_Sources/문놀이.gif)
+
+  - 증거 수집
+
+    ![](README_Sources/proof.gif)
+
+    - 중복수집 불가 알림창
+
+  - 이스터에그
+
+    ![](README_Sources/fish22.gif)
+
+
+- 추가 증거 영상
+
+  ![](README_Sources/추가증거영상.png)
+
+- 투표
+
+  ![](README_Sources/투표.png)
+
+- 투표결과
+
+  ![](README_Sources/투표결과.gif)
+
+- 사건의 전말(스포일러 방지 위해 생략)
+
+
 
 
 
@@ -184,10 +279,6 @@ exec/DB/
 
 
 
-
-
-
----
 
 ## 개발기록
 
@@ -471,3 +562,13 @@ exec/DB/
 6. 아고라 캠별 볼륨 조절 기능
 7. 기타 인게임 퀄리티 상향
 8. 버튼 효과음 적용 완료
+
+
+
+## 2.17
+1. UCC 마무리
+2. PPT 제작
+3. 발표준비
+4. 포팅 매뉴얼 작성
+5. 발표 및 PPT에 쓸 영상 촬영
+6. 프로젝트 전체 README.md 정리
