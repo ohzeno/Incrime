@@ -55,8 +55,8 @@ var self = (module.exports = {
 			} else {
 				self.checkEmpty(currentUser.joinedRoomId, connection, socket);
 				socket.to("room" + currentUser.joinedRoomId).emit("SOMEONE_LEAVE_ROOM");
-				currentUser.joinedRoomId = 0;
 				socket.leave("room" + currentUser.joinedRoomId); /////////////////////////////////
+				currentUser.joinedRoomId = 0;
 				socket.emit("LEAVE_ROOM_SUCCESS");
 			}
 		});

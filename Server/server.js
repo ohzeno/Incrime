@@ -428,7 +428,7 @@ io.on("connection", function (socket) {
 			// 탐색 시간 15분
 			clearInterval(IngameTimer[_roomNumber]);
 			// 지금은 게임 테스트를 위해 5분
-			IngameTimer[_roomNumber] = New_Timer( 5, _roomNumber );
+			IngameTimer[_roomNumber] = New_Timer( 2, _roomNumber );
 
 		} else if ( games[_roomNumber].GamePhase == 5) {
 			// 1차회의가 끝난 경우
