@@ -27,7 +27,7 @@ public class AgoraController : MonoBehaviour
             {
                 app = WebAgoraUnityVideo.GetTestHelloUnityVideoInstance();
                 Debug.Log("캠 인스턴스 생성");
-                app.loadEngine("539d6dace7d74d6f8c7c9a86e6c79f68");
+                app.loadEngine("87d658834c824bc9afbe668d75dd4c0b");
                 app.SetCamObject(camObject); // create app
             }
             camCanvasGroup = camObject.gameObject.GetComponent<CanvasGroup>();
@@ -134,7 +134,7 @@ public class AgoraController : MonoBehaviour
     {
         app.leave();
         app.unloadEngine();
-        app.loadEngine("539d6dace7d74d6f8c7c9a86e6c79f68");
+        app.loadEngine("87d658834c824bc9afbe668d75dd4c0b");
     }
 
     public void CamToggle()
