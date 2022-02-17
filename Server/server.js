@@ -155,10 +155,6 @@ io.on("connection", function (socket) {
 			var msg = "아이디를 확인해주세요.";
 			console.log(msg);
 			socket.emit("JOINERROR", msg);
-		} else if (User.password.length < 8 || User.password.length > 16) {
-			var msg = "비밀번호를 확인해주세요.";
-			console.log(msg);
-			socket.emit("JOINERROR", msg);
 		} else {
 			let params = [User.name, User.password, User.mail];
 			connection.query(SQL, params, function (error, results) {
@@ -185,6 +181,11 @@ io.on("connection", function (socket) {
 		console.log(
 			"datainfo : " + data.name + " " + data.password + " " + data.mail
 		);
+
+		if(currentUser.joinedRoomId != 0){
+			socket.emit("ERROR_OCCUR", "입장 중엔 정보 변경이 안됩니다.");
+			return;
+		}
 
 		// fills out with the information emitted by the player in the unity
 		var User = {
@@ -225,6 +226,11 @@ io.on("connection", function (socket) {
 	// 회원 탈퇴
 	socket.on("USERDELETE", function (_data) {
 		console.log("[INFO] User가 회원탈퇴를 시도합니다.");
+
+		if(currentUser.joinedRoomId != 0){
+			socket.emit("ERROR_OCCUR", "입장 중엔 회원탈퇴가 불가능합니다.");
+			return;
+		}
 
 		var SQL = `delete from user" + " where user_id =  ?`;
 
