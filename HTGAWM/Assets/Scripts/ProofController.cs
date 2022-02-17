@@ -286,7 +286,7 @@ public class ProofController : MonoBehaviour
 
             tempProofObject.transform.position = new Vector3(0f, 0f, 0f);
             orbitCamera.m_Target = tempProofObject.transform;
-            SetLayersRecursively(tempProofObject.transform, 8);
+            SetLayersRecursively(tempProofObject.transform, 9);
             
             proofName.text = proofJson.proofName;
             proofDescription.text = proofJson.proofDescription;
