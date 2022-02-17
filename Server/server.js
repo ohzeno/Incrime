@@ -151,7 +151,7 @@ io.on("connection", function (socket) {
 
 		console.log(SQL);
 
-		if (User.name.length < 6 || User.name.length > 16) {
+		if (User.name.length < 8 || User.name.length > 16) {
 			var msg = "아이디를 확인해주세요.";
 			console.log(msg);
 			socket.emit("JOINERROR", msg);
