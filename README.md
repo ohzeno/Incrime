@@ -171,19 +171,23 @@ exec/DB/
 
     ![](README_Sources/로그인화면.png)
 
+    - 오류창
+  
+      ![](README_Sources/오류창.png)
+  
   - 마이페이지
     - 계정 별 승, 패 횟수 기록
-    
+  
       ![](README_Sources/마이페이지.png)
-    
+  
     - 정보 수정
-    
+  
       ![](README_Sources/회원정보수정.png)
-    
-    - 회원 탈퇴
-    
-      ![](README_Sources/회원탈퇴.png)
 
+    - 회원 탈퇴
+  
+      ![](README_Sources/회원탈퇴.png)
+  
 - 대기실 기능
 
   - 방구분
