@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class typingeffect : MonoBehaviour
 {
-    public Text tx;
+    public TextMeshProUGUI tx;
     private string m_text = "";
     private AudioSource musicPlayer;
     public AudioClip keyboard;
     static private readonly char[] Delimiter = new char[] { ':' };
     public GameObject ReVoteBtn;
-    public Text vote_desc;
+    public TextMeshProUGUI vote_desc;
 
     // º¯¼ö
     static string[] votearr;
