@@ -20,11 +20,11 @@
 
 2) 빌드 시 사용되는 환경 변수 등의 주요 내용 상세 기재
   - Unity Build
-    - <img src="img/UnityBuild_1.PNG">
+    - UnityBuild_1<br><img src="img/UnityBuild_1.PNG">
     - file -> Build Settings -> WebGL -> Player Settings
-    - <img src="img/UnityBuild_2.PNG">
+    - UnityBuild_2<br><img src="img/UnityBuild_2.PNG">
     - Player -> WebGL -> Resolution and Presentation -> WebGL Template -> ProjectTemplate
-    - <img src="img/UnityBuild_3.PNG">
+    - UnityBuild_3<br><img src="img/UnityBuild_3.PNG">
     - Server 폴더 안에 있는 public 선택 후 빌드
   - NodeJS
     - npm install
