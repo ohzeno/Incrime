@@ -1,43 +1,43 @@
 1) 사용한 jvm, 웹서버, WAS 제품 등의 종류와 설정값, 버전(IDE버전 포험) 기재
- - Unity
-  - 2020.3.25f1 (LTS)
- - Unity Hub
-  - 3.0.0
- - MySQL
-  - 5.7.x / 5.7.35
- - Node.js
-  - node-v16.13.1-x64.msi -> 최신 버전 다운로드
- - Visual Studio Code
-  - ESLint, EditorConfig for VS Code, vscode-icons, Prettier
- - Visual Studio
-  - 2019, community
- - Agora
-  - 가장 최근 패치 버전이 아닌 원본 package만 사용
-  - https://github.com/AgoraIO-Community/Agora_Unity_WebGL
- - Heroku
-  - 서버 배포
-  - https://ssafycrime.herokuapp.com/
+  - Unity
+    - 2020.3.25f1 (LTS)
+  - Unity Hub
+    - 3.0.0
+  - MySQL
+    - 5.7.x / 5.7.35
+  - Node.js
+    - node-v16.13.1-x64.msi -> 최신 버전 다운로드
+  - Visual Studio Code
+    - ESLint, EditorConfig for VS Code, vscode-icons, Prettier
+  - Visual Studio
+    - 2019, community
+  - Agora
+    - 가장 최근 패치 버전이 아닌 원본 package만 사용
+    - https://github.com/AgoraIO-Community/Agora_Unity_WebGL
+  - Heroku
+    - 서버 배포
+    - https://ssafycrime.herokuapp.com/
 
 2) 빌드 시 사용되는 환경 변수 등의 주요 내용 상세 기재
- - Unity Build
-  <img src="/img/UnityBuild_1.PNG">
-  - file -> Build Settings -> WebGL -> Player Settings
-  <img src="/img/UnityBuild_2.PNG">
-  - Player -> WebGL -> Resolution and Presentation -> WebGL Template -> ProjectTemplate
-  <img src="/img/UnityBuild_3.PNG">
-  - Server 폴더 안에 있는 public 선택 후 빌드
- - NodeJS
-  - npm install
-  - node server.js (로컬 호스트 진행)
+  - Unity Build
+    - <img src="img/UnityBuild_1.PNG">
+    - file -> Build Settings -> WebGL -> Player Settings
+    - <img src="img/UnityBuild_2.PNG">
+    - Player -> WebGL -> Resolution and Presentation -> WebGL Template -> ProjectTemplate
+    - <img src="img/UnityBuild_3.PNG">
+    - Server 폴더 안에 있는 public 선택 후 빌드
+  - NodeJS
+    - npm install
+    - node server.js (로컬 호스트 진행)
 
 3) 배포 시 특이사항 기재
- - Heroku
-  - 30분 마다 트래픽이 존재하지 않을 경우 sleep
-  - https://puzzled-carpenter-bec.notion.site/Heroku-a935d2419c674bfc8aaaee51ed9010da
+  - Heroku
+    - 30분 마다 트래픽이 존재하지 않을 경우 sleep
+    - https://puzzled-carpenter-bec.notion.site/Heroku-a935d2419c674bfc8aaaee51ed9010da
 
 4) DB 접속 정보 등 프로젝트(ERD)에 활용되는 주요 계정 및 프로퍼티가 정의된 파일 목록
- - exec/DB/
-  - DBProperty.PNG
-  - Property_URL.txt
-  - DB_DUMP
-  - DB_ERD
+  - exec/DB/
+    - DBProperty.PNG
+    - Property_URL.txt
+    - DB_DUMP
+    - DB_ERD
