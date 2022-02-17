@@ -58,14 +58,20 @@ public class NetWork_Join : MonoBehaviour
         // 또는 
         // GameObject.Find("JoinName").GetComponent<Text>();
 
-		string msg = string.Empty;
-		data["callback_name"] = "USERJOIN";
+        if (JoinPassword.text.Length < 8 || JoinPassword.text.Length > 16)
+        {
+            ErrorMessageSystem.instance.OnRecieveErrorMessage("비밀번호는 8자 이상 16자 이하입니다.");
+            return;
+        }
+
+        data["callback_name"] = "USERJOIN";
         data["name"] = JoinName.text;
-        data["password"] = JoinPassword.text;
         data["email"] = JoinMail.text;
 
+        data["password"] = Project.NetWork_Start.SHA256Hash(JoinName.text + JoinPassword.text);
+
         // JSON으로 묶어서 보냄 
-		Application.ExternalCall("socket.emit", data["callback_name"], new JSONObject(data));
+        Application.ExternalCall("socket.emit", data["callback_name"], new JSONObject(data));
 		// server.js : JOIN 으로 가셈
 	}
 

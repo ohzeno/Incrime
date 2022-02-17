@@ -46,7 +46,6 @@ public class NetWork_MyPage : MonoBehaviour
         var pack = data.Split (Delimiter);
 
         MyName.text = pack[0];
-        MyPassword.text = pack[1];
         MyMail.text = pack[2];
         MyGames.text = pack[3].ToString();
         MyWinGames.text = pack[4].ToString();

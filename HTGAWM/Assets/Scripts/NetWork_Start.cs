@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine.UI;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 
 namespace Project
 {
@@ -47,6 +48,18 @@ public class NetWork_Start : MonoBehaviour
         
     }
 
+
+	public static string SHA256Hash(string data)
+	{
+		SHA256 sha = new SHA256Managed();
+		byte[] hash = sha.ComputeHash(Encoding.ASCII.GetBytes(data));
+		StringBuilder stringBuilder = new StringBuilder();
+		foreach (byte b in hash)
+		{
+			stringBuilder.AppendFormat("{0:x2}", b);
+		}
+		return stringBuilder.ToString();
+	}
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -67,12 +80,11 @@ public class NetWork_Start : MonoBehaviour
         // 또는 
         // GameObject.Find("JoinName").GetComponent<Text>();
 
-		string msg = string.Empty;
 		data["callback_name"] = "JOIN";
-        data["name"] = JoinName.text;
-		data["password"] = JoinPassword.text;
+		data["name"] = JoinName.text;
+		data["password"] = SHA256Hash(JoinName.text + JoinPassword.text);
 
-        // JSON으로 묶어서 보냄 
+			// JSON으로 묶어서 보냄 
 		Application.ExternalCall("socket.emit", data["callback_name"], new JSONObject(data));
 		// server.js : JOIN 으로 가셈
 	}
