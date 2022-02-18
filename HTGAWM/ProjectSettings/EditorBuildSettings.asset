@@ -4,5 +4,77 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 50fafae9bb4fbd44881d22d9a3b15c27
+  - enabled: 1
+    path: Assets/Scenes/BreakRoom.unity
+    guid: 94a1067cc0a432f43b23bc2af01acc1c
+  - enabled: 1
+    path: Assets/Scenes/WaitScene.unity
+    guid: c75cce1dc6a3cf448a3f5ef57d94a153
+  - enabled: 1
+    path: Assets/Scenes/RoleScene.unity
+    guid: 7ca76fbcf3ea96b4ebb0fc8c3b073a06
+  - enabled: 1
+    path: Assets/Scenes/MeetingScene.unity
+    guid: 5a4d72265ca2c1b4393e31ef58d0988d
+  - enabled: 1
+    path: Assets/Scenes/DirectorMaOffice.unity
+    guid: 416f3e5cc162dc34fab7f936c2e0e426
+  - enabled: 1
+    path: Assets/Scenes/Hallway.unity
+    guid: d987ec475c1e3514f88356f6e6b4c7a6
+  - enabled: 1
+    path: Assets/Scenes/MeetingRoom.unity
+    guid: cbe45f0ea0f07e84fb97922add181a9b
+  - enabled: 1
+    path: Assets/Scenes/OfficeCubicles.unity
+    guid: d78d71b0b8bb78d43ad56568b3889079
+  - enabled: 1
+    path: Assets/Scenes/ReceptionDesk.unity
+    guid: 3c22f5b27bd828c42951b89325dbf10b
+  - enabled: 1
+    path: Assets/Scenes/RestRoom.unity
+    guid: d6c348ce18183ca4783a66913c9b828b
+  - enabled: 1
+    path: Assets/Scenes/SecurityRoom.unity
+    guid: 63a4ccbd84677fa4bae5bfa728302bbd
+  - enabled: 1
+    path: Assets/Scenes/TeamLeaderLeeOffice.unity
+    guid: 4143035b1f4052546adb60f8aba0036a
+  - enabled: 1
+    path: Assets/Scenes/JoinScene.unity
+    guid: 18e13c096f577964dbf5388ccc077cc2
+  - enabled: 0
+    path: Assets/Scenes/MyPageScene.unity
+    guid: bcc301976fa38fb4493ca55071333186
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 916bf1957b4d0b54f979519e5f0484cf
+  - enabled: 1
+    path: Assets/Scenes/VoteScene.unity
+    guid: 0fb3651eb98e4964d8f4b96744b16aff
+  - enabled: 1
+    path: Assets/Scenes/VoteSecondScene.unity
+    guid: 07f7725dd652cb24ab201d5aca4fbc45
+  - enabled: 1
+    path: Assets/Scenes/VoteTextResult.unity
+    guid: 693c19447875b704ebeaa840fc9ffe74
+  - enabled: 1
+    path: Assets/Scenes/ResultPage.unity
+    guid: 84027025e7f12084f8dcf5b1ba4b1c7d
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 3b466cbf7a3657649bbb876c70badf28
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/AgoraEngine/Demo/SceneHome.unity
+    guid: 04457f7085d109e45b51dd81bae1a412
+  - enabled: 0
+    path: Assets/AgoraEngine/Demo/SceneHelloVideo.unity
+    guid: c734c023bb739d947bed9ae751503194
   m_configObjects: {}
