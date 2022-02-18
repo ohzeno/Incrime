@@ -78,7 +78,7 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 | 류기탁 | 팀장(신), 백엔드     |               | https://github.com/alwaysryu   |
 | 양재빈 | 팀장(구), 프론트엔드 | 일러스트 제공 | https://github.com/jaebin-yang |
 | 오제노 | 프론트엔드           |               | https://github.com/ohzeno      |
-| 우윤식 | 프론트엔드           |               | https://github.com/Y1sik       |
+| 우윤식 | 백엔드               |               | https://github.com/Y1sik       |
 | 장예찬 | 프론트엔드           | 유니티마스터  | https://github.com/redniche    |
 
 
