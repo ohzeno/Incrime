@@ -61,7 +61,6 @@ var lobbyFunc = require("./lobby");
 
 //open a connection with the specific client
 io.on("connection", function (socket) {
-	
 	//print a log in node.js command prompt
 	console.log("[system] 클라이언트가 연결되었습니다");
 
@@ -182,7 +181,7 @@ io.on("connection", function (socket) {
 			"datainfo : " + data.name + " " + data.password + " " + data.mail
 		);
 
-		if(currentUser.joinedRoomId != 0){
+		if (currentUser.joinedRoomId != 0) {
 			socket.emit("ERROR_OCCUR", "입장 중엔 정보 변경이 안됩니다.");
 			return;
 		}
@@ -227,7 +226,7 @@ io.on("connection", function (socket) {
 	socket.on("USERDELETE", function (_data) {
 		console.log("[INFO] User가 회원탈퇴를 시도합니다.");
 
-		if(currentUser.joinedRoomId != 0){
+		if (currentUser.joinedRoomId != 0) {
 			socket.emit("ERROR_OCCUR", "입장 중엔 회원탈퇴가 불가능합니다.");
 			return;
 		}
@@ -240,8 +239,8 @@ io.on("connection", function (socket) {
 				console.log(error);
 				console.log("삭제를 실패하였습니다..");
 			} else {
-
-				if (loginsUsers[currentUser.name]) loginsUsers[currentUser.name] = false;
+				if (loginsUsers[currentUser.name])
+					loginsUsers[currentUser.name] = false;
 				console.log("[INFO] player " + currentUser.name + ": delete sucsess");
 				socket.emit("DELETESUCCESS");
 			}
@@ -252,7 +251,7 @@ io.on("connection", function (socket) {
 	socket.on("USERINFOPAGE", function () {
 		// var SQL = "select * from user" + " where user_id =  ?";
 		var u_totalgames;
-		var u_games; 
+		var u_games;
 		var u_id;
 		var u_pw;
 		var u_email;
@@ -268,28 +267,24 @@ io.on("connection", function (socket) {
 			if (error) {
 				console.log(error);
 			} else {
-				u_totalgames = results[0].totalgames, 
-				u_games= results[0].wingames
+				(u_totalgames = results[0].totalgames), (u_games = results[0].wingames);
 				var SQL2 = `
 					SELECT user_id, user_pw, user_email   
 					FROM user  
 					WHERE user_id = ? ;  
 					`;
-					connection.query(SQL2, params, function (error, results) {
-						if (error) {
-							console.log(error);
-						} else {
-							u_id = results[0].user_id;
-							u_pw = results[0].user_pw;
-							u_email = results[0].user_email;					
-							socket.emit( "USERINFO",  u_id, u_pw, u_email, u_totalgames, u_games );
-						}
-					});
+				connection.query(SQL2, params, function (error, results) {
+					if (error) {
+						console.log(error);
+					} else {
+						u_id = results[0].user_id;
+						u_pw = results[0].user_pw;
+						u_email = results[0].user_email;
+						socket.emit("USERINFO", u_id, u_pw, u_email, u_totalgames, u_games);
+					}
+				});
 			}
 		});
-
-		
-
 	});
 
 	// 유저가 끊겼을 때
@@ -299,18 +294,6 @@ io.on("connection", function (socket) {
 			if (loginsUsers[currentUser.name]) loginsUsers[currentUser.name] = false;
 			lobbyFunc.leaveRoom(socket, currentUser, connection);
 			//  socket.broadcast.emit('USER_DISCONNECTED', currentUser.id);
-
-			var SQL = `update user set is_login = ? where user_id = ?`;
-
-			let params = [0, currentUser.name];
-			connection.query(SQL, params, function (error, results) {
-				if (error) {
-					console.log(error);
-					console.log("정보 수정에 실패하였습니다.");
-				} else {
-					console.log("[INFO] player " + currentUser.name + ": update sucsess");
-				}
-			});
 
 			for (var i = 0; i < clients.length; i++) {
 				if (
@@ -336,10 +319,9 @@ io.on("connection", function (socket) {
 	});
 
 	// 역할 배정
-	socket.on("SET_ROLE", function ( _roomNumber) {
-		
+	socket.on("SET_ROLE", function (_roomNumber) {
 		// io.sockets.adapter.rooms[room];
-		// var socketsinroom = io.sockets.clients('room'+_roomNumber ); 
+		// var socketsinroom = io.sockets.clients('room'+_roomNumber );
 
 		console.log("[system] 역할 배정을 시작 합니다.");
 		// phase 2 : 역할 배정
@@ -361,9 +343,9 @@ io.on("connection", function (socket) {
 
 		var roleindex = 0;
 		// 해당 룸에 연결되어 있는 모든 클라이언트 불러오기 ( SET 형 )
-		var socketsinroom = io.sockets.adapter.rooms.get('room'+_roomNumber);
+		var socketsinroom = io.sockets.adapter.rooms.get("room" + _roomNumber);
 		// console.log(socketsinroom);
-		socketsinroom.forEach( function( element ) {
+		socketsinroom.forEach(function (element) {
 			// console.log(element + " --> index : " + index);
 			var rolenumber = role[roleindex];
 			var myrole;
@@ -387,15 +369,13 @@ io.on("connection", function (socket) {
 				myrolealibi = results[0].role_alibi;
 
 				console.log("[system] 역할 -" + myrole);
-				io.to( element ).emit(
+				io.to(element).emit(
 					"ON_SET_ROLE",
 					myrole,
 					mystoryname,
 					mystorydesc,
 					myrolealibi
 				);
-
-
 			});
 			roleindex += 1;
 		});
@@ -403,59 +383,59 @@ io.on("connection", function (socket) {
 		// gamephse 2 : 역할 숙지 시간
 		// 시간 : 10분
 		// 타이머 기능이 처음이라 바로 생성해버리면 됨.
-		IngameTimer[_roomNumber] = New_Timer( 10, _roomNumber );
-
+		IngameTimer[_roomNumber] = New_Timer(10, _roomNumber);
 	});
 
 	// 자기소개 하기
-	socket.on("GO_MEETING_SCENE", function ( _roomNumber ) {
+	socket.on("GO_MEETING_SCENE", function (_roomNumber) {
 		console.log("[system] 미팅실로 이동합니다.");
 		// gamephse 3 : 자기 소개 시간
 		games[_roomNumber].GamePhase = 3;
 		games[_roomNumber].ReadyUser = 0;
 		// 미팅씬으로 이동
-		io.sockets.in( 'room' + _roomNumber ).emit("GO_MEETING");
+		io.sockets.in("room" + _roomNumber).emit("GO_MEETING");
 		// 시간 제한 - 시간이 지나면 맵 화면으로 바꾸기
 		// 15분
-		
+
 		clearInterval(IngameTimer[_roomNumber]);
-		IngameTimer[_roomNumber] = New_Timer( 15, _roomNumber );
+		IngameTimer[_roomNumber] = New_Timer(15, _roomNumber);
 	});
 
-	socket.on("EXIT_MEETING", function ( _roomNumber ) {
-		if ( games[_roomNumber].GamePhase == 3) {
+	socket.on("EXIT_MEETING", function (_roomNumber) {
+		if (games[_roomNumber].GamePhase == 3) {
 			// 자기소개가 끝난 경우
-			// phase 4 : 탐색 씬 
+			// phase 4 : 탐색 씬
 			games[_roomNumber].GamePhase = 4;
 			games[_roomNumber].ReadyUser = 0;
-			console.log("[system] 자기소개를 끝내고 모든 플레이어가 나가고 싶어합니다. ");
+			console.log(
+				"[system] 자기소개를 끝내고 모든 플레이어가 나가고 싶어합니다. "
+			);
 			// 탐색화면으로 보내버리기
-			io.sockets.in( 'room' + _roomNumber ).emit("GO_MAP");
+			io.sockets.in("room" + _roomNumber).emit("GO_MAP");
 			// 탐색 시간 15분
 			clearInterval(IngameTimer[_roomNumber]);
 			// 지금은 게임 테스트를 위해 5분
-			IngameTimer[_roomNumber] = New_Timer( 2, _roomNumber );
-
-		} else if ( games[_roomNumber].GamePhase == 5) {
+			IngameTimer[_roomNumber] = New_Timer(2, _roomNumber);
+		} else if (games[_roomNumber].GamePhase == 5) {
 			// 1차회의가 끝난 경우
 			// phase 6 : 투표 씬
 			games[_roomNumber].GamePhase = 6;
 			games[_roomNumber].ReadyUser = 0;
-			console.log("[system] 모든 플레이어가 1차회의를 마치고 나가고 싶어합니다. ");
+			console.log(
+				"[system] 모든 플레이어가 1차회의를 마치고 나가고 싶어합니다. "
+			);
 
 			// 투표로 보내버리기
-			io.sockets.in( 'room' + _roomNumber ).emit("GO_VOTE");
+			io.sockets.in("room" + _roomNumber).emit("GO_VOTE");
 
-			// 투표 시간 3분 
+			// 투표 시간 3분
 			clearInterval(IngameTimer[_roomNumber]);
-			IngameTimer[_roomNumber] = New_Timer( 3, _roomNumber );
-
+			IngameTimer[_roomNumber] = New_Timer(3, _roomNumber);
 		}
-
 	});
 
 	// 투표 결과
-	socket.on("PLAY_VOTE", function ( data, _roomNumber, votephase ) {
+	socket.on("PLAY_VOTE", function (data, _roomNumber, votephase) {
 		console.log("[INFO] player가 투표 했습니다.");
 		games[_roomNumber].VotedPlayer += 1;
 		if (data == "Ma") {
@@ -472,144 +452,150 @@ io.on("connection", function (socket) {
 			games[_roomNumber].VoteResult[5] += 1;
 		}
 
-		if ( games[_roomNumber].VotedPlayer == 6) {
+		if (games[_roomNumber].VotedPlayer == 6) {
 			console.log("[INFO] player 모두가 투표 했습니다.");
 			clearInterval(IngameTimer[_roomNumber]);
 			var _data = games[_roomNumber].VoteResult;
-			if ( votephase == 1 ){
-				io.sockets.in( 'room' + _roomNumber ).emit("GO_VOTE_RESULT", _data );
+			if (votephase == 1) {
+				io.sockets.in("room" + _roomNumber).emit("GO_VOTE_RESULT", _data);
 			} else {
-				io.sockets.in( 'room' + _roomNumber ).emit('GO_SECOND_VOTE', _data);
+				io.sockets.in("room" + _roomNumber).emit("GO_SECOND_VOTE", _data);
 			}
 		}
-
 	});
 
 	// 투표 결과
-	socket.on("RESULT_VOTE", function (data, _roomNumber, num ) { 
+	socket.on("RESULT_VOTE", function (data, _roomNumber, num) {
 		games[_roomNumber].Count += 1;
-		if( games[_roomNumber].Count == 6){
+		if (games[_roomNumber].Count == 6) {
 			games[_roomNumber].Count = 0;
 			console.log("텍스트 멀티 결과 창 " + data);
-			if ( num == 0 ){
+			if (num == 0) {
 				// 투표 끝.
 				setTimeout(function () {
-					io.sockets.in( 'room' + _roomNumber ).emit('GO_SINGLE_RESULT_VOTE', data);
-				}, 1500); 
+					io.sockets
+						.in("room" + _roomNumber)
+						.emit("GO_SINGLE_RESULT_VOTE", data);
+				}, 1500);
 			} else {
 				// 재투표
 				setTimeout(function () {
-					io.sockets.in( 'room' + _roomNumber ).emit('GO_MULTI_RESULT_VOTE', data);
-				}, 1500); 
+					io.sockets
+						.in("room" + _roomNumber)
+						.emit("GO_MULTI_RESULT_VOTE", data);
+				}, 1500);
 			}
 		}
 	});
 
 	// 2차 투표
-	socket.on("MOVE_SECOND_VOTE", function(data , _roomNumber ){
+	socket.on("MOVE_SECOND_VOTE", function (data, _roomNumber) {
 		games[_roomNumber].Count += 1;
-		console.log("[system] 두번째투표 대기자  " + games[_roomNumber].Count );
-		if( games[_roomNumber].Count == 6){
+		console.log("[system] 두번째투표 대기자  " + games[_roomNumber].Count);
+		if (games[_roomNumber].Count == 6) {
 			games[_roomNumber].GamePhase = 7; // 2차 투표
 			games[_roomNumber].Count = 0;
 			games[_roomNumber].VotedPlayer = 0;
-			games[_roomNumber].VoteResult = [0,0,0,0,0,0];
+			games[_roomNumber].VoteResult = [0, 0, 0, 0, 0, 0];
 			games[_roomNumber].VoteResultTxt = "";
 
 			console.log("[system] 두번째 투표 진행합니다. " + data);
 			setTimeout(function () {
-				io.sockets.in( 'room' + _roomNumber ).emit('GO_MOVE_SECOND_VOTE', data);
+				io.sockets.in("room" + _roomNumber).emit("GO_MOVE_SECOND_VOTE", data);
 			}, 3000);
 
 			clearInterval(IngameTimer[_roomNumber]);
 			// 두 번째 투표 3분
-			IngameTimer[_roomNumber] = New_Timer( 3, _roomNumber );
+			IngameTimer[_roomNumber] = New_Timer(3, _roomNumber);
 		}
-
-	}); 
+	});
 
 	// 2차 투표 결과
-	socket.on("RESULT_SECOND_VOTE", function (data, _roomNumber, num ) { 
+	socket.on("RESULT_SECOND_VOTE", function (data, _roomNumber, num) {
 		games[_roomNumber].Count += 1;
-		if( games[_roomNumber].Count == 6){
+		if (games[_roomNumber].Count == 6) {
 			games[_roomNumber].Count = 0;
 			console.log("[system] 2차 투표 결과 전송 " + data);
-			if ( num == 0 ){
+			if (num == 0) {
 				// 투표 끝.
 				setTimeout(function () {
-					io.sockets.in( 'room' + _roomNumber ).emit('GO_SINGLE_RESULT_SECOND_VOTE', data);
-				}, 1500); 
+					io.sockets
+						.in("room" + _roomNumber)
+						.emit("GO_SINGLE_RESULT_SECOND_VOTE", data);
+				}, 1500);
 			} else {
 				// 재투표
 				var voteresultstr = "";
-				data.forEach(function(i) {
-					if(i != null){
+				data.forEach(function (i) {
+					if (i != null) {
 						voteresultstr += i + ":";
 					}
 				});
 				setTimeout(function () {
-					io.sockets.in( 'room' + _roomNumber ).emit('GO_MULTI_RESULT_SECOND_VOTE', data);
-				}, 1500); 
-
+					io.sockets
+						.in("room" + _roomNumber)
+						.emit("GO_MULTI_RESULT_SECOND_VOTE", data);
+				}, 1500);
 			}
 		}
 	});
 
 	// 대기실 내에서 게임 시작 버튼 누르기
-	socket.on("READY_CRIMESCENE", function ( _roomNumber ) {
+	socket.on("READY_CRIMESCENE", function (_roomNumber) {
 		console.log("[system] 플레이어가 크라임씬을 준비했습니다.");
 		games[_roomNumber].ReadyUser += 1;
 		refreshreadyUser(_roomNumber);
 	});
 	// 준비 취소 함수
-	socket.on("NOT_READY_CRIMESCENE", function ( _roomNumber ) {
+	socket.on("NOT_READY_CRIMESCENE", function (_roomNumber) {
 		console.log("[system] 플레이어가 크라임씬을 준비를 취소 했습니다.");
 		games[_roomNumber].ReadyUser -= 1;
 		refreshreadyUser(_roomNumber);
 	});
 	// 준비된 인원 업데이트
-	socket.on("REFRESH_READY_USER", function ( _roomNumber ) {
-		console.log("[system] 준비 된 인원 업데이트  ( 방 번호 : "+  _roomNumber + " ) " );
+	socket.on("REFRESH_READY_USER", function (_roomNumber) {
+		console.log(
+			"[system] 준비 된 인원 업데이트  ( 방 번호 : " + _roomNumber + " ) "
+		);
 		refreshreadyUser(_roomNumber);
 	});
 	// games에 저장된 룸 삭제하기
-	socket.on("DELETE_GAME_ROOM_IN_SERVER", function ( _roomNumber ) {
+	socket.on("DELETE_GAME_ROOM_IN_SERVER", function (_roomNumber) {
 		delete games[_roomNumber];
-		console.log("[system] 대기실을 삭제했습니다.(games) 현재 진행 중인 games : " +  Object.keys(games).length );
+		console.log(
+			"[system] 대기실을 삭제했습니다.(games) 현재 진행 중인 games : " +
+				Object.keys(games).length
+		);
 	});
 	// 대기실에서 크라임씬 시작하기
-	socket.on("PLAY_CRIMESCENE", function ( _roomNumber ) {
+	socket.on("PLAY_CRIMESCENE", function (_roomNumber) {
 		games[_roomNumber].GamePhase = 1;
 		games[_roomNumber].ReadyUser = 0;
-		io.sockets.in( games[_roomNumber].SocketRoomName ).emit("ON_PLAY_CRIMESCENE");
+		io.sockets.in(games[_roomNumber].SocketRoomName).emit("ON_PLAY_CRIMESCENE");
 	});
 	// 게임 종료
-	socket.on("END_GAME", function ( _roomNumber, _winint , _playerid) {
-		if ( games[_roomNumber] != null ){
-			console.log("[system] 방을 삭제 합니다. ")
+	socket.on("END_GAME", function (_roomNumber, _winint, _playerid) {
+		if (games[_roomNumber] != null) {
+			console.log("[system] 방을 삭제 합니다. ");
 			// 방을 삭제합니다.
 			delete games[_roomNumber];
 			var removeRoomSQL = `delete from waitingroom where waitingroom_no = ?`;
 			let params = [_roomNumber];
-			connection.query(
-				removeRoomSQL,
-				params,
-				function (error, rows, fields) {
-					if (error) {
-						console.log(error);
-						console.log("삭제에 에러가 발생했습니다.");
-						return -1;
-					} else {
-						return true;
-					}
+			connection.query(removeRoomSQL, params, function (error, rows, fields) {
+				if (error) {
+					console.log(error);
+					console.log("삭제에 에러가 발생했습니다.");
+					return -1;
+				} else {
+					return true;
 				}
-			);
+			});
 		}
-		
+
 		// console.log(_winint);
 		var SQL = `INSERT INTO playresult (playresult_userid, playresult_storyno, playresult_win) VALUES (?,?,?);`;
 		// TODO each story
-		var params = [ _playerid, 1, _winint ];
+		var params = [_playerid, 1, _winint];
 		connection.query(SQL, params, function (error, rows) {
 			if (error) {
 				console.log(error);
@@ -618,11 +604,7 @@ io.on("connection", function (socket) {
 				return true;
 			}
 		});
-
 	});
-
-
-
 }); //END_IO.ON
 
 var proof = require("./share_server");
@@ -635,28 +617,31 @@ console.log("------- server is running -------");
 
 // 유저 업데이트 함수
 function refreshreadyUser(_roomNumber) {
-
-	if ( games[_roomNumber] == null ){
+	if (games[_roomNumber] == null) {
 		// 생성된 방이 없는 경우 games에 방을 생성해서 넣기.
-		console.log("[system] 새로 생성한 방입니다. " );
+		console.log("[system] 새로 생성한 방입니다. ");
 		games[_roomNumber] = {
-			SocketRoomName : "room" + _roomNumber,
-			GamePhase : 0,
-			ReadyUser : 0,
-			VotedPlayer : 0,
-			VoteResult : [0,0,0,0,0,0],
-			Count : 0,
-			
-		}
+			SocketRoomName: "room" + _roomNumber,
+			GamePhase: 0,
+			ReadyUser: 0,
+			VotedPlayer: 0,
+			VoteResult: [0, 0, 0, 0, 0, 0],
+			Count: 0,
+		};
 	}
-	console.log(" 준비인원 -->" + games[_roomNumber].ReadyUser );
+	console.log(" 준비인원 -->" + games[_roomNumber].ReadyUser);
 	// 생성된 방이 있으면 준비된 인원 변수를 리턴한다.
-	io.sockets.in( games[_roomNumber].SocketRoomName ).emit("REFRESH_READY_USER_SUCCESS", games[_roomNumber].ReadyUser, games[_roomNumber].GamePhase );
-	
+	io.sockets
+		.in(games[_roomNumber].SocketRoomName)
+		.emit(
+			"REFRESH_READY_USER_SUCCESS",
+			games[_roomNumber].ReadyUser,
+			games[_roomNumber].GamePhase
+		);
 }
 
 // 새로운 통합 시간 관련 함수
-function New_Timer( minutes, _roomNumber ){
+function New_Timer(minutes, _roomNumber) {
 	// gamephase == 0 : 게임시작 전 로비
 	// gamephase == 1 : 게임 방법 숙지 화면 - WaitScene
 	// gamephase == 2 : 역할 대기화면 - RoleScene
@@ -679,25 +664,37 @@ function New_Timer( minutes, _roomNumber ){
 		// console.log(phase + " --> " + minute + ":" + second );
 		if (phase == 2) {
 			// 2 : 역할 시간 업데이트
-			io.sockets.in( 'room' + _roomNumber ).emit("SET_ROLE_TIMER", time, minute, second);
+			io.sockets
+				.in("room" + _roomNumber)
+				.emit("SET_ROLE_TIMER", time, minute, second);
 		} else if (phase == 3) {
 			// 3. 미팅 시간 업데이트
-			io.sockets.in( 'room' + _roomNumber ).emit("SET_GAME_TIMER", time, minute, second);
+			io.sockets
+				.in("room" + _roomNumber)
+				.emit("SET_GAME_TIMER", time, minute, second);
 		} else if (phase == 4) {
 			// 4. 게임 시간 업데이트
-			io.sockets.in( 'room' + _roomNumber ).emit("SET_GAME_TIMER", time, minute, second);
+			io.sockets
+				.in("room" + _roomNumber)
+				.emit("SET_GAME_TIMER", time, minute, second);
 		} else if (phase == 5) {
 			// 5. 1차 회의 시간 업데이트
-			io.sockets.in( 'room' + _roomNumber ).emit("SET_GAME_TIMER", time, minute, second);
+			io.sockets
+				.in("room" + _roomNumber)
+				.emit("SET_GAME_TIMER", time, minute, second);
 		} else if (phase == 6) {
 			// 6. 투표 시간 업데이트
-			io.sockets.in( 'room' + _roomNumber ).emit("SET_VOTE_TIMER", time, minute, second);
+			io.sockets
+				.in("room" + _roomNumber)
+				.emit("SET_VOTE_TIMER", time, minute, second);
 		} else if (phase == 7) {
 			// 7. 2차 투표 시간 업데이트
-			io.sockets.in( 'room' + _roomNumber ).emit('SET_SECOND_VOTE_TIMER', time, minute, second);
+			io.sockets
+				.in("room" + _roomNumber)
+				.emit("SET_SECOND_VOTE_TIMER", time, minute, second);
 		}
 
-		if ( second == 0 && minute == 0 ){
+		if (second == 0 && minute == 0) {
 			console.log("[system] 시간이 끝났습니다. 타이머 종료. ");
 			clearInterval(IngameTimer[_roomNumber]);
 			// 시간이 종료 되었을 때 실행할 곳.
@@ -705,75 +702,69 @@ function New_Timer( minutes, _roomNumber ){
 				console.log("[system] 역할 확인시간이 끝났습니다. 자기소개로 갑니다. ");
 				// 2 : 역할 시간이 끝났을 경우.
 				games[_roomNumber].ReadyUser = 0;
-				games[_roomNumber].GamePhase = 3; // 페이즈 3으로. 
-				// 자기 소개 시간 10분 
+				games[_roomNumber].GamePhase = 3; // 페이즈 3으로.
+				// 자기 소개 시간 10분
 				clearInterval(IngameTimer[_roomNumber]);
-				IngameTimer[_roomNumber] = New_Timer( 15, _roomNumber );
-				io.sockets.in( 'room' + _roomNumber ).emit("GO_MEETING");
-
+				IngameTimer[_roomNumber] = New_Timer(15, _roomNumber);
+				io.sockets.in("room" + _roomNumber).emit("GO_MEETING");
 			} else if (phase == 3) {
-				// 3. 자기 소개 시간 종료의 경우 
-				console.log("[system] 자기 소개 시간이 끝났습니다. 자기소개로 갑니다. ");
+				// 3. 자기 소개 시간 종료의 경우
+				console.log(
+					"[system] 자기 소개 시간이 끝났습니다. 자기소개로 갑니다. "
+				);
 				games[_roomNumber].ReadyUser = 0;
-				games[_roomNumber].GamePhase = 4; // 페이즈 4 (탐색)으로. 
+				games[_roomNumber].GamePhase = 4; // 페이즈 4 (탐색)으로.
 				// 탐색 시간 15분
 				clearInterval(IngameTimer[_roomNumber]);
-				IngameTimer[_roomNumber] = New_Timer( 15, _roomNumber );
-				io.sockets.in( 'room' + _roomNumber ).emit('GO_MAP');
-			
+				IngameTimer[_roomNumber] = New_Timer(15, _roomNumber);
+				io.sockets.in("room" + _roomNumber).emit("GO_MAP");
 			} else if (phase == 4) {
 				// 4. 탐색 시간 종료의 경우
 				console.log("[system ]탐색 시간이 끝났습니다. 자기소개로 갑니다. ");
 				games[_roomNumber].ReadyUser = 0;
-				games[_roomNumber].GamePhase = 5; // 페이즈 5 (1차회의) 으로. 
+				games[_roomNumber].GamePhase = 5; // 페이즈 5 (1차회의) 으로.
 				// 1차 회의시간 20분
 				// 1분 있다가 추가 증거 영상 재생하기.
 				clearInterval(IngameTimer[_roomNumber]);
-				IngameTimer[_roomNumber] = New_Timer( 20, _roomNumber );
-				setTimeout(function(){
+				IngameTimer[_roomNumber] = New_Timer(20, _roomNumber);
+				setTimeout(function () {
 					console.log("[system] 새로운 증거를 공개합니다.");
-					io.sockets.in( 'room' + _roomNumber ).emit('VIEW_CLUE_VIDEO');
+					io.sockets.in("room" + _roomNumber).emit("VIEW_CLUE_VIDEO");
 				}, 60000);
 
-				io.sockets.in( 'room' + _roomNumber ).emit('GO_MEETING2');
-
+				io.sockets.in("room" + _roomNumber).emit("GO_MEETING2");
 			} else if (phase == 5) {
-				// 5. 1차 회의 시간 종료의 경우	
+				// 5. 1차 회의 시간 종료의 경우
 				// phase 6 : 투표 씬
 				games[_roomNumber].ReadyUser = 0;
 				games[_roomNumber].GamePhase = 6;
-				console.log("[system] 1차회의 시간이 종료되었습니다. 투표를 위해 이동 합니다. ");
-				
-				// 투표 시간 3분 
-				clearInterval(IngameTimer[_roomNumber]);
-				IngameTimer[_roomNumber] = New_Timer( 3, _roomNumber );
-				io.sockets.in( 'room' + _roomNumber ).emit("GO_VOTE");
+				console.log(
+					"[system] 1차회의 시간이 종료되었습니다. 투표를 위해 이동 합니다. "
+				);
 
+				// 투표 시간 3분
+				clearInterval(IngameTimer[_roomNumber]);
+				IngameTimer[_roomNumber] = New_Timer(3, _roomNumber);
+				io.sockets.in("room" + _roomNumber).emit("GO_VOTE");
 			} else if (phase == 6) {
 				// 6. 1차 투표 시간 이 종료된 경우.
 				console.log("[system] 투표 시간이 끝났습니다. ");
 				clearInterval(IngameTimer[_roomNumber]);
 				//
 				var _data = games[_roomNumber].VoteResult;
-				io.sockets.in( 'room' + _roomNumber ).emit("GO_VOTE_RESULT", _data);
-				
-			} else if ( phase == 7 ) {
+				io.sockets.in("room" + _roomNumber).emit("GO_VOTE_RESULT", _data);
+			} else if (phase == 7) {
 				// 7. 2차 투표 시간이 종료된 경우
 				console.log("[system] 2차 투표 시간이 끝났습니다. ");
 				clearInterval(IngameTimer[_roomNumber]);
 				var _data = games[_roomNumber].VoteResult;
-				io.sockets.in( 'room' + _roomNumber ).emit('GO_SECOND_VOTE', _data);
-
+				io.sockets.in("room" + _roomNumber).emit("GO_SECOND_VOTE", _data);
 			}
-
-		} else if (second == 0 ) {
+		} else if (second == 0) {
 			minute -= 1;
 			second = 60;
 		}
-
 	}, 1000);
 
 	return TIME_FUNCTION;
-
-
 }
