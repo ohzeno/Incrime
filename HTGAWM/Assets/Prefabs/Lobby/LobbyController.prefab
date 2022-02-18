@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8873819288670253999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8873819288670253996}
+  - component: {fileID: 8873819288670253997}
+  m_Layer: 0
+  m_Name: LobbyController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8873819288670253996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873819288670253999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 554.5, y: 269.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8873819288670253997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873819288670253999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c08647708b8ca459b45cfa7d0f21f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: 0
+  CurrntPasswordState: 1
+  PlayCrimeSceneButton: {fileID: 0}
+  PlayCrimeSceneButton_cancel: {fileID: 0}
+  ReadyUserText: {fileID: 0}
+  createTab: {fileID: 0}
+  joinTab: {fileID: 0}
+  roomListParent: {fileID: 0}
+  createRoomName: {fileID: 0}
+  createRoomPassword: {fileID: 0}
+  createTabButton: {fileID: 0}
+  joinTabButton: {fileID: 0}
+  refreshButton: {fileID: 0}
+  roomInnerUIObject: {fileID: 0}
+  userListParent: {fileID: 0}
+  roomInfo: {fileID: 0}
+  tempRoomUI: {fileID: 0}
+  passwordInputBoxObject: {fileID: 0}
+  joinRoomPassword: {fileID: 0}
+  menuCanvasGroup: {fileID: 0}
+  myPageObject: {fileID: 0}
+  updateImage: {fileID: 0}
+  deleteImage: {fileID: 0}
