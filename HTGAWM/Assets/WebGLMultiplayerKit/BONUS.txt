@@ -1,0 +1,18 @@
+How to test the game without relying on the lengthy compilation for Web GL
+
+unfortunately it is not possible to test multiplayer online in the unity editor, and we
+can only test it by compiling a build for WebGL. This is because the WebGL code
+communication is configured to work in conjunction with the NodeJS server,as if it
+were a web page served by a server. So to test the game we need to build the game and insert it into the nodeJS server root folder. The problem with this approach is the wait time for each WebGL build. so what's the possible solution?
+
+Currently on the assetstore there is an excellent free plugin called SocketIO for Unity. The way this plugin works with nodejs is very similar to the way we do it.Furthermore, converting a project made with socketIO to a WebGL project is extremely easy!
+
+to help you develop your game we will make the same examples available for free in
+the socketIO asset free of charge. You can download it through the link below:
+
+Download SavanaIO and Helicopter Warzone in socketIO:
+
+unity package: https://drive.google.com/file/d/1LzwADoGSstQCawiklw_1ucpKqbb3KhkK/view?usp=sharing
+
+mmo servers: https://drive.google.com/file/d/13KVp31L9TD7N_3cmCALPlO92QNVULnhF/view?usp=sharing
+
