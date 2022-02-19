@@ -24,7 +24,7 @@
 
 commit log: 싸피 외부 깃헙/깃랩 주소
 
-🏠 https://ssafycrimescene.herokuapp.com/
+🏠 https://ssafyincrime.herokuapp.com/
 
 📷 프로젝트 영상 : https://www.youtube.com/watch?v=BPZv3-Zp3oo
 
