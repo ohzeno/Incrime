@@ -69,7 +69,7 @@ io.on("connection", function (socket) {
 
 	// 콜백  EmitJoin()
 	socket.on("JOIN", function (_data) {
-		console.log("[system] player가 JOIN을 시도합니다. ");
+		console.log("[system] player가 입장을 시도합니다. ");
 		// 변환
 		var data = JSON.parse(_data);
 
@@ -82,26 +82,18 @@ io.on("connection", function (socket) {
 			joinedRoomId: 0,
 		};
 
-		console.log(currentUser);
-		console.log("[system] player " + currentUser.name + ": 이 입장 했습니다.!");
-		console.log("로그인 시도 비밀번호 : " + currentUser.password);
-
 		var SQL =
 			"select * from user" + " where user_id = '" + currentUser.name + "'";
 
 		connection.query(SQL, function (error, results) {
 			if (error || results.length == 0) {
-				console.log(error);
 				var msg = "아이디 혹은 비밀번호를 확인하세요";
-				console.log(msg);
 				socket.emit("CHECK_ID_PW", msg);
 			} else if (results[0].user_pw != currentUser.password) {
 				var msg = "아이디 혹은 비밀번호를 확인하세요";
-				console.log("아이디 혹은 비밀번호를 확인하세요");
 				socket.emit("CHECK_ID_PW", msg);
 			} else if (loginsUsers[results[0].user_id]) {
 				var msg = "이미 로그인 되어있는 아이디입니다.";
-				console.log(msg);
 				socket.emit("CHECK_ID_PW", msg);
 			} else {
 				// clients list에 추가
@@ -111,7 +103,7 @@ io.on("connection", function (socket) {
 
 				loginsUsers[results[0].user_id] = true;
 
-				console.log("[system] 지금 참가자 수 : " + clients.length);
+				console.log("[system] 로그인 유저 수 : " + loginsUsers.length);
 				//
 				socket.emit(
 					"JOIN_SUCCESS",
@@ -130,10 +122,6 @@ io.on("connection", function (socket) {
 		console.log("[INFO] User가 회원가입을 시도합니다.");
 		var data = JSON.parse(_data);
 
-		console.log(
-			"datainfo : " + data.name + " " + data.password + " " + data.mail
-		);
-
 		// fills out with the information emitted by the player in the unity
 		var User = {
 			name: data.name,
@@ -141,18 +129,10 @@ io.on("connection", function (socket) {
 			mail: data.email,
 		}; //new user  in clients list
 
-		console.log(User);
-		console.log(
-			"userinfo : " + User.name + " " + User.password + " " + User.mail
-		);
-
 		var SQL = `insert into user (user_id, user_pw, user_email) values (?,?,?)`;
-
-		console.log(SQL);
 
 		if (User.name.length < 8 || User.name.length > 16) {
 			var msg = "아이디를 확인해주세요.";
-			console.log(msg);
 			socket.emit("JOINERROR", msg);
 		} else {
 			let params = [User.name, User.password, User.mail];
@@ -160,11 +140,9 @@ io.on("connection", function (socket) {
 				if (error) {
 					console.log(error);
 					var msg = "이미 존재하는 아이디입니다.";
-					console.log("이미 존재하는 아이디입니다.");
 					socket.emit("JOINERROR", msg);
 				} else {
 					var msg = "회원가입을 성공하였습니다.";
-					console.log("[INFO] player " + User.name + ": join sucsess");
 					socket.emit("JOINSUCCESS", msg);
 					// socket.emit('CHANGE_STARTSSCENE');
 				}
@@ -176,10 +154,6 @@ io.on("connection", function (socket) {
 	socket.on("USERUPDATE", function (_data) {
 		console.log("[INFO] User가 정보 수정을 시도합니다.");
 		var data = JSON.parse(_data);
-
-		console.log(
-			"datainfo : " + data.name + " " + data.password + " " + data.mail
-		);
 
 		if (currentUser.joinedRoomId != 0) {
 			socket.emit("ERROR_OCCUR", "입장 중엔 정보 변경이 안됩니다.");
@@ -193,29 +167,20 @@ io.on("connection", function (socket) {
 			mail: data.email,
 		}; //new user  in clients list
 
-		console.log(User);
-		console.log(
-			"userinfo : " + User.name + " " + User.password + " " + User.mail
-		);
-
 		var SQL = `update user set user_pw = ?, user_email = ? where user_id = ?`;
 
 		if (User.password.length < 8 || User.password.length > 16) {
-			var msg = "비밀번호를 확인해주세요.";
-			console.log(msg);
-			socket.emit("UPDATEERROR", msg);
+			socket.emit("UPDATEERROR", "비밀번호를 확인해주세요.");
 		} else {
 			let params = [User.password, User.mail, User.name];
 			connection.query(SQL, params, function (error, results) {
 				if (error) {
-					console.log(error);
-					var msg = "정보 수정에 실패하였습니다.";
 					console.log("정보 수정에 실패하였습니다.");
-					socket.emit("UPDATEERROR", msg);
+					console.log(error);
+					socket.emit("UPDATEERROR", "정보 수정에 실패하였습니다.");
 				} else {
 					console.log("[INFO] player " + User.name + ": update sucsess");
-					var msg = "회원 정보 수정에 성공하였습니다.";
-					socket.emit("UPDATESUCCESS", msg);
+					socket.emit("UPDATESUCCESS", "회원 정보 수정에 성공하였습니다.");
 					socket.emit("USERINFO", User.name, User.password, User.mail);
 				}
 			});
@@ -236,8 +201,8 @@ io.on("connection", function (socket) {
 		let params = [currentUser.name];
 		connection.query(SQL, params, function (error, results) {
 			if (error) {
+				console.log("삭제를 실패하였습니다.");
 				console.log(error);
-				console.log("삭제를 실패하였습니다..");
 			} else {
 				if (loginsUsers[currentUser.name])
 					loginsUsers[currentUser.name] = false;
@@ -265,6 +230,7 @@ io.on("connection", function (socket) {
 
 		connection.query(SQL, params, function (error, results) {
 			if (error) {
+				console.log("유저 게임 정보를 가져오는 것에 실패하였습니다.");
 				console.log(error);
 			} else {
 				(u_totalgames = results[0].totalgames), (u_games = results[0].wingames);
@@ -542,13 +508,11 @@ io.on("connection", function (socket) {
 
 	// 대기실 내에서 게임 시작 버튼 누르기
 	socket.on("READY_CRIMESCENE", function (_roomNumber) {
-		console.log("[system] 플레이어가 크라임씬을 준비했습니다.");
 		games[_roomNumber].ReadyUser += 1;
 		refreshreadyUser(_roomNumber);
 	});
 	// 준비 취소 함수
 	socket.on("NOT_READY_CRIMESCENE", function (_roomNumber) {
-		console.log("[system] 플레이어가 크라임씬을 준비를 취소 했습니다.");
 		games[_roomNumber].ReadyUser -= 1;
 		refreshreadyUser(_roomNumber);
 	});
