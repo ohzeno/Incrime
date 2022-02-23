@@ -26,7 +26,7 @@
 
 📷 프로젝트 영상 : https://www.youtube.com/watch?v=BPZv3-Zp3oo
 
-노션: https://puzzled-carpenter-bec.notion.site/bf36726088f74c7c862dd2ab69b00141
+노션: https://redniche.notion.site/bf36726088f74c7c862dd2ab69b00141
 
 
 
